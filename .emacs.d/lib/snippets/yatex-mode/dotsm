@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dotsm
+# key: dotsm
+# --
+\dotsm $0

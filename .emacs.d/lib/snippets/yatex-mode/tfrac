@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tfrac
+# key: tfrac
+# --
+\tfrac{$1}{$2}$0

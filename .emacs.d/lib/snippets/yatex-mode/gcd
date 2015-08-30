@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gcd
+# key: gcd
+# --
+\gcd$0

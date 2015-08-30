@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : flushleft(Env)
+# --
+\begin{flushleft}
+  $0
+\end{flushleft}

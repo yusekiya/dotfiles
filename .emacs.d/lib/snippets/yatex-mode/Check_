@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Check
+# key: Check
+# --
+\Check{$1}$0

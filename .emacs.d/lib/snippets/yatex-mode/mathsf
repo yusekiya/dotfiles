@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mathsf
+# key: mathsf
+# --
+\mathsf{${1:sanserif}}$0

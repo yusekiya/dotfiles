@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: <footer> ... </footer>
+# key: fo
+# binding: C-c M-l
+# --
+<footer>
+ $0
+</footer>

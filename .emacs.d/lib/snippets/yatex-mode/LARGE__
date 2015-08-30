@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: LARGE
+# key: LARGE
+# --
+{\LARGE $1}$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tanh
+# key: tanh
+# --
+\tanh$0

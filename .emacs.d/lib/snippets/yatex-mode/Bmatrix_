@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Bmatrix
+# key: Bmatrix
+# --
+\begin{Bmatrix}
+ $0
+\end{Bmatrix}

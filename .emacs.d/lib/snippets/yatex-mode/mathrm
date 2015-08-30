@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mathrm
+# key: mathrm
+# --
+\mathrm{${1:roman}}$0

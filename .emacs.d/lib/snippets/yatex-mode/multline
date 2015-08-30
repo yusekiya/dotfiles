@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: multline
+# key: multline
+# --
+\begin{multline}
+ $0
+\end{multline}

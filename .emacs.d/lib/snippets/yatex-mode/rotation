@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rotation
+# key: rot
+# --
+\nabla\times$0

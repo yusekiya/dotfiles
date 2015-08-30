@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Dot
+# key: Dot
+# --
+\Dot{$1}$0

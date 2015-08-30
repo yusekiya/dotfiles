@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: array
+# key: array
+# --
+\begin{array}${1:[${2:position t, c, b?}]}{${3:|c|c|}}
+  $0
+\end{array}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: triangleleft
+# key: triangleleft
+# --
+\triangleleft$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lvert
+# key: lvert
+# --
+\lvert$0

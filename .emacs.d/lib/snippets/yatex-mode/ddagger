@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ddagger
+# key: ddagger
+# --
+\ddagger$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sqcap
+# key: sqcap
+# --
+\sqcap$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: arccos
+# key: arccos
+# --
+\arccos$0

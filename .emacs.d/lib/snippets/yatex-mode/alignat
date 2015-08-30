@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: alignat
+# key: alignat
+# --
+\begin{alignat}{${1:#equations}}
+    $0 &=
+\end{alignat}

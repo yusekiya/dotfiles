@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: displaystyle
+# key: displaystyle
+# --
+\displaystyle$0

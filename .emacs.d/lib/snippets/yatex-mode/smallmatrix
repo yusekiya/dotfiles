@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: smallmatrix
+# key: smallmatrix
+# --
+\begin{smallmatrix} $1 \end{smallmatrix}$0

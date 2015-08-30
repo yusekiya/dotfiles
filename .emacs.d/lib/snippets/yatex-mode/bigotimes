@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bigotimes
+# key: bigotimes
+# --
+\bigotimes${1:_{${2:sub}}}${3:^{${4:sup}}}

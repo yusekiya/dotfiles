@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: grater_or_equal
+# key: >=
+# --
+\ge$0

@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: nmmatrix
+# key: matrix_nm
+# type: command
+# --
+(insert "\\begin{pmatrix}\n")
+(let ((width (read-number "Matrix width?" 3))
+      (height (read-number "Matrix height?" 3))
+      (snippet-text ""))
+  (dotimes (i height)
+    (dotimes (j width)
+      (setq snippet-text (format "%s ${%d:m%d%d} %s"
+                                 snippet-text
+                                 (1+ (+ (* height i) j))
+                                 (1+ i)
+                                 (1+ j)
+
+                                 (if (= j (1- width))
+                                     (if (/= i (1- height)) "\\\\\\"
+"")
+                                   "&"))))
+    (setq snippet-text (format "%s\n" snippet-text)))
+  (yas/expand-snippet (format "%s\\end{pmatrix}" snippet-text)))

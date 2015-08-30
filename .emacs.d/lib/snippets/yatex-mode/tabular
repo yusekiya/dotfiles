@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: tabular
+# key: tabular
+# --
+\begin{tabular}{${1:|c|c|}}$0
+\end{tabular}

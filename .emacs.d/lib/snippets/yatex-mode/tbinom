@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tbinom
+# key: tbinom
+# --
+\tbinom{$1}{$2}$0

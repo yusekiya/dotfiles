@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: makeindex
+# key: makeindex
+# --
+\makeindex$0

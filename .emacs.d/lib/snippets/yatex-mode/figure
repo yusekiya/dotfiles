@@ -1,0 +1,9 @@
+#name : figure(Env with basic settings)
+# key: figure
+# --
+\begin{figure}[${1:htbp}]
+  \centering
+  \includegraphics[${2:width=${3:70mm}, }clip]{${4:filename}}
+  ${5:\caption{${6:caption of figure}}
+  ${7:\label{${8:label of figure}}}}
+\end{figure}

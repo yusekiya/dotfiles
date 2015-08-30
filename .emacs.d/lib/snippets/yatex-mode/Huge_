@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Huge
+# key: Huge
+# --
+{\Huge $1}$0

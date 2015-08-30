@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: xleftarrow
+# key: xleftarrow
+# --
+\xleftarrow${1:[${2:sub}]}{${3:sup}}$0

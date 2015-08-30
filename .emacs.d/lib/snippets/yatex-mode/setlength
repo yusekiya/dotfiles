@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: setlength
+# key: setlength
+# --
+\setlength{${1:\reg}}{${2:length}}$0

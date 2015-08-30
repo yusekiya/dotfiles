@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: succ
+# key: succ
+# --
+\succ$0

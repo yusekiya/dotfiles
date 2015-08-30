@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mathbf
+# key: mathbf
+# --
+\mathbf{${1:bold}}$0

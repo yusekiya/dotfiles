@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: varGamma
+# key: varGamma
+# --
+\varGamma$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sub
+# key: sb
+# --
+_{${1:sub}}$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: breve
+# key: breve
+# --
+\breve{$1}

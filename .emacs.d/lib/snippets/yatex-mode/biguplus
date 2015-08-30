@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: biguplus
+# key: biguplus
+# --
+\biguplus${1:_{${2:sub}}}${3:^{${4:sup}}}

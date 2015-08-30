@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : description(Env)
+# --
+\begin{description}
+  \item $0
+\end{description}

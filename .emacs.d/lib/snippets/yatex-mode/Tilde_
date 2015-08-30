@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Tilde
+# key: Tilde
+# --
+\Tilde{$1}$0

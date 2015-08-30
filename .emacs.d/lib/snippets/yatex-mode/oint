@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: oint
+# key: oint
+# --
+\oint${1:_{${2:sub}}}${3:^{${4:sub}}}$0

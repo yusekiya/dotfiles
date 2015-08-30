@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: parallel
+# key: parallel
+# --
+\parallel$0

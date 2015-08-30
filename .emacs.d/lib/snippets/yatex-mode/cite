@@ -1,0 +1,3 @@
+#name : cite
+# --
+\cite{`(unless yas/modified-p (car (reftex-citation 'no-insert)))`$0}

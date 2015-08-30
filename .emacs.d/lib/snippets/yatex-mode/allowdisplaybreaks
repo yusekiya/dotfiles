@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: allowdisplaybreaks
+# key: allowdisplaybreaks
+# --
+\allowdisplaybreaks[${1:level; 0--4?}]

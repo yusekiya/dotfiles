@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mathit
+# key: mathit
+# --
+\mathit{${1:italic}}$0

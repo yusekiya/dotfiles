@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: iint
+# key: iint
+# --
+\iint${1:_{${2:sub}}}${3:^{${4:sup}}}$0

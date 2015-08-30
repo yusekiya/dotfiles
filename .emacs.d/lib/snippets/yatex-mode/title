@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: title
+# key: title
+# --
+\title{${1:title}}
+\author{${2:author}}
+\date{${3:date}}$0

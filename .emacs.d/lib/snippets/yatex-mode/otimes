@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: otimes
+# key: otimes
+# --
+\otimes$0

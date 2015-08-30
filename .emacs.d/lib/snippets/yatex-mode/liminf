@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: liminf
+# key: liminf
+# --
+\liminf${1:_{$2}}$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: backmatter
+# key: backmatter
+# --
+\backmatter$0

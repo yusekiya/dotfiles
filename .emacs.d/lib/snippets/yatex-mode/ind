@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ind
+# key: ind
+# --
+_{${1:sub}}^{${2:sup}}$0

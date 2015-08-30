@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bigcup
+# key: bigcup
+# --
+\bigcup${1:_{${2:sub}}}${3:^{${4:sup}}}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: appendix
+# key: appendix
+# --
+\appendix$0

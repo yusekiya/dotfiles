@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: cases
+# key: cases
+# --
+\begin{cases}
+ ${1:val1} & ${2:case1} \\\\
+ ${3:val2} & ${4:case2...}$0
+\end{cases}

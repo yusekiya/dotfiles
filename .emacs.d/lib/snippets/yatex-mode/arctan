@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: arctan
+# key: arctan
+# --
+\arctan$0

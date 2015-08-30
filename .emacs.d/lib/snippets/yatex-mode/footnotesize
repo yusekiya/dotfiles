@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: footnotesize
+# key: footnotesize
+# --
+{\footnotesize $1}$0

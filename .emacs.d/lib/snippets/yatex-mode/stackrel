@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: stackrel
+# key: stackrel
+# --
+\stackrel{${1:sup}}{${2:rel}}$0

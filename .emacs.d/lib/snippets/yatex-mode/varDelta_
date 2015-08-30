@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: varDelta
+# key: varDelta
+# --
+\varDelta$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cap
+# key: cap
+# --
+\cap$0

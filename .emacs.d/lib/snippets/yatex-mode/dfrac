@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dfrac
+# key: dfrac
+# --
+\dfrac{$1}{$2}

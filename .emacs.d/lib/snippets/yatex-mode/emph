@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: emph
+# key: emph
+# --
+\emph{$1}$0

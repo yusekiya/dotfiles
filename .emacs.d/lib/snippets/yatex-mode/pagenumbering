@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pagenumbering
+# key: pagenumbering
+# --
+\pagenumbering{${1:$$(yas-choose-value '("arabic" "roman" "Roman" "alph" "Alph"))}}$0

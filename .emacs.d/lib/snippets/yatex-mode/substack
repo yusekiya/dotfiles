@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: substack
+# key: substack
+# --
+\substack $1 \\\\$0

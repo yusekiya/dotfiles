@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: thispagestyle
+# key: thispagestyle
+# --
+\thispagestyle{${1:$$(yas-choose-value '("empty" "plain" "headings" "myheadings" ""))}}$0

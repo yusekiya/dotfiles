@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sqsubseteq
+# key: sqsubseteq
+# --
+\sqsubseteq$0

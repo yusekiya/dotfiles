@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: subset
+# key: subset
+# --
+\subset$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: textstyle
+# key: textstyle
+# --
+\textstyle$0

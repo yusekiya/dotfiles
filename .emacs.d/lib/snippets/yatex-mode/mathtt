@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mathtt
+# key: mathtt
+# --
+\mathtt{${1:typewriter}}$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: setminus
+# key: setminus
+# --
+\setminus$0

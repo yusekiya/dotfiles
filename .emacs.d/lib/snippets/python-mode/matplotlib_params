@@ -1,0 +1,21 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: matplotlib_params
+# key: mpl_params
+# expnand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+params = {
+    'figure.figsize': [3.0, 2.25],
+    'font.size': 11,
+    'legend.fontsize': 8,
+    'legend.frameon': False,
+    'legend.numpoints': 4,
+    'lines.linewidth': 1.5,
+    'lines.markersize': 3.0,
+    'lines.markeredgewidth': 0.0,
+    'xtick.major.width': 1.0,
+    'xtick.minor.width': 0.5,
+    'ytick.major.width': 1.0,
+    'ytick.minor.width': 0.5,
+    # 'font.family'   : 'sans-serif',
+}
+mpl.rcParams.update(params)
