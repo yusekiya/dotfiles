@@ -457,9 +457,9 @@ input
         python-indent-offset 4
         evil-shift-width 4)
   ;; (highlight-indentation-mode 1)
-  (use-package indent-guide
-    :config
-    (indent-guide-mode 1))
+  ;; (use-package indent-guide
+  ;;   :config
+  ;;   (indent-guide-mode 1))
   ;; (use-package yasnippet
   ;;   :config
   ;;   (yas-minor-mode 1)

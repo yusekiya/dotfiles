@@ -10,7 +10,7 @@ set incsearch
 set shiftround
 set hlsearch
 set virtualedit=block
-set noexpandtab
+set expandtab
 set backspace=indent,eol,start
 set wrap
 set textwidth=0
@@ -29,7 +29,7 @@ set clipboard=unnamed,autoselect
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set mouse=a
-let mapleader = ","
+let mapleader = "\<space>"
 " Neobundle
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
@@ -60,6 +60,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'terryma/vim-expand-region'
 
 call neobundle#end()
 
@@ -104,5 +105,15 @@ noremap ; :
 noremap : ;
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap + <C-a>
 nnoremap - <C-x>
+" Reinden all
+nnoremap <leader>i gg=<S-g><C-o><C-o>zz
+" Select all text in current line
+nnoremap <leader>v 0v$h
+" Delete all text in current line
+nnoremap <leader>d 0v$hx
+" Yank all text in current line
+nnoremap <leader>y 0v$hy

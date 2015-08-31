@@ -100,7 +100,7 @@ alias less='less -X'
 # alias fgrep='fgrep --color=auto'              # show differences in colour
 #
 # Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty --group-directories-first'                # classify files in colour
+alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
@@ -198,6 +198,7 @@ alias pyman='python -m pydoc'
 # 
 # alias cd=cd_func
 
+# Environment variables
 # PS1 setting
 source /usr/share/git/completion/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
@@ -205,6 +206,7 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\[\033[31m\]\$\[\033[00m\] '
 export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]:\[\033[34;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 # export PS1='\[\033[32;1m\]\w\[\033[0;33m\]$(__git_ps1)\[\e[0m\]\$ '
+export EDITOR='vim'
 
 # Menu completion
 bind "C-j":menu-complete

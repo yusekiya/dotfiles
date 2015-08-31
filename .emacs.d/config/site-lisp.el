@@ -820,9 +820,12 @@ When region is set, call `kill-ring-save'."
 (use-package indent-guide
   :defer t
   :init
-  ;; (setq indent-guide-recursive t)
-  ;; (setq indent-guide-threshold -1)
-  (setq indent-guide-delay 0.08))
+  (setq indent-guide-recursive t)
+  (setq indent-guide-threshold -1)
+  (setq indent-guide-delay nil)
+  (custom-set-faces '(indent-guide-face ((t (:inherit font-lock-comment-delimiter-face
+                                             :italic nil
+                                             :bold nil))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
