@@ -45,4 +45,3 @@
 .jupyter/migrated
 .matplotlib/fontList.py3k.cache
 .matplotlib/tex.cache/
-setup.sh
