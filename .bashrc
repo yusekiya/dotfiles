@@ -95,7 +95,7 @@ alias du='du -h'
 # alias less='less -r'                          # raw control characters
 alias less='less -X'
 # alias whence='type -a'                        # where, of a sort
-# alias grep='grep --color'                     # show differences in colour
+alias grep='grep -i --color'                     # show differences in colour
 # alias egrep='egrep --color=auto'              # show differences in colour
 # alias fgrep='fgrep --color=auto'              # show differences in colour
 #
@@ -110,7 +110,6 @@ alias la='ls -A'                              # all but . and ..
 # applications
 alias tree='tree --dirsfirst -C'
 alias emacs='emacsclient'
-alias sumatrapdf='sumatrapdf -reuse-instance'
 alias trash='gomi'
 alias pyman='python -m pydoc'
 # alias cython_build_mingw='python setup.py build_ext -i -DMS_WIN64'
@@ -211,21 +210,46 @@ export EDITOR='vim'
 # Menu completion
 bind "C-j":menu-complete
 
-# function to build cython
-function cython_build_mingw ()
-{
-    python $1 build_ext -i --compiler=mingw32 -DMS_WIN64
-}
 
 # for windows
-alias ipconfig='winpty ipconfig'
-alias ping='winpty ping'
-alias netstat='winpty netstat'
-alias netsh='winpty netsh'
-alias cscript='winpty cscript'
-alias tracert='winpty tracert'
-alias taskkill='winpty taskkill'
-alias tasklist='winpty tasklist'
-
+if [ "$(uname -o)" = "Msys" ]; then
+    alias sumatrapdf='sumatrapdf -reuse-instance'
+    # function to build cython
+    function cython_build_mingw () {
+        python $1 build_ext -i --compiler=mingw32 -DMS_WIN64
+    }
+    #alias ipconfig='winpty ipconfig'
+    function ipconfig () {
+        command ipconfig "$@" | nkf -w
+    }
+    # alias ping='winpty ping'
+    function ping () {
+        command ping "$@" | nkf -wu
+    }
+    # alias netstat='winpty netstat'
+    function netstat () {
+        command netstat "$@" | nkf -w
+    }
+    # alias netsh='winpty netsh'
+    function netsh () {
+        command netsh "$@" | nkf -wu
+    }
+    # alias cscript='winpty cscript'
+    function cscript () {
+        command cscript "$@" | nkf -wu
+    }
+    #alias tracert='winpty tracert'
+    function tracert () {
+        command tracert "$@" | nkf -wu
+    }
+    alias taskkill='winpty taskkill'
+    #function taskkill () {
+        #command taskkill "$@" | nkf -wu
+    #}
+    # alias tasklist='winpty tasklist'
+    function tasklist () {
+        command tasklist "$@" | nkf -wu
+    }
+fi
 # key bindings
 stty stop undef

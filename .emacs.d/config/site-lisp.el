@@ -800,7 +800,8 @@ When region is set, call `kill-ring-save'."
   :init
   (defun markdown-custom ()
     "markdown-mode-hook"
-    (setq markdown-command-needs-filename t))
+    ;; Read source from stdin (nil) or a file (t)
+    (setq markdown-command-needs-filename nil))
   (add-hook 'markdown-mode-hook 'markdown-custom))
 
 
