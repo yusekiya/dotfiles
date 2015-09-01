@@ -45,3 +45,8 @@
 .jupyter/migrated
 .matplotlib/fontList.py3k.cache
 .matplotlib/tex.cache/
+.emacs.d/semanticdb/
+.pkgbuild/nkf/nkf-2.1.3-1-x86_64.pkg.tar.xz
+.pkgbuild/nkf/nkf/
+.pkgbuild/nkf/pkg/
+.pkgbuild/nkf/src/
