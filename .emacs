@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Aug 31 2015>
+;;     Time-stamp: <Sep 03 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings depending on devices
@@ -14,8 +14,8 @@
 ;; Local directory for settings and elisps
 (defconst my:user-dictionary-directory (expand-file-name "~/"))
 ;; elisp load-path
-(add-to-list 'load-path (concat user-emacs-directory "site-lisp/"))
-(add-to-list 'load-path (concat user-emacs-directory "config/site-lisp/"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/"))
+(add-to-list 'load-path (concat user-emacs-directory "config/packages/"))
 ;; PATH environment
 (setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
 (setq exec-path (parse-colon-path (getenv "PATH")))

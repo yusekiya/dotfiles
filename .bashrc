@@ -203,7 +203,7 @@ source /usr/share/git/completion/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 # export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\[\033[31m\]\$\[\033[00m\] '
-export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]:\[\033[34;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
+export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 # export PS1='\[\033[32;1m\]\w\[\033[0;33m\]$(__git_ps1)\[\e[0m\]\$ '
 export EDITOR='vim'
 
