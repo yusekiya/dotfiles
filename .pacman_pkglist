@@ -79,10 +79,12 @@ mingw-w64-x86_64-python3-pyqt5
 mingw-w64-x86_64-python3-scipy
 mingw-w64-x86_64-qt5
 mingw-w64-x86_64-qtbinpatcher
+mingw-w64-x86_64-ruby
 mingw-w64-x86_64-sqlite3
 mingw-w64-x86_64-tools-git
 mingw-w64-x86_64-wineditline
 mingw-w64-x86_64-xpm-nox
+mingw-w64-x86_64-zeromq
 mintty
 msys2-keyring
 msys2-runtime

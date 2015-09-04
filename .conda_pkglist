@@ -61,7 +61,7 @@ jinja2=2.8=py34_0
 jsonschema=2.4.0=py34_0
 jupyter=1.0.0=py34_0
 jupyter_client=4.0.0=py34_0
-jupyter_console=4.0.0=py34_0
+jupyter_console=4.0.1=py34_0
 jupyter_core=4.0.4=py34_0
 launcher=1.0.0=1
 libpython=1.0=py34_1
@@ -137,7 +137,7 @@ spyder=2.3.6=py34_0
 spyder-app=2.3.6=py34_0
 sqlalchemy=1.0.8=py34_0
 statsmodels=0.6.1=np19py34_0
-sympy=0.7.6=py34_0
+sympy=0.7.6.1=py34_0
 toolz=0.7.4=py34_0
 tornado=4.2.1=py34_0
 traitlets=4.0.0=py34_0
