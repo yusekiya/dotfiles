@@ -92,8 +92,8 @@
 (use-package evil-nerd-commenter
   :init
   (with-eval-after-load "evil"
-    (define-key evil-normal-state-map " ci" 'evilnc-comment-or-uncomment-lines)
-    (define-key evil-visual-state-map " ci" 'evilnc-comment-or-uncomment-lines)
+    (define-key evil-normal-state-map " c " 'evilnc-comment-or-uncomment-lines)
+    (define-key evil-visual-state-map " c " 'evilnc-comment-or-uncomment-lines)
     (define-key evil-normal-state-map " cl" 'evilnc-quick-comment-or-uncomment-to-the-line)
     (define-key evil-normal-state-map " ll" 'evilnc-quick-comment-or-uncomment-to-the-line)
     (define-key evil-normal-state-map " cc" 'evilnc-copy-and-comment-lines)
@@ -148,7 +148,7 @@
   :defer t
   :init
   (define-key evil-visual-state-map "v" #'er/expand-region)
-  (define-key evil-visual-state-map "\C-v" #'er/contract-Region))
+  (define-key evil-visual-state-map "\C-v" #'er/contract-region))
 
 ;; Define key bind for multiple cursors
 (use-package region-bindings-mode
