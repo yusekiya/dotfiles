@@ -1,0 +1,10 @@
+[color]
+	ui = auto
+[alias]
+	graph = log --graph --all --oneline --decorate=full
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[core]
+	whitespace = cr-at-eol
+[include]
+    path = .gitconfig.local
