@@ -20,8 +20,8 @@
 (setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
 (setq exec-path (parse-colon-path (getenv "PATH")))
 ;; python (jedi-mode)
-;; {HOME}\.anaconda\Lib\site-packages
-(setenv "PYTHONPATH" (expand-file-name "~/.anaconda/Lib/site-packages"))
+;; {HOME}\opt\anaconda\Lib\site-packages
+(setenv "PYTHONPATH" (expand-file-name "~/opt/anaconda/Lib/site-packages"))
 ;; Note directory (open-junk-file)
 (defvar my:note-dir "~/junk/")
 

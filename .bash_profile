@@ -48,7 +48,7 @@ export MAXTRASHSIZE=102 # Trashes larger than MAXTRASHBOXSIZE will be removed by
 # export PATH=${PYENV_ROOT}/bin:$PATH
 
 # Python path
-export PYTHONPATH=~/.anaconda/Lib/site-packages
+export PYTHONPATH=~/opt/anaconda/Lib/site-packages
 
 # Set MANPATH so it includes users' private man if it exists
 # if [ -d "${HOME}/man" ]; then
