@@ -250,6 +250,7 @@ if [ "$(uname -o)" = "Msys" ]; then
     function tasklist () {
         command tasklist "$@" | nkf -wu
     }
+    alias pshell='winpty powershell'
 fi
 # key bindings
 stty stop undef
