@@ -24,7 +24,7 @@ if [ -d "${HOME}/bin" ] ; then
 fi
 
 # python path (anaconda)
-# export PATH=${HOME}/.anaconda:${HOME}/.anaconda/Scripts:${PATH}
+# export PATH=${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}
 
 # include path
 if [ -d "/usr/local/include" ] ; then
@@ -36,12 +36,12 @@ if [ -d "/usr/local/lib" ] ; then
 fi
 
 # environment variable for trash command
-export TRASHLIST=~/.trashlist # Where trash list is written
-export TRASHBOX=~/.Trash # Where trash will be moved in
-                         # (.Trash is Mac's trash box)
-export MAXTRASHBOXSIZE=2048 # Max trash box size in MB
-                            # Used for clean up
-export MAXTRASHSIZE=102 # Trashes larger than MAXTRASHBOXSIZE will be removed by 'rm' directly
+#export TRASHLIST=~/.trashlist # Where trash list is written
+#export TRASHBOX=~/.Trash # Where trash will be moved in
+                         ## (.Trash is Mac's trash box)
+#export MAXTRASHBOXSIZE=2048 # Max trash box size in MB
+                            ## Used for clean up
+#export MAXTRASHSIZE=102 # Trashes larger than MAXTRASHBOXSIZE will be removed by 'rm' directly
 
 # # pyenv
 # export PYENV_ROOT="${HOME}/.pyenv"
