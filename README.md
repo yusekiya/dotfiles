@@ -44,5 +44,5 @@ $ ./dotfiles/setup.sh
 
 ## TODO
 
-- Check if the above procedure works
-- Automate the manual setting
+- [x] Check if the above procedure works
+- [ ] Automate the manual setting
