@@ -1,7 +1,7 @@
 BoldAsFont=yes
 Font=Ricty Discord
 FontHeight=12
-FontSmoothing=default
+FontSmoothing=partial
 Transparency=medium
 CursorType=block
 Columns=157

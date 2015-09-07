@@ -70,3 +70,10 @@
 .emacs.d/elisp/window-layout.elc
 .emacs.d/elisp/zen-mind.elc
 work/
+.pkgbuild/mingw-w64-emacs/emacs-24.4-w32-ime.diff
+.pkgbuild/mingw-w64-emacs/emacs-24.5.tar.xz
+.pkgbuild/mingw-w64-emacs/emacs-24.5.tar.xz.sig
+.pkgbuild/mingw-w64-emacs/makepkg.sh
+.pkgbuild/mingw-w64-emacs/mingw-w64-x86_64-emacs-24.5-4-any.pkg.tar.xz
+.pkgbuild/mingw-w64-emacs/pkg/
+.pkgbuild/mingw-w64-emacs/src/

@@ -41,10 +41,10 @@ if has('vim_starting')
 
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
