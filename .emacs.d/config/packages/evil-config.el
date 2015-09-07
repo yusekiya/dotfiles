@@ -135,6 +135,7 @@
   (evil-define-key 'normal dired-mode-map (kbd "h") #'dired-up-directory)
   (evil-define-key 'normal dired-mode-map (kbd "l") #'ignore)
   (evil-define-key 'normal dired-mode-map (kbd "s") #'dired-rotate-sort)
+  (evil-define-key 'normal dired-mode-map (kbd "/") #'dired-mark-files-regexp)
   )
 
 ;; wdired with Evil
