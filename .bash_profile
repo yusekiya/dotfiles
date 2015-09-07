@@ -44,8 +44,9 @@ fi
 #export MAXTRASHSIZE=102 # Trashes larger than MAXTRASHBOXSIZE will be removed by 'rm' directly
 
 # # pyenv
-# export PYENV_ROOT="${HOME}/.pyenv"
-# export PATH=${PYENV_ROOT}/bin:$PATH
+#export PYENV_ROOT="${HOME}/.pyenv"
+#export PATH="${PYENV_ROOT}/bin:${PATH}"
+#eval "$(pyenv init -)"
 
 # Python path
 export PYTHONPATH=~/opt/anaconda/Lib/site-packages

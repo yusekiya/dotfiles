@@ -110,9 +110,11 @@ alias la='ls -A'                              # all but . and ..
 # applications
 alias tree='tree --dirsfirst -C'
 alias emacs='emacsclient'
-alias trash='gomi'
 alias pyman='python -m pydoc'
 # alias cython_build_mingw='python setup.py build_ext -i -DMS_WIN64'
+function trash () {
+    winpty gomi "$@"
+}
 
 # Umask
 #
