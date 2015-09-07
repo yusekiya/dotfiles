@@ -88,20 +88,7 @@
  '(split-width-threshold 140))
 
 ;; distinguishing Emacsen
-(cond
- ((and (featurep 'meadow) (= emacs-major-version 22))
-  (load ".meadow3"))
- ((and (equal system-type 'windows-nt) (= emacs-major-version 24))
-  (load ".ntemacs24"))
- ((and (equal system-type 'windows-nt) (= emacs-major-version 23))
-  (load ".ntemacs23"))
- ((and (equal system-type 'windows-nt) (= emacs-major-version 22))
-  (load ".ntemacs22"))
- ((= emacs-major-version 23)
-  (load ".emacs23"))
- ((= emacs-major-version 22)
-  (load ".emacs22"))
-)
+(if (>= emacs-major-version 24) (load ".ntemacs24"))
 
 ;;start on home directory
 (cd "~")

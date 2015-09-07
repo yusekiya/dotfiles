@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Sep 03 2015>
+;;     Time-stamp: <Sep 08 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IME setting for japanese environment
@@ -225,7 +225,7 @@
 (setq system-time-locale "C")
 
 ;; Beep
-(setq visible-bell nil)
+(setq visible-bell t)
 
 ;; Diff
 (setq diff-switches "-u")

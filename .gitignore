@@ -77,3 +77,5 @@ work/
 .pkgbuild/mingw-w64-emacs/mingw-w64-x86_64-emacs-24.5-4-any.pkg.tar.xz
 .pkgbuild/mingw-w64-emacs/pkg/
 .pkgbuild/mingw-w64-emacs/src/
+.emacs.d/places
+.emacs.d/recentf
