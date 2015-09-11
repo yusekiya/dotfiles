@@ -111,10 +111,8 @@ alias la='ls -A'                              # all but . and ..
 alias tree='tree --dirsfirst -C'
 alias emacs='emacsclient'
 alias pyman='python -m pydoc'
+alias inkscape='PYTHONPATH= inkscape'
 # alias cython_build_mingw='python setup.py build_ext -i -DMS_WIN64'
-function trash () {
-    winpty gomi "$@"
-}
 
 # Umask
 #
@@ -215,6 +213,9 @@ bind "C-j":menu-complete
 
 # for windows
 if [ "$(uname -o)" = "Msys" ]; then
+    function trash () {
+        winpty gomi "$@"
+    }
     alias sumatrapdf='sumatrapdf -reuse-instance'
     # function to build cython
     function cython_build_mingw () {
