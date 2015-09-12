@@ -114,7 +114,7 @@ alias pyman='python -m pydoc'
 alias inkscape='PYTHONPATH= inkscape'
 alias lesst='less_table'
 function less_table () {
-    column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g'
+    column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
 # alias cython_build_mingw='python setup.py build_ext -i -DMS_WIN64'
 
