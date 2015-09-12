@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: ifmain_time_measurement
+# key: ifmt
+# --
+if __name__ == '__main__':
+    import datetime
+    start = datetime.datetime.now()
+
+    ${1:main()}
+
+    end = datetime.datetime.now()
+    elapsed_time = end - start
+    if elapsed_time.total_seconds() < 60: # below one minute
+        print('elapsed time: {:.4f} sec.'
+              .format(elapsed_time.seconds + elapsed_time.microseconds * 1e-6))
+    else:
+        print('elapsed time ([d] h:m:s): {}'
+              .format(elapsed_time).rsplit('.', 1)[0])
+    print(__file__, 'finished')

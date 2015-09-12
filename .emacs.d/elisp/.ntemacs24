@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Sep 08 2015>
+;;     Time-stamp: <Sep 10 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IME setting for japanese environment
@@ -226,6 +226,7 @@
 
 ;; Beep
 (setq visible-bell t)
+(setq ring-bell-function 'ignore)
 
 ;; Diff
 (setq diff-switches "-u")
