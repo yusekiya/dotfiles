@@ -583,10 +583,10 @@ When region is set, call `kill-ring-save'."
 ;; visual-regexp-steroids
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package visual-regexp-steroids
-  :init (setq vr/engine 'python)
+  :init (setq vr/engine 'pcre2el)
   :bind (("C-c R" . vr/query-replace)
-         ("C-c m" . vr/mc-mark)))
-
+         ("C-c m" . vr/mc-mark))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undo-tree
