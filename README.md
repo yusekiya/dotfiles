@@ -34,6 +34,7 @@ $ ./dotfiles/setup.sh
 - Install the following packages through pip:
     - numdifftools
     - grip
+    - epc
 - Install emacs and compile elisps in ~/.emacs.d
 - Install TeXlive
 - Install 'gomi' command (if necessary)
