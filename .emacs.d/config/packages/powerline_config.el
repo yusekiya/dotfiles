@@ -395,7 +395,7 @@
                                      (funcall separator-right face1 face1)
                                      ;; (powerline-raw " ")
                                      (powerline-raw "%6p" face1 'r)
-                                     (powerline-hud face1 face2 2)
+                                     (powerline-hud 'region 'default 2)
                                      ))
                           (center (list (powerline-raw " " face1)
                                         (funcall separator-left face1 face2)

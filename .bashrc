@@ -258,6 +258,7 @@ if [ "$(uname -o)" = "Msys" ]; then
         command tasklist "$@" | nkf -wu
     }
     alias pshell='winpty powershell'
+    alias ipython='winpty ipython'
 fi
 # key bindings
 stty stop undef

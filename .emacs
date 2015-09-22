@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Sep 03 2015>
+;;     Time-stamp: <Sep 14 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings depending on devices
