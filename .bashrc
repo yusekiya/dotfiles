@@ -259,6 +259,7 @@ if [ "$(uname -o)" = "Msys" ]; then
     }
     alias pshell='winpty powershell'
     alias ipython='winpty ipython'
+    alias cmd='winpty cmd'
 fi
 # key bindings
 stty stop undef
