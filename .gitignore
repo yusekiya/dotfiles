@@ -79,3 +79,4 @@ work/
 .pkgbuild/mingw-w64-emacs/src/
 .emacs.d/places
 .emacs.d/recentf
+.ipython/profile_default/db/
