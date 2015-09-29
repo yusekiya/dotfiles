@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: if_main_profile
+# key: ifmp
+# --
+if __name__ == '__main__':
+    import cProfile
+    cProfile.run('main()', sort='time')
