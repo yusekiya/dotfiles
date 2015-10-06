@@ -58,7 +58,8 @@
 ;; evil-jumper
 (use-package evil-jumper
   :config
-  (turn-on-evil-jumper-mode))
+  ;; (turn-on-evil-jumper-mode)
+  (global-evil-jumper-mode))
 
 ;; evil-exchange
 (use-package evil-exchange
