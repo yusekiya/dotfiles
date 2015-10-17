@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Sep 14 2015>
+;;     Time-stamp: <Oct 17 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings depending on devices
@@ -19,9 +19,6 @@
 ;; PATH environment
 (setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
 (setq exec-path (parse-colon-path (getenv "PATH")))
-;; python (jedi-mode)
-;; {HOME}\opt\anaconda\Lib\site-packages
-(setenv "PYTHONPATH" (expand-file-name "~/opt/anaconda/Lib/site-packages"))
 ;; Note directory (open-junk-file)
 (defvar my:note-dir "~/junk/")
 
