@@ -636,9 +636,6 @@ When region is set, call `kill-ring-save'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; quickrun (slow to load)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun my:quickrun-hook()
-  (set-buffer-process-coding-system 'sjis 'utf-8))
-
 (use-package quickrun
   :init
   (push '("*quickrun*") popwin:special-display-config)
@@ -658,7 +655,10 @@ When region is set, call `kill-ring-save'."
                           (:description . "Run Python script")
                           (:remove . ("%s")))
                         :default "python")
-  (add-hook 'quickrun/mode-hook 'my:quickrun-hook)
+  (when (eq system-type 'windows-nt)
+    (defun my:quickrun-hook()
+      (set-buffer-process-coding-system 'sjis 'utf-8))
+    (add-hook 'quickrun/mode-hook 'my:quickrun-hook))
   )
 
 
