@@ -199,7 +199,13 @@ function less_table () {
 # 
 # alias cd=cd_func
 
+eval `dircolors ~/.dircolors.256dark`
+
 # Environment variables
+# PS1 setting
+source /etc/bash_completion.d/git-prompt
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\[\033[32m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 export EDITOR='vim'
 
 # PS1 setting
@@ -263,3 +269,6 @@ if [ "$(uname -o)" = "Msys" ]; then
 fi
 # key bindings
 stty stop undef
+
+# added by Anaconda3 2.3.0 installer
+export PATH="/home/yseki/opt/anaconda3/bin:$PATH"

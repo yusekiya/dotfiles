@@ -26,6 +26,7 @@ set pumheight=10
 set scrolloff=3
 set iskeyword-=_
 set clipboard=unnamed,autoselect
+set t_Co=16
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set mouse=a
