@@ -29,9 +29,13 @@ if [ -d "/usr/local/lib" ] ; then
     export LIBRARY_PATH=/usr/local/lib
 fi
 
-# Python path
+# Python
 if [ -d "${HOME}/opt/anaconda/Lib/site-packages" ]; then
     export PYTHONPATH=${HOME}/opt/anaconda/Lib/site-packages
+fi
+
+if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
+    export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
 fi
 
 # Set MANPATH so it includes users' private man if it exists

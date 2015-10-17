@@ -199,21 +199,25 @@ function less_table () {
 # 
 # alias cd=cd_func
 
-eval `dircolors ~/.dircolors.256dark`
 
 # Environment variables
-# PS1 setting
-source /etc/bash_completion.d/git-prompt
-GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\[\033[32m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 export EDITOR='vim'
 
 # PS1 setting
+# for windows
 if [ "$(uname -o)" = "Msys" ]; then
     source /usr/share/git/completion/git-prompt.sh
     source /usr/share/git/completion/git-completion.bash
     GIT_PS1_SHOWDIRTYSTATE=true
     export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
+fi
+
+# for ubuntu
+if [ "$(uname)" = "Linux" ]; then
+    eval `dircolors ~/.dircolors.256dark`
+    source /etc/bash_completion.d/git-prompt
+    GIT_PS1_SHOWDIRTYSTATE=true
+    export PS1='\[\033[32m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
 # Menu completion
@@ -270,5 +274,3 @@ fi
 # key bindings
 stty stop undef
 
-# added by Anaconda3 2.3.0 installer
-export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
