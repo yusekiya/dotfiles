@@ -7,6 +7,8 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set incsearch
+set ignorecase
+set smartcase
 set shiftround
 set hlsearch
 set virtualedit=block
