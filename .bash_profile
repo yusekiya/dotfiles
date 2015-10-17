@@ -15,16 +15,10 @@
 
 # User dependent .bash_profile file
 
-export PATH=/mingw64/bin:/usr/bin:${PATH}
-# export PATH=/mingw64/bin:/usr/bin
-
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
-  PATH="${HOME}/bin:${PATH}"
+    export PATH="${HOME}/bin:${PATH}"
 fi
-
-# python path (anaconda)
-# export PATH=${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}
 
 # include path
 if [ -d "/usr/local/include" ] ; then
@@ -35,21 +29,10 @@ if [ -d "/usr/local/lib" ] ; then
     export LIBRARY_PATH=/usr/local/lib
 fi
 
-# environment variable for trash command
-#export TRASHLIST=~/.trashlist # Where trash list is written
-#export TRASHBOX=~/.Trash # Where trash will be moved in
-                         ## (.Trash is Mac's trash box)
-#export MAXTRASHBOXSIZE=2048 # Max trash box size in MB
-                            ## Used for clean up
-#export MAXTRASHSIZE=102 # Trashes larger than MAXTRASHBOXSIZE will be removed by 'rm' directly
-
-# # pyenv
-#export PYENV_ROOT="${HOME}/.pyenv"
-#export PATH="${PYENV_ROOT}/bin:${PATH}"
-#eval "$(pyenv init -)"
-
 # Python path
-export PYTHONPATH=~/opt/anaconda/Lib/site-packages
+if [ -d "${HOME}/opt/anaconda/Lib/site-packages" ]; then
+    export PYTHONPATH=${HOME}/opt/anaconda/Lib/site-packages
+fi
 
 # Set MANPATH so it includes users' private man if it exists
 # if [ -d "${HOME}/man" ]; then
