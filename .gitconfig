@@ -6,5 +6,6 @@
 	last = log -1 HEAD
 [core]
 	whitespace = cr-at-eol
+	autocrlf = true
 [include]
     path = .gitconfig.local
