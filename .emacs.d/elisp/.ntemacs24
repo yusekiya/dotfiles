@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 17 2015>
+;;     Time-stamp: <Oct 18 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Encoding
@@ -38,17 +38,16 @@
   (add-hook 'isearch-mode-hook
             (lambda () (setq w32-ime-composition-window (minibuffer-window))))
   (add-hook 'isearch-mode-end-hook
-            (lambda () (setq w32-ime-composition-window nil))))
-
-;; Disable IME on yes/no query
-(wrap-function-to-control-ime 'universal-argument t nil)
-(wrap-function-to-control-ime 'read-string nil nil)
-(wrap-function-to-control-ime 'read-char nil nil)
-(wrap-function-to-control-ime 'read-from-minibuffer nil nil)
-(wrap-function-to-control-ime 'y-or-n-p nil nil)
-(wrap-function-to-control-ime 'yes-or-no-p nil nil)
-(wrap-function-to-control-ime 'map-y-or-n-p nil nil)
-
+            (lambda () (setq w32-ime-composition-window nil)))
+  ;; Disable IME on yes/no query
+  (wrap-function-to-control-ime 'universal-argument t nil)
+  (wrap-function-to-control-ime 'read-string nil nil)
+  (wrap-function-to-control-ime 'read-char nil nil)
+  (wrap-function-to-control-ime 'read-from-minibuffer nil nil)
+  (wrap-function-to-control-ime 'y-or-n-p nil nil)
+  (wrap-function-to-control-ime 'yes-or-no-p nil nil)
+  (wrap-function-to-control-ime 'map-y-or-n-p nil nil)
+  )
 
 ;; dabbrev for japanese
 (setq case-replace nil)             ;dabbrev exact (upper or lower)case
