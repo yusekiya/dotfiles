@@ -111,12 +111,10 @@ alias la='ls -A'                              # all but . and ..
 alias tree='tree --dirsfirst -C'
 alias emacs='emacsclient'
 alias pyman='python -m pydoc'
-alias inkscape='PYTHONPATH= inkscape'
 alias lesst='less_table'
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
-# alias cython_build_mingw='python setup.py build_ext -i -DMS_WIN64'
 
 # Umask
 #
@@ -202,24 +200,26 @@ function less_table () {
 # alias cd=cd_func
 
 # Environment variables
-# PS1 setting
-source /usr/share/git/completion/git-prompt.sh
-source /usr/share/git/completion/git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
-# export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\[\033[31m\]\$\[\033[00m\] '
-export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
-# export PS1='\[\033[32;1m\]\w\[\033[0;33m\]$(__git_ps1)\[\e[0m\]\$ '
 export EDITOR='vim'
+
+# PS1 setting
+if [ "$(uname -o)" = "Msys" ]; then
+    source /usr/share/git/completion/git-prompt.sh
+    source /usr/share/git/completion/git-completion.bash
+    GIT_PS1_SHOWDIRTYSTATE=true
+    export PS1='\[\033[32;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
+fi
 
 # Menu completion
 bind "C-j":menu-complete
 
 
-# for windows
+# aliases and functions for windows
 if [ "$(uname -o)" = "Msys" ]; then
     function trash () {
         winpty gomi "$@"
     }
+    alias inkscape='PYTHONPATH= inkscape'
     alias sumatrapdf='sumatrapdf -reuse-instance'
     # function to build cython
     function cython_build_mingw () {
