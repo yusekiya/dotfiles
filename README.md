@@ -1,7 +1,7 @@
 # dotfiles
-## Setup
+## Setup for windows (MSYS2)
 ### Copy config files to home directory
-(Windows only) Install msys2 before running the following script.
+Install msys2 before running the following script, and install git command.
 
 ```bash
 $ cd ~
@@ -10,14 +10,14 @@ $ ./dotfiles/setup.sh
 ```
 ### Additional manual settings
 
-- (Windows msys2) Install pacman packages
+- Install pacman packages
 
   ```bash
   $ pacman -S $(< ~/.pacman_pkglist)
   ```
 - Make symbolic link to DROPBOX/HOME/*
 - Copy DROPBOX/my_script/* to ~/bin
-- (Windows msys2) Build packages under .pkgbuild
+- Build packages under .pkgbuild
 
   ```bash
   $ cd ${package-name}
