@@ -474,7 +474,7 @@ When region is set, call `kill-ring-save'."
       (set-cursor-color myCursorColor_SR) (setq cursor-type 'box))
      ((and (featurep 'multiple-cursors) multiple-cursors-mode (if (featurep 'evil) (or (evil-insert-state-p) (evil-emacs-state-p)) t))
       (set-cursor-color myCursorColor_mc) (setq cursor-type 'box))
-     ((and (ime-get-mode) (if (featurep 'evil) (or (evil-insert-state-p) (evil-emacs-state-p)) t))
+     ((and (my:get-ime) (if (featurep 'evil) (or (evil-insert-state-p) (evil-emacs-state-p)) t))
       (set-cursor-color myCursorColor_ime) (setq cursor-type '(bar . 3)))
      ((and view-mode  (if (featurep 'evil) (or (evil-insert-state-p) (evil-emacs-state-p)) t))
       (set-cursor-color myCursorColor_view) (setq cursor-type 'hollow))
@@ -897,6 +897,12 @@ When region is set, call `kill-ring-save'."
 (use-package swap-buffers
   :bind ("C-q s" . swap-buffers))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; beacon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package beacon
+  :config
+  (beacon-mode 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zoom-window

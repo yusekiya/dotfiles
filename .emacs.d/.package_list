@@ -13,6 +13,7 @@ auto-complete-c-headers
 auto-save-buffers-enhanced
 avy
 basic-theme
+beacon
 bind-key
 birds-of-paradise-plus-theme
 cmake-mode
@@ -101,6 +102,7 @@ region-bindings-mode
 request
 revive
 s
+seq
 smart-newline
 smartrep
 smooth-scroll

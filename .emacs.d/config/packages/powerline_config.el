@@ -135,7 +135,7 @@
 (defpowerline powerline-ime-mode
   (cond
    ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string))) "<SR>")
-   ((ime-get-mode) "[あ] ")
+   ((my:get-ime) "[あ] ")
    (view-mode "View ")
    ((evil-normal-state-p) "Normal ")
    ((evil-operator-state-p) "Operator ")
@@ -184,7 +184,7 @@
                                 (cond
                                  ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
                                   (powerline-ime-mode face7 'l))
-                                 ((ime-get-mode)
+                                 ((my:get-ime)
                                   (powerline-ime-mode face3 'l))
                                  (view-mode (powerline-ime-mode face5 'l))
                                  ((evil-normal-state-p) (powerline-ime-mode face5 'l))
@@ -194,7 +194,7 @@
                                 (cond
                                  ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
                                   (funcall separator-left face7 face1))
-                                 ((ime-get-mode)
+                                 ((my:get-ime)
                                   (funcall separator-left face3 face1))
                                  (view-mode (funcall separator-left face5 face1))
                                  ((evil-normal-state-p) (funcall separator-left face5 face1))
@@ -336,7 +336,7 @@
                                 (cond
                                  ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
                                   (powerline-ime-mode face7 'l))
-                                 ((ime-get-mode)
+                                 ((my:get-ime)
                                   (powerline-ime-mode face3 'l))
                                  (view-mode (powerline-ime-mode face5 'l))
                                  ((evil-normal-state-p) (powerline-ime-mode face5 'l))
@@ -349,7 +349,7 @@
                                     (cond
                                       ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
                                         (funcall separator-left face7 face1))
-                                      ((ime-get-mode)
+                                      ((my:get-ime)
                                         (funcall separator-left face3 face1))
                                       (view-mode (funcall separator-left face5 face1))
                                       ((evil-normal-state-p) (funcall separator-left face5 face1))
@@ -360,7 +360,7 @@
                                       (cond
                                         ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
                                             (funcall separator-left face7 face8))
-                                        ((ime-get-mode)
+                                        ((my:get-ime)
                                          (funcall separator-left face3 face8))
                                         (view-mode (funcall separator-left face5 face8))
                                         ((evil-normal-state-p) (funcall separator-left face5 face8))
