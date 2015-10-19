@@ -65,10 +65,10 @@
     :config
     (add-to-list 'ac-modes 'yatex-mode)
     (auto-complete-mode 1))
-  ;; Turn on yasnippet mode
-  (use-package yasnippet
-    :config
-    (yas-minor-mode-on))
+  ;; ;; Turn on yasnippet mode
+  ;; (use-package yasnippet
+  ;;   :config
+  ;;   (yas-minor-mode-on))
   (use-package key-chord
     :config
     (key-chord-define YaTeX-mode-map "ds" 'insert-backslash)
@@ -81,6 +81,7 @@
              ("C-j" . YaTeX-intelligent-newline))
   (use-package font-latex)
   (use-package preview)
+  (use-package flyspell)
 )
 
 ;; ac-latex
@@ -140,13 +141,9 @@
   ;; modify syntax
   (modify-syntax-entry ?% "<" (syntax-table))
   (modify-syntax-entry 10 ">" (syntax-table))
+  (if (featurep 'flyspell) (flyspell-mode 1))
   )
 (add-hook 'yatex-mode-hook 'my:yatex-mode-setup)
-
-;; Doesn't work
-;; (use-package latex-mode-expansions
-;;   :config
-;;   (add-hook 'yatex-mode-hook 'er/add-latex-mode-expansions))
 
 
 ;; -------------------------------------------------------------------
