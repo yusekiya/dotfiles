@@ -367,6 +367,7 @@ input
          )
   :config
   (progn (setq dired-dwim-target t)
+         (setq dired-listing-switches "-alh")
          (bind-keys :map dired-mode-map
                     ((kbd "RET") . dired-find-alternate-file)
                     ("a" . dired-find-file)
