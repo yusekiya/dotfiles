@@ -188,7 +188,9 @@ When region is set, call `kill-ring-save'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Spell checker
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq-default ispell-program-name "aspell") ; use aspell
+;; use aspell
+(when (equal system-type 'windows-nt)
+  (setq-default ispell-program-name "C:\\opt\\Aspell\\bin\\aspell"))
 (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
 ;; 日本語対応
 (eval-after-load "ispell"
@@ -202,34 +204,11 @@ When region is set, call `kill-ring-save'."
   :init
   (progn (setq flyspell-use-meta-tab nil))
   :config
-  (progn (bind-keys :map flyspell-mode-map
+  (bind-keys :map flyspell-mode-map
                     ("C-;" . nil)
                     ("C-." . nil)
-                    ("C-," . nil))
-         ;; (smartrep-define-key
-         ;;     flyspell-mode-map "C-c" '(("C-," . 'flyspell-goto-next-error)
-         ;;                               ("C-." . 'flyspell-auto-correct-word)))
-         ))
+                    ("C-," . nil)))
 
-;; Modes in which flyspell-mode is enabled
-(mapc
- (lambda (hook)
-   (add-hook hook
-             '(lambda () (flyspell-mode 1))))
- '(;; Hooks of mode where flyspell is automatically on
-   yatex-mode-hook
-   ))
-
-;; Modes in which flyspell check is enabled ONLY in comment
-(mapc
- (lambda (hook)
-   (add-hook hook 'flyspell-prog-mode))
- '(;; Hooks of modes where flyspell is active in comment
-   ;; c++-mode-hook
-   ;; emacs-lisp-mode-hook
-   ;; ruby-mode-hook
-   ;; python-mode-hook
-   ))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
