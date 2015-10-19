@@ -4,10 +4,10 @@
 (use-package yasnippet
   ;; :init
   :config
-  ;; Don't expand snippets after symbol constituents like underscore (_)
-  (setq yas-key-syntaxes (delete "w" yas-key-syntaxes))
-  ;; Don't expand snippets after dot
-  (setq yas-key-syntaxes (delete "w_" yas-key-syntaxes))
+  ;; ;; Don't expand snippets after symbol constituents like underscore (_)
+  ;; (setq yas-key-syntaxes (delete "w" yas-key-syntaxes))
+  ;; ;; Don't expand snippets after dot
+  ;; (setq yas-key-syntaxes (delete "w_" yas-key-syntaxes))
   (setq yas-snippet-dirs
         `(,(concat user-emacs-directory "lib/snippets") ;; local snippets directory
           ,yas-installed-snippets-dir
