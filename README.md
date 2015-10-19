@@ -17,6 +17,8 @@ $ ./dotfiles/setup.sh
   ```
 - Make symbolic link to DROPBOX/HOME/*
 - Copy DROPBOX/my_script/* to ~/bin
+- Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
+  Install directory must be `C:\opt` to work with emacs
 - Build packages under .pkgbuild
 
   ```bash
