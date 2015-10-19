@@ -8,7 +8,7 @@ $ cd ~
 $ git clone https://github.com/yusekiya/dotfiles.git
 $ ./dotfiles/setup.sh
 ```
-### Additional manual settings
+### Additional manual setup
 
 - Install pacman packages
 
@@ -29,7 +29,7 @@ $ ./dotfiles/setup.sh
 - Install conda packages
 
   ```bash
-  $ conda install --file ~/.conda_pkglist
+  $ conda install --file ~/.conda_pkglist_win
   ```
 - Install the following packages through pip:
     - numdifftools
@@ -40,7 +40,7 @@ $ ./dotfiles/setup.sh
 - Install 'gomi' command (if necessary)
 
   ```bash
-  $ curl -L git.io/gomi | sh
+  $ curl -L git.io/gomi | bash
   ```
 
 ## TODO
