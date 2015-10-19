@@ -1,22 +1,18 @@
 ;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 18 2015>
+;;     Time-stamp: <Oct 19 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Encoding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
-(setq default-file-name-coding-system 'shift_jis)
 (modify-coding-system-alist 'file "\\.java\\'" 'utf-8)              ; Java
 (modify-coding-system-alist 'file "\\.py\\'" 'utf-8)                ; Python
 (modify-coding-system-alist 'file "\\.c\\'" 'utf-8)                ; c
 (modify-coding-system-alist 'file "\\.cpp\\'" 'utf-8)                ; c++
-;; (prefer-coding-system 'utf-8)
-;; (setq coding-system-for-read 'utf-8)
-;; (setq coding-system-for-write 'utf-8)
-;; shell mode では shift_jis にする
-;; (add-hook 'shell-mode-hook '(lambda ()
-;; (set-buffer-process-coding-system 'sjis 'sjis)))
+
+(when (eq system-type 'windows-nt)
+  (setq default-file-name-coding-system 'shift_jis))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
