@@ -189,6 +189,7 @@ When region is set, call `kill-ring-save'."
 ;; Spell checker
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default ispell-program-name "aspell") ; use aspell
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
 ;; 日本語対応
 (eval-after-load "ispell"
  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
@@ -216,7 +217,8 @@ When region is set, call `kill-ring-save'."
    (add-hook hook
              '(lambda () (flyspell-mode 1))))
  '(;; Hooks of mode where flyspell is automatically on
-   yatex-mode-hook))
+   yatex-mode-hook
+   ))
 
 ;; Modes in which flyspell check is enabled ONLY in comment
 (mapc
