@@ -1,7 +1,7 @@
 # dotfiles
 ## Setup for windows (MSYS2)
 ### Copy config files to home directory
-Install msys2 before running the following script, and install git command.
+Install msys2 and git command before running the following script.
 
 ```bash
 $ cd ~
