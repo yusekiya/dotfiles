@@ -13,7 +13,8 @@
   (setq YaTeX-latex-message-code 'utf-8)
   (setq YaTeX-inhibit-prefix-letter t)
   (setq YaTeX-kanji-code nil)
-  (setq YaTeX-environment-indent 2)
+  (setq YaTeX-environment-indent 4)
+  (setq YaTeX-sectioning-indent 4)
   (setq YaTeX-use-LaTeX2e t)
   (setq YaTeX-use-AMS-LaTeX t)
   ;; commands for windows
