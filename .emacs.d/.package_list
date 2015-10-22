@@ -54,6 +54,7 @@ fontawesome
 fringe-helper
 function-args
 git-gutter
+git-ps1-mode
 google-c-style
 goto-chg
 goto-last-change
