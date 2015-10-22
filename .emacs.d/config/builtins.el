@@ -184,11 +184,59 @@ input
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Function to getting ime mode
+;; My utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Function to get ime mode as string
 (defun my:get-ime ()
   current-input-method
   )
+
+
+;; Function to go into a next blank brackets
+(defun my:goto-blank-brackets-forward ()
+  (interactive)
+  (let ((init-pos (point))
+        (point-eol)
+        (iter 0)
+        (max-iter 10)
+        (is-successful nil))
+    (block exit
+      (while (< iter max-iter)
+        (setq point-eol (save-excursion (end-of-line) (point)))
+        (if (re-search-forward "\\(()\\|{}\\|\\[\\]\\)" point-eol t)
+            (progn
+              (setq is-successful t)
+              (backward-char 1)
+              (return-from exit))
+          (progn
+            (setq iter (1+ iter))
+            (forward-line)
+            (when (eobp) (return-from exit))))))
+    (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
+
+
+;; Function to go into a previous blank brackets
+(defun my:goto-blank-brackets-backward ()
+  (interactive)
+  (let ((init-pos (point))
+        (point-bol)
+        (iter 0)
+        (max-iter 10)
+        (is-successful nil))
+    (block exit
+      (while (< iter max-iter)
+        (setq point-bol (save-excursion (beginning-of-line) (point)))
+        (if (re-search-backward "\\(()\\|{}\\|\\[\\]\\)" point-bol t)
+            (progn
+              (setq is-successful t)
+              (forward-char 1)
+              (return-from exit))
+          (progn
+            (setq iter (1+ iter))
+            (forward-line -1)
+            (when (bobp) (return-from exit))
+            (end-of-line)))))
+    (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

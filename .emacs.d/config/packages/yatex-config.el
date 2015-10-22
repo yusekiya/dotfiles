@@ -77,8 +77,8 @@
     (key-chord-define YaTeX-mode-map "jr" 'insert-superscript)
     (key-chord-define YaTeX-mode-map "jf" 'insert-sub-and-sup))
   (bind-keys :map YaTeX-mode-map
-             ("C-," . my-jump-to-before-parentheses)
-             ("C-." . my-jump-to-next-parentheses)
+             ("C-," . my:goto-blank-brackets-backward)
+             ("C-." . my:goto-blank-brackets-forward)
              ("C-j" . YaTeX-intelligent-newline))
   (use-package font-latex)
   (use-package preview)
@@ -216,69 +216,8 @@
   (interactive)
   (insert "_{}^{}")
   (backward-char 4)
-)
+  )
 
-;; Find next (), {}, or []
-(defun my-find-next-parentheses (num)
-  (if (< num 20)
-      (progn (skip-chars-forward "^[{(\n")
-             (cond ((string= "[" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= "]" (char-to-string (following-char)))
-                        (my-find-next-parentheses num)))
-                   ((string= "{" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= "}" (char-to-string (following-char)))
-                        (my-find-next-parentheses num)))
-                   ((string= "(" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= ")" (char-to-string (following-char)))
-                        (my-find-next-parentheses num)))
-                   (t (skip-chars-forward "\n")
-                      (my-find-next-parentheses (+ num 1)))))
-      ;; when (), [], or {} are not found.
-      (progn (message "No blank parenthesis around here!")
-             (jump-to-register ?r)))
-)
-
-;;; Go to next (), {}, or []
-(defun my-jump-to-next-parentheses ()
-  (interactive)
-  (point-to-register ?r)
-  (my-find-next-parentheses 0)
-)
-
-;;; Find previous (), {}, or []
-(defun my-find-before-parentheses (num)
-  (if (< num 20)
-      (progn (skip-chars-forward "^[{(\n")
-             (cond ((string= "[" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= "]" (char-to-string (following-char)))
-                        (my-find-before-parentheses num)))
-                   ((string= "{" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= "}" (char-to-string (following-char)))
-                        (my-find-before-parentheses num)))
-                   ((string= "(" (char-to-string (following-char)))
-                    (forward-char 1)
-                    (if (string= ")" (char-to-string (following-char)))
-                        (my-find-before-parentheses num)))
-                   (t (forward-line -1)
-                      (move-beginning-of-line 1)
-                      (my-find-before-parentheses (+ num 1)))))
-      ;; when (), [], or {} are not found.
-      (progn (message "No blank parenthesis around here!")
-             (jump-to-register ?r)))
-)
-
-;;; Go to previous (), {}, or []
-(defun my-jump-to-before-parentheses ()
-  (interactive)
-  (point-to-register ?r)
-  (move-beginning-of-line 1)
-  (my-find-before-parentheses 0)
-)
 
 (defun my-insert-ket (size)
   (cond ((string= size "") (insert "| {} \\rangle"))
@@ -289,69 +228,7 @@
         ((string= size "r") (insert "\\left| {} \\right>"))
         (t (insert "| {} \\rangle"))
         )
-  (my-jump-to-before-parentheses)
+  (my:goto-blank-brackets-backward)
 )
-
-;;; ラベルに対応する部分に飛び，数式をプレビュー
-;;; した後元の場所に戻る関数
-;; (defun YaTeX-goto-corresponding-*-math-preview (arg)
-;;   "Parse current line and call suitable function."
-;;   (interactive "P")
-;;   (require 'yatex)
-;;   (require 'yatexlib)
-;;   (require 'yatexmth)
-;;   (require 'yatexenv)
-;;   (let (mm)
-;;     (cond
-;;      ((YaTeX-goto-corresponding-label arg))
-;;      ((YaTeX-goto-corresponding-environment))
-;;      ((YaTeX-goto-corresponding-file-processor arg))
-;;      ((YaTeX-goto-corresponding-file arg))
-;;      ((YaTeX-goto-corresponding-BEGIN-END))
-;;      ((and (setq mm (YaTeX-in-math-mode-p))
-;; 	   (YaTeX-goto-corresponding-leftright)))
-;;      ((and ;;mm YaTeX-use-AMS-LaTeX
-;; 	   (YaTeX-goto-corresponding-paren)))
-;;      ;;((and (string-match
-;;      ;;	  YaTeX-equation-env-regexp	;to delay loading
-;;      ;;	  (or (YaTeX-inner-environment t) "document"))
-;;      ;;	 (YaTeX-goto-corresponding-leftright)))
-;;      (t (message "I don't know where to go."))))
-;;      (latex-math-preview-expression)
-;;      (other-window -1)
-;;      (jump-to-register ?3))
-
-;;; 現在位置をポイントレジスタへ保存し，ラベルの対応する部分へと飛ぶ
-;; (defun point-register-goto-corresponding-* (arg)
-;;   "Parse current line and call suitable function."
-;;   (interactive "P")
-;;   (require 'yatex)
-;;   (require 'yatexlib)
-;;   (require 'yatexmth)
-;;   (require 'yatexenv)
-;;   (point-to-register ?4)
-;;   (let (mm)
-;;     (cond
-;;      ((YaTeX-goto-corresponding-label arg))
-;;      ((YaTeX-goto-corresponding-environment))
-;;      ((YaTeX-goto-corresponding-file-processor arg))
-;;      ((YaTeX-goto-corresponding-file arg))
-;;      ((YaTeX-goto-corresponding-BEGIN-END))
-;;      ((and (setq mm (YaTeX-in-math-mode-p))
-;; 	   (YaTeX-goto-corresponding-leftright)))
-;;      ((and ;;mm YaTeX-use-AMS-LaTeX
-;; 	   (YaTeX-goto-corresponding-paren)))
-;;      ;;((and (string-match
-;;      ;;	  YaTeX-equation-env-regexp	;to delay loading
-;;      ;;	  (or (YaTeX-inner-environment t) "document"))
-;;      ;;	 (YaTeX-goto-corresponding-leftright)))
-;;      (t (message "I don't know where to go.")))))
-
-;;; YaTeX 自分用のポイントレジスタへ移動
-;; (defun jump-to-my-register ()
-;;   "jump to register 4"
-;;   (interactive)
-;;   (jump-to-register ?4)
-;; )
 
 ;; end of file
