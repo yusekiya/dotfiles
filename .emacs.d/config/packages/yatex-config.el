@@ -99,6 +99,7 @@
 (defun my:RefTeX-setup-for-yatex ()
   (turn-on-reftex)
   (setq reftex-label-alist '(AMSTeX))
+  (custom-set-variables '(reftex-toc-split-windows-horizontally t))
 )
 (add-hook 'yatex-mode-hook 'my:RefTeX-setup-for-yatex)
 
