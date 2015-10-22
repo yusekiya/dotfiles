@@ -203,6 +203,7 @@ function less_table () {
 # Environment variables
 export EDITOR='vim'
 
+
 # PS1 setting
 # for windows
 if [ "$(uname -o)" = "Msys" ]; then
@@ -220,8 +221,14 @@ if [ "$(uname)" = "Linux" ]; then
     export PS1='\[\033[32m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
+
 # Menu completion
 bind "C-j":menu-complete
+
+# Load bash_completion if it exists
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
 
 
 # aliases and functions for windows
