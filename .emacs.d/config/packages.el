@@ -882,6 +882,7 @@ When region is set, call `kill-ring-save'."
 ;; beacon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package beacon
+  :diminish beacon-mode
   :config
   (beacon-mode 1))
 
