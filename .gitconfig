@@ -4,6 +4,7 @@
 	graph = log --graph --all --oneline --decorate=full
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	today = log --since=midnight --author='yusekiya' --oneline
 [core]
 	whitespace = cr-at-eol
 	autocrlf = input
