@@ -15,7 +15,6 @@
                                         ;(setq japanese-LaTeX-default-style "ltjsarticle")
     (dolist (command '("pTeX" "pLaTeX" "pBibTeX" "jTeX" "jLaTeX" "jBibTeX" "Mendex"))
       (delq (assoc command TeX-command-list) TeX-command-list))
-    (use-package auto-complete-auctex)
     )
   (setq preview-image-type 'dvipng)
   ;; (setq preview-gs-command "gs")
@@ -90,6 +89,22 @@
   )
 
 
+;; Settings independent of OS
+(with-eval-after-load "tex-jp"
+  (use-package auto-complete-auctex)
+  (bind-keys :map LaTeX-mode-map
+             ("C-," . my-jump-to-before-parentheses)
+             ("C-." . my-jump-to-next-parentheses))
+  (use-package key-chord
+    :config
+    (key-chord-define LaTeX-mode-map "ds" 'insert-backslash)
+    (key-chord-define LaTeX-mode-map "jv" 'insert-subscript)
+    (key-chord-define LaTeX-mode-map "jr" 'insert-superscript)
+    (key-chord-define LaTeX-mode-map "jf" 'insert-sub-and-sup))
+  )
+
+  
+
 ;; LaTeX setup
 (defun my:latex-setup ()
   (use-package smart-newline
@@ -146,12 +161,52 @@
                 "\\(appendix\\|documentstyle\\|documentclass\\|part\\|chapter\\|section\\|"
                 "subsection\\|subsubsection\\|paragraph\\|subparagraph\\)"
                 "\\*?[ \t]*[[{]"))
-  ;; (concat "[ \t]*\\\\\\(documentstyle\\|documentclass\\|"
-  ;;         "part\\|chapter\\|appendix\\|section\\|subsection\\|subsubsection\\)"
-  ;;         "\\*?[ \t]*[[{]"))
   (outline-minor-mode t))
 
 (add-hook 'LaTeX-mode-hook 'my:auctex-outline-mode-setup)
 
 ;; kinsoku.el
 (setq kinsoku-limit 10)
+
+
+;; My functions
+;; Just insert "\"
+(defun insert-backslash ()
+  (interactive)
+  (insert "\\")
+)
+
+;;; subscript
+(defun insert-subscript ()
+  (interactive)
+  (insert "_{}")
+  (backward-char 1)
+)
+
+;;; superscript
+(defun insert-superscript ()
+  (interactive)
+  (insert "^{}")
+  (backward-char 1)
+)
+
+;;; subscript and superscript
+(defun insert-sub-and-sup ()
+  (interactive)
+  (insert "_{}^{}")
+  (backward-char 4)
+  )
+
+
+(defun my-insert-ket (size)
+  (cond ((string= size "") (insert "| {} \\rangle"))
+        ((string= size "l") (insert "\\bigl| {} \\bigr>"))
+        ((string= size "L") (insert "\\Bigl| {} \\Bigr>"))
+        ((string= size "h") (insert "\\biggl| {} \\biggr>"))
+        ((string= size "H") (insert "\\Biggl| {} \\Biggr>"))
+        ((string= size "r") (insert "\\left| {} \\right>"))
+        (t (insert "| {} \\rangle"))
+        )
+  (my:goto-blank-brackets-backward)
+)
+
