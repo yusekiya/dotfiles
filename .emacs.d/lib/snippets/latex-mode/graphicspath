@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: graphicspath
+# key: graphicspath
+# --
+\graphicspath{${1:{path to sub directory1/}{sub2/}...}}$0

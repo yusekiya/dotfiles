@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inf
+# key: inf
+# --
+\inf${1:_{$2}}$0

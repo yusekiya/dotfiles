@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: scriptsize
+# key: scriptsize
+# --
+{\scriptsize $1}$0

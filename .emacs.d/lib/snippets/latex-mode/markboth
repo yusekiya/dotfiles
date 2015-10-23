@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: markboth
+# key: markboth
+# --
+\markboth{${1:even header}}{${2:odd header}}$0

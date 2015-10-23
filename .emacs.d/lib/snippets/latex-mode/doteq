@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: doteq
+# key: doteq
+# --
+\doteq$0

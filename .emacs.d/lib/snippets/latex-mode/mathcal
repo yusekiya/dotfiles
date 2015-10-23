@@ -1,0 +1,5 @@
+o# -*- mode: snippet -*-
+# name: mathcal
+# key: mathcal
+# --
+\mathcal{${1:calligraphy}}$0

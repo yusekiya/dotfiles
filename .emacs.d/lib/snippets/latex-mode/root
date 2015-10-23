@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: root
+# key: root
+# --
+\sqrt${1:[$2]}{$3}$0

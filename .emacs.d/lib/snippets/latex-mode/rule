@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rule
+# key: rule
+# --
+\rule${1:[${2:depth}]}{${3:width}}{${4:hight}}$0

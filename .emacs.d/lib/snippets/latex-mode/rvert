@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rvert
+# key: rvert
+# --
+\rvert$0

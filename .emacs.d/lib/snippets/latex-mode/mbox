@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mbox
+# key: mbox
+# --
+\mbox{$1}$0

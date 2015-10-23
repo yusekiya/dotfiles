@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rightleftharpoons
+# key: rightleftharpoons
+# --
+\rightleftharpoons$0

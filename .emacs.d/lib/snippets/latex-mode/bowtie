@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bowtie
+# key: bowtie
+# --
+\bowtie$0

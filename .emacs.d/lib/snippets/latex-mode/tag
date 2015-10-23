@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tag
+# key: tag
+# --
+\tag{$1}$0

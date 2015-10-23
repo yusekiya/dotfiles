@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: hphantom
+# key: hphantom
+# --
+\hphantom{$0}

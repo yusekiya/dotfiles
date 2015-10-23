@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Acute
+# key: Acute
+# --
+\Acute{$1}$0

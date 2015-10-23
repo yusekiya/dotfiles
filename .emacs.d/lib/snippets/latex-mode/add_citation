@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: add citation
+# key: addCitation
+# --
+`(car (reftex-citation 'no-insert))`

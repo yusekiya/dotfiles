@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cot
+# key: cot
+# --
+\cot$0

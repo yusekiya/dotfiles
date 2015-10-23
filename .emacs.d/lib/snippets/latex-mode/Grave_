@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Grave
+# key: Grave
+# --
+\Grave{$1}$0

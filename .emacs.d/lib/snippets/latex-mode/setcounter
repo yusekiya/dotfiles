@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: setcounter
+# key: setcounter
+# --
+\setcounter{${1:counter}}{${2:num}}$0

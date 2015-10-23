@@ -1,0 +1,5 @@
+#name : section*
+# key: section*
+# --
+\section*{${1:title}}
+$0

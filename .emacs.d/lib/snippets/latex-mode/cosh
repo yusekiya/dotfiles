@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cosh
+# key: cosh
+# --
+\cosh$0

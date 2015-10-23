@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hdotsfor
+# key: hdotsfor
+# --
+\hdotsfor{${1:#col}}$0

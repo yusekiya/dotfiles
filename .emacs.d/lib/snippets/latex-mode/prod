@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: prod
+# key: prod
+# --
+\prod${1:_{${2:sub}}}${3:^{${4:sup}}}$0

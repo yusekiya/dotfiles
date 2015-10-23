@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pmod
+# key: pmod
+# --
+$1 \equiv $2 \pmod{$3}$0

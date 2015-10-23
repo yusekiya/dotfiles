@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: prime
+# key: prime
+# --
+\prime$0
