@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: addtolength
+# key: addtolength
+# --
+\addtolength{${1:\reg}}{${2:length}}

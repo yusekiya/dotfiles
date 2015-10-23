@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: much_grater
+# key: >>
+# --
+\gg$0

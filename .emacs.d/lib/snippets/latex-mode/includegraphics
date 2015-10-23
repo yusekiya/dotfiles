@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: includegraphics
+# key: includegraphics
+# --
+\includegraphics[${1:width=${2:5cm}, }clip]{${3:figure}}$0

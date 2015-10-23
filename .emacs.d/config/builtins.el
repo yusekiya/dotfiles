@@ -285,6 +285,7 @@ input
                ;("\\.cpp$" . ["template.cpp" my:template])
                ;("\\.h$"   . ["template.h" my:template])
                ("\\.clang_complete" . ["template.clang_complete" my:template])
+               ("\\.tex$". "template.tex")
                ) auto-insert-alist))
 
 (add-hook 'find-file-hooks 'auto-insert)

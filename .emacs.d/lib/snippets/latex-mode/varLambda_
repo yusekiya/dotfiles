@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: varLambda
+# key: varLambda
+# --
+\varLambda$0

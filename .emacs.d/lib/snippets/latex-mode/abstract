@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: abstract
+# key: abstract
+# --
+\begin{abstract}
+ $0
+\end{abstract}

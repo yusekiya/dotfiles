@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: marginpar
+# key: marginpar
+# --
+\marginpar{$1}$0

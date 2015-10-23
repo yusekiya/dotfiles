@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: documentclass
+# key: documentclass
+# --
+\documentclass${1:[${2:11pt, a4paper,...}]}{${3:jsarticle etc}}$0

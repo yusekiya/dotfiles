@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: widehat
+# key: widehat
+# --
+\widehat{$1}$0

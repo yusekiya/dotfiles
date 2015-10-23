@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: underleftrightarrow
+# key: underleftrightarrow
+# --
+\underleftrightarrow{$1}$0

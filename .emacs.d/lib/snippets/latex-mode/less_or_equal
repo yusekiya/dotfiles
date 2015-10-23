@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: less_or_equal
+# key: <=
+# --
+\le$0

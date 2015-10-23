@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: overrightarrow
+# key: overrightarrow
+# --
+\overrightarrow{$1}$0

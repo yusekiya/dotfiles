@@ -1,0 +1,3 @@
+#name : textbf
+# --
+\textbf{${1:text}}$0

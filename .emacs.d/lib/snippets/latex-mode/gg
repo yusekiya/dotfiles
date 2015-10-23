@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gg
+# key: gg
+# --
+\gg$0

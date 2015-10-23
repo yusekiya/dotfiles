@@ -1,5 +1,5 @@
 ;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 19 2015>
+;;     Time-stamp: <Oct 23 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Encoding
@@ -98,8 +98,11 @@
 (setq truncate-lines nil)
 (setq truncate-partial-width-windows nil)
 
-;; Emphasize corresponding parenthesis
+;; Emphasize corresponding parentheses
 (show-paren-mode t)
+
+;; Don't blink matching parenthesis
+(setq blink-matching-paren nil)
 
 ;; Show end of buffer in fringe
 (setq-default indicate-buffer-boundaries 'left)

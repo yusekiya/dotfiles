@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: smash
+# key: smash
+# --
+\smash${1:[${2:t:hight, b:depth ?}]}{$3}$0

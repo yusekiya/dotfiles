@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: overbrace
+# key: overbrace
+# --
+\overbrace{$1}${2:^{${3:sup}}}$0

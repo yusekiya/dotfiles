@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: markright
+# key: markright
+# --
+\markright{${1:odd header}}$0

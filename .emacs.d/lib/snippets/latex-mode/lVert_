@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lVert
+# key: lVert
+# --
+\lVert$0

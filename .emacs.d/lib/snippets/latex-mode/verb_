@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: verb*
+# key: verb*
+# --
+\verb*${1:#}$0$1

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: limits
+# key: limits
+# --
+\limits$0

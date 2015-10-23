@@ -1,0 +1,3 @@
+#name : ref
+# --
+\ref{${1:`(reftex-reference nil 'dont-insert)`}}

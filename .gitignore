@@ -80,3 +80,4 @@ work/
 .emacs.d/places
 .emacs.d/recentf
 .ipython/profile_default/db/
+.emacs.d/config/packages/my-auctex-config.elc

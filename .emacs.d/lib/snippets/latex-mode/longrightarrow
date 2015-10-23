@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: longrightarrow
+# key: longrightarrow
+# --
+\longrightarrow$0

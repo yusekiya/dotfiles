@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: xrightarrow
+# key: xrightarrow
+# --
+\xrightarrow${1:[${2:sub}]}{${3:sup}}$0

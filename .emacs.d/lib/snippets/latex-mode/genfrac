@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: genfrac
+# key: genfrac
+# --
+\genfrac{${1:left par; "("}}{${2:right par; ")"}}{${3:thickness; 1pt}}{${4:style; 0,1,2,3?}}{${5:numerator}}{${6:denominator}}$0
