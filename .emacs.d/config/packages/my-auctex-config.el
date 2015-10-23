@@ -131,6 +131,7 @@
   (turn-on-reftex)
   (setq reftex-label-alist '(AMSTeX))
   (setq reftex-plug-into-AUCTeX t)
+  (custom-set-variables '(reftex-toc-split-windows-horizontally t))
 )
 (add-hook 'LaTeX-mode-hook 'my:RefTeX-setup-for-auctex)
 
