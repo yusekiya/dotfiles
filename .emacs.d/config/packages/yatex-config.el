@@ -9,7 +9,6 @@
          ("\\.clo$" . yatex-mode)
          ("\\.bbl$" . yatex-mode))
   :config
-  (setq YaTeX-template-file (concat user-emacs-directory "lib/template/template.tex")) ; template
   (setq YaTeX-latex-message-code 'utf-8)
   (setq YaTeX-inhibit-prefix-letter t)
   (setq YaTeX-kanji-code nil)
