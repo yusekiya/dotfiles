@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 17 2015>
+;;     Time-stamp: <Oct 24 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings depending on devices
@@ -85,7 +85,7 @@
  '(split-width-threshold 140))
 
 ;; distinguishing Emacsen
-(if (>= emacs-major-version 24) (load ".ntemacs24"))
+(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load ".ntemacs24"))
 
 ;;start on home directory
 (cd "~")
