@@ -825,6 +825,34 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; git-gutter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package git-gutter
+  :diminish (git-gutter-mode "GG")
+  :defer t
+  :init
+  (defvar git-gutter-mode-map
+    (make-sparse-keymap))
+  :config
+  (use-package smartrep
+    :config
+    (smartrep-define-key git-gutter-mode-map
+        "C-x" '(("p" . 'git-gutter:previous-hunk)
+                ("n" . 'git-gutter:next-hunk))))
+  )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; git-ps1-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package git-ps1-mode
+  :config
+  (when (equal system-type 'windows-nt)
+    (setq git-ps1-mode-ps1-file "C:\\msys64\\usr\\share\\git\\completion\\git-prompt.sh"))
+  (git-ps1-mode 1))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mode line lighter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar mode-line-cleaner-alist
@@ -941,34 +969,6 @@ When region is set, call `kill-ring-save'."
 ;; powerline
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "powerline_config")
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; git-gutter
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package git-gutter
-  :diminish (git-gutter-mode "GG")
-  :defer t
-  :init
-  (defvar git-gutter-mode-map
-    (make-sparse-keymap))
-  :config
-  (use-package smartrep
-    :config
-    (smartrep-define-key git-gutter-mode-map
-        "C-x" '(("p" . 'git-gutter:previous-hunk)
-                ("n" . 'git-gutter:next-hunk))))
-  )
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; git-ps1-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package git-ps1-mode
-  :config
-  (when (equal system-type 'windows-nt)
-    (setq git-ps1-mode-ps1-file "C:\\msys64\\usr\\share\\git\\completion\\git-prompt.sh"))
-  (git-ps1-mode 1))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
