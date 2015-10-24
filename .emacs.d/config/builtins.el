@@ -140,7 +140,7 @@ input
     (display-buffer buf)
     ))
 
-(defun my:synchronize_packages()
+(defun my:synchronize_packages ()
   "Synchronize packages with the packages listed in `my:package_list_file'"
   (let* ((local_package (my:get_local_package_list))
         (common_package (my:pull_package_list))
@@ -148,15 +148,22 @@ input
         (to_be_deleted (-difference local_package common_package))
         (flag_maybe_installed nil)
         (flag_maybe_deleted nil)
-        (flag_update nil))
+        (flag_update nil)
+        (buffer-name "*Package sync*"))
     (when to_be_installed
       (when (yes-or-no-p
-             (if (= (length to_be_installed) 1)
-                 (format "Package Sync: Install package `%s'? " (symbol-name (car to_be_installed)))
-               (format "Package Sync: Install these %d packages (%s)? "
-                       (length to_be_installed)
-                       (mapconcat 'symbol-name to_be_installed ", ")))
-             )
+             (cond ((= (length to_be_installed) 1)
+                    (format "Package Sync: Install package `%s'? " (symbol-name (car to_be_installed))))
+                   ((<= (length to_be_installed) 5)
+                    (format "Package Sync: Install these %d packages: %s? "
+                            (length to_be_installed)
+                            (mapconcat 'symbol-name to_be_installed ", ")))
+                   (t
+                    (my:show_message_in_new_buffer buffer-name
+                                                   (concat "New packages to be installed\n\n" (mapconcat 'symbol-name to_be_installed ", ")))
+                    (format "Package Sync: Install these %d packages listed in %s? "
+                            (length to_be_installed) buffer-name))
+                   ))
         (package-refresh-contents)
         (mapc 'package-install to_be_installed)
         (setq flag_update t)
