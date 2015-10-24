@@ -834,6 +834,7 @@ When region is set, call `kill-ring-save'."
   (defvar git-gutter-mode-map
     (make-sparse-keymap))
   :config
+  (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
   (use-package smartrep
     :config
     (smartrep-define-key git-gutter-mode-map
