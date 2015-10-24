@@ -918,7 +918,8 @@ When region is set, call `kill-ring-save'."
 (use-package beacon
   :diminish beacon-mode
   :config
-  (beacon-mode 1))
+  ;; (beacon-mode 1)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zoom-window
