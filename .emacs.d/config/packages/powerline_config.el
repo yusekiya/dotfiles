@@ -41,21 +41,6 @@
           (downcase string)
         (upcase string)))))
 
-;; (custom-set-faces
-;;  '(powerline-active1 ((t
-;;              (:background "grey20" :foreground "grey90")
-;;              )))
-;;  '(powerline-inactive1 ((t
-;;              (:background "grey10" :foreground "gray60")
-;;              )))
-;;  '(powerline-active2 ((t
-;;              (:background "grey40" :foreground "white")
-;;              )))
-;;  '(powerline-inactive2 ((t
-;;              (:background "grey40" :foreground "gray80")
-;;              )))
-;; )
-
 (defface powerline-active3
   '((t (:background "Springgreen4"
         :foreground "white")))
@@ -91,24 +76,6 @@
         :foreground "gray60")))
   "Powerline face 5."
   :group 'powerline)
-
-;; (defface powerline-active6
-;;   '((t (:foreground "gray0"
-;;         :background "white"
-;;         :bold t
-;;         ;; :inherit mode-line
-;;        )))
-;;   "Powerline face 6."
-;;   :group 'powerline)
-
-;; (defface powerline-inactive6
-;;   '((t (:foreground "white"
-;;         :background "gray0"
-;;         :bold t
-;;         ;; :inherit mode-line-inactive
-;;        )))
-;;   "Powerline face 6."
-;;   :group 'powerline)
 
 (defface powerline-active7
   '((t (:background "Yellow4"
@@ -162,89 +129,6 @@
 
 (custom-set-variables '(powerline-height (my:powerline-get-good-height)))
  
-;; (defun powerline-my-theme ()
-;;   "Setup a mode-line with major and minor modes centered."
-;;   (interactive)
-;;   (custom-set-variables '(powerline-default-separator 'arrow))
-;;   (setq-default mode-line-format
-;;                 '("%e"
-;;                   (:eval
-;;                    (let* ((active (powerline-selected-window-active))
-;;                           (mode-line (if active 'mode-line 'mode-line-inactive))
-;;                           (face1 (if active 'powerline-active1 'powerline-inactive1))
-;;                           (face2 (if active 'powerline-active2 'powerline-inactive2))
-;;                           (face3 (if active 'powerline-active3 'powerline-inactive3))
-;;                           (face4 (if active 'powerline-active4 'powerline-inactive4))
-;;                           (face5 (if active 'powerline-active5 'powerline-inactive5))
-;;                           ;;(face6 (if active 'powerline-active6 'powerline-inactive6))
-;;                           (face6 (if active 'mode-line 'mode-line-inactive))
-;;                           (face7 (if active 'powerline-active7 'powerline-inactive7))
-;;                           (separator-left (intern (format "powerline-%s-%s"
-;;                                                           ;; powerline-default-separator
-;;                                                           (powerline-current-separator)
-;;                                                           (car powerline-default-separator-dir))))
-;;                           (separator-right (intern (format "powerline-%s-%s"
-;;                                                            ;; powerline-default-separator
-;;                                                            (powerline-current-separator)
-;;                                                            (cdr powerline-default-separator-dir))))
-;;                           (lhs (list
-;;                                 ;; (powerline-raw "%*" nil 'l)
-;;                                 (cond
-;;                                  ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
-;;                                   (powerline-ime-mode face7 'l))
-;;                                  ((my:get-ime)
-;;                                   (powerline-ime-mode face3 'l))
-;;                                  (view-mode (powerline-ime-mode face5 'l))
-;;                                  ((evil-normal-state-p) (powerline-ime-mode face5 'l))
-;;                                  ((evil-operator-state-p) (powerline-ime-mode face5 'l))
-;;                                  ((evil-visual-state-p) (powerline-ime-mode face5 'l))
-;;                                  (t (powerline-ime-mode face4 'l)))
-;;                                 (cond
-;;                                  ((and (featurep 'smartrep) (< 0 (length smartrep-mode-line-string)))
-;;                                   (funcall separator-left face7 face1))
-;;                                  ((my:get-ime)
-;;                                   (funcall separator-left face3 face1))
-;;                                  (view-mode (funcall separator-left face5 face1))
-;;                                  ((evil-normal-state-p) (funcall separator-left face5 face1))
-;;                                  ((evil-operator-state-p) (funcall separator-left face5 face1))
-;;                                  ((evil-visual-state-p) (funcall separator-left face5 face1))
-;;                                  (t (funcall separator-left face4 face1)))
-;;                                 (powerline-coding-type face1 'l)
-;;                                 (powerline-buffer-status face1 'l)
-;;                                 ;; (powerline-buffer-size nil 'l)
-;;                                 (funcall separator-left face1 face6)
-;;                                 (powerline-buffer-id face6 'l)
-;;                                 ;; (powerline-raw " ")
-;;                                 (funcall separator-left face6 face1)
-;;                                 (powerline-major-mode face1 'l)
-;;                                 (powerline-narrow face1 'l)
-;;                                 (powerline-vc face1)
-;;                                 ))
-;;                           (rhs (list (powerline-raw global-mode-string face1 'r)
-;;                                      (powerline-raw "%4l" face1 'r)
-;;                                      (powerline-raw ":" face1)
-;;                                      (powerline-raw "%3c" face1 'r)
-;;                                      (funcall separator-right face1 face5)
-;;                                      ;; (powerline-raw " ")
-;;                                      (powerline-raw "%6p" face5 'r)
-;;                                      (powerline-hud face2 face1 2)))
-;;                           (center (list (powerline-raw " " face1)
-;;                                         (funcall separator-left face1 face2)
-;;                                         (when (boundp 'erc-modified-channels-object)
-;;                                           (powerline-raw erc-modified-channels-object face2 'l))
-;;                                         (powerline-process face2)
-;;                                         ;; (powerline-raw " :" face2)
-;;                                         (powerline-minor-modes face2 'l)
-;;                                         (powerline-raw " " face2)
-;;                                         (funcall separator-right face2 face1)))
-;;                           )
-;;                      (concat (powerline-render lhs)
-;;                              (powerline-fill-center face1 (/ (powerline-width center) 2.0))
-;;                              (powerline-render center)
-;;                              (powerline-fill face1 (powerline-width rhs))
-;;                              (powerline-render rhs))
-;;                      )))))
-
 
 ;;;
 ;;; `powerline-angle-left' and `powerline-angle-right'
@@ -313,7 +197,7 @@
 (pl/reset-cache)
 
 
-(defun powerline-my-theme2 ()
+(defun powerline-my-theme ()
   "Setup a mode-line with major and minor modes centered. The separator shape is angle."
   (interactive)
   (custom-set-variables '(powerline-default-separator 'angle))
@@ -327,7 +211,6 @@
                           (face3 (if active 'powerline-active3 'powerline-inactive3))
                           (face4 (if active 'powerline-active4 'powerline-inactive4))
                           (face5 (if active 'powerline-active5 'powerline-inactive5))
-                          ;;(face6 (if active 'powerline-active6 'powerline-inactive6))
                           (face6 (if active 'mode-line 'mode-line-inactive))
                           (face7 (if active 'powerline-active7 'powerline-inactive7))
                           (face8 (if active 'powerline-zoom-window 'mode-line-inactive))
@@ -389,7 +272,6 @@
                                 ;; ;; buffer id
                                 (powerline-buffer-id face1 'l)
                                 (powerline-git-status face1 'l)
-                                ;; (powerline-raw " ")
                                 ;; ;; separator
                                 (funcall separator-left face1 face1)
                                 ;; ;; major mode
@@ -424,7 +306,7 @@
                      )))))
 
 ;; set theme
-(powerline-my-theme2)
+(powerline-my-theme)
 
 ;; テーマを変更したときにモードラインの表示が崩れる問題を修正
 ;; 同じ関数の呼び出しを高速化する memorize (キャッシュを作成する関数) が原因のよう
