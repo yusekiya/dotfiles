@@ -43,7 +43,7 @@
   :ensure t)
 
 (defvar my:package_list_file (f-join user-emacs-directory ".package_list")
-  "Path to file including common package list (one package per line)")
+  "Path to file including emacs package list (one package per line)")
 (defvar my:package_list_change_log_dir (f-join user-emacs-directory "change_log/")
   "Path to directory including change log of package list")
 (f-mkdir my:package_list_change_log_dir)
@@ -89,26 +89,25 @@ input
   "Output installed package list to `my:package_list_file'"
   (interactive)
   (let ((local_package_list)
-        (common_package_list)
+        (emacs_package_list)
         (add_list)
         (remove_list))
     ;; Get packages as symbol list
     (setq local_package_list (my:get_local_package_list))
-    (setq common_package_list (my:pull_package_list))
-    (setq add_list (-difference local_package_list common_package_list))
-    (setq remove_list (-difference common_package_list local_package_list))
+    (setq emacs_package_list (my:load_package_list))
+    (setq add_list (-difference local_package_list emacs_package_list))
+    (setq remove_list (-difference emacs_package_list local_package_list))
     (when (and (or add_list remove_list)
-               (yes-or-no-p (format "Add: %s\nRemove: %s\nUpdate common package list? "
+               (yes-or-no-p (format "Add: %s\nRemove: %s\nUpdate emacs package list? "
                                (mapconcat 'symbol-name add_list ", ")
                                (mapconcat 'symbol-name remove_list ", "))))
       ;; Output local_package_list to file
       (f-write-text (mapconcat 'symbol-name local_package_list "\n") 'utf-8 my:package_list_file)
       ;; Output change log
-      ;; (my:save_package_diff_log add_list remove_list)
       (my:save_package_log local_package_list)
-      (message (concat "Common package list file updated! Check change log in " my:package_list_change_log_dir)))))
+      (message (concat "Emacs package list file updated! Check change log in " my:package_list_change_log_dir)))))
 
-(defun my:pull_package_list()
+(defun my:load_package_list()
   "Import package list from `my:package_list_file', and return the list"
   (if (f-exists? my:package_list_file)
       (let ((package_list))
@@ -143,9 +142,9 @@ input
 (defun my:synchronize_packages ()
   "Synchronize packages with the packages listed in `my:package_list_file'"
   (let* ((local_package (my:get_local_package_list))
-        (common_package (my:pull_package_list))
-        (to_be_installed (-difference common_package local_package))
-        (to_be_deleted (-difference local_package common_package))
+        (emacs_package (my:load_package_list))
+        (to_be_installed (-difference emacs_package local_package))
+        (to_be_deleted (-difference local_package emacs_package))
         (flag_maybe_installed nil)
         (flag_maybe_deleted nil)
         (flag_update nil)
@@ -207,7 +206,7 @@ input
 ;; Synchronize packages
 (if (f-exists? my:package_list_file) (my:synchronize_packages) (my:save_package_list))
 
-;; Update common package file,
+;; Update emacs package file,
 ;; when packages are installed or deleted through through package-menu-execute
 (advice-add 'package-menu-execute :after 'my:save_package_list)
 ;; and when installed through package-install-from-buffer
