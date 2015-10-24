@@ -109,7 +109,7 @@ input
       (message (concat "Common package list file updated! Check change log in " my:package_list_change_log_dir)))))
 
 (defun my:pull_package_list()
-  "Import installed package list from `my:package_list_file', and return the list"
+  "Import package list from `my:package_list_file', and return the list"
   (if (f-exists? my:package_list_file)
       (let ((package_list))
         ;; Import package list from text file
@@ -125,7 +125,7 @@ input
         )))
 
 (defun my:package_delete (pkg)
-  "Delete package. Input PKG is given as a symbol (not string)"
+  "Delete package. Input PKG is given as a symbol (not a string)"
   (let ((pkg_desc (car (assoc-default pkg package-alist))))
     (package-delete pkg_desc)
     ))
