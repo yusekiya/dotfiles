@@ -1,1 +1,7 @@
+bind generic G none
+bind generic g move-first-line
+bind generic G move-last-line
+bind generic <Ctrl-g> view-grep
 bind status V !git commit -v
+bind main <Ctrl-r> !git rebase -i %(commit)
+bind diff <Ctrl-r> !git rebase -i %(commit)
