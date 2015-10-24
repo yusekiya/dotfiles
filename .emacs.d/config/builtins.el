@@ -163,7 +163,8 @@ input
                                                    (concat "New packages to be installed\n\n" (mapconcat 'symbol-name to_be_installed ", ")))
                     (format "Package Sync: Install these %d packages listed in %s? "
                             (length to_be_installed) buffer-name))
-                   ))
+                   )
+             )
         (package-refresh-contents)
         (mapc 'package-install to_be_installed)
         (setq flag_update t)
@@ -173,11 +174,19 @@ input
       )
     (when to_be_deleted
       (when (yes-or-no-p
-             (if (= (length to_be_deleted) 1)
-                 (format "Package Sync: Delete package `%s'? " (symbol-name (car to_be_deleted)))
-               (format "Package Sync: Delete these %d packages (%s)? "
-                       (length to_be_deleted)
-                       (mapconcat 'symbol-name to_be_deleted ", "))))
+             (cond ((= (length to_be_deleted) 1)
+                    (format "Package Sync: Delete package `%s'? " (symbol-name (car to_be_deleted))))
+                   ((<= (length to_be_deleted) 5)
+                    (format "Package Sync: Delete these %d packages: %s? "
+                            (length to_be_deleted)
+                            (mapconcat 'symbol-name to_be_deleted ", ")))
+                   (t
+                    (my:show_message_in_new_buffer buffer-name
+                                                   (concat "Packages to be deleted\n\n" (mapconcat 'symbol-name to_be_deleted ", ")))
+                    (format "Package Sync: Delete these %d packages listed in %s? "
+                            (length to_be_deleted) buffer-name))
+                   )
+             )
         (mapc 'my:package_delete to_be_deleted)
         (setq flag_update t)
         (message (format "Package Sync: Deleted: %s" (mapconcat 'symbol-name to_be_deleted ", ")))
