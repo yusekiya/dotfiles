@@ -43,7 +43,7 @@
   :ensure t)
 
 (defvar my:package_list_file (f-join user-emacs-directory ".package_list")
-  "Path to file including common package list (one package per line)")
+  "Path to file including emacs package list (one package per line)")
 (defvar my:package_list_change_log_dir (f-join user-emacs-directory "change_log/")
   "Path to directory including change log of package list")
 (f-mkdir my:package_list_change_log_dir)
@@ -89,27 +89,37 @@ input
   "Output installed package list to `my:package_list_file'"
   (interactive)
   (let ((local_package_list)
-        (common_package_list)
+        (emacs_package_list)
         (add_list)
-        (remove_list))
+        (remove_list)
+        (buffer-name "*Package Sync*"))
     ;; Get packages as symbol list
     (setq local_package_list (my:get_local_package_list))
-    (setq common_package_list (my:pull_package_list))
-    (setq add_list (-difference local_package_list common_package_list))
-    (setq remove_list (-difference common_package_list local_package_list))
+    (setq emacs_package_list (my:load_package_list))
+    (setq add_list (-difference local_package_list emacs_package_list))
+    (setq remove_list (-difference emacs_package_list local_package_list))
     (when (and (or add_list remove_list)
-               (yes-or-no-p (format "Add: %s\nRemove: %s\nUpdate common package list? "
-                               (mapconcat 'symbol-name add_list ", ")
-                               (mapconcat 'symbol-name remove_list ", "))))
+               (yes-or-no-p (if (and (<= (length add_list) 5) (<= (length remove_list) 5))
+                                (format "Add: %s\nRemove: %s\nUpdate emacs package list? "
+                                        (mapconcat 'symbol-name add_list ", ")
+                                        (mapconcat 'symbol-name remove_list ", "))
+                              (my:show_message_in_new_buffer buffer-name
+                                                             (format "Add:\n%s\n\nRemove:\n%s"
+                                                                     (mapconcat 'identity
+                                                                                (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                                      (-partition-all 3 add_list)) ",\n")
+                                                                     (mapconcat 'identity
+                                                                                (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                                      (-partition-all 3 remove_list)) ",\n")))
+                              "Update emacs package list? ")))
       ;; Output local_package_list to file
       (f-write-text (mapconcat 'symbol-name local_package_list "\n") 'utf-8 my:package_list_file)
       ;; Output change log
-      ;; (my:save_package_diff_log add_list remove_list)
       (my:save_package_log local_package_list)
-      (message (concat "Common package list file updated! Check change log in " my:package_list_change_log_dir)))))
+      (message (concat "Emacs package list file updated! Check change log in " my:package_list_change_log_dir)))))
 
-(defun my:pull_package_list()
-  "Import installed package list from `my:package_list_file', and return the list"
+(defun my:load_package_list()
+  "Import package list from `my:package_list_file', and return the list"
   (if (f-exists? my:package_list_file)
       (let ((package_list))
         ;; Import package list from text file
@@ -125,27 +135,48 @@ input
         )))
 
 (defun my:package_delete (pkg)
-  "Delete package. Input PKG is given as a symbol (not string)"
+  "Delete package. Input PKG is given as a symbol (not a string)"
   (let ((pkg_desc (car (assoc-default pkg package-alist))))
     (package-delete pkg_desc)
     ))
 
-(defun my:synchronize_packages()
+(defun my:show_message_in_new_buffer (buffer_name message)
+  "Put message in buffername"
+  (let ((buf))
+    (setq buf (get-buffer-create buffer_name))
+    (with-current-buffer buf 
+      (erase-buffer) 
+      (insert message))
+    (display-buffer buf)
+    ))
+
+(defun my:synchronize_packages ()
   "Synchronize packages with the packages listed in `my:package_list_file'"
   (let* ((local_package (my:get_local_package_list))
-        (common_package (my:pull_package_list))
-        (to_be_installed (-difference common_package local_package))
-        (to_be_deleted (-difference local_package common_package))
+        (emacs_package (my:load_package_list))
+        (to_be_installed (-difference emacs_package local_package))
+        (to_be_deleted (-difference local_package emacs_package))
         (flag_maybe_installed nil)
         (flag_maybe_deleted nil)
-        (flag_update nil))
+        (flag_update nil)
+        (buffer-name "*Package Sync*"))
     (when to_be_installed
       (when (yes-or-no-p
-             (if (= (length to_be_installed) 1)
-                 (format "Package Sync: Install package `%s'? " (symbol-name (car to_be_installed)))
-               (format "Package Sync: Install these %d packages (%s)? "
-                       (length to_be_installed)
-                       (mapconcat 'symbol-name to_be_installed ", ")))
+             (cond ((= (length to_be_installed) 1)
+                    (format "Package Sync: Install package `%s'? " (symbol-name (car to_be_installed))))
+                   ((<= (length to_be_installed) 5)
+                    (format "Package Sync: Install these %d packages: %s? "
+                            (length to_be_installed)
+                            (mapconcat 'symbol-name to_be_installed ", ")))
+                   (t
+                    (my:show_message_in_new_buffer buffer-name
+                                                   (concat "New packages to be installed\n\n"
+                                                           (mapconcat 'identity
+                                                                      (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                            (-partition-all 3 to_be_installed)) ",\n")))
+                    (format "Package Sync: Install %d packages listed in %s? "
+                            (length to_be_installed) buffer-name))
+                   )
              )
         (package-refresh-contents)
         (mapc 'package-install to_be_installed)
@@ -156,11 +187,22 @@ input
       )
     (when to_be_deleted
       (when (yes-or-no-p
-             (if (= (length to_be_deleted) 1)
-                 (format "Package Sync: Delete package `%s'? " (symbol-name (car to_be_deleted)))
-               (format "Package Sync: Delete these %d packages (%s)? "
-                       (length to_be_deleted)
-                       (mapconcat 'symbol-name to_be_deleted ", "))))
+             (cond ((= (length to_be_deleted) 1)
+                    (format "Package Sync: Delete package `%s'? " (symbol-name (car to_be_deleted))))
+                   ((<= (length to_be_deleted) 5)
+                    (format "Package Sync: Delete these %d packages: %s? "
+                            (length to_be_deleted)
+                            (mapconcat 'symbol-name to_be_deleted ", ")))
+                   (t
+                    (my:show_message_in_new_buffer buffer-name
+                                                   (concat "Packages to be deleted\n\n"
+                                                           (mapconcat 'identity
+                                                                      (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                            (-partition-all 3 to_be_deleted)) ",\n")))
+                    (format "Package Sync: Delete %d packages listed in %s? "
+                            (length to_be_deleted) buffer-name))
+                   )
+             )
         (mapc 'my:package_delete to_be_deleted)
         (setq flag_update t)
         (message (format "Package Sync: Deleted: %s" (mapconcat 'symbol-name to_be_deleted ", ")))
@@ -175,7 +217,7 @@ input
 ;; Synchronize packages
 (if (f-exists? my:package_list_file) (my:synchronize_packages) (my:save_package_list))
 
-;; Update common package file,
+;; Update emacs package file,
 ;; when packages are installed or deleted through through package-menu-execute
 (advice-add 'package-menu-execute :after 'my:save_package_list)
 ;; and when installed through package-install-from-buffer
