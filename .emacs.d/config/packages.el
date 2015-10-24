@@ -239,33 +239,51 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fontawesome
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package fontawesome
+  :defer t
+  :config
+  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf23a) "FontAwesome"))
+  )
+
+(defun is-fontawesome-ready ()
+  (and (member "FontAwesome" (font-family-list))
+       (package-installed-p 'fontawesome))
+  )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; direx
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package direx
   :bind ("C-x C-d" . direx:jump-to-directory-other-window)
   :config
-  (use-package fontawesome
-    :config
-    (defface my:direx-folder
-      '((t (:family "FontAwesome"
-                    :height 0.8
-                    :inherit dired-directory)))
-      "direx face for folder icon")
-    (defface my:direx-file
-      '((t (:family "FontAwesome"
-                    :height 0.8
-                    :inherit default)))
-      "direx face for file icon")
-    (setq direx:leaf-icon (concat (propertize (fontawesome "file-o")
-                                              'face 'my:direx-file)
-                                  " ")
-          direx:open-icon (concat (propertize (fontawesome "folder-open")
-                                              'face 'my:direx-folder)
-                                  " ")
-          direx:closed-icon (concat (propertize (fontawesome "folder")
-                                                'face 'my:direx-folder)
-                                    " ")
-          ))
+  (if (is-fontawesome-ready)
+      (use-package fontawesome
+        :config
+        (defface my:direx-folder
+          '((t (:family "FontAwesome"
+                        :height 0.8
+                        :inherit dired-directory)))
+          "direx face for folder icon")
+        (defface my:direx-file
+          '((t (:family "FontAwesome"
+                        :height 0.8
+                        :inherit default)))
+          "direx face for file icon")
+        (setq direx:leaf-icon (concat (propertize (fontawesome "file-o")
+                                                  'face 'my:direx-file)
+                                      " ")
+              direx:open-icon (concat (propertize (fontawesome "folder-open")
+                                                  'face 'my:direx-folder)
+                                      " ")
+              direx:closed-icon (concat (propertize (fontawesome "folder")
+                                                    'face 'my:direx-folder)
+                                        " ")
+              )
+        )
+    )
   (push '(direx:direx-mode :position left :width 50 :dedicated t)
         popwin:special-display-config)
   )
