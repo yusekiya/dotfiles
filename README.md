@@ -1,17 +1,20 @@
 # dotfiles
 ## Setup for windows (MSYS2)
 ### Copy config files to home directory
-Install msys2 and git command before running the following script.
+- Install msys2 under the C: drive
+- Uncomment `rem set MSYS=winsymlinks:nativestrict` in /{msys2,mingw32,mingw64}_shell.bat
+  to enable to create symbolic link
+- Run the any .bat script as administrator, and execute the following commands
+  ```bash
+  $ cd ~
+  $ pacman -S git
+  $ git clone https://github.com/yusekiya/dotfiles.git
+  $ ./dotfiles/setup.sh
+  ```
 
-```bash
-$ cd ~
-$ git clone https://github.com/yusekiya/dotfiles.git
-$ ./dotfiles/setup.sh
-```
 ### Additional manual setup
 
 - Install pacman packages
-
   ```bash
   $ pacman -S $(< ~/.pacman_pkglist)
   ```
@@ -20,7 +23,6 @@ $ ./dotfiles/setup.sh
 - Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
   Install directory must be `C:\opt` to work with emacs
 - Build packages under .pkgbuild
-
   ```bash
   $ cd ${package-name}
   $ makepkg
@@ -29,7 +31,6 @@ $ ./dotfiles/setup.sh
 - Make ~/.gitconfig.local and [user] section in it
 - Install anaconda to under ~/opt/anaconda
 - Install conda packages
-
   ```bash
   $ conda install --file ~/.conda_pkglist_win
   ```
@@ -40,7 +41,6 @@ $ ./dotfiles/setup.sh
 - Install emacs and compile elisps in ~/.emacs.d
 - Install TeXlive
 - Install 'gomi' command (if necessary)
-
   ```bash
   $ curl -L git.io/gomi | bash
   ```
