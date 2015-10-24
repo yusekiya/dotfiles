@@ -130,6 +130,16 @@ input
     (package-delete pkg_desc)
     ))
 
+(defun my:show_message_in_new_buffer (buffer_name message)
+  "Put message in buffername"
+  (let ((buf))
+    (setq buf (get-buffer-create buffer_name))
+    (with-current-buffer buf 
+      (erase-buffer) 
+      (insert message))
+    (display-buffer buf)
+    ))
+
 (defun my:synchronize_packages()
   "Synchronize packages with the packages listed in `my:package_list_file'"
   (let* ((local_package (my:get_local_package_list))
