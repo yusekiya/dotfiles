@@ -5,6 +5,7 @@
 - Uncomment `rem set MSYS=winsymlinks:nativestrict` in /{msys2,mingw32,mingw64}_shell.bat
   to enable to create symbolic link
 - Run the any .bat script as administrator, and execute the following commands
+
   ```bash
   $ cd ~
   $ pacman -S git
@@ -15,6 +16,7 @@
 ### Additional manual setup
 
 - Install pacman packages
+
   ```bash
   $ pacman -S $(< ~/.pacman_pkglist)
   ```
@@ -23,6 +25,7 @@
 - Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
   Install directory must be `C:\opt` to work with emacs
 - Build packages under .pkgbuild
+
   ```bash
   $ cd ${package-name}
   $ makepkg
@@ -31,6 +34,7 @@
 - Make ~/.gitconfig.local and [user] section in it
 - Install anaconda to under ~/opt/anaconda
 - Install conda packages
+
   ```bash
   $ conda install --file ~/.conda_pkglist_win
   ```
@@ -41,6 +45,7 @@
 - Install emacs and compile elisps in ~/.emacs.d
 - Install TeXlive
 - Install 'gomi' command (if necessary)
+
   ```bash
   $ curl -L git.io/gomi | bash
   ```
