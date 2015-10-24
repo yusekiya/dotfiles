@@ -125,7 +125,7 @@
   (setq git-ps1-mode-lighter-text-format "[%s]"))
 
 (defpowerline powerline-git-status
-  (if (featurep 'git-ps1-mode) git-ps1-mode-lighter-text))
+  (if (featurep 'git-ps1-mode) git-ps1-mode-lighter-text ""))
 
 (custom-set-variables '(powerline-height (my:powerline-get-good-height)))
  
