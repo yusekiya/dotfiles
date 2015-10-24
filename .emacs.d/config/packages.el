@@ -123,6 +123,21 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fontawesome
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package fontawesome
+  :defer t
+  :config
+  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf23a) "FontAwesome-11"))
+  )
+
+(defun is-fontawesome-ready ()
+  (and (member "FontAwesome" (font-family-list))
+       (package-installed-p 'fontawesome))
+  )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (with-eval-after-load 'dired (use-package dired-async))
@@ -236,21 +251,6 @@ When region is set, call `kill-ring-save'."
     (popwin-auto-set-popup-window-position-and-size))
   (defadvice  popwin:popup-buffer (before ad-popwin-auto-window-position-and-sizse activate)
     (popwin-auto-set-popup-window-position-and-size)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fontawesome
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package fontawesome
-  :defer t
-  :config
-  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf23a) "FontAwesome"))
-  )
-
-(defun is-fontawesome-ready ()
-  (and (member "FontAwesome" (font-family-list))
-       (package-installed-p 'fontawesome))
-  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -872,41 +872,6 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; mode line lighter
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defvar mode-line-cleaner-alist
-  '( ;; Lighter must starts with space
-    (yas-minor-mode . "")
-    (helm-mode . "")
-    (smooth-scroll-mode . "")
-    (volatile-highlights-mode . "")
-    (abbrev-mode . "")
-    (undo-tree-mode . "")
-    (helm-gtags-mode . " HG")
-    (flymake-mode . " Fm")
-    ;; Major modes
-    ;; (lisp-interaction-mode . "Li")
-    ;; (python-mode . "Py")
-    ;; (ruby-mode   . "Rb")
-    ;; (emacs-lisp-mode . "El")
-    ;; (markdown-mode . "Md")
-))
-
-(defun clean-mode-line ()
-  (interactive)
-  (loop for (mode . mode-str) in mode-line-cleaner-alist
-        do
-        (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-          (when old-mode-str
-            (setcar old-mode-str mode-str))
-          ;; major mode
-          (when (eq mode major-mode)
-            (setq mode-name mode-str)))))
-
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; multicolumn mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package multicolumn
@@ -931,6 +896,7 @@ When region is set, call `kill-ring-save'."
 (use-package swap-buffers
   :bind ("C-q s" . swap-buffers))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; beacon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -939,6 +905,7 @@ When region is set, call `kill-ring-save'."
   :config
   ;; (beacon-mode 1)
   )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zoom-window
@@ -1058,6 +1025,41 @@ When region is set, call `kill-ring-save'."
     (before-ad-quit-Zen-mind evil-window-vnew))
   )
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Misc mode lighter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(when (is-fontawesome-ready)
+  (defvar mode-line-cleaner-alist
+    '( ;; Lighter must starts with space
+      (yas-minor-mode . "")
+      (helm-mode . "")
+      (smooth-scroll-mode . "")
+      (volatile-highlights-mode . "")
+      (abbrev-mode . "")
+      (undo-tree-mode . "")
+      (helm-gtags-mode . " HG")
+      (flymake-mode . " Fm")
+      ;; Major modes
+      ;; (lisp-interaction-mode . "Li")
+      ;; (python-mode . "Py")
+      ;; (ruby-mode   . "Rb")
+      ;; (emacs-lisp-mode . "El")
+      ;; (markdown-mode . "Md")
+      ))
+  (defun clean-mode-line ()
+    (interactive)
+    (loop for (mode . mode-str) in mode-line-cleaner-alist
+          do
+          (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
+            (when old-mode-str
+              (setcar old-mode-str mode-str))
+            ;; major mode
+            (when (eq mode major-mode)
+              (setq mode-name mode-str)))))
+
+  (add-hook 'after-change-major-mode-hook 'clean-mode-line)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc setkey (set key)
