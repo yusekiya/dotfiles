@@ -91,16 +91,27 @@ input
   (let ((local_package_list)
         (emacs_package_list)
         (add_list)
-        (remove_list))
+        (remove_list)
+        (buffer-name "*Package Sync*"))
     ;; Get packages as symbol list
     (setq local_package_list (my:get_local_package_list))
     (setq emacs_package_list (my:load_package_list))
     (setq add_list (-difference local_package_list emacs_package_list))
     (setq remove_list (-difference emacs_package_list local_package_list))
     (when (and (or add_list remove_list)
-               (yes-or-no-p (format "Add: %s\nRemove: %s\nUpdate emacs package list? "
-                               (mapconcat 'symbol-name add_list ", ")
-                               (mapconcat 'symbol-name remove_list ", "))))
+               (yes-or-no-p (if (and (<= (length add_list) 5) (<= (length remove_list) 5))
+                                (format "Add: %s\nRemove: %s\nUpdate emacs package list? "
+                                        (mapconcat 'symbol-name add_list ", ")
+                                        (mapconcat 'symbol-name remove_list ", "))
+                              (my:show_message_in_new_buffer buffer-name
+                                                             (format "Add:\n%s\n\nRemove:\n%s"
+                                                                     (mapconcat 'identity
+                                                                                (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                                      (-partition-all 3 add_list)) ",\n")
+                                                                     (mapconcat 'identity
+                                                                                (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                                      (-partition-all 3 remove_list)) ",\n")))
+                              "Update emacs package list? ")))
       ;; Output local_package_list to file
       (f-write-text (mapconcat 'symbol-name local_package_list "\n") 'utf-8 my:package_list_file)
       ;; Output change log
@@ -148,7 +159,7 @@ input
         (flag_maybe_installed nil)
         (flag_maybe_deleted nil)
         (flag_update nil)
-        (buffer-name "*Package sync*"))
+        (buffer-name "*Package Sync*"))
     (when to_be_installed
       (when (yes-or-no-p
              (cond ((= (length to_be_installed) 1)
