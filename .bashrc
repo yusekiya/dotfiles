@@ -203,6 +203,10 @@ function less_table () {
 # Environment variables
 export EDITOR='vim'
 
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM=1
+GIT_PS1_SHOWUNTRACKEDFILES=
+GIT_PS1_SHOWSTASHSTATE=1
 
 # PS1 setting
 # for windows
