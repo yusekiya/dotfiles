@@ -160,8 +160,11 @@ input
                             (mapconcat 'symbol-name to_be_installed ", ")))
                    (t
                     (my:show_message_in_new_buffer buffer-name
-                                                   (concat "New packages to be installed\n\n" (mapconcat 'symbol-name to_be_installed ", ")))
-                    (format "Package Sync: Install these %d packages listed in %s? "
+                                                   (concat "New packages to be installed\n\n"
+                                                           (mapconcat 'identity
+                                                                      (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                            (-partition-all 3 to_be_installed)) ",\n")))
+                    (format "Package Sync: Install %d packages listed in %s? "
                             (length to_be_installed) buffer-name))
                    )
              )
@@ -182,8 +185,11 @@ input
                             (mapconcat 'symbol-name to_be_deleted ", ")))
                    (t
                     (my:show_message_in_new_buffer buffer-name
-                                                   (concat "Packages to be deleted\n\n" (mapconcat 'symbol-name to_be_deleted ", ")))
-                    (format "Package Sync: Delete these %d packages listed in %s? "
+                                                   (concat "Packages to be deleted\n\n"
+                                                           (mapconcat 'identity
+                                                                      (-map (lambda (list) (mapconcat 'symbol-name list ", "))
+                                                                            (-partition-all 3 to_be_deleted)) ",\n")))
+                    (format "Package Sync: Delete %d packages listed in %s? "
                             (length to_be_deleted) buffer-name))
                    )
              )
