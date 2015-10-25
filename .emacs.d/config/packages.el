@@ -128,14 +128,28 @@ When region is set, call `kill-ring-save'."
 (use-package fontawesome
   :defer t
   :config
-  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf23a) "FontAwesome-11"))
+  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf280) "FontAwesome-11"))
   )
 
+(defun is-fontawesome-installed ()
+  (member "FontAwesome" (font-family-list)))
+
 (defun is-fontawesome-ready ()
-  (and (member "FontAwesome" (font-family-list))
+  (and (is-fontawesome-installed)
        (package-installed-p 'fontawesome))
   )
 
+(defun my:safe-awesomefont-icon (str &optional icon)
+  "Return fontawesome icon if possible, otherwise return string str.
+If the second argument icon is omitted, this function just returns str.
+The argument icon must be string."
+  (if (and icon (is-fontawesome-ready))
+      (fontawesome icon)
+    str))
+
+(defun my:safe-lighter-icon (str &optional icon)
+  (concat " " (my:safe-awesomefont-icon str icon))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
@@ -225,7 +239,6 @@ When region is set, call `kill-ring-save'."
                     ("C-," . nil)))
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; popwin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -306,7 +319,6 @@ When region is set, call `kill-ring-save'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package view
   :defer t
-  :diminish ""
   :init
   (setq view-read-only t)  
   )
@@ -431,7 +443,6 @@ When region is set, call `kill-ring-save'."
 ;; highlight symbol
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package highlight-symbol
-  :diminish ""
   :commands highlight-symbol-at-point
   :init
   (custom-set-variables '(highlight-symbol-foreground-color "white") ; highlight-symbol-foreground-color
@@ -458,7 +469,6 @@ When region is set, call `kill-ring-save'."
 ;; Highlight pasted region
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package volatile-highlights
-  :diminish ""
   :config
   (volatile-highlights-mode 1))
 
@@ -519,14 +529,14 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rainbow-mode
+;; rainbow mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rainbow-mode
   :defer t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rainbow-mode
+;; rainbow delimiters
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rainbow-delimiters
   :defer t
@@ -558,7 +568,6 @@ When region is set, call `kill-ring-save'."
 ;; smooth scroll
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package smooth-scroll
-  :diminish ""
   :config
   (custom-set-variables '(smooth-scroll/vscroll-step-size 3))
   (smooth-scroll-mode 1))
@@ -597,7 +606,6 @@ When region is set, call `kill-ring-save'."
 ;; undo-tree
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package undo-tree
-  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
 
@@ -680,7 +688,7 @@ When region is set, call `kill-ring-save'."
    '(irony-server-install-prefix "~/.emacs.d/irony/")
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
-  :config  
+  :config
   (defun my-irony-mode-setup ()
     (define-key irony-mode-map [remap completion-at-point]
       'irony-completion-at-point-async)
@@ -846,7 +854,6 @@ When region is set, call `kill-ring-save'."
 ;; git-gutter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package git-gutter
-  :diminish (git-gutter-mode "GG")
   :defer t
   :init
   (defvar git-gutter-mode-map
@@ -901,7 +908,6 @@ When region is set, call `kill-ring-save'."
 ;; beacon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package beacon
-  :diminish beacon-mode
   :config
   ;; (beacon-mode 1)
   )
@@ -1027,19 +1033,28 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Misc mode lighter
+;; Mode line lighter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (is-fontawesome-ready)
   (defvar mode-line-cleaner-alist
-    '( ;; Lighter must starts with space
+    `( ;; Lighter must starts with space
       (yas-minor-mode . "")
       (helm-mode . "")
-      (smooth-scroll-mode . "")
+      (helm-gtags-mode . ,(my:safe-lighter-icon "" "tags"))
+      (auto-complete-mode . "")
+      (view-mode . "")
+      (highlight-symbol-mode . "")
       (volatile-highlights-mode . "")
-      (abbrev-mode . "")
+      (smooth-scroll-mode . "")
       (undo-tree-mode . "")
-      (helm-gtags-mode . " HG")
+      (git-gutter-mode . ,(my:safe-awesomefont-icon "GG" "code-fork"))
+      (beacon-mode . ,(my:safe-lighter-icon "*" "lightbulb-o"))
+      (reftex-mode . ,(my:safe-lighter-icon "Ref" "bookmark"))
+      (abbrev-mode . "")
       (flymake-mode . " Fm")
+      (visual-line-mode . "")
+      (outline-minor-mode . ,(my:safe-lighter-icon "Outl" "th-list"))
+      (flyspell-mode . ,(my:safe-lighter-icon "Fly" "check"))
       ;; Major modes
       ;; (lisp-interaction-mode . "Li")
       ;; (python-mode . "Py")

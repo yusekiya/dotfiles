@@ -133,6 +133,5 @@
 
 ;; start helm-mode
 (use-package helm-mode
-  :diminish helm-mode
   :config
   (helm-mode 1))
