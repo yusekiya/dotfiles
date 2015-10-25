@@ -5,4 +5,5 @@ bind generic <Ctrl-g> view-grep
 bind status V !git commit -v
 bind main <Ctrl-r> !git rebase -i %(commit)
 bind diff <Ctrl-r> !git rebase -i %(commit)
+bind main <Ctrl-R> ?git rebase %(commit)
 bind main B ?git checkout -b "%(prompt Enter new branch name: )" %(commit)
