@@ -1,6 +1,3 @@
-;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 23 2015>
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Encoding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -288,16 +285,9 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load configuration mainly for built-in feature
+;; Load configuration for packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (concat user-emacs-directory "config/builtins"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load configuration mainly for non built-in feature
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (concat user-emacs-directory "config/packages"))
+(load "package_config")
 
 
-;; Local Variables:
-;; coding: utf-8
-;; End:
+;; end of file

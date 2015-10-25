@@ -1,8 +1,8 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 24 2015>
+;;     Time-stamp: <Oct 26 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; settings depending on devices
+;; Settings depending on devices
 ;; This file must be in %HOME% (= (getenv "HOME")) directory
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -85,8 +85,8 @@
  ;; split-window-sensibly can split the window horizontally.
  '(split-width-threshold 140))
 
-;; distinguishing Emacsen
-(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load ".ntemacs24"))
+;; Distinguish version
+(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load "core_config"))
 
 ;;start on home directory
 (cd "~")
