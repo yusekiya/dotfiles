@@ -24,13 +24,7 @@
 - Copy DROPBOX/my_script/* to ~/bin
 - Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
   Install directory must be `C:\opt` to work with emacs
-- Build packages under .pkgbuild
-
-  ```bash
-  $ cd ${package-name}
-  $ makepkg
-  $ pacman -U ${package-name}*.pkg.tar.xz
-  ```
+- Build packages under .pkgbuild by executing makepkg.sh in each package directory
 - Make ~/.gitconfig.local and [user] section in it
 - Install anaconda to under ~/opt/anaconda
 - Install conda packages

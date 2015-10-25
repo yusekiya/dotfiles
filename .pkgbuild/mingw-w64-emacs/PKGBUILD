@@ -30,7 +30,7 @@ source=("http://ftp.gnu.org/gnu/${_realname}/${_realname}-${pkgver}.tar.xz"{,.si
         'image.c.diff'
         'lread.c.diff'
         'Makefile.in.diff'
-        'https://gist.githubusercontent.com/rzl24ozi/a282260d2dd136daab14/raw/d544078827f90a10c53e0840a9faefed53187f25/emacs-24.4-w32-ime.diff')
+        'https://gist.githubusercontent.com/rzl24ozi/68c29ac4fe64f1aa8887/raw/039bd51b143666a1f13f2b3b55ab8d5bb7ee9e00/emacs-24.5-x64.diff')
 sha256sums=('dd47d71dd2a526cf6b47cb49af793ec2e26af69a0951cc40e43ae290eacfc34e'
             'SKIP'
             '4571d45ec26fd556e73a70bb0ab0a2a8fa1efc5e3b3c5b472ab68bb7dc9bf52c'
@@ -43,7 +43,7 @@ prepare() {
   patch --binary --forward -p0 < "${srcdir}/image.c.diff"
   patch --binary --forward -p0 < "${srcdir}/lread.c.diff"
   patch --binary --forward -p0 < "${srcdir}/Makefile.in.diff"
-  patch --binary --forward -p0 < "${srcdir}/emacs-24.4-w32-ime.diff"
+  patch --binary --forward -p0 < "${srcdir}/emacs-24.5-x64.diff"
   ./autogen.sh
 }
 
@@ -67,6 +67,7 @@ build() {
     --with-wide-int="${with_wide_int}" \
     --with-sound="yes" \
     --with-file-notification="yes" \
+    --without-dbus \
     --without-gpm \
     --without-gconf \
     --without-gsettings \
