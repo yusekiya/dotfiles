@@ -15,6 +15,7 @@
 (defconst my:user-dictionary-directory (expand-file-name "~/"))
 ;; elisp load-path
 (add-to-list 'load-path (concat user-emacs-directory "elisp/"))
+(add-to-list 'load-path (concat user-emacs-directory "config/"))
 (add-to-list 'load-path (concat user-emacs-directory "config/packages/"))
 ;; PATH environment
 (setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
