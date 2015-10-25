@@ -466,7 +466,8 @@ input
                     ("k" . dired-previous-line)
                     ("h" . dired-up-directory)
                     ("l" . ignore)
-                    ("s" . dired-rotate-sort))
+                    ("s" . dired-rotate-sort)
+                    ("o" . dired-display-file));noh
          (use-package wdired
            ;; :defer t
            ;; :commands wdired-change-to-dired-mode

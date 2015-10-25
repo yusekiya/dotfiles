@@ -137,6 +137,10 @@
   (evil-define-key 'normal dired-mode-map (kbd "l") #'ignore)
   (evil-define-key 'normal dired-mode-map (kbd "s") #'dired-rotate-sort)
   (evil-define-key 'normal dired-mode-map (kbd "/") #'dired-mark-files-regexp)
+  (evil-define-key 'normal dired-mode-map (kbd "o") #'dired-display-file)
+  (use-package popwin
+    :config
+    (evil-define-key 'normal dired-mode-map (kbd "l") #'my:find-file-popwin-dired))
   )
 
 ;; wdired with Evil
