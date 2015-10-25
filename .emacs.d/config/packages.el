@@ -249,7 +249,7 @@ The argument icon must be string."
   (defun my:find-file-popwin-dired ()
     (interactive)
     (popwin:find-file (dired-get-file-for-visit)))
-  (with-eval-after-load 'dired (define-key dired-mode-map "o" 'my:find-file-popwin-dired))
+  (with-eval-after-load 'dired (define-key dired-mode-map "l" 'my:find-file-popwin-dired))
   ;; Automatically determine window size and position of popwin
   (defun popwin-auto-set-popup-window-position-and-size ()
     (let ((w (frame-width))
