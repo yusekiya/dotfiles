@@ -1,8 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Setting mainly for built-in feature
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package manager
 ;; Must be loaded before the other packages
@@ -21,9 +16,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use-package
-;; Although use-package is not built-in feature, it is better
-;; to require the package here because the package helps us
-;; to describe all the package configuration in an easy way.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -233,7 +225,6 @@ input
   current-input-method
   )
 
-
 ;; Function to go into a next blank brackets
 (defun my:goto-blank-brackets-forward ()
   (interactive)
@@ -255,7 +246,6 @@ input
             (forward-line)
             (when (eobp) (return-from exit))))))
     (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
-
 
 ;; Function to go into a previous blank brackets
 (defun my:goto-blank-brackets-backward ()
@@ -279,6 +269,151 @@ input
             (when (bobp) (return-from exit))
             (end-of-line)))))
     (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
+
+(defun describe-face-at-point ()
+  "Return face used at point."
+  (interactive)
+  (message "%s" (get-char-property (point) 'face)))
+
+(defun change-transparency (num)
+  "This command changes the transparency of background.
+Input a number within 20 to 100 as the percent of transparency.
+If you only input RET without inputting a number, the default is applied."
+  (interactive "sPercent of transparency within 20 to 100 (default 90): ")
+  (if (string= num "")
+      (set-frame-parameter nil 'alpha '(90 40))
+    (set-frame-parameter nil 'alpha (string-to-number num))))
+
+;; window size
+(defun window-resizer ()
+  "Control window size and position."
+  (interactive)
+  (let ((window-obj (selected-window))
+        (current-width (window-width))
+        (current-height (window-height))
+        (dx (if (= (nth 0 (window-edges)) 0) 1
+              -1))
+        (dy (if (= (nth 1 (window-edges)) 0) 1
+              -1))
+        action c)
+    (catch 'end-flag
+      (while t
+        (setq action
+              (read-key-sequence-vector (format "size[%dx%d]"
+                                                (window-width)
+                                                (window-height))))
+        (setq c (aref action 0))
+        (cond ((= c ?l)
+               (enlarge-window-horizontally dx))
+              ((= c ?h)
+               (shrink-window-horizontally dx))
+              ((= c ?j)
+               (enlarge-window dy))
+              ((= c ?k)
+               (shrink-window dy))
+              ;; otherwise
+              (t
+               (let ((last-command-event (aref action 0))
+                     (command (key-binding action)))
+                 (when command
+                   (call-interactively command)))
+               (message "Quit")
+               (throw 'end-flag t)))))))
+
+(defun match-paren (arg)
+  "jump to corresponding parenthesis"
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1))
+        ((looking-back "\\s\)") (backward-list 1))
+        (t ())))
+
+(defun kill-word-at-point ()
+      (interactive)
+      (let* ((bounds (bounds-of-thing-at-point 'word))
+             (start (car bounds))
+             (end (cdr bounds)))
+            (kill-region start end))
+      (message "word killed"))
+
+(defun kill-region-or-word ()
+  "Kill the word at the point if transient-mark-mode is not nil and mark-active is nil.
+When region is set, call `kill-region'."
+  (interactive)
+  (if (and transient-mark-mode (not mark-active))
+    (kill-word-at-point)
+    (kill-region (region-beginning) (region-end))))
+
+(defun save-word-at-point ()
+      (interactive)
+      (let* ((bounds (bounds-of-thing-at-point 'word))
+             (start (car bounds))
+             (end (cdr bounds)))
+            (kill-ring-save start end))
+      (message "word saved"))
+
+(defun save-region-or-word ()
+  "save the word at the point if transient-mark-mode is not nil and mark-active is nil.
+When region is set, call `kill-ring-save'."
+  (interactive)
+  (if (and transient-mark-mode (not mark-active))
+    (save-word-at-point)
+    (kill-ring-save (region-beginning) (region-end))))
+
+(defun copy-line (&optional arg)
+  (interactive)
+  (copy-region-as-kill (line-beginning-position) (line-beginning-position (1+(or arg 1))))
+  (message "line saved"))
+
+(defun shorten-directory (dir max-length)
+  "Show up to MAX-LENGTH characters of a directory name DIR."
+  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+        (output ""))
+    (when (and path (equal "" (car path)))
+      (setq path (cdr path)))
+    (while (and path (< (length output) (- max-length 4)))
+      (setq output (concat (car path) "/" output))
+      (setq path (cdr path)))
+    (when path
+      (setq output (concat ".../" output)))
+    output))
+
+;; Store current directory in clipboard
+(defun my:copy-current-path ()                                                         
+  (interactive)
+  (let ((fPath default-directory))
+    (when fPath
+      (message "stored path: %s" fPath)
+      (kill-new (file-truename fPath)))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fontawesome
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package fontawesome
+  :defer t
+  :config
+  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf280) "FontAwesome-11"))
+  )
+
+(defun is-fontawesome-installed ()
+  (member "FontAwesome" (font-family-list)))
+
+(defun is-fontawesome-ready ()
+  (and (is-fontawesome-installed)
+       (package-installed-p 'fontawesome))
+  )
+
+(defun my:safe-awesomefont-icon (str &optional icon)
+  "Return fontawesome icon if possible, otherwise return string str.
+If the second argument icon is omitted, this function just returns str.
+The argument icon must be string."
+  (if (and icon (is-fontawesome-ready))
+      (fontawesome icon)
+    str))
+
+(defun my:safe-lighter-icon (str &optional icon)
+  (concat " " (my:safe-awesomefont-icon str icon))
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -561,14 +696,6 @@ input
   (setq tab-width 4
         python-indent-offset 4
         evil-shift-width 4)
-  ;; (highlight-indentation-mode 1)
-  ;; (use-package indent-guide
-  ;;   :config
-  ;;   (indent-guide-mode 1))
-  ;; (use-package yasnippet
-  ;;   :config
-  ;;   (yas-minor-mode 1)
-  ;;   (yas-reload-all))
   )
 (add-hook 'python-mode-hook 'my:python-mode-setup)
 
@@ -637,162 +764,6 @@ input
 (add-hook 'after-init-hook 'my:load-default-theme)
 
 
-(provide 'builtins)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Setting mainly for non-built-in feature
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Definition of functions
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun describe-face-at-point ()
-  "Return face used at point."
-  (interactive)
-  (message "%s" (get-char-property (point) 'face)))
-
-(defun change-transparency (num)
-  "This command changes the transparency of background.
-Input a number within 20 to 100 as the percent of transparency.
-If you only input RET without inputting a number, the default is applied."
-  (interactive "sPercent of transparency within 20 to 100 (default 90): ")
-  (if (string= num "")
-      (set-frame-parameter nil 'alpha '(90 40))
-    (set-frame-parameter nil 'alpha (string-to-number num))))
-
-;; window size
-(defun window-resizer ()
-  "Control window size and position."
-  (interactive)
-  (let ((window-obj (selected-window))
-        (current-width (window-width))
-        (current-height (window-height))
-        (dx (if (= (nth 0 (window-edges)) 0) 1
-              -1))
-        (dy (if (= (nth 1 (window-edges)) 0) 1
-              -1))
-        action c)
-    (catch 'end-flag
-      (while t
-        (setq action
-              (read-key-sequence-vector (format "size[%dx%d]"
-                                                (window-width)
-                                                (window-height))))
-        (setq c (aref action 0))
-        (cond ((= c ?l)
-               (enlarge-window-horizontally dx))
-              ((= c ?h)
-               (shrink-window-horizontally dx))
-              ((= c ?j)
-               (enlarge-window dy))
-              ((= c ?k)
-               (shrink-window dy))
-              ;; otherwise
-              (t
-               (let ((last-command-event (aref action 0))
-                     (command (key-binding action)))
-                 (when command
-                   (call-interactively command)))
-               (message "Quit")
-               (throw 'end-flag t)))))))
-
-(defun match-paren (arg)
-  "jump to corresponding parenthesis"
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1))
-        ((looking-back "\\s\)") (backward-list 1))
-        (t ())))
-
-(defun kill-word-at-point ()
-      (interactive)
-      (let* ((bounds (bounds-of-thing-at-point 'word))
-             (start (car bounds))
-             (end (cdr bounds)))
-            (kill-region start end))
-      (message "word killed"))
-
-(defun kill-region-or-word ()
-  "Kill the word at the point if transient-mark-mode is not nil and mark-active is nil.
-When region is set, call `kill-region'."
-  (interactive)
-  (if (and transient-mark-mode (not mark-active))
-    (kill-word-at-point)
-    (kill-region (region-beginning) (region-end))))
-
-(defun save-word-at-point ()
-      (interactive)
-      (let* ((bounds (bounds-of-thing-at-point 'word))
-             (start (car bounds))
-             (end (cdr bounds)))
-            (kill-ring-save start end))
-      (message "word saved"))
-
-(defun save-region-or-word ()
-  "save the word at the point if transient-mark-mode is not nil and mark-active is nil.
-When region is set, call `kill-ring-save'."
-  (interactive)
-  (if (and transient-mark-mode (not mark-active))
-    (save-word-at-point)
-    (kill-ring-save (region-beginning) (region-end))))
-
-(defun copy-line (&optional arg)
-  (interactive)
-  (copy-region-as-kill (line-beginning-position) (line-beginning-position (1+(or arg 1))))
-  (message "line saved"))
-
-(defun shorten-directory (dir max-length)
-  "Show up to MAX-LENGTH characters of a directory name DIR."
-  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
-        (output ""))
-    (when (and path (equal "" (car path)))
-      (setq path (cdr path)))
-    (while (and path (< (length output) (- max-length 4)))
-      (setq output (concat (car path) "/" output))
-      (setq path (cdr path)))
-    (when path
-      (setq output (concat ".../" output)))
-    output))
-
-;; Store current directory in clipboard
-(defun my:copy-current-path ()                                                         
-  (interactive)
-  (let ((fPath default-directory))
-    (when fPath
-      (message "stored path: %s" fPath)
-      (kill-new (file-truename fPath)))))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fontawesome
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package fontawesome
-  :defer t
-  :config
-  (if (equal system-type 'windows-nt) (set-fontset-font "fontset-default" '(#xf000 . #xf280) "FontAwesome-11"))
-  )
-
-(defun is-fontawesome-installed ()
-  (member "FontAwesome" (font-family-list)))
-
-(defun is-fontawesome-ready ()
-  (and (is-fontawesome-installed)
-       (package-installed-p 'fontawesome))
-  )
-
-(defun my:safe-awesomefont-icon (str &optional icon)
-  "Return fontawesome icon if possible, otherwise return string str.
-If the second argument icon is omitted, this function just returns str.
-The argument icon must be string."
-  (if (and icon (is-fontawesome-ready))
-      (fontawesome icon)
-    str))
-
-(defun my:safe-lighter-icon (str &optional icon)
-  (concat " " (my:safe-awesomefont-icon str icon))
-  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
@@ -834,8 +805,6 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smartrep seems to conflict with powerline
 ;; Must be loaded before powerline
-;; (require 'smartrep)
-;; (custom-set-variables '(smartrep-mode-line-active-bg nil))
 (use-package smartrep
   ;; :defer t
   :config
@@ -1183,7 +1152,6 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rainbow-delimiters
   :defer t
-  ;; :init
   :config
   (custom-set-variables '(rainbow-delimiters-max-face-count 7))
   )
@@ -1551,8 +1519,7 @@ The argument icon must be string."
 ;; beacon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package beacon
-  :config
-  ;; (beacon-mode 1)
+  :defer t
   )
 
 
@@ -1718,6 +1685,7 @@ The argument icon must be string."
 
   (add-hook 'after-change-major-mode-hook 'clean-mode-line)
   )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc setkey (set key)
