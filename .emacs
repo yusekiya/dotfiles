@@ -80,10 +80,8 @@
 ;; set the security level of the Diffie-Hellman key exchange to default
 (setq gnutls-min-prime-bits nil)
 
-(custom-set-variables
- ;; if the width of current window is greater than this value,
- ;; split-window-sensibly can split the window horizontally.
- '(split-width-threshold 140))
+;; threshold width for split window
+(setq split-width-threshold 140)
 
 ;; Distinguish version
 (if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load "core_config"))
