@@ -405,7 +405,7 @@ When region is set, call `kill-ring-save'."
 
 (defun my:safe-awesomefont-icon (str &optional icon)
   "Return fontawesome icon if possible, otherwise return string str.
-If the second argument icon is omitted, this function just returns str.
+If the second argument icon is omitted or nil, this function just returns str.
 The argument icon must be string."
   (if (and icon (is-fontawesome-ready))
       (fontawesome icon)
@@ -1644,6 +1644,7 @@ The argument icon must be string."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mode line lighter
+;; #TODO Move each setting to minor mode setup block
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (is-fontawesome-ready)
   (defvar mode-line-cleaner-alist
@@ -1657,7 +1658,7 @@ The argument icon must be string."
       (volatile-highlights-mode . "")
       (smooth-scroll-mode . "")
       (undo-tree-mode . "")
-      (git-gutter-mode . ,(my:safe-awesomefont-icon "GG" "code-fork"))
+      (git-gutter-mode . ,(my:safe-lighter-icon "GG" "code-fork"))
       (beacon-mode . ,(my:safe-lighter-icon "*" "lightbulb-o"))
       (reftex-mode . ,(my:safe-lighter-icon "Ref" "bookmark"))
       (abbrev-mode . "")
