@@ -22,7 +22,13 @@
   (custom-set-variables
    '(preview-LaTeX-command (quote ("platex \"\\nonstopmode\\nofiles\\PassOptionsToPackage{" ("," . preview-required-option-list) "}{preview}\\AtBeginDocument{\\ifx\\ifPreview\\undefined" preview-default-preamble "\\fi}\"%' \"\\input\" %t")))
    )
-  (setq-default preview-scale-function 1.2)
+  (defun my:preview-scale-from-face ()
+    `(lambda nil
+       (/ ,(* (/ (preview-inherited-face-attribute
+                  'preview-reference-face
+                  :height 'default) 10.0) 1.1)
+          (preview-document-pt))))
+  (setq-default preview-scale-function #'my:preview-scale-from-face)
   (custom-set-variables
    '(preview-default-option-list
      (quote
