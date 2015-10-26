@@ -115,6 +115,7 @@ alias lesst='less_table'
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
+alias tiga='tig --all'
 
 # Umask
 #

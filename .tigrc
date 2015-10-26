@@ -1,3 +1,5 @@
+set tab-size = 4
+set main-view-id = 1
 bind generic G none
 bind generic g move-first-line
 bind generic G move-last-line
@@ -7,3 +9,7 @@ bind main <Ctrl-r> !git rebase -i %(commit)
 bind diff <Ctrl-r> !git rebase -i %(commit)
 bind main <Esc>r ?git rebase %(commit)
 bind main B ?git checkout -b "%(prompt Enter new branch name: )" %(commit)
+bind main v ?git checkout %(commit)
+bind main V ?git revert %(commit)
+bind main M ?git merge %(branch)
+bind refs v ?git checkout %(branch)
