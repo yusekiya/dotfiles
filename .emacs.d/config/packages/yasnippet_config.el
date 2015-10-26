@@ -4,6 +4,7 @@
 (use-package yasnippet
   ;; :init
   :config
+  (diminish 'yas-minor-mode "")
   ;; ;; Don't expand snippets after symbol constituents like underscore (_)
   ;; (setq yas-key-syntaxes (delete "w" yas-key-syntaxes))
   ;; ;; Don't expand snippets after dot

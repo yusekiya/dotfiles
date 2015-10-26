@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package auto-complete
   :config
+  (diminish 'auto-complete-mode "")
   (global-auto-complete-mode 1)
   (bind-key "M-SPC" 'auto-complete)
   (add-to-list 'load-path (concat user-emacs-directory "lib/acmode/lib/fuzzy"))

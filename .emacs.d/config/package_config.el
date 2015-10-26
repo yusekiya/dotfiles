@@ -827,7 +827,7 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Spell checker
+;; Aspell
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use aspell
 (when (equal system-type 'windows-nt)
@@ -839,12 +839,16 @@ The argument icon must be string."
 ;; User dictionary
 (setq ispell-personal-dictionary (concat my:user-dictionary-directory "en.pws"))
 
-;; flyspell
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Flyspell
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package flyspell
   :commands (flyspell-mode flyspell-prog-mode)
   :init
   (progn (setq flyspell-use-meta-tab nil))
   :config
+  (diminish 'flyspell-mode (my:safe-lighter-icon "Fly" "check"))
   (bind-keys :map flyspell-mode-map
                     ("C-;" . nil)
                     ("C-." . nil)
@@ -933,6 +937,8 @@ The argument icon must be string."
   :defer t
   :init
   (setq view-read-only t)  
+  :config
+  (diminish 'view-mode "")
   )
 
 (use-package viewer
@@ -1065,6 +1071,8 @@ The argument icon must be string."
     )
   :bind (("C-c h" . highlight-symbol-at-point)
          ("C-c C-h" . highlight-symbol-remove-all))
+  :config
+  (diminish 'highlight-symbol-mode "")
   )
 
 
@@ -1082,6 +1090,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package volatile-highlights
   :config
+  (diminish 'volatile-highlights-mode  "")
   (volatile-highlights-mode 1))
 
 
@@ -1180,6 +1189,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package smooth-scroll
   :config
+  (diminish 'smooth-scroll-mode "")
   (custom-set-variables '(smooth-scroll/vscroll-step-size 3))
   (smooth-scroll-mode 1))
 
@@ -1214,10 +1224,11 @@ The argument icon must be string."
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; undo-tree
+;; undo tree
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package undo-tree
   :config
+  (diminish 'undo-tree-mode "")
   (global-undo-tree-mode))
 
 
@@ -1470,6 +1481,7 @@ The argument icon must be string."
   (defvar git-gutter-mode-map
     (make-sparse-keymap))
   :config
+  (diminish 'git-gutter-mode (my:safe-lighter-icon "GG" "code-fork"))
   (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
   (use-package smartrep
     :config
@@ -1520,6 +1532,8 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package beacon
   :defer t
+  :config
+  (diminish 'beacon-mode (my:safe-lighter-icon "*" "lightbulb-o"))
   )
 
 
@@ -1643,29 +1657,56 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Mode line lighter
-;; #TODO Move each setting to minor mode setup block
+;; RexTeX mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package reftex
+  :defer t
+  :config
+  (diminish 'reftex-mode (my:safe-lighter-icon "Ref" "bookmark")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; abbrev mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package abbrev
+  :defer t
+  :config
+  (diminish 'abbrev-mode ""))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flymake mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package flymake
+  :defer t
+  :config
+  (diminish 'flymake-mode " Fm"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; outline minor mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package outline
+  :defer t
+  :config
+  (diminish 'outline-minor-mode (my:safe-lighter-icon "Outl" "th-list")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Misc minor mode lighter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package simple
+  :defer t
+  :config
+  (diminish 'visual-line-mode ""))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Major mode string replacement
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (is-fontawesome-ready)
   (defvar mode-line-cleaner-alist
-    `( ;; Lighter must starts with space
-      (yas-minor-mode . "")
-      (helm-mode . "")
-      (helm-gtags-mode . ,(my:safe-lighter-icon "" "tags"))
-      (auto-complete-mode . "")
-      (view-mode . "")
-      (highlight-symbol-mode . "")
-      (volatile-highlights-mode . "")
-      (smooth-scroll-mode . "")
-      (undo-tree-mode . "")
-      (git-gutter-mode . ,(my:safe-lighter-icon "GG" "code-fork"))
-      (beacon-mode . ,(my:safe-lighter-icon "*" "lightbulb-o"))
-      (reftex-mode . ,(my:safe-lighter-icon "Ref" "bookmark"))
-      (abbrev-mode . "")
-      (flymake-mode . " Fm")
-      (visual-line-mode . "")
-      (outline-minor-mode . ,(my:safe-lighter-icon "Outl" "th-list"))
-      (flyspell-mode . ,(my:safe-lighter-icon "Fly" "check"))
+    `(
       ;; Major modes
       ;; (lisp-interaction-mode . "Li")
       ;; (python-mode . "Py")

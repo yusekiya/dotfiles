@@ -114,6 +114,7 @@
   (add-hook 'objc-mode-hook 'helm-gtags-mode)
   (add-hook 'python-mode-hook 'helm-gtags-mode)
   :config
+  (diminish 'helm-gtags-mode (my:safe-lighter-icon "" "tags"))
   (global-unset-key "\C-t")
   (custom-set-variables
    '(helm-gtags-path-style 'relative)
@@ -134,4 +135,5 @@
 ;; start helm-mode
 (use-package helm-mode
   :config
+  (diminish 'helm-mode "")
   (helm-mode 1))
