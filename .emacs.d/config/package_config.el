@@ -1702,34 +1702,6 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Major mode string replacement
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when (is-fontawesome-ready)
-  (defvar mode-line-cleaner-alist
-    `(
-      ;; Major modes
-      ;; (lisp-interaction-mode . "Li")
-      ;; (python-mode . "Py")
-      ;; (ruby-mode   . "Rb")
-      ;; (emacs-lisp-mode . "El")
-      ;; (markdown-mode . "Md")
-      ))
-  (defun clean-mode-line ()
-    (interactive)
-    (loop for (mode . mode-str) in mode-line-cleaner-alist
-          do
-          (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-            (when old-mode-str
-              (setcar old-mode-str mode-str))
-            ;; major mode
-            (when (eq mode major-mode)
-              (setq mode-name mode-str)))))
-
-  (add-hook 'after-change-major-mode-hook 'clean-mode-line)
-  )
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc setkey (set key)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-q C-r") 'window-resizer)
