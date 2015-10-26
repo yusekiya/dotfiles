@@ -23,6 +23,10 @@
    '(preview-LaTeX-command (quote ("platex \"\\nonstopmode\\nofiles\\PassOptionsToPackage{" ("," . preview-required-option-list) "}{preview}\\AtBeginDocument{\\ifx\\ifPreview\\undefined" preview-default-preamble "\\fi}\"%' \"\\input\" %t")))
    )
   (setq-default preview-scale-function 1.2)
+  (custom-set-variables
+   '(preview-default-option-list
+     (quote
+      ("displaymath" "floats" "graphics" "textmath" "sections" "footnotes" "showlabels"))))
   (setq TeX-source-correlate-method 'synctex)
   (setq TeX-source-correlate-start-server t)
   (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
