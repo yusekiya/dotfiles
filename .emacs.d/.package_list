@@ -67,6 +67,7 @@ helm-flymake
 helm-gtags
 helm-swoop
 heroku-theme
+hexrgb
 highlight-indentation
 highlight-symbol
 hlinum
@@ -88,6 +89,7 @@ multicolumn
 multiple-cursors
 open-junk-file
 ov
+paper-theme
 pcre2el
 pkg-info
 popup
