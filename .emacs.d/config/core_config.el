@@ -1,6 +1,3 @@
-;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 23 2015>
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Encoding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,9 +58,6 @@
 (defvar dark_BG "#2d3743")
 (defvar dark_FG "gray90")
 (defvar myCursorColor "VioletRed")
-;; (defface modeline
-;;   '((t (:inherit mode-line)))
-;;   "alias for mode-line.")
 ;; set other default-frame-alist
 (if window-system
     (progn
@@ -229,7 +223,7 @@
 (global-set-key "\M-?" 'help-for-help)        ; M-? as help
 ;;(global-set-key "\C-q" 'quoted-insert)      ; C-q original
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char) ;; enable \C-h in isearch mode
-;;; C-q をプリフィックスキー化
+;; Make C-q to a prefix key
 (define-key global-map "\C-q" (make-sparse-keymap))
 (global-set-key "\C-q\C-q" 'quoted-insert) ; assign quoted-insert to C-q C-q
 
@@ -288,16 +282,9 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load configuration mainly for built-in feature
+;; Load configuration for packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (concat user-emacs-directory "config/builtins"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load configuration mainly for non built-in feature
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (concat user-emacs-directory "config/packages"))
+(load "package_config")
 
 
-;; Local Variables:
-;; coding: utf-8
-;; End:
+;; end of file
