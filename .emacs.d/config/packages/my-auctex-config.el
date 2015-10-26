@@ -22,7 +22,7 @@
   (custom-set-variables
    '(preview-LaTeX-command (quote ("platex \"\\nonstopmode\\nofiles\\PassOptionsToPackage{" ("," . preview-required-option-list) "}{preview}\\AtBeginDocument{\\ifx\\ifPreview\\undefined" preview-default-preamble "\\fi}\"%' \"\\input\" %t")))
    )
-  (setq-default preview-scale-function 1.5)
+  (setq-default preview-scale-function 1.2)
   (setq TeX-source-correlate-method 'synctex)
   (setq TeX-source-correlate-start-server t)
   (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
@@ -91,7 +91,6 @@
 
 ;; Settings independent of OS
 (with-eval-after-load "tex-jp"
-  (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my-jump-to-before-parentheses)
              ("C-." . my-jump-to-next-parentheses))
@@ -103,7 +102,9 @@
     (key-chord-define LaTeX-mode-map "jf" 'insert-sub-and-sup))
   )
 
-  
+;; autocomplete for auctex
+(require 'auto-complete-auctex)
+
 
 ;; LaTeX setup
 (defun my:latex-setup ()
@@ -140,19 +141,19 @@
 (defun latex-outline-level ()
   (interactive)
   (let ((str nil))
-	(looking-at outline-regexp)
-	(setq str (buffer-substring-no-properties (match-beginning 0) (match-end 0)))
-	(cond
-	 ((string-match "documentclass" str) 1)
-	 ((string-match "documentstyle" str) 1)
-	 ((string-match "part" str) 2)
-	 ((string-match "chapter" str) 3)
-	 ((string-match "appendix" str) 3)
-	 ((string-match "subsubsection" str) 6)
-	 ((string-match "subsection" str) 5)
-	 ((string-match "section" str) 4)
-	 (t (+ 6 (length str)))
-	 )))
+    (looking-at outline-regexp)
+    (setq str (buffer-substring-no-properties (match-beginning 0) (match-end 0)))
+    (cond
+     ((string-match "documentclass" str) 1)
+     ((string-match "documentstyle" str) 1)
+     ((string-match "part" str) 2)
+     ((string-match "chapter" str) 3)
+     ((string-match "appendix" str) 3)
+     ((string-match "subsubsection" str) 6)
+     ((string-match "subsection" str) 5)
+     ((string-match "section" str) 4)
+     (t (+ 6 (length str)))
+     )))
 
 (defun my:auctex-outline-mode-setup ()
   (setq outline-level 'latex-outline-level)
@@ -210,4 +211,3 @@
         )
   (my:goto-blank-brackets-backward)
 )
-
