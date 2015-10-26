@@ -80,3 +80,5 @@ work/
 .emacs.d/recentf
 .ipython/profile_default/db/
 .emacs.d/config/packages/my-auctex-config.elc
+.emacs.d/config/core_config.elc
+.emacs.d/config/package_config.elc
