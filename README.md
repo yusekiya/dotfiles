@@ -25,7 +25,12 @@
 - Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
   Install directory must be `C:\opt` to work with emacs
 - Build packages under .pkgbuild by executing makepkg.sh in each package directory
-- Make ~/.gitconfig.local and [user] section in it
+- Modify permissions of git hooks under ~/.git_template/hooks if necessary
+
+  ```bash
+  $ chmod 755 ~/.git_template/hooks/*
+  ```
+- Make ~/.gitconfig.local and describe git settings which is not made public
 - Install anaconda to under ~/opt/anaconda
 - Install conda packages
 

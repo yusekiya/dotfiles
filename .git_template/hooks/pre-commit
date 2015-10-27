@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ -z "`git config --local user.name`" ]; then
+    echo "fatal: user.name is not set locally"
+    exit 1
+fi
+if [ -z "`git config --local user.email`" ]; then
+    echo "fatal: user.email is not set locally"
+    exit 1
+fi
