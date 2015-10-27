@@ -1,5 +1,5 @@
 (when (equal system-type 'windows-nt)
-  (with-eval-after-load "tex-jp"
+  (with-eval-after-load "latex"
     (setq TeX-engine-alist '((pdfuptex "pdfupTeX"
                                        "ptex2pdf -u -e -ot \"-kanji=utf8 -no-guess-input-enc %S %(mode)\""
                                        "ptex2pdf -u -l -ot \"-kanji=utf8 -no-guess-input-enc %S %(mode)\""
@@ -100,7 +100,8 @@
 
 
 ;; Settings independent of OS
-(with-eval-after-load "tex-jp"
+(with-eval-after-load "latex"
+  (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my-jump-to-before-parentheses)
              ("C-." . my-jump-to-next-parentheses))
@@ -111,9 +112,6 @@
     (key-chord-define LaTeX-mode-map "jr" 'insert-superscript)
     (key-chord-define LaTeX-mode-map "jf" 'insert-sub-and-sup))
   )
-
-;; autocomplete for auctex
-(require 'auto-complete-auctex)
 
 
 ;; LaTeX setup
