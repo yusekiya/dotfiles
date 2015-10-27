@@ -31,6 +31,11 @@
   $ chmod 755 ~/.git_template/hooks/*
   ```
 - Make ~/.gitconfig.local and describe git settings which is not made public
+- Install tmux plugin manager
+
+  ```bash
+  $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  ```
 - Install anaconda to under ~/opt/anaconda
 - Install conda packages
 
