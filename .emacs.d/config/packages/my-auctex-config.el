@@ -101,6 +101,10 @@
 
 ;; Settings independent of OS
 (with-eval-after-load "latex"
+  (setq font-latex-fontify-script t)
+  (custom-set-faces '(font-latex-superscript-face ((t :height 1.0)))
+                    '(font-latex-subscript-face ((t :height 1.0))))
+  (setq font-latex-script-display '((raise -0.2) raise 0.2))
   (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my-jump-to-before-parentheses)
