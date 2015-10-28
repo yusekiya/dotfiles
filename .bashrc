@@ -117,6 +117,7 @@ function less_table () {
 }
 alias tiga='tig --all'
 alias gg='git graph'
+alias gu='git remote update'
 
 # Umask
 #
