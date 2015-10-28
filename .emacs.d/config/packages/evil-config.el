@@ -143,11 +143,18 @@
     (evil-define-key 'normal dired-mode-map (kbd "l") #'my:find-file-popwin-dired))
   )
 
-;; wdired with Evil
+;; wdired with evil
 (use-package wdired
   :defer t
   :config
   (evil-define-key 'normal dired-mode-map (kbd "r") #'wdired-change-to-wdired-mode))
+
+;; git-gutter with evil
+(use-package git-gutter
+  :defer t
+  :config
+  (evil-define-key 'normal git-gutter-mode-map "]c" #'git-gutter:next-hunk)
+  (evil-define-key 'normal git-gutter-mode-map "[c" #'git-gutter:previous-hunk))
 
 ;; expand-region with evil
 (use-package expand-region
