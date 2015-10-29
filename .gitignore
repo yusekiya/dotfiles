@@ -82,3 +82,4 @@ work/
 .emacs.d/config/packages/my-auctex-config.elc
 .emacs.d/config/core_config.elc
 .emacs.d/config/package_config.elc
+.emacs.d/elisp/latex-utils.elc

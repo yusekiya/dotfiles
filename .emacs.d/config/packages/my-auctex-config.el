@@ -116,6 +116,9 @@
     (key-chord-define LaTeX-mode-map "jv" 'insert-subscript)
     (key-chord-define LaTeX-mode-map "jr" 'insert-superscript)
     (key-chord-define LaTeX-mode-map "jf" 'insert-sub-and-sup))
+  (use-package latex-utils
+    :config
+    (bind-key "C-c c" 'latex-utils:change-parentheses))
   )
 
 
