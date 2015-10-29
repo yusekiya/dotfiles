@@ -51,6 +51,7 @@ libunrar
 lndir
 make
 man-db
+mercurial
 mingw-w64-x86_64-ag
 mingw-w64-x86_64-arpack
 mingw-w64-x86_64-aspell
@@ -117,6 +118,7 @@ unrar
 unzip
 util-linux
 vim
+vimpager
 wget
 which
 xmlto
