@@ -107,8 +107,9 @@
   (setq font-latex-script-display '((raise -0.2) raise 0.2))
   (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
-             ("C-," . my-jump-to-before-parentheses)
-             ("C-." . my-jump-to-next-parentheses))
+             ("C-," . my:goto-blank-brackets-backward)
+             ("C-." . my:goto-blank-brackets-forward))
+  
   (use-package key-chord
     :config
     (key-chord-define LaTeX-mode-map "ds" 'insert-backslash)
