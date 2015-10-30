@@ -26,7 +26,7 @@ set spelllang+=cjk
 set spell
 set pumheight=10
 set scrolloff=3
-set iskeyword-=_
+"set iskeyword-=_
 set clipboard=unnamed,autoselect
 set t_Co=16
 "set list
