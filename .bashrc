@@ -119,6 +119,12 @@ alias tiga='tig --all'
 alias gg='git graph'
 alias gu='git remote update'
 
+if [ `type -p colordiff` ]; then
+    alias diff='colordiff -u'
+else
+    alias diff='diff -u'
+fi
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
