@@ -45,6 +45,9 @@
   (define-key evil-normal-state-map (kbd "<SPC>y") (kbd "0v$hy"))
   (define-key evil-normal-state-map (kbd "<SPC>d") (kbd "0v$hd"))
   (define-key evil-normal-state-map (kbd "<SPC>i") (kbd "gg=G C-o zz"))
+  (bind-keys :map evil-ex-completion-map
+             ("C-b" . backward-char)
+             ("C-d" . delete-char))
   (use-package key-chord
     :config
     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
