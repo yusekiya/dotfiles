@@ -211,6 +211,13 @@ export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWUNTRACKEDFILES=
 export GIT_PS1_SHOWSTASHSTATE=1
 
+if [ "$(uname -o)" = "Msys" ]; then
+    if [ `type -p src-hilite-lesspipe.sh` ]; then
+        export LESS='-R'
+        export LESSOPEN='| src-hilite-lesspipe.sh %s'
+    fi
+fi
+
 # PS1 setting
 # for windows
 if [ "$(uname -o)" = "Msys" ]; then

@@ -15,6 +15,10 @@
 
 # User dependent .bash_profile file
 
+if [ -d "/mingw64/local/bin" ]; then
+    export PATH="/mingw64/local/bin:${PATH}"
+fi
+
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
