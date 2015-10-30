@@ -63,14 +63,10 @@
     cd ~/src
     git clone https://github.com/jrunning/source-highlight-solarized.git
     cd source-highlight-solarized
-    curl -LO  https://gist.githubusercontent.com/yusekiya/d11e2fcffdbcf9b6da00/raw/1eb6d73a854dabbd643e5ac9b42dfde9009667a7/esc-solarized.style.diff
+    curl -LO https://gist.githubusercontent.com/yusekiya/d11e2fcffdbcf9b6da00/raw/1eb6d73a854dabbd643e5ac9b42dfde9009667a7/esc-solarized.style.diff
     patch < esc-solarized.style.diff
-    cp *.style *.outlang /mingw64/local/share/source-highlight
-    cd /mingw64/local/share/source-highlight
-    mv esc.style esc.style.org
-    mv esc-solarized.style esc.style
-    mv esc.outlang esc.outlang.org
-    mv esc-solarized.outlang esc.outlang
+    rename -- "-solarized" "" esc*
+    mv -f -S .bak esc.style esc.outlang /mingw64/local/share/source-highlight
     ```
 - Setup python development environment
   - Install [anaconda](https://www.continuum.io/downloads) to under ~/opt/anaconda
