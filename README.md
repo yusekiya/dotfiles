@@ -39,6 +39,7 @@
   $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   ```
 - Setup [Source-highlight](http://www.gnu.org/software/src-highlite/source-highlight.html)
+  on MSYS2 (mingw64)
 
   - Build and install
 
