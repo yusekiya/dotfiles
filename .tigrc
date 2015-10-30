@@ -4,8 +4,11 @@ bind generic G none
 bind generic g move-first-line
 bind generic G move-last-line
 bind generic <Ctrl-g> view-grep
+bind generic ; prompt
 bind status V !git commit -v
 bind main <Ctrl-r> ?git rebase -i %(commit)
+bind main G none
+bind main | :toggle commit-title-graph
 bind diff <Ctrl-r> ?git rebase -i %(commit)
 bind main <Esc>r ?git rebase %(commit)
 bind main B ?git checkout -b "%(prompt Enter new branch name: )" %(commit)
