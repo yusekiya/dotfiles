@@ -48,6 +48,8 @@
     git clone git://git.savannah.gnu.org/src-highlite.git
     cd src-highlight
     autoreconf -i
+    mkdir build
+    cd build
     # make sure that the directory /mingw64/local exists
     ../configure --with-boost-libdir=/mingw64/lib --prefix=/mingw64/local
     make
