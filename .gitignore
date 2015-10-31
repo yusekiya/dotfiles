@@ -83,3 +83,4 @@ work/
 .emacs.d/config/core_config.elc
 .emacs.d/config/package_config.elc
 .emacs.d/elisp/latex-utils.elc
+.pkgbuild/mingw-w64-emacs/config.log

@@ -59,7 +59,7 @@ build() {
   fi
 
   CPPFLAGS="-DNDEBUG -isystem ${MINGW_PREFIX}/include"
-  CFLAGS="-pipe -O3 -fomit-frame-pointer -funroll-loops"
+  CFLAGS="-pipe -O2 -march=corei7 -mtune=corei7 -fomit-frame-pointer -funroll-loops"
   LDFLAGS="-s -Wl,-s"
   ../${_realname}-${pkgver}/configure \
     --prefix="${MINGW_PREFIX}" \
@@ -67,6 +67,8 @@ build() {
     --with-wide-int="${with_wide_int}" \
     --with-sound="yes" \
     --with-file-notification="yes" \
+    --with-gnutls \
+    --with-w32-ime \
     --without-dbus \
     --without-gpm \
     --without-gconf \
