@@ -125,6 +125,13 @@ else
     alias diff='diff -u'
 fi
 
+function unlink_files () {
+    for f in "$@"
+    do
+        unlink $f
+    done
+}
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
