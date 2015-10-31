@@ -6,9 +6,10 @@
 ;; location of packages
 ;; installed packages are located at default directory
 (setq package-user-dir "~/.emacs.d/elpa")
-;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; installed packages are located at user-specified directory
+;; (setq package-user-dir (concat user-emacs-directory "elpa"))
+;; (fset 'package-desc-vers 'package--ac-desc-version)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
