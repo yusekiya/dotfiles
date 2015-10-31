@@ -1,0 +1,6 @@
+# solarize diff output
+plain=off
+newtext=darkgreen
+oldtext=darkred
+diffstuff=darkblue
+cvsstuff=darkblue
