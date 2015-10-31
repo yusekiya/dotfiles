@@ -52,3 +52,20 @@ do
     fi
     
 done
+
+# Create symbolic link ~/.profile which points to .bash_profile on linux
+if [ "$(uname)" = "Linux" -a -f "${source_dir}/.bash_profile" ]; then
+    src="${source_dir}/.bash_profile"
+    dist="${dist_dir}/.profile"
+    if [ -L ${dist} ]; then
+        ln -snf -S ".bak" ${src} ${dist}
+        echo Existing link ${dist} renamed to ${dist}.bak
+    elif [ -f ${dist} ]; then
+        mv ${dist} ${dist}.bak
+        ln -s ${src} ${dist}
+        echo Existing regular file ${dist} renamed to ${dist}.bak
+    else
+        ln -s ${src} ${dist}
+    fi
+    echo File symbolic link created: ${dist}
+fi
