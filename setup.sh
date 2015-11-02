@@ -14,6 +14,13 @@ if [ "$answer" != "yes" ]; then
     exit;
 fi
 
+# Windows needs administrator privilege to make symbolic link
+if [ "$(uname -o)" = "Msys" -a -z "$(id -Gn | grep Administrators)" ]; then
+    echo "Error: Permission denied"
+    echo "Run this script as administrator"
+    exit;
+fi
+
 echo "==== log output ===="
 for f in ${source_dir}/.??*
 do
