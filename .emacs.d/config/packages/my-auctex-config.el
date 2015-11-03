@@ -105,6 +105,7 @@
   (custom-set-faces '(font-latex-superscript-face ((t :height 1.0)))
                     '(font-latex-subscript-face ((t :height 1.0))))
   (setq font-latex-script-display '((raise -0.2) raise 0.2))
+  (setq font-latex-fontify-sectioning 1.0)
   (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my:goto-blank-brackets-backward)
