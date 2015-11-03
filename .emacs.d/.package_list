@@ -17,7 +17,6 @@ beacon
 bind-key
 birds-of-paradise-plus-theme
 cmake-mode
-color-theme-sanityinc-solarized
 concurrent
 ctable
 cython-mode
@@ -109,6 +108,7 @@ seq
 smart-newline
 smartrep
 smooth-scroll
+solarized-theme
 spacegray-theme
 spacemacs-theme
 sublime-themes

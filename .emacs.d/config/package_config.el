@@ -774,7 +774,18 @@ The argument icon must be string."
 
 (add-hook 'after-init-hook 'my:load-default-theme)
 
-
+(use-package solarized-theme
+  :defer t
+  :init
+  (custom-set-variables
+   ;; Don't scale font 
+   '(solarized-use-variable-pitch nil)
+   '(solarized-height-minus-1 1.0)
+   '(solarized-height-plus-1 1.0)
+   '(solarized-height-plus-2 1.0)
+   '(solarized-height-plus-3 1.0)
+   '(solarized-height-plus-4 1.0)
+   ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
