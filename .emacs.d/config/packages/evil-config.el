@@ -138,6 +138,7 @@
   (evil-define-key 'normal dired-mode-map (kbd "k") #'dired-previous-line)
   (evil-define-key 'normal dired-mode-map (kbd "h") #'dired-up-directory)
   (evil-define-key 'normal dired-mode-map (kbd "l") #'ignore)
+  (evil-define-key 'normal dired-mode-map (kbd "i") #'ignore)
   (evil-define-key 'normal dired-mode-map (kbd "s") #'dired-rotate-sort)
   (evil-define-key 'normal dired-mode-map (kbd "/") #'dired-mark-files-regexp)
   (evil-define-key 'normal dired-mode-map (kbd "o") #'dired-display-file)
@@ -150,7 +151,7 @@
 (use-package wdired
   :defer t
   :config
-  (evil-define-key 'normal dired-mode-map (kbd "r") #'wdired-change-to-wdired-mode))
+  (evil-define-key 'normal dired-mode-map (kbd "i") #'wdired-change-to-wdired-mode))
 
 ;; git-gutter with evil
 (use-package git-gutter

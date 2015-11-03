@@ -612,12 +612,22 @@ The argument icon must be string."
                     ("k" . dired-previous-line)
                     ("h" . dired-up-directory)
                     ("l" . ignore)
+                    ("i" . ignore)
                     ("s" . dired-rotate-sort)
                     ("o" . dired-display-file));noh
          (use-package wdired
            ;; :defer t
            ;; :commands wdired-change-to-dired-mode
-           :init (bind-keys :map dired-mode-map ("r" . wdired-change-to-wdired-mode)))
+           :init (bind-keys :map dired-mode-map ("i" . wdired-change-to-wdired-mode)))
+         (use-package popwin
+           :defer t
+           :config
+           ;; dired: open file with popwin
+           (defun my:find-file-popwin-dired ()
+             (interactive)
+             (popwin:find-file (dired-get-file-for-visit)))
+           (define-key dired-mode-map "l" 'my:find-file-popwin-dired)
+           )
          (use-package dired-ranger
            :config
            (bind-keys :map dired-mode-map
@@ -883,11 +893,6 @@ The argument icon must be string."
 (use-package popwin
   :config
   (popwin-mode 1)
-  ;; dired: open file with popwin
-  (defun my:find-file-popwin-dired ()
-    (interactive)
-    (popwin:find-file (dired-get-file-for-visit)))
-  (with-eval-after-load 'dired (define-key dired-mode-map "l" 'my:find-file-popwin-dired))
   ;; Automatically determine window size and position of popwin
   (defun popwin-auto-set-popup-window-position-and-size ()
     (let ((w (frame-width))
