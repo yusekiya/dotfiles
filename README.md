@@ -81,6 +81,11 @@
       - grip
       - epc
 - Install TeXlive
+- Install direnv
+
+  ```bash
+  $ curl -L -o ~/bin/direnv.exe https://github.com/direnv/direnv/releases/download/v2.6.0/direnv.windows-amd64.exe
+  ```
 - Install 'gomi' command (if necessary)
 
   ```bash

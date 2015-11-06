@@ -308,3 +308,7 @@ fi
 # key bindings
 stty stop undef
 
+# direnv
+if [ `type -p direnv` ]; then
+    eval "$(direnv hook bash)"
+fi
