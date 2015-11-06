@@ -125,6 +125,10 @@ else
     alias diff='diff -u'
 fi
 
+if [ `type -p direnv` ]; then
+    alias tmux='direnv exec / tmux'
+fi
+
 function unlink_files () {
     for f in "$@"
     do
