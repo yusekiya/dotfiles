@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Oct 27 2015>
+;;     Time-stamp: <Nov 07 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -9,10 +9,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setting for path
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Remote directory for settings and elisps
+;; Directory where files for emacs are located
 (setq user-emacs-directory (expand-file-name "~/.emacs.d/"))
-;; Local directory for settings and elisps
-(defconst my:user-dictionary-directory (expand-file-name "~/"))
 ;; elisp load-path
 (add-to-list 'load-path (concat user-emacs-directory "elisp/"))
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
@@ -58,18 +56,6 @@
                   'katakana-jisx0201
                   (cons "Ricty Discord" "iso10646-1"))
 
-;; (set-face-attribute 'default nil
-;;                     :family "Myrica M"
-;;                     :height 120)
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'japanese-jisx0208
-;;                   (cons "Myrica M" "iso10646-1"))
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'japanese-jisx0212
-;;                   (cons "Myrica M" "iso10646-1"))
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'katakana-jisx0201
-;;                   (cons "Myrica M" "iso10646-1"))
 
 ;; line spacing
 (setq-default line-spacing 2)

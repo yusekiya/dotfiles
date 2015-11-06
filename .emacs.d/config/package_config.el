@@ -869,7 +869,7 @@ The argument icon must be string."
 (eval-after-load "ispell"
  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 ;; User dictionary
-(setq ispell-personal-dictionary (concat my:user-dictionary-directory "en.pws"))
+(setq ispell-personal-dictionary "~/en.pws")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
