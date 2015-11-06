@@ -84,7 +84,7 @@
 - Install 'gomi' command (if necessary)
 
   ```bash
-  $ curl -L git.io/gomi | bash
+  $ curl -L -o ~/bin/gomi.exe https://github.com/b4b4r07/gomi/releases/download/v0.1.6/gomi_windows_amd64.exe
   ```
 
 ## TODO
