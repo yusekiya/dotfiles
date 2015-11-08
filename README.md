@@ -76,6 +76,7 @@
       - scipy
       - pandas
       - sympy
+      - matplotlib
       - cython
       - numba
       - jedi
