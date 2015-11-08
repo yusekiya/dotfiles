@@ -26,7 +26,7 @@
 - Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
   Install directory must be `C:\opt` to work with emacs
 - Build packages under .pkgbuild by executing makepkg.sh in each package directory
-- Download libgnutls-28.dll and its dependencies to an directory in $PATH (cf. [NTemacs64](https://github.com/chuntaro/NTEmacs64#emacs-245bindll-の依存関係など))
+- Download libgnutls-28.dll and its dependencies to an directory in $PATH (cf. [NTEmacs64](https://github.com/chuntaro/NTEmacs64#emacs-245bindll-の依存関係など))
 - Setup for git
   - Modify permissions of git hooks under ~/.git_template/hooks if necessary
 
@@ -71,11 +71,14 @@
     ```
 - Setup python development environment
   - Install [anaconda](https://www.continuum.io/downloads) to under ~/opt/anaconda
-  - Install conda packages
-
-    ```bash
-    $ conda install --file ~/.conda_pkglist_win
-    ```
+  - Make sure that the following packages are installed
+      - numpy
+      - scipy
+      - pandas
+      - sympy
+      - cython
+      - numba
+      - jedi
   - Install the following packages through pip:
       - numdifftools
       - grip
