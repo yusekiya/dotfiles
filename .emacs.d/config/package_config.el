@@ -787,6 +787,7 @@ The argument icon must be string."
 (use-package solarized-theme
   :defer t
   :init
+  (setq solarized-high-contrast-mode-line t)
   (custom-set-variables
    ;; Don't scale font 
    '(solarized-use-variable-pitch nil)
