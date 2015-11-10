@@ -1548,9 +1548,9 @@ The argument icon must be string."
 ;; beacon
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package beacon
-  :defer t
   :config
   (diminish 'beacon-mode (my:safe-lighter-icon "*" "lightbulb-o"))
+  (beacon-mode 1)
   )
 
 
