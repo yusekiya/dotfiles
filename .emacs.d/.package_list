@@ -35,6 +35,7 @@ evil
 evil-anzu
 evil-args
 evil-exchange
+evil-indent-plus
 evil-indent-textobject
 evil-jumper
 evil-matchit

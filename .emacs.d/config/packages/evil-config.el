@@ -113,8 +113,13 @@
 ;; evil-anzu
 (use-package evil-anzu)
 
-;; evil-indent-textobject
-(use-package evil-indent-textobject)
+;; ;; evil-indent-textobject
+;; (use-package evil-indent-textobject)
+
+;; evil indent plus
+(use-package evil-indent-plus
+  :config
+  (evil-indent-plus-default-bindings))
 
 ;; evil-visualstar
 (use-package evil-visualstar
