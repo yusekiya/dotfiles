@@ -26,7 +26,7 @@ set spelllang+=cjk
 set spell
 set pumheight=10
 set scrolloff=3
-"set iskeyword-=_
+" set iskeyword-=_
 set clipboard=unnamed,autoselect
 set t_Co=16
 "set list
@@ -82,6 +82,9 @@ set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
+" nerdcommenter
+let NERDSpaceDelims = 1
+
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
@@ -124,3 +127,6 @@ nnoremap <leader>v 0v$h
 nnoremap <leader>d 0v$hx
 " Yank all text in current line
 nnoremap <leader>y 0v$hy
+" nerdcommenter
+nmap <leader><Space> <Plug>NERDCommenterToggle
+vmap <leader><Space> <Plug>NERDCommenterToggle
