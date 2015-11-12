@@ -37,17 +37,20 @@ let mapleader = "\<space>"
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
+" neobundle settings
 if has('vim_starting')
-  if &compatible
-    set nocompatible
+  set nocompatible
+  "Install neobundle if it does not installed
+  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+    echo "install neobundle..."
+    " clone repo
+    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
   endif
-
-  " Required:
+  " runtimepath setting
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#begin(expand('~/.vim/bundle/'))
 endif
-
-" Required:
+call neobundle#begin(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol='https'
 
 " Let NeoBundle manage NeoBundle
 " Required:
