@@ -10,9 +10,11 @@ Term=xterm-256color
 RightClickAction=paste
 Locale=C
 Charset=UTF-8
+
 ForegroundColour=200,200,200
 BackgroundColour=0,43,54
 CursorColour=220,50,47
+
 Black=7,54,66
 BoldBlack=0,43,54
 Red=220,50,47
@@ -29,6 +31,7 @@ Cyan=42,161,152
 BoldCyan=147,161,161
 White=238,232,213
 BoldWhite=253,246,227
+
 BoldAsColour=no
 CtrlShiftShortcuts=yes
 Scrollbar=right
