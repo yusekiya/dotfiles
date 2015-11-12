@@ -246,12 +246,15 @@ fi
 
 # for ubuntu
 if [ "$(uname)" = "Linux" ]; then
-    eval `dircolors ~/.dircolors.256dark`
     source /etc/bash_completion.d/git-prompt
     GIT_PS1_SHOWDIRTYSTATE=true
     export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
+# Dircolors setting
+if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors.256dark" ]; then
+    eval `dircolors ${HOME}/.dircolors.256dark`
+fi
 
 # Menu completion
 bind "C-j":menu-complete
