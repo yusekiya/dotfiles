@@ -8,7 +8,7 @@
 (defvar Zen:ultimate-level 5 ;; the number of Zen state
   "Do NOT customize this variable!")
 
-(defvar Zen:text-area-width 120
+(defvar Zen:text-area-width 100
   "Width of the text area represented as the number of colums in Zen-mind.")
 
 (defvar Zen:default-mode-line-format default-mode-line-format)
