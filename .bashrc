@@ -136,6 +136,10 @@ function unlink_files () {
     done
 }
 
+function show_path () {
+    echo $PATH | tr ":" "\n"
+}
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
