@@ -10,11 +10,11 @@ Term=xterm-256color
 RightClickAction=paste
 Locale=C
 Charset=UTF-8
-
+##### Solarized dark colors #####
 ForegroundColour=200,200,200
 BackgroundColour=0,43,54
 CursorColour=220,50,47
-
+##### Color definition #####
 Black=7,54,66
 BoldBlack=0,43,54
 Red=220,50,47
@@ -31,7 +31,7 @@ Cyan=42,161,152
 BoldCyan=147,161,161
 White=238,232,213
 BoldWhite=253,246,227
-
+##### misc #####
 BoldAsColour=no
 CtrlShiftShortcuts=yes
 Scrollbar=right
