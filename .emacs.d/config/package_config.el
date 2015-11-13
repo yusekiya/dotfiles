@@ -751,7 +751,7 @@ The argument icon must be string."
 ;; Theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq custom-theme-directory (concat user-emacs-directory "lib/themes/"))
-(defcustom my-default-theme 'material "default theme")
+(defcustom my-default-theme 'solarized-dark "default theme")
 ;; set safe themes
 (custom-set-variables
  '(custom-safe-themes
@@ -763,6 +763,7 @@ The argument icon must be string."
      default)
   )
 )
+
 (defun change-theme(theme &optional no-confirm no-enable)
   "Disable all enabled themes, and load Custom theme named THEME."
   (interactive
@@ -777,13 +778,6 @@ The argument icon must be string."
   (load-theme theme)
 )
 
-(defun my:load-default-theme ()
-  (load-theme my-default-theme t t)
-  (enable-theme my-default-theme)
-  )
-
-(add-hook 'after-init-hook 'my:load-default-theme)
-
 (use-package solarized-theme
   :defer t
   :init
@@ -797,6 +791,13 @@ The argument icon must be string."
    '(solarized-height-plus-3 1.0)
    '(solarized-height-plus-4 1.0)
    ))
+
+(defun my:load-default-theme ()
+  (load-theme my-default-theme t t)
+  (enable-theme my-default-theme)
+  )
+
+(add-hook 'after-init-hook 'my:load-default-theme)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
