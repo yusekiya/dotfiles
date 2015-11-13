@@ -19,11 +19,6 @@ if [ -d "/mingw64/local/bin" ]; then
     export PATH="/mingw64/local/bin:${PATH}"
 fi
 
-# Set PATH so it includes user's private bin if it exists
-if [ -d "${HOME}/bin" ] ; then
-    export PATH="${HOME}/bin:${PATH}"
-fi
-
 # include path
 if [ -d "/usr/local/include" ] ; then
     export CPLUS_INCLUDE_PATH=/usr/local/include
@@ -34,12 +29,24 @@ if [ -d "/usr/local/lib" ] ; then
 fi
 
 # Python
+# for windows
 if [ -d "${HOME}/opt/anaconda/Lib/site-packages" ]; then
-    export PYTHONPATH=${HOME}/opt/anaconda/Lib/site-packages
+    export PYTHONPATH="${HOME}/opt/anaconda/Lib/site-packages"
 fi
 
+if [ -d "${HOME}/opt/anaconda" ] && [ "$(uname -o)" = "Msys" ]; then
+    export PATH="${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}"
+    export PATH="${PATH}:${HOME}/opt/anaconda/Library/bin"
+fi
+
+# for linux
 if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
     export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+if [ -d "${HOME}/bin" ] ; then
+    export PATH="${HOME}/bin:${PATH}"
 fi
 
 # Set MANPATH so it includes users' private man if it exists
