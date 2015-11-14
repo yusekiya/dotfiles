@@ -68,6 +68,7 @@ helm-gtags
 helm-swoop
 heroku-theme
 hexrgb
+highlight-indent-guides
 highlight-indentation
 highlight-symbol
 hlinum
