@@ -127,7 +127,13 @@
 (defpowerline powerline-git-status
   (if (featurep 'git-ps1-mode) git-ps1-mode-lighter-text ""))
 
-(custom-set-variables '(powerline-height (my:powerline-get-good-height)))
+(custom-set-variables '(powerline-height (+ 2 (my:powerline-get-good-height))))
+
+(defadvice load-theme (after my:ad-disable-box-mode-line activate)
+  (set-face-attribute 'mode-line nil
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil))
  
 
 ;;;

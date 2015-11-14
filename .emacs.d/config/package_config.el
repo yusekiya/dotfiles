@@ -790,7 +790,9 @@ The argument icon must be string."
    '(solarized-height-plus-2 1.0)
    '(solarized-height-plus-3 1.0)
    '(solarized-height-plus-4 1.0)
-   ))
+   )
+  (setq x-underline-at-descent-line t)
+  )
 
 (defun my:load-default-theme ()
   (load-theme my-default-theme t t)
