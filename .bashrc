@@ -125,7 +125,8 @@ else
     alias diff='diff -u'
 fi
 
-if [ `type -p direnv` ]; then
+# The following alias does'nt work on windows msys2
+if [ "$(uname)" = "Linux" ] && [ `type -p direnv` ]; then
     alias tmux='direnv exec / tmux'
 fi
 
