@@ -71,7 +71,9 @@
     - Install filter function
 
       ```bash
-      curl -L -o /usr/local/bin/lessfilter https://gist.githubusercontent.com/yusekiya/cdf28e6a4e85d855fafa/raw/95bc1e594a00a2f03d911fc13a2c70985c3054f9/lessfilter
+      $ curl -L -o /usr/local/bin/lessfilter https://gist.githubusercontent.com/yusekiya/cdf28e6a4e85d855fafa/raw/95bc1e594a00a2f03d911fc13a2c70985c3054f9/lessfilter
+      # Add executable permission if necessary
+      $ chmod 755 /usr/local/bin/lessfilter
       ```
 
   - [Source-highlight](http://www.gnu.org/software/src-highlite/source-highlight.html)
