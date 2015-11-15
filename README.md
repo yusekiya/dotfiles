@@ -20,11 +20,13 @@
   ```bash
   $ pacman -S $(< ~/.pacman_pkglist)
   ```
+
 - Setup with dropbox (option)
   - Make symbolic link to DROPBOX/HOME/*
   - Copy DROPBOX/my_script/* to ~/bin
-- Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)  
-  Install directory must be `C:\opt` to work with emacs
+- Install aspell through graphical installer (aspell in MSYS2 repo is aborted when dealing with TeX file)
+
+  Install directory must be `C:\opt` to work with emacs.
 - Build packages under .pkgbuild by executing makepkg.sh in each package directory
 - Download libgnutls-28.dll and its dependencies to an directory in $PATH (cf. [NTEmacs64](https://github.com/chuntaro/NTEmacs64#emacs-245bindll-の依存関係など))
 - Setup for git
@@ -56,7 +58,6 @@
       - numdifftools
       - grip
       - epc
-- Install TeXlive
 - Setup color syntax for less
   - Pygments
 
@@ -106,6 +107,7 @@
       $ mv -f -S .bak esc.style esc.outlang /mingw64/local/share/source-highlight
       ```
 
+- Install TeXlive
 - Install 'gomi' command (if necessary)
 
   ```bash
