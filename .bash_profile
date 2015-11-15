@@ -29,17 +29,13 @@ if [ -d "/usr/local/lib" ] ; then
 fi
 
 # Python
-# for windows
-if [ -d "${HOME}/opt/anaconda/Lib/site-packages" ]; then
-    export PYTHONPATH="${HOME}/opt/anaconda/Lib/site-packages"
-fi
-
+## for windows (anaconda)
 if [ -d "${HOME}/opt/anaconda" ] && [ "$(uname -o)" = "Msys" ]; then
     export PATH="${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}"
     export PATH="${PATH}:${HOME}/opt/anaconda/Library/bin"
 fi
 
-# for linux
+## for linux (anaconda)
 if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
     export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
 fi
