@@ -1,18 +1,3 @@
-# To the extent possible under law, the author(s) have dedicated all 
-# copyright and related and neighboring rights to this software to the 
-# public domain worldwide. This software is distributed without any warranty. 
-# You should have received a copy of the CC0 Public Domain Dedication along 
-# with this software. 
-# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>. 
-
-# ~/.bashrc: executed by bash(1) for interactive shells.
-
-# The copy in your home directory (~/.bashrc) is yours, please
-# feel free to customise it to create a shell
-# environment to your liking.  If you feel a change
-# would be benifitial to all, please feel free to send
-# a patch to the msys2 mailing list.
-
 # User dependent .bashrc file
 
 # If not running interactively, don't do anything
@@ -51,9 +36,10 @@
 # Define to avoid flattening internal contents of tar files
 # COMP_TAR_INTERNAL_PATHS=1
 #
-# Uncomment to turn on programmable completion enhancements.
-# Any completions you add in ~/.bash_completion are sourced last.
-# [[ -f /etc/bash_completion ]] && . /etc/bash_completion
+# Load bash_completion if it exists
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
 
 # History Options
 #
@@ -71,18 +57,12 @@
 
 # Aliases
 #
-# Some people use a different file for aliases
-# if [ -f "${HOME}/.bash_aliases" ]; then
-#   source "${HOME}/.bash_aliases"
-# fi
+# Load different file for aliases
+if [ -f "${HOME}/.bash_aliases" ]; then
+  source "${HOME}/.bash_aliases"
+fi
 #
-# Some example alias instructions
-# If these are enabled they will be used instead of any instructions
-# they may mask.  For example, alias rm='rm -i' will mask the rm
-# application.  To override the alias instruction use a \ before, ie
-# \rm will call the real rm not the alias.
-#
-# Interactive operation...
+# Interactive operations
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -91,8 +71,7 @@ alias mv='mv -i'
 alias df='df -h'
 alias du='du -h'
 #
-# Misc :)
-# alias less='less -r'                          # raw control characters
+# Misc
 alias less='less -X'
 # alias whence='type -a'                        # where, of a sort
 alias grep='grep -i --color'                     # show differences in colour
@@ -125,7 +104,7 @@ else
     alias diff='diff -u'
 fi
 
-# The following alias does'nt work on windows msys2
+# The alias for tmux doesn't work on windows msys2
 if [ "$(uname)" = "Linux" ] && [ `type -p direnv` ]; then
     alias tmux='direnv exec / tmux'
 fi
@@ -140,6 +119,54 @@ function unlink_files () {
 function show_path () {
     echo $PATH | tr ":" "\n"
 }
+
+# aliases and functions for windows
+if [ "$(uname -o)" = "Msys" ]; then
+    function trash () {
+        winpty gomi "$@"
+    }
+    alias inkscape='PYTHONPATH= inkscape'
+    alias sumatrapdf='sumatrapdf -reuse-instance'
+    # function to build cython
+    function cython_build_mingw () {
+        python $1 build_ext -i --compiler=mingw32 -DMS_WIN64
+    }
+    #alias ipconfig='winpty ipconfig'
+    function ipconfig () {
+        command ipconfig "$@" | nkf -w
+    }
+    # alias ping='winpty ping'
+    function ping () {
+        command ping "$@" | nkf -wu
+    }
+    # alias netstat='winpty netstat'
+    function netstat () {
+        command netstat "$@" | nkf -w
+    }
+    # alias netsh='winpty netsh'
+    function netsh () {
+        command netsh "$@" | nkf -wu
+    }
+    # alias cscript='winpty cscript'
+    function cscript () {
+        command cscript "$@" | nkf -wu
+    }
+    #alias tracert='winpty tracert'
+    function tracert () {
+        command tracert "$@" | nkf -wu
+    }
+    alias taskkill='winpty taskkill'
+    #function taskkill () {
+        #command taskkill "$@" | nkf -wu
+    #}
+    # alias tasklist='winpty tasklist'
+    function tasklist () {
+        command tasklist "$@" | nkf -wu
+    }
+    alias pshell='winpty powershell'
+    alias ipython='winpty ipython'
+    alias cmd='winpty cmd'
+fi
 
 # Umask
 #
@@ -224,7 +251,6 @@ function show_path () {
 # 
 # alias cd=cd_func
 
-
 # Environment variables
 export EDITOR='vim'
 
@@ -266,59 +292,6 @@ fi
 # Menu completion
 bind "C-j":menu-complete
 
-# Load bash_completion if it exists
-if [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-fi
-
-
-# aliases and functions for windows
-if [ "$(uname -o)" = "Msys" ]; then
-    function trash () {
-        winpty gomi "$@"
-    }
-    alias inkscape='PYTHONPATH= inkscape'
-    alias sumatrapdf='sumatrapdf -reuse-instance'
-    # function to build cython
-    function cython_build_mingw () {
-        python $1 build_ext -i --compiler=mingw32 -DMS_WIN64
-    }
-    #alias ipconfig='winpty ipconfig'
-    function ipconfig () {
-        command ipconfig "$@" | nkf -w
-    }
-    # alias ping='winpty ping'
-    function ping () {
-        command ping "$@" | nkf -wu
-    }
-    # alias netstat='winpty netstat'
-    function netstat () {
-        command netstat "$@" | nkf -w
-    }
-    # alias netsh='winpty netsh'
-    function netsh () {
-        command netsh "$@" | nkf -wu
-    }
-    # alias cscript='winpty cscript'
-    function cscript () {
-        command cscript "$@" | nkf -wu
-    }
-    #alias tracert='winpty tracert'
-    function tracert () {
-        command tracert "$@" | nkf -wu
-    }
-    alias taskkill='winpty taskkill'
-    #function taskkill () {
-        #command taskkill "$@" | nkf -wu
-    #}
-    # alias tasklist='winpty tasklist'
-    function tasklist () {
-        command tasklist "$@" | nkf -wu
-    }
-    alias pshell='winpty powershell'
-    alias ipython='winpty ipython'
-    alias cmd='winpty cmd'
-fi
 # key bindings
 stty stop undef
 
