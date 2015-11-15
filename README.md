@@ -57,7 +57,6 @@
       - grip
       - epc
 - Install TeXlive
-- Install direnv
 - Setup color syntax for less
   - Pygments
 
@@ -107,9 +106,6 @@
       $ mv -f -S .bak esc.style esc.outlang /mingw64/local/share/source-highlight
       ```
 
-  ```bash
-  $ curl -L -o ~/bin/direnv.exe https://github.com/direnv/direnv/releases/download/v2.6.0/direnv.windows-amd64.exe
-  ```
 - Install 'gomi' command (if necessary)
 
   ```bash
