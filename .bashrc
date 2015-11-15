@@ -233,11 +233,13 @@ export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWUNTRACKEDFILES=
 export GIT_PS1_SHOWSTASHSTATE=1
 
-if [ "$(uname -o)" = "Msys" ]; then
-    if [ `type -p src-hilite-lesspipe.sh` ]; then
-        export LESS='-R'
-        export LESSOPEN='| src-hilite-lesspipe.sh %s'
-    fi
+# Enable syntax highlight in less
+if [ `type -p pygmentize` ] && [ `type -p lessfilter` ]; then
+    export LESS='-R'
+    export LESSOPEN='| lessfilter %s'
+elif [ `type -p src-hilite-lesspipe.sh` ]; then
+    export LESS='-R'
+    export LESSOPEN='| src-hilite-lesspipe.sh %s'
 fi
 
 # PS1 setting
