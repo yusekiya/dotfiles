@@ -15,6 +15,7 @@
   (custom-set-faces '(elscreen-tab-current-screen-face ((t (:inherit default :weight bold)))))
   (global-set-key (kbd "<C-tab>") 'elscreen-next)
   (global-set-key (kbd "<C-S-tab>") 'elscreen-previous)
+  (global-set-key [(control shift iso-lefttab)] 'elscreen-previous)
   (global-set-key (kbd "C-q t") 'elscreen-create)
   (global-set-key (kbd "C-q C-t") 'elscreen-create)
   (bind-key "C-q c" 'elscreen-clone)
