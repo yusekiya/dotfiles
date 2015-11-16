@@ -219,6 +219,8 @@ input
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'cl-lib)
+
 ;; Function to get ime mode as string
 (defun my:get-ime ()
   current-input-method
@@ -383,6 +385,13 @@ When region is set, call `kill-ring-save'."
     (when fPath
       (message "stored path: %s" fPath)
       (kill-new (file-truename fPath)))))
+
+(defun* my:swap-faces (face1 face2)
+  (let (temp-var)
+    (loop for (attr . desc) in face-attribute-name-alist do
+          (setq temp-var (face-attribute face1 attr))
+          (set-face-attribute face1 nil attr (face-attribute face2 attr))
+          (set-face-attribute face2 nil attr temp-var))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -796,6 +805,14 @@ The argument icon must be string."
    '(solarized-height-plus-4 1.0)
    )
   (setq x-underline-at-descent-line t)
+  (defun my:swap-faces-solarized ()
+    (when (and (featurep 'powerline) (eq (car custom-enabled-themes) 'solarized-dark))
+      (my:swap-faces 'powerline-active1 'powerline-inactive1)
+      (my:swap-faces 'powerline-active2 'powerline-inactive2)
+      (powerline-reset)))
+  (defadvice load-theme (after my:ad-swap-faces-solarized activate)
+    (my:swap-faces-solarized))
+  (add-hook 'window-setup-hook #'my:swap-faces-solarized)
   )
 
 (defun my:load-default-theme ()
@@ -803,7 +820,7 @@ The argument icon must be string."
   (enable-theme my-default-theme)
   )
 
-(add-hook 'after-init-hook 'my:load-default-theme)
+;; (add-hook 'window-setup-hook 'my:load-default-theme)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1788,4 +1805,5 @@ The argument icon must be string."
                          ("l" . 'windmove-right))))
 
 
+(my:load-default-theme)
 ;; end of file
