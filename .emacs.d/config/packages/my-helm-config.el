@@ -106,28 +106,31 @@
              )
   )
 
-(use-package helm-gtags
-  :defer t
-  :init
-  (add-hook 'c++-mode-hook 'helm-gtags-mode)
-  (add-hook 'c-mode-hook 'helm-gtags-mode)
-  (add-hook 'objc-mode-hook 'helm-gtags-mode)
-  (add-hook 'python-mode-hook 'helm-gtags-mode)
-  :config
-  (diminish 'helm-gtags-mode (my:safe-lighter-icon "" "tags"))
-  (global-unset-key "\C-t")
-  (custom-set-variables
-   '(helm-gtags-path-style 'relative)
-   '(helm-gtags-ignore-case t)
-   '(helm-gtags-auto-update t)
-   '(helm-gtags-prefix-key "C-t"))
-  (bind-keys :map helm-gtags-mode-map
-             ("M-." . helm-gtags-find-tag)
-             ("M-," . helm-gtags-pop-stack)
-             ("C-t r" . helm-gtags-find-rtag)
-             ("C-t s" . helm-gtags-find-symbol)
-             ("C-t p" . helm-gtags-parse-file)
-             ))
+(if (executable-find "global")
+    (use-package helm-gtags
+      :defer t
+      :init
+      (add-hook 'c++-mode-hook 'helm-gtags-mode)
+      (add-hook 'c-mode-hook 'helm-gtags-mode)
+      (add-hook 'objc-mode-hook 'helm-gtags-mode)
+      ;; (add-hook 'python-mode-hook 'helm-gtags-mode)
+      :config
+      (diminish 'helm-gtags-mode (my:safe-lighter-icon "" "tags"))
+      (global-unset-key "\C-t")
+      (custom-set-variables
+       '(helm-gtags-path-style 'relative)
+       '(helm-gtags-ignore-case t)
+       '(helm-gtags-auto-update t)
+       '(helm-gtags-prefix-key "C-t"))
+      (bind-keys :map helm-gtags-mode-map
+                 ("M-." . helm-gtags-find-tag)
+                 ("M-," . helm-gtags-pop-stack)
+                 ("C-t r" . helm-gtags-find-rtag)
+                 ("C-t s" . helm-gtags-find-symbol)
+                 ("C-t p" . helm-gtags-parse-file)
+                 ))
+  (fset 'helm-gtags-mode nil)
+  )
 
 ;;; Save current position to mark ring
 (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
