@@ -386,7 +386,7 @@ When region is set, call `kill-ring-save'."
       (message "stored path: %s" fPath)
       (kill-new (file-truename fPath)))))
 
-(defun* my:swap-faces (face1 face2)
+(defun my:swap-faces (face1 face2)
   (let (temp-var)
     (loop for (attr . desc) in face-attribute-name-alist do
           (setq temp-var (face-attribute face1 attr))
@@ -812,15 +812,12 @@ The argument icon must be string."
       (powerline-reset)))
   (defadvice load-theme (after my:ad-swap-faces-solarized activate)
     (my:swap-faces-solarized))
-  (add-hook 'window-setup-hook #'my:swap-faces-solarized)
   )
 
 (defun my:load-default-theme ()
   (load-theme my-default-theme t t)
   (enable-theme my-default-theme)
   )
-
-;; (add-hook 'window-setup-hook 'my:load-default-theme)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1805,5 +1802,15 @@ The argument icon must be string."
                          ("l" . 'windmove-right))))
 
 
-(my:load-default-theme)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Load theme
+;;; This is preferred to be put at the last of init file
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(if (featurep 'elscreen-persist)
+    (defadvice elscreen-persist-restore (after my:ad-modify-theme activate)
+      (my:load-default-theme)
+      (my:swap-faces-solarized))
+  (my:load-default-theme))
+
+
 ;; end of file
