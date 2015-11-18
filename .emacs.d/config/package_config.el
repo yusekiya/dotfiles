@@ -1659,7 +1659,7 @@ The argument icon must be string."
   (defun my:search-notes ()
   (interactive)
   (unless (boundp 'my:note-dir) (error "my:note-dir not found"))
-  (helm-ag my:note-dir))
+  (helm-do-ag my:note-dir))
   :defer t)
 
 
