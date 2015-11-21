@@ -1165,6 +1165,7 @@ The argument icon must be string."
 (my:macro-after-ad-refresh-cursor view-mode)
 (my:macro-after-ad-refresh-cursor delete-window)
 (my:macro-after-ad-refresh-cursor kill-buffer)
+(my:macro-after-ad-refresh-cursor toggle-input-method)
 ;; (my:macro-after-ad-refresh-cursor keyboard-quit)
 ;; (my:macro-after-ad-refresh-cursor force-mode-line-update)
 (with-eval-after-load 'smartrep
@@ -1175,10 +1176,12 @@ The argument icon must be string."
   (my:macro-after-ad-refresh-cursor evil-insert-state))
 (add-hook 'window-configuration-change-hook 'my:refresh-cursor)
 ;; (add-hook 'focus-in-hook 'my:refresh-cursor)
-(add-hook 'w32-ime-on-hook
-          (function (lambda () (set-cursor-color myCursorColor_ime) (setq cursor-type '(bar . 3)))))
-(add-hook 'w32-ime-off-hook
-          (function (lambda () (set-cursor-color myCursorColor) (setq cursor-type '(bar . 3)))))
+(when (eq system-type 'windows-nt)
+  (add-hook 'w32-ime-on-hook
+            (function (lambda () (set-cursor-color myCursorColor_ime) (setq cursor-type '(bar . 3)))))
+  (add-hook 'w32-ime-off-hook
+            (function (lambda () (set-cursor-color myCursorColor) (setq cursor-type '(bar . 3)))))
+  )
 
 (with-eval-after-load 'multiple-cursors
   (add-hook 'multiple-cursors-mode-enabled-hook (function (lambda () (set-cursor-color myCursorColor_mc) (setq cursor-type 'box))))
