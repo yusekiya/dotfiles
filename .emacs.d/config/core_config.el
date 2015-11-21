@@ -47,6 +47,7 @@
   (use-package mozc
     :config
     (setq default-input-method "japanese-mozc")
+    (global-set-key [(super space)] 'toggle-input-method)
     (define-key isearch-mode-map "\C-o" 'isearch-toggle-input-method))
   )
 
