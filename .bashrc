@@ -120,6 +120,11 @@ function show_path () {
     echo $PATH | tr ":" "\n"
 }
 
+# aliases and functions for linux
+if [ "$(uname)" = "Linux" ]; then
+    alias runemacs='XMODIFIERS=@im=none /usr/bin/emacs'
+fi
+
 # aliases and functions for windows
 if [ "$(uname -o)" = "Msys" ]; then
     function trash () {
