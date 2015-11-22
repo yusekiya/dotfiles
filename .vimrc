@@ -32,6 +32,8 @@ set t_Co=16
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set mouse=a
+set wildmenu
+set wildmode=longest:full
 let mapleader = "\<space>"
 " Neobundle
 " Note: Skip initialization for vim-tiny or vim-small.
