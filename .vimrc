@@ -108,6 +108,8 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR>
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 nmap n nzz
 nmap N Nzz
 nmap * *zz
