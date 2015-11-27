@@ -88,7 +88,9 @@ alias la='ls -A'                              # all but . and ..
 
 # applications
 alias tree='tree --dirsfirst -C'
-alias emacs='emacsclient'
+function emacs () {
+    emacsclient "$@" >& /dev/null || command emacs "$@"
+}
 alias pyman='python -m pydoc'
 alias lesst='less_table'
 function less_table () {
@@ -122,7 +124,7 @@ function show_path () {
 
 # aliases and functions for linux
 if [ "$(uname)" = "Linux" ]; then
-    alias runemacs='XMODIFIERS=@im=none /usr/bin/emacs'
+    alias emacs='XMODIFIERS=@im=none emacs'
 fi
 
 # aliases and functions for windows
