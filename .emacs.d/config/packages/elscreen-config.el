@@ -1,13 +1,4 @@
 (use-package elscreen
-  ;; ;; an error occurs if loading elscreen is deferred
-  ;; :defer t
-  ;; :commands (elscreen-start elscreen-create)
-  ;; :bind (("<C-tab>" . elscreen-next)
-  ;;        ("<C-S-tab>" . elscreen-previous)
-  ;;        ("C-q C-a" . elscreen-toggle)
-  ;;        ("C-q t" . elscreen-create)
-  ;;        ("C-q C-t" . elscreen-create))
-  :init  
   :config
   (custom-set-variables '(elscreen-tab-display-control nil) ; hide control tab at the left side
                         '(elscreen-tab-display-kill-screen nil) ; hide kill button
@@ -18,6 +9,7 @@
   (global-set-key [(control shift iso-lefttab)] 'elscreen-previous)
   (global-set-key (kbd "C-q t") 'elscreen-create)
   (global-set-key (kbd "C-q C-t") 'elscreen-create)
+  (global-set-key (kbd "C-q x") 'elscreen-kill)
   (bind-key "C-q c" 'elscreen-clone)
   (progn (elscreen-set-prefix-key "\C-q\C-c")
          (bind-keys :map elscreen-map
