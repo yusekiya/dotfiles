@@ -17,6 +17,12 @@ beacon
 bind-key
 birds-of-paradise-plus-theme
 cmake-mode
+company
+company-auctex
+company-irony
+company-irony-c-headers
+company-jedi
+company-quickhelp
 concurrent
 ctable
 cython-mode
