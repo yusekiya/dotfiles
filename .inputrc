@@ -57,7 +57,7 @@
 
   # Append "/" to all dirnames
   #set mark-directories on
-  #set mark-symlinked-directories on
+  set mark-symlinked-directories on
 
   # visible-stats
   # Append a mark according to the file type in a listing
