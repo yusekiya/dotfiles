@@ -107,7 +107,7 @@
   (setq font-latex-script-display '((raise -0.2) raise 0.2))
   (custom-set-variables '(font-latex-fontify-sectioning 'color))
   (setq-default TeX-master nil)
-  (use-package auto-complete-auctex)
+  ;; (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my:goto-blank-brackets-backward)
              ("C-." . my:goto-blank-brackets-forward))
@@ -138,11 +138,11 @@
 
 
 ;; Yasnippet
-(defun my:yasnippet-setup-for-auctex ()
-  (when (featurep 'yasnippet)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)))
+;; (defun my:yasnippet-setup-for-auctex ()
+;;   (when (featurep 'yasnippet)
+;;     (add-to-list 'ac-sources 'ac-source-yasnippet)))
 
-(add-hook 'LaTeX-mode-hook 'my:yasnippet-setup-for-auctex)
+;; (add-hook 'LaTeX-mode-hook 'my:yasnippet-setup-for-auctex)
 
 
 ;; RefTeX mode

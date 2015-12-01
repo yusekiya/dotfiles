@@ -433,7 +433,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "acmode")
+;; (load "acmode")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1358,17 +1358,18 @@ The argument icon must be string."
       'irony-completion-at-point-async)
     (define-key irony-mode-map [remap complete-symbol]
       'irony-completion-at-point-async))
-  (require 'ac-irony)
-  (defun my-ac-irony-setup ()
-    ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
-    ;; *may* persist after an expansion.
-    (yas-minor-mode 1)
-    (auto-complete-mode 1)
-    (add-to-list 'ac-sources 'ac-source-irony)
-    (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
+  ;; (require 'ac-irony)
+  ;; (defun my-ac-irony-setup ()
+  ;;   ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
+  ;;   ;; *may* persist after an expansion.
+  ;;   (yas-minor-mode 1)
+  ;;   (auto-complete-mode 1)
+  ;;   (add-to-list 'ac-sources 'ac-source-irony)
+  ;;   (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'irony-mode-hook 'my-irony-mode-setup)
-  (add-hook 'irony-mode-hook 'my-ac-irony-setup))
+  ;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1417,7 +1418,7 @@ The argument icon must be string."
     (define-key python-mode-map (kbd "M-/") 'jedi:complete)
     (define-key jedi-mode-map (kbd "<C-tab>") nil)
     ;; (yas-minor-mode-on)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)
+    ;; (add-to-list 'ac-sources 'ac-source-yasnippet)
     )
   (add-hook 'python-mode-hook 'my:jedi-init)
   ;; (add-hook 'python-mode-hook 'jedi:setup)
