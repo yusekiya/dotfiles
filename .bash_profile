@@ -6,11 +6,11 @@ fi
 
 # include path
 if [ -d "/usr/local/include" ] ; then
-    export CPLUS_INCLUDE_PATH=/usr/local/include
+    export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
 fi
 # library path
 if [ -d "/usr/local/lib" ] ; then
-    export LIBRARY_PATH=/usr/local/lib
+    export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}
 fi
 
 # Python
