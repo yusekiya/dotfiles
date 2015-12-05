@@ -46,7 +46,7 @@
   #set bell-style visible
 
   # Show all instead of beeping first
-  set show-all-if-ambiguous off
+  set show-all-if-ambiguous on
 
   # Filename completion/expansion
   set completion-ignore-case on
