@@ -84,3 +84,6 @@ work/
 .emacs.d/config/package_config.elc
 .emacs.d/elisp/latex-utils.elc
 .pkgbuild/mingw-w64-emacs/config.log
+.emacs.d/config/packages/company_config.elc
+.emacs.d/tramp
+.emacs.d/company-statistics-cache.el

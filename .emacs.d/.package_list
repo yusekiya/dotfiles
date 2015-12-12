@@ -17,6 +17,13 @@ beacon
 bind-key
 birds-of-paradise-plus-theme
 cmake-mode
+company
+company-auctex
+company-irony
+company-irony-c-headers
+company-jedi
+company-quickhelp
+company-statistics
 concurrent
 ctable
 cython-mode
@@ -75,7 +82,6 @@ hlinum
 ht
 indent-guide
 irony
-jedi
 jedi-core
 key-chord
 let-alist

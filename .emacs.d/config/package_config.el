@@ -433,7 +433,21 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "acmode")
+;; (load "acmode")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; company
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "company_config")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vc-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(with-eval-after-load 'company
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda () (add-to-list (make-local-variable 'company-backends) 'company-elisp))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1352,23 +1366,21 @@ The argument icon must be string."
    '(irony-server-install-prefix "~/.emacs.d/irony/")
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
-  :config
   (defun my-irony-mode-setup ()
     (define-key irony-mode-map [remap completion-at-point]
       'irony-completion-at-point-async)
     (define-key irony-mode-map [remap complete-symbol]
       'irony-completion-at-point-async))
-  (require 'ac-irony)
-  (defun my-ac-irony-setup ()
-    ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
-    ;; *may* persist after an expansion.
-    (yas-minor-mode 1)
-    (auto-complete-mode 1)
-    (add-to-list 'ac-sources 'ac-source-irony)
-    (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
+  (defun my:company-irony-setup ()
+    (add-to-list (make-local-variable 'company-backends) 'company-irony)
+    (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
+    (use-package company-irony-c-headers
+      :config
+      (add-to-list (make-local-variable 'company-backends) 'company-irony-c-headers)))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'irony-mode-hook 'my-irony-mode-setup)
-  (add-hook 'irony-mode-hook 'my-ac-irony-setup))
+  (add-hook 'irony-mode-hook 'my:company-irony-setup)
+)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1409,19 +1421,17 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; jedi (python)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package jedi
+(use-package jedi-core
   :defer t
   :init
-  (defun my:jedi-init ()
-    (jedi:setup)
-    (define-key python-mode-map (kbd "M-/") 'jedi:complete)
-    (define-key jedi-mode-map (kbd "<C-tab>") nil)
-    ;; (yas-minor-mode-on)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)
-    )
-  (add-hook 'python-mode-hook 'my:jedi-init)
-  ;; (add-hook 'python-mode-hook 'jedi:setup)
-  (setq jedi:complete-on-dot t))
+  (setq jedi:complete-on-dot t)
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (defun my:company-jedi-setup ()
+    (use-package company-jedi
+    :config
+    (add-to-list (make-local-variable 'company-backends) '(company-jedi :with company-yasnippet company-dabbrev-code))))
+  (add-hook 'python-mode-hook 'my:company-jedi-setup)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1503,7 +1513,18 @@ The argument icon must be string."
   (setq indent-guide-delay nil)
   (custom-set-faces '(indent-guide-face ((t (:inherit font-lock-comment-delimiter-face
                                              :italic nil
-                                             :bold nil))))))
+                                             :bold nil)))))
+  :config
+  ;; (with-eval-after-load 'company
+  ;;   (add-hook 'company-mode-hook
+  ;;             (lambda ()
+  ;;               (add-hook 'company-completion-started-hook
+  ;;                         (lambda (&optional arg) (indent-guide-mode -1)) nil t)
+  ;;               (add-hook 'company-completion-cancelled-hook
+  ;;                         (lambda (&optional arg) (indent-guide-mode 1)) nil t)
+  ;;               (add-hook 'company-completion-finished-hook
+  ;;                         (lambda (&optional arg) (indent-guide-mode 1)) nil t))))
+)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1601,6 +1622,15 @@ The argument icon must be string."
   :config
   (diminish 'beacon-mode (my:safe-lighter-icon "*" "lightbulb-o"))
   (beacon-mode 1)
+  (with-eval-after-load 'company
+    (add-hook 'company-mode-hook
+              (lambda ()
+                (add-hook 'company-completion-started-hook
+                          (lambda (&optional arg) (beacon-mode -1)) nil t)
+                (add-hook 'company-completion-cancelled-hook
+                          (lambda (&optional arg) (beacon-mode 1)) nil t)
+                (add-hook 'company-completion-finished-hook
+                          (lambda (&optional arg) (beacon-mode 1)) nil t))))
   )
 
 

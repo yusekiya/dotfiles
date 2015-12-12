@@ -107,7 +107,6 @@
   (setq font-latex-script-display '((raise -0.2) raise 0.2))
   (custom-set-variables '(font-latex-fontify-sectioning 'color))
   (setq-default TeX-master nil)
-  (use-package auto-complete-auctex)
   (bind-keys :map LaTeX-mode-map
              ("C-," . my:goto-blank-brackets-backward)
              ("C-." . my:goto-blank-brackets-forward))
@@ -127,14 +126,19 @@
 ;; LaTeX setup
 (defun my:latex-setup ()
   (use-package smart-newline
-    :config
-    (bind-keys :map LaTeX-mode-map
-               ("RET" . smart-newline)))
+               :config
+               (bind-keys :map LaTeX-mode-map
+                          ("RET" . smart-newline)))
   (use-package flyspell
-    :config
-    (flyspell-mode 1))
+               :config
+               (flyspell-mode 1))
   ;; Regard backslash as usual word
-  (modify-syntax-entry ?\\ "w"))
+  (modify-syntax-entry ?\\ "w")
+  (with-eval-after-load 'company
+                        (use-package company-auctex
+                                     :config
+                                     (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
+                                     (company-auctex-init))))
 
 (add-hook 'LaTeX-mode-hook 'my:latex-setup)
 
@@ -142,7 +146,6 @@
 ;; Yasnippet
 (defun my:yasnippet-setup-for-auctex ()
   (when (featurep 'yasnippet)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)
     (set (make-local-variable 'yas-key-syntaxes) '("w\\" "w\\_" yas-try-key-from-whitespace))))
 
 (add-hook 'LaTeX-mode-hook 'my:yasnippet-setup-for-auctex)

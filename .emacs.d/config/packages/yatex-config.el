@@ -61,10 +61,10 @@
     (push '("*Label completions*") popwin:special-display-config)
     (push '("*RefTeX Select*") popwin:special-display-config))
   ;; Turn on auto complete
-  (use-package auto-complete
-    :config
-    (add-to-list 'ac-modes 'yatex-mode)
-    (auto-complete-mode 1))
+  ;; (use-package auto-complete
+  ;;   :config
+  ;;   (add-to-list 'ac-modes 'yatex-mode)
+  ;;   (auto-complete-mode 1))
   ;; ;; Turn on yasnippet mode
   ;; (use-package yasnippet
   ;;   :config
@@ -85,14 +85,14 @@
 )
 
 ;; ac-latex
-(defun my:setting-ac-for-latex ()
-  (require 'auto-complete-latex)
-  (setq ac-l-dict-directory (concat user-emacs-directory "lib/acmode/ac-l-dict/"))
-  ;; (add-to-list 'ac-l-sources 'ac-source-yasnippet)
-  (setq ac-l-sources (append '(ac-source-yasnippet ac-source-words-in-same-mode-buffers) ac-l-sources))
-  (ac-l-setup)
-  )
-(add-hook 'yatex-mode-hook 'my:setting-ac-for-latex)
+;; (defun my:setting-ac-for-latex ()
+;;   (require 'auto-complete-latex)
+;;   (setq ac-l-dict-directory (concat user-emacs-directory "lib/acmode/ac-l-dict/"))
+;;   ;; (add-to-list 'ac-l-sources 'ac-source-yasnippet)
+;;   (setq ac-l-sources (append '(ac-source-yasnippet ac-source-words-in-same-mode-buffers) ac-l-sources))
+;;   (ac-l-setup)
+;;   )
+;; (add-hook 'yatex-mode-hook 'my:setting-ac-for-latex)
 
 ;; RefTeX mode
 (defun my:RefTeX-setup-for-yatex ()
