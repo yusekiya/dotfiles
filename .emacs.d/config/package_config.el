@@ -1641,6 +1641,7 @@ The argument icon must be string."
   (my:before-ad-zoom-window-disable-splitting-window split-window-right)
   (my:before-ad-zoom-window-disable-splitting-window split-window-below)
   (my:before-ad-zoom-window-disable-splitting-window find-file)
+  (my:before-ad-zoom-window-disable-splitting-window kill-buffer)
   (with-eval-after-load 'evil
     (my:before-ad-zoom-window-disable-splitting-window evil-window-split)
     (my:before-ad-zoom-window-disable-splitting-window evil-window-vsplit)
