@@ -132,7 +132,9 @@
                ("RET" . smart-newline)))
   (use-package flyspell
     :config
-    (flyspell-mode 1)))
+    (flyspell-mode 1))
+  ;; Regard backslash as usual word
+  (modify-syntax-entry ?\\ "w"))
 
 (add-hook 'LaTeX-mode-hook 'my:latex-setup)
 
