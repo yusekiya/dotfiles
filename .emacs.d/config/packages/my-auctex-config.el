@@ -140,7 +140,8 @@
 ;; Yasnippet
 (defun my:yasnippet-setup-for-auctex ()
   (when (featurep 'yasnippet)
-    (add-to-list 'ac-sources 'ac-source-yasnippet)))
+    (add-to-list 'ac-sources 'ac-source-yasnippet)
+    (set (make-local-variable 'yas-key-syntaxes) '("w\\" "w\\_" yas-try-key-from-whitespace))))
 
 (add-hook 'LaTeX-mode-hook 'my:yasnippet-setup-for-auctex)
 
