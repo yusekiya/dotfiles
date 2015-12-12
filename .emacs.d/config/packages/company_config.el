@@ -15,6 +15,7 @@
              ("C-n" . company-select-next)
              ("C-p" . company-select-previous)
              ("C-s" . company-filter-candidates)
+             ("C-h" . backward-delete-char)
              ([tab] . company-complete-selection))
   (bind-keys :map company-search-map
              ("C-n" . company-select-next)
