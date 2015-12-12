@@ -23,6 +23,7 @@ company-irony
 company-irony-c-headers
 company-jedi
 company-quickhelp
+company-statistics
 concurrent
 ctable
 cython-mode

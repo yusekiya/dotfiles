@@ -1,8 +1,12 @@
 (use-package company
   :config
   (global-company-mode +1)
+  (use-package company-statistics
+    :config
+    (company-statistics-mode))
   (diminish 'company-mode "")
   (setq company-minimum-prefix-length 3)
+  (setq company-transformers '(company-sort-by-statistics company-sort-by-backend-importance))
   ;; ;; Disable auto start of completion
   ;; (custom-set-variables
   ;;  '(company-idle-delay nil))
