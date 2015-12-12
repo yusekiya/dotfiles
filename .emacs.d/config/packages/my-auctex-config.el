@@ -126,19 +126,19 @@
 ;; LaTeX setup
 (defun my:latex-setup ()
   (use-package smart-newline
-               :config
-               (bind-keys :map LaTeX-mode-map
-                          ("RET" . smart-newline)))
+    :config
+    (bind-keys :map LaTeX-mode-map
+               ("RET" . smart-newline)))
   (use-package flyspell
-               :config
-               (flyspell-mode 1))
+    :config
+    (flyspell-mode 1))
   ;; Regard backslash as usual word
   (modify-syntax-entry ?\\ "w")
   (with-eval-after-load 'company
-                        (use-package company-auctex
-                                     :config
-                                     (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
-                                     (company-auctex-init))))
+    (use-package company-auctex
+      :config
+      (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
+      (company-auctex-init))))
 
 (add-hook 'LaTeX-mode-hook 'my:latex-setup)
 
