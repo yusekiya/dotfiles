@@ -1429,8 +1429,8 @@ The argument icon must be string."
   (defun my:company-jedi-setup ()
     (use-package company-jedi
     :config
-    (add-to-list (make-local-variable 'company-backends) 'company-jedi)
-    (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)))
+    (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
+    (add-to-list (make-local-variable 'company-backends) 'company-jedi)))
   (add-hook 'python-mode-hook 'my:company-jedi-setup)
   )
 
