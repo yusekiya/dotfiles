@@ -1609,22 +1609,6 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package zoom-window
   :bind ("C-q z" . zoom-window-zoom)
-  ;; :init
-  ;; (defvar my:zoom-window--orig-mode-line nil)
-  ;; (defvar my:zoom-window--mode-line-format " Zoom ")
-  ;; (defun my:zoom-window--save-orig-mode-line ()
-  ;;   (setq my:zoom-window--orig-mode-line mode-line-format))
-  ;; (defun my:zoom-window--restore-orig-mode-line ()
-  ;;   (setq mode-line-format my:zoom-window--orig-mode-line))
-  ;; (defun my:zoom-window--update-mode-line ()
-  ;;   (let ((enabled (zoom-window--enable-p)))
-  ;;     (if enabled
-  ;;         ;; when zoom-window is enabled
-  ;;         (progn (my:zoom-window--save-orig-mode-line)
-  ;;                (setq mode-line-format (cons my:zoom-window--mode-line-format mode-line-format)))
-  ;;         ;; when zoom-window is disabled
-  ;;         (my:zoom-window--restore-orig-mode-line))))
-  ;; (advice-add 'zoom-window-zoom :after #'my:zoom-window--update-mode-line) 
   :config
   (setq zoom-window-use-elscreen t)
   (setq zoom-window-mode-line-color "DarkGreen")
