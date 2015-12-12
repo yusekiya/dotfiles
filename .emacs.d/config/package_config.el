@@ -1372,8 +1372,7 @@ The argument icon must be string."
     (define-key irony-mode-map [remap complete-symbol]
       'irony-completion-at-point-async))
   (defun my:company-irony-setup ()
-    (add-to-list (make-local-variable 'company-backends) 'company-irony)
-    (add-to-list (make-local-variable 'company-backends) 'company-yasnippet)
+    (add-to-list (make-local-variable 'company-backends) '(company-irony :with company-yasnippet))
     (use-package company-irony-c-headers
       :config
       (add-to-list (make-local-variable 'company-backends) 'company-irony-c-headers)))
@@ -1429,7 +1428,8 @@ The argument icon must be string."
   (defun my:company-jedi-setup ()
     (use-package company-jedi
     :config
-    (add-to-list (make-local-variable 'company-backends) '(company-jedi :with company-yasnippet company-dabbrev-code))))
+    (add-to-list (make-local-variable 'company-backends)
+                 '(company-jedi :with company-yasnippet company-dabbrev-code))))
   (add-hook 'python-mode-hook 'my:company-jedi-setup)
   )
 
@@ -1549,7 +1549,7 @@ The argument icon must be string."
   (add-hook 'highlight-indent-guides-mode-hook 'my:set-indent-guide-face)
   (defadvice load-theme (after my:ad-set-indent-guide-face activate)
     (my:set-indent-guide-face))
-    )
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
