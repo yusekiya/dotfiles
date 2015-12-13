@@ -327,3 +327,4 @@
 
 ;; pos-tip が表示されるとモードラインがinactiveになったまま戻らない問題を修正
 (advice-add 'pos-tip-hide :after 'powerline-set-selected-window)
+(advice-add 'x-hide-tip :after 'powerline-set-selected-window)
