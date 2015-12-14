@@ -1775,6 +1775,24 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; meigen bot
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package meigen-bot
+  :config
+  (setq meigen-file-path "~/.emacs.d/lib/wisdom/words_of_wisdom.txt")
+  (setq my:meigen-already-displayed-p nil)
+  (defun my:display-meigen ()
+    (when (not my:meigen-already-displayed-p)
+      (echo-meigen-to-minibuffer)
+      (setq my:meigen-already-displayed-p t)
+      (setq meigen-reset-timer (run-at-time "12 hour" nil
+                                            (lambda ()
+                                              (setq my:meigen-already-displayed-p nil)
+                                              (cancel-timer meigen-reset-timer))))))
+  (run-with-idle-timer 5 t 'my:display-meigen))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc minor mode lighter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package simple
