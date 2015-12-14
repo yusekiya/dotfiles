@@ -161,36 +161,6 @@
 (add-hook 'LaTeX-mode-hook 'my:RefTeX-setup-for-auctex)
 
 
-;; Outline mode
-(defun latex-outline-level ()
-  (interactive)
-  (let ((str nil))
-    (looking-at outline-regexp)
-    (setq str (buffer-substring-no-properties (match-beginning 0) (match-end 0)))
-    (cond
-     ((string-match "documentclass" str) 1)
-     ((string-match "documentstyle" str) 1)
-     ((string-match "part" str) 2)
-     ((string-match "chapter" str) 3)
-     ((string-match "appendix" str) 3)
-     ((string-match "subsubsection" str) 6)
-     ((string-match "subsection" str) 5)
-     ((string-match "section" str) 4)
-     (t (+ 6 (length str)))
-     )))
-
-(defun my:auctex-outline-mode-setup ()
-  (setq outline-level 'latex-outline-level)
-  (make-local-variable 'outline-regexp)
-  (setq outline-regexp
-        (concat "[ \t]*" (regexp-quote "\\")
-                "\\(appendix\\|documentstyle\\|documentclass\\|part\\|chapter\\|section\\|"
-                "subsection\\|subsubsection\\|paragraph\\|subparagraph\\)"
-                "\\*?[ \t]*[[{]"))
-  (outline-minor-mode t))
-
-(add-hook 'LaTeX-mode-hook 'my:auctex-outline-mode-setup)
-
 ;; kinsoku.el
 (setq kinsoku-limit 10)
 
