@@ -158,13 +158,6 @@
   :config
   (evil-define-key 'normal dired-mode-map (kbd "i") #'wdired-change-to-wdired-mode))
 
-;; git-gutter with evil
-(use-package git-gutter
-  :defer t
-  :config
-  (evil-define-key 'normal git-gutter-mode-map "]c" #'git-gutter:next-hunk)
-  (evil-define-key 'normal git-gutter-mode-map "[c" #'git-gutter:previous-hunk))
-
 ;; expand-region with evil
 (use-package expand-region
   :defer t
