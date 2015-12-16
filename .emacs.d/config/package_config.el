@@ -282,7 +282,7 @@ Input a number within 20 to 100 as the percent of transparency.
 If you only input RET without inputting a number, the default is applied."
   (interactive "sPercent of transparency within 20 to 100 (default 90): ")
   (if (string= num "")
-      (set-frame-parameter nil 'alpha '(90 40))
+      (set-frame-parameter nil 'alpha '(90 90))
     (set-frame-parameter nil 'alpha (string-to-number num))))
 
 ;; window size

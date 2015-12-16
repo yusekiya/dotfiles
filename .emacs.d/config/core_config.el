@@ -84,7 +84,7 @@
       (add-to-list 'default-frame-alist '(right-fringe . 14))))
 
 ;; Default transparency
-(add-to-list 'default-frame-alist '(alpha . (90 40)))
+(add-to-list 'default-frame-alist '(alpha . 90))
 
 ;; Inhibit memubar, scrollbar
 (menu-bar-mode -1)
