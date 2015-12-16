@@ -1,3 +1,4 @@
+Premature optimization is the root of all evil. (Donald Knuth)
 If I had eight hours to chop down a tree, I'd spend six hours sharpening my ax. (Abraham Lincoln)
 He that is good for making excuses is seldom good for anything else. (Benjamin Franklin)
 Do the hard jobs first. The easy jobs will take care of themselves. (Dale Carnegie)
@@ -1387,7 +1388,6 @@ Walking with a friend in the dark is better than walking alone in the light. (He
 明治維新の改革を成就したものは、二十歳前後の田舎の青年であって、幕府の老人ではなかった。何事によらず、革命または改良ということは、必ず新たに世の中に出てきた青年の力であって、従来世の中に立っておったところの老人が説をひるがえしたために革命または改良が行われたという事は、ほとんどその例がない。(作家: 正岡子規)
 明日を耐え抜くために必要なものだけ残して、あらゆる過去を締め出せ。(英医学者: William Osler)
 明日死ぬかのように生きよ。永遠に生きるかのように学べ。(Mahatma Gandhi)
-迷う、ということは一種の欲望からきているように思う。ああもなりたい、こうもなりたい、こういうふうに出世したい、という欲望から迷いがでてくる。それを捨て去れば問題はなくなる。(松下幸之助)
 迷うということは一種の欲望からきているように思う。ああもなりたい、こうもなりたい、こういうふうに出世したい、という欲望から迷いがでてくる。それを捨て去れば問題はなくなる。(松下幸之助)
 目には目をでは、世界を盲目にするだけだ。(Mahatma Gandhi)
 目の見える人間は、見えるという幸福を知らずにいる。(仏作家: Andre Gide)
