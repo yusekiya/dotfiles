@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Nov 07 2015>
+;;     Time-stamp: <Dec 19 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -18,8 +18,6 @@
 ;; PATH environment
 (setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
 (setq exec-path (parse-colon-path (getenv "PATH")))
-;; Note directory (open-junk-file)
-(defvar my:note-dir "~/junk/")
 
 
 ;; ;; measure start-up time

@@ -1297,10 +1297,11 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; open-junk-file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package open-junk-file
+(use-package open-junk-file :defer t
   :init
-  (setq open-junk-file-format (concat my:note-dir "%Y/%m/%d-%H%M%S."))
-  :bind ("C-c C-f" . open-junk-file))
+  (defvar my:junk-dir "~/junk/")
+  (setq open-junk-file-format (concat my:junk-dir "%Y/%m/%d-%H%M%S."))
+  :commands open-junk-file)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1671,15 +1672,15 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; search my notes
+;; my note utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package helm-ag
-  :init
-  (defun my:search-notes ()
-  (interactive)
-  (unless (boundp 'my:note-dir) (error "my:note-dir not found"))
-  (helm-do-ag my:note-dir))
-  :defer t)
+;; (use-package helm-ag
+;;   :init
+;;   (defun my:search-notes ()
+;;   (interactive)
+;;   (unless (boundp 'my:note-dir) (error "my:note-dir not found"))
+;;   (helm-do-ag my:note-dir))
+;;   :defer t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
