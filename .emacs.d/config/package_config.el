@@ -1680,13 +1680,8 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my note utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package helm-ag
-;;   :init
-;;   (defun my:search-notes ()
-;;   (interactive)
-;;   (unless (boundp 'my:note-dir) (error "my:note-dir not found"))
-;;   (helm-do-ag my:note-dir))
-;;   :defer t)
+(use-package my-note :defer t
+  :commands (mynote:find-file mynote:search))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
