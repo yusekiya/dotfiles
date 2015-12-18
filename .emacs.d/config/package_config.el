@@ -1301,6 +1301,12 @@ The argument icon must be string."
   :init
   (defvar my:junk-dir "~/junk/")
   (setq open-junk-file-format (concat my:junk-dir "%Y/%m/%d-%H%M%S."))
+  (use-package helm-ag :defer t
+    :init
+    (defun my:junk-search ()
+      (interactive)
+      (unless (file-exists-p my:junk-dir) (error "Junk files not found"))
+      (helm-do-ag my:junk-dir)))
   :commands open-junk-file)
 
 
