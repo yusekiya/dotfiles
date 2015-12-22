@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Dec 19 2015>
+;;     Time-stamp: <Dec 22 2015>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -59,7 +59,7 @@
 (setq-default line-spacing 2)
 
 ;; threshold for garbage collection
-(setq gc-cons-threshold 134217728)
+(setq gc-cons-threshold 1048576)   ; 1 MB
 
 ;; set the security level of the Diffie-Hellman key exchange to default
 (setq gnutls-min-prime-bits nil)
