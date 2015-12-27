@@ -395,6 +395,19 @@ When region is set, call `kill-ring-save'."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Mozc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; for linux
+(when (eq system-type 'gnu/linux)
+  (use-package mozc
+    :config
+    (setq default-input-method "japanese-mozc")
+    (global-set-key [(super space)] 'toggle-input-method)
+    (define-key isearch-mode-map "\C-o" 'isearch-toggle-input-method))
+  )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fontawesome
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package fontawesome

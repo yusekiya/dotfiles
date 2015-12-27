@@ -42,15 +42,6 @@
   (wrap-function-to-control-ime 'map-y-or-n-p nil nil)
   )
 
-;; for linux
-(when (eq system-type 'gnu/linux)
-  (use-package mozc
-    :config
-    (setq default-input-method "japanese-mozc")
-    (global-set-key [(super space)] 'toggle-input-method)
-    (define-key isearch-mode-map "\C-o" 'isearch-toggle-input-method))
-  )
-
 ;; dabbrev for japanese
 (setq case-replace nil)             ;dabbrev exact (upper or lower)case
 (setq dabbrev-case-fold-search nil) ;dabbrev exact case
