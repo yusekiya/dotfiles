@@ -67,6 +67,9 @@
 ;; threshold width for split window
 (setq split-width-threshold 140)
 
+;; Load newer file of .el or .elc
+(setq load-prefer-newer t)
+
 ;; Distinguish version
 (if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load "core_config"))
 

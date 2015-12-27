@@ -198,9 +198,6 @@
 ;;(put 'narrow-to-page 'disabled nil)
 ;;(put 'narrow-to-region 'disabled nil)
 
-;; Load newer file of .el or .elc
-(setq load-prefer-newer t)
-
 ;; Do NOT show message in scratch buffer
 (setq initial-scratch-message nil)
 
