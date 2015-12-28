@@ -1694,7 +1694,7 @@ The argument icon must be string."
 ;; my note utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package my-note :defer t
-  :commands (mynote:find-file mynote:search)
+  :commands (mynote:make mynote:search)
   :bind (("C-c C-f" . mynote:make)
          ("C-c C-s" . mynote:search)))
 
