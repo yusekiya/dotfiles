@@ -55,9 +55,14 @@
       - numba
       - jedi
   - Install the following packages through pip:
-      - numdifftools
       - grip
       - epc
+  - Install numdifftools through conda
+
+    ``` bash
+    $ conda install -c https://conda.anaconda.org/pbrod numdifftools
+    ```
+
 - Setup color syntax for less
   - Pygments
 
