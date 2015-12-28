@@ -10,7 +10,7 @@
 (defvar mynote:file-format "%Y/%m/%d-%H%M%S.md")
 (defvar mynote:find-file-function 'find-file-other-window)
 
-(defun mynote:find-file ()
+(defun mynote:make ()
   (interactive)
   (let* ((file (format-time-string
                 (concat mynote:base-dir mynote:file-format) (current-time)))
