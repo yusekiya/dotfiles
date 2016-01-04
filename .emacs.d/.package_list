@@ -85,6 +85,7 @@ irony
 jedi-core
 key-chord
 let-alist
+lice
 load-theme-buffer-local
 manage-minor-mode
 markdown-mode
