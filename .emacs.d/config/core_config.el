@@ -129,13 +129,7 @@
 ;;       (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/backup"))
 ;;             backup-directory-alist))
 
-;; Remove attributes from text in kill-ring
-(defadvice kill-new (around my-kill-ring-disable-text-property activate)
-  (let ((new (ad-get-arg 0)))
-    (set-text-properties 0 (length new) nil new)
-    ad-do-it))
-
-;; Don't omit argument for elisp (?)
+;; Don't omit argument for elisp
 (setq eval-expression-print-level nil)
 (setq eval-expression-print-length nil)
 
