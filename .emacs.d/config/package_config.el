@@ -135,8 +135,8 @@ input
   "Put message in buffername"
   (let ((buf))
     (setq buf (get-buffer-create buffer_name))
-    (with-current-buffer buf 
-      (erase-buffer) 
+    (with-current-buffer buf
+      (erase-buffer)
       (insert message))
     (display-buffer buf)
     ))
@@ -577,18 +577,18 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Scratch buffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun my-make-scratch (&optional arg)  
-  (interactive)  
-  (progn  
+(defun my-make-scratch (&optional arg)
+  (interactive)
+  (progn
     ;; Make "*scratch*" and put it into buffer-list
-    (set-buffer (get-buffer-create "*scratch*"))  
-    (funcall initial-major-mode)  
-    (erase-buffer)  
-    (when (and initial-scratch-message (not inhibit-startup-message))  
-      (insert initial-scratch-message))  
-    (or arg (progn (setq arg 0)  
-                   (switch-to-buffer "*scratch*")))  
-    (cond ((= arg 0) (message "*scratch* is cleared up."))  
+    (set-buffer (get-buffer-create "*scratch*"))
+    (funcall initial-major-mode)
+    (erase-buffer)
+    (when (and initial-scratch-message (not inhibit-startup-message))
+      (insert initial-scratch-message))
+    (or arg (progn (setq arg 0)
+                   (switch-to-buffer "*scratch*")))
+    (cond ((= arg 0) (message "*scratch* is cleared up."))
           ((= arg 1) (message "another *scratch* is created")))))
 
 (defun my:clear-scratch()
@@ -599,7 +599,7 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Line and row 
+;; Line and row
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Show line number in mode line
 (setq line-number-mode t)       ; show line number in mode line
@@ -819,8 +819,8 @@ The argument icon must be string."
   (interactive
    (list
     (intern (completing-read "Load custom theme: "
-			     (mapcar 'symbol-name
-				     (custom-available-themes))))
+                 (mapcar 'symbol-name
+                     (custom-available-themes))))
     nil nil))
   (unless (custom-theme-name-valid-p theme)
     (error "Invalid theme name `%s'" theme))
@@ -833,7 +833,7 @@ The argument icon must be string."
   :init
   (setq solarized-high-contrast-mode-line nil)
   (custom-set-variables
-   ;; Don't scale font 
+   ;; Don't scale font
    '(solarized-use-variable-pitch nil)
    '(solarized-height-minus-1 1.0)
    '(solarized-height-plus-1 1.0)
@@ -1024,7 +1024,7 @@ The argument icon must be string."
 (use-package view
   :defer t
   :init
-  (setq view-read-only t)  
+  (setq view-read-only t)
   :config
   (diminish 'view-mode "")
   )
@@ -1207,7 +1207,7 @@ The argument icon must be string."
 ;; (my:macro-after-ad-refresh-cursor keyboard-quit)
 ;; (my:macro-after-ad-refresh-cursor force-mode-line-update)
 (with-eval-after-load 'smartrep
-  (my:macro-after-ad-refresh-cursor smartrep-do-fun)  
+  (my:macro-after-ad-refresh-cursor smartrep-do-fun)
   ;; (my:macro-after-ad-refresh-cursor smartrep-map-internal) ; doesn't work
   )
 (with-eval-after-load 'evil
