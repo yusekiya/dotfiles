@@ -222,9 +222,6 @@
 (defalias 'exit 'save-buffers-kill-emacs)
 (global-unset-key (kbd "C-x C-c"))
 
-;; Reload configuration
-(defalias 'reload-emacs '(lambda() (interactive) (load-file "~/.emacs")))
-
 ;; Change encoding
 (defalias 'change-encoding 'set-buffer-file-coding-system)
 ;; Change encoding and reload buffer
