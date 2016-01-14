@@ -379,12 +379,22 @@ When region is set, call `kill-ring-save'."
     output))
 
 ;; Store current directory in clipboard
-(defun my:copy-current-path ()                                                         
+(defun my:copy-current-path()
   (interactive)
   (let ((fPath default-directory))
     (when fPath
       (message "stored path: %s" fPath)
       (kill-new (file-truename fPath)))))
+
+(defun my:copy-current-filename()
+  (interactive)
+  (let ((fPath buffer-file-name))
+    (when fPath
+      (message "stored path: %s" fPath)
+      (kill-new (file-truename fPath)))))
+
+(defalias 'thisdir 'my:copy-current-path)
+(defalias 'thisfile 'my:copy-current-filename)
 
 (defun my:swap-faces (face1 face2)
   (let (temp-var)
