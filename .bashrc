@@ -307,6 +307,8 @@ fi
 # Dircolors setting
 if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors.256dark" ]; then
     eval `dircolors ${HOME}/.dircolors.256dark`
+elif [ -f "${HOME}/repos/dircolors-solarized/dircolors.256dark" ]; then
+    eval `dircolors ${HOME}/repos/dircolors-solarized/dircolors.256dark`
 fi
 
 # Menu completion
