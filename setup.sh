@@ -123,7 +123,6 @@ make_link_forcibly() {
         if [ -d "$f" ]; then
             if [ -L ${dest} ]; then
                 ln -snf "$f" ${dest}
-                echo Existing link ${dest} renamed to ${dest}.bak
             elif [ -d ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
@@ -137,7 +136,6 @@ make_link_forcibly() {
         if [ -f "$f" ]; then
             if [ -L ${dest} ]; then
                 ln -snf "$f" ${dest}
-                echo Existing link ${dest} renamed to ${dest}.bak
             elif [ -f ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
