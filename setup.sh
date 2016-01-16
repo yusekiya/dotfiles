@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 source_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-dist_dir=~
+dest_dir=~
 
 echo "This script makes symbolic links to files in ${source_dir}."
-echo "The links will be created in ${dist_dir}."
-echo "When a link duplicates with a file in ${dist_dir},"
+echo "The links will be created in ${dest_dir}."
+echo "When a link duplicates with a file in ${dest_dir},"
 echo "the file will be renamed by adding a suffix \".bak\"."
 echo 
 echo -n "Are you sure to continue? [yes/no] "
@@ -28,34 +28,34 @@ do
     [[ "$( basename "$f")" == ".gitignore" ]] && continue
     [[ "$( basename "$f")" == ".DS_Store" ]] && continue
 
-    dist="${dist_dir}/$( basename "$f")"
+    dest="${dest_dir}/$( basename "$f")"
 
     if [ -d "$f" ]; then
-        if [ -L ${dist} ]; then
-            ln -snf -S ".bak" "$f" ${dist}
-            echo Existing link ${dist} renamed to ${dist}.bak
-        elif [ -d ${dist} ]; then
-            mv ${dist} ${dist}.bak
-            ln -s "$f" ${dist}
-            echo Existing regular directory ${dist} renamed to ${dist}.bak
+        if [ -L ${dest} ]; then
+            ln -snf -S ".bak" "$f" ${dest}
+            echo Existing link ${dest} renamed to ${dest}.bak
+        elif [ -d ${dest} ]; then
+            mv ${dest} ${dest}.bak
+            ln -s "$f" ${dest}
+            echo Existing regular directory ${dest} renamed to ${dest}.bak
         else
-            ln -s "$f" ${dist}
+            ln -s "$f" ${dest}
         fi
-        echo Directory symbolic link created: ${dist}/
+        echo Directory symbolic link created: ${dest}/
     fi
     
     if [ -f "$f" ]; then
-        if [ -L ${dist} ]; then
-            ln -snf -S ".bak" "$f" ${dist}
-            echo Existing link ${dist} renamed to ${dist}.bak
-        elif [ -f ${dist} ]; then
-            mv ${dist} ${dist}.bak
-            ln -s "$f" ${dist}
-            echo Existing regular file ${dist} renamed to ${dist}.bak
+        if [ -L ${dest} ]; then
+            ln -snf -S ".bak" "$f" ${dest}
+            echo Existing link ${dest} renamed to ${dest}.bak
+        elif [ -f ${dest} ]; then
+            mv ${dest} ${dest}.bak
+            ln -s "$f" ${dest}
+            echo Existing regular file ${dest} renamed to ${dest}.bak
         else
-            ln -s "$f" ${dist}
+            ln -s "$f" ${dest}
         fi
-        echo File symbolic link created: ${dist}
+        echo File symbolic link created: ${dest}
     fi
     
 done
@@ -63,16 +63,16 @@ done
 # Create symbolic link ~/.profile which points to .bash_profile on linux
 if [ "$(uname)" = "Linux" -a -f "${source_dir}/.bash_profile" ]; then
     src="${source_dir}/.bash_profile"
-    dist="${dist_dir}/.profile"
-    if [ -L ${dist} ]; then
-        ln -snf -S ".bak" ${src} ${dist}
-        echo Existing link ${dist} renamed to ${dist}.bak
-    elif [ -f ${dist} ]; then
-        mv ${dist} ${dist}.bak
-        ln -s ${src} ${dist}
-        echo Existing regular file ${dist} renamed to ${dist}.bak
+    dest="${dest_dir}/.profile"
+    if [ -L ${dest} ]; then
+        ln -snf -S ".bak" ${src} ${dest}
+        echo Existing link ${dest} renamed to ${dest}.bak
+    elif [ -f ${dest} ]; then
+        mv ${dest} ${dest}.bak
+        ln -s ${src} ${dest}
+        echo Existing regular file ${dest} renamed to ${dest}.bak
     else
-        ln -s ${src} ${dist}
+        ln -s ${src} ${dest}
     fi
-    echo File symbolic link created: ${dist}
+    echo File symbolic link created: ${dest}
 fi
