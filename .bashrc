@@ -293,6 +293,14 @@ if [ "$(uname)" = "Linux" ]; then
     export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
+# for mac
+if [ "$(uname)" = "Darwin" ]; then
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    source /usr/local/etc/bash_completion.d/git-completion.bash
+    GIT_PS1_SHOWDIRTYSTATE=true
+    export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
+fi 
+
 # Dircolors setting
 if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors.256dark" ]; then
     eval `dircolors ${HOME}/.dircolors.256dark`
