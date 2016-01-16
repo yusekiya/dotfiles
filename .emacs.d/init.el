@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Dec 22 2015>
+;;     Time-stamp: <Jan 17 2016>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -39,11 +39,13 @@
                '(left . 0))   ; x coordiate of frame
                default-frame-alist))
 
+(cond ((equal system-name "Yuya-no-MacBook.local") (setq font-height 140))
+      (t (setq font-height 120)))
 
 ;; font
 (set-face-attribute 'default nil
                     :family "Ricty Discord"
-                    :height 120)
+                    :height font-height)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
                   (cons "Ricty Discord" "iso10646-1"))
