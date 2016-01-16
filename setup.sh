@@ -182,7 +182,7 @@ do
 done
 
 if $flag_force; then
-    echo forced
+    make_link_forcibly
 else
     make_link_safely
 fi
