@@ -4,6 +4,10 @@ if [ -d "/mingw64/local/bin" ]; then
     export PATH="/mingw64/local/bin:${PATH}"
 fi
 
+if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+fi
+
 # include path
 if [ -d "/usr/local/include" ] ; then
     export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
