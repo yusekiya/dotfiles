@@ -52,7 +52,8 @@ make_link_safely() {
 
         if [ -d "$f" ]; then
             if [ -L ${dest} ]; then
-                ln -snf -S ".bak" "$f" ${dest}
+                mv ${dest} ${dest}.bak
+                ln -s "$f" ${dest}
                 echo Existing link ${dest} renamed to ${dest}.bak
             elif [ -d ${dest} ]; then
                 mv ${dest} ${dest}.bak
@@ -66,7 +67,8 @@ make_link_safely() {
 
         if [ -f "$f" ]; then
             if [ -L ${dest} ]; then
-                ln -snf -S ".bak" "$f" ${dest}
+                mv ${dest} ${dest}.bak
+                ln -s "$f" ${dest}
                 echo Existing link ${dest} renamed to ${dest}.bak
             elif [ -f ${dest} ]; then
                 mv ${dest} ${dest}.bak
@@ -85,7 +87,8 @@ make_link_safely() {
         src="${source_dir}/.bash_profile"
         dest="${dest_dir}/.profile"
         if [ -L ${dest} ]; then
-            ln -snf -S ".bak" ${src} ${dest}
+            mv ${dest} ${dest}.bak
+            ln -s ${src} ${dest}
             echo Existing link ${dest} renamed to ${dest}.bak
         elif [ -f ${dest} ]; then
             mv ${dest} ${dest}.bak
