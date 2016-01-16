@@ -91,8 +91,13 @@ alias la='ls -A'                              # all but . and ..
 
 # applications
 alias tree='tree --dirsfirst -C'
+if [ "$(uname)" = "Darwin" ]; then
+    emacs_gui=/Applications/Emacs.app/Contents/MacOS/Emacs
+else
+    emacs_gui=emacs
+fi
 function emacs () {
-    emacsclient "$@" >& /dev/null || command emacs "$@"
+    emacsclient "$@" >& /dev/null || command ${emacs_gui} "$@"
 }
 alias pyman='python -m pydoc'
 alias lesst='less_table'
