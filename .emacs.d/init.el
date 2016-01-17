@@ -39,10 +39,10 @@
                '(left . 0))   ; x coordiate of frame
                default-frame-alist))
 
-(cond ((equal system-name "Yuya-no-MacBook.local") (setq font-height 140))
+(cond ((string-match "MacBook\\.local$" system-name) (setq font-height 150))
       (t (setq font-height 120)))
 
-;; font
+;; fonta
 (set-face-attribute 'default nil
                     :family "Ricty Discord"
                     :height font-height)
