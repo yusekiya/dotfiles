@@ -11,6 +11,7 @@
   ;; (custom-set-variables
   ;;  '(company-idle-delay nil))
   (bind-key "M-SPC" 'company-complete)
+  (bind-key "A-SPC" 'company-complete)
   (bind-keys :map company-active-map
              ("C-n" . company-select-next)
              ("C-p" . company-select-previous)
