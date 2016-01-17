@@ -32,6 +32,10 @@ if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
     export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
 fi
 
+if [ -d "${HOME}/anaconda/bin" ]; then
+    export PATH="${HOME}/anaconda/bin:${PATH}"
+fi
+
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
@@ -53,3 +57,6 @@ if [ -f "${HOME}/.bashrc" ] ; then
 fi
 
 cd ~
+
+# added by Anaconda3 2.4.1 installer
+export PATH="/Users/yuyaseki/anaconda/bin:$PATH"
