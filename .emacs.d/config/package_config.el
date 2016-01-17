@@ -1226,6 +1226,8 @@ The argument icon must be string."
   (add-hook 'w32-ime-off-hook
             (function (lambda () (set-cursor-color myCursorColor) (setq cursor-type '(bar . 3)))))
   )
+(when (equal system-type 'darwin)
+  (add-hook 'mac-selected-keyboard-input-source-change-hook 'my:refresh-cursor))
 
 (with-eval-after-load 'multiple-cursors
   (add-hook 'multiple-cursors-mode-enabled-hook (function (lambda () (set-cursor-color myCursorColor_mc) (setq cursor-type 'box))))
