@@ -195,6 +195,9 @@
 ;; Do NOT show message in scratch buffer
 (setq initial-scratch-message nil)
 
+;; Enable mac-auto-ascii-mode
+(if (equal system-type 'darwin)
+    (mac-auto-ascii-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mode
