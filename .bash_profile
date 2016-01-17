@@ -32,6 +32,7 @@ if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
     export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
 fi
 
+## for mac (anaconda)
 if [ -d "${HOME}/anaconda/bin" ]; then
     export PATH="${HOME}/anaconda/bin:${PATH}"
 fi
@@ -57,6 +58,3 @@ if [ -f "${HOME}/.bashrc" ] ; then
 fi
 
 cd ~
-
-# added by Anaconda3 2.4.1 installer
-export PATH="/Users/yuyaseki/anaconda/bin:$PATH"
