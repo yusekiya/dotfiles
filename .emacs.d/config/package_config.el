@@ -222,9 +222,15 @@ input
 (require 'cl-lib)
 
 ;; Function to get ime mode as string
+(defun my:mac-get-ime()
+  (if (equal (mac-input-source) "com.apple.inputmethod.Kotoeri.Roman")
+      nil
+    (mac-input-source)))
+
 (defun my:get-ime ()
-  current-input-method
-  )
+  (if (equal system-type 'darwin)
+      (my:mac-get-ime)
+    current-input-method))
 
 ;; Function to go into a next blank brackets
 (defun my:goto-blank-brackets-forward ()
