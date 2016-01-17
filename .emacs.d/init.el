@@ -16,7 +16,6 @@
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
 (add-to-list 'load-path (concat user-emacs-directory "config/packages/"))
 ;; PATH environment
-(setenv "PATH" (concat (getenv "PATH") ";~/bin/"))
 (setq exec-path (parse-colon-path (getenv "PATH")))
 
 
