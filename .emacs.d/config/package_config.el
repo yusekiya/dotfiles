@@ -656,7 +656,7 @@ The argument icon must be string."
          )
   :config
   (progn (setq dired-dwim-target t)
-         (setq dired-listing-switches "-alh")
+         (setq dired-listing-switches "-alh --group-directories-first")
          (bind-keys :map dired-mode-map
                     ((kbd "RET") . dired-find-alternate-file)
                     ("a" . dired-find-file)
