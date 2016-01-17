@@ -195,9 +195,7 @@
 ;; Do NOT show message in scratch buffer
 (setq initial-scratch-message nil)
 
-;; Enable mac-auto-ascii-mode
-(if (equal system-type 'darwin)
-    (mac-auto-ascii-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mode
@@ -214,6 +212,7 @@
 ;; Set key and alias
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key "\C-h" 'backward-delete-char) ; C-h as BackSpace
+
 (global-set-key "\M-?" 'help-for-help)        ; M-? as help
 ;;(global-set-key "\C-q" 'quoted-insert)      ; C-q original
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char) ;; enable \C-h in isearch mode
@@ -271,6 +270,15 @@
 ;; Cycle spacing
 (global-set-key (kbd "S-SPC") 'cycle-spacing)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Setup for mac
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(when (equal system-type 'darwin)
+  ;; Update modeline when ime is toggled on mac
+  (add-hook 'mac-selected-keyboard-input-source-change-hook 'force-mode-line-update)
+  ;; Enable mac-auto-ascii-mode, this must be after setting for keybinding for some reason
+  (mac-auto-ascii-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load configuration for packages
