@@ -223,7 +223,7 @@ input
 
 ;; Function to get ime mode as string
 (defun my:mac-get-ime()
-  (if (equal (mac-input-source) "com.apple.inputmethod.Kotoeri.Roman")
+  (if (string-match "\\.roman$" (mac-input-source))
       nil
     (mac-input-source)))
 
