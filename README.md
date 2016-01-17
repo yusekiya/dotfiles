@@ -115,6 +115,10 @@
       ```
 
 - Install TeXlive
+- Install atom
+
+  Setup atom with `sync-settings`
+
 - Install 'gomi' command (if necessary)
 
   ```bash
