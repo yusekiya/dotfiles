@@ -278,7 +278,8 @@
   ;; Update modeline when ime is toggled on mac
   (add-hook 'mac-selected-keyboard-input-source-change-hook 'force-mode-line-update)
   ;; Enable mac-auto-ascii-mode, this must be after setting for keybinding for some reason
-  (mac-auto-ascii-mode))
+  (mac-auto-ascii-mode)
+  (setq mac-option-modifier 'alt))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load configuration for packages
