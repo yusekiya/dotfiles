@@ -283,6 +283,8 @@ if [ ! "$(uname -o)" = "Msys" ]\
 elif [ `type -p src-hilite-lesspipe.sh` ]; then
     export LESS='-R'
     export LESSOPEN='| src-hilite-lesspipe.sh %s'
+else
+    export LESS='-iR'
 fi
 
 # PS1 setting
