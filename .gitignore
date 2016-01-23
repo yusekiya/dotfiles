@@ -89,3 +89,6 @@ work/
 .emacs.d/company-statistics-cache.el
 .emacs.d/elisp/meigen-bot.elc
 .emacs.d/elisp/my-note.elc
+.emacs.d/elscreen
+.emacs.d/kkcrc
+.jupyter/nbconfig/
