@@ -37,6 +37,11 @@ if [ -d "${HOME}/anaconda/bin" ]; then
     export PATH="${HOME}/anaconda/bin:${PATH}"
 fi
 
+# Add path for node
+if [ -f "${HOME}/.nodebrew/nodebrew" ]; then
+    export PATH=${HOME}/.nodebrew/current/bin:${PATH}
+fi
+
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
