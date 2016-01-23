@@ -61,8 +61,7 @@
          (use-package elscreen-server)
          (use-package elscreen-persist
            :init
-           (elscreen-persist-mode 1)
-           (custom-set-variables '(elscreen-persist-file (expand-file-name "~/.elscreen"))))
+           (elscreen-persist-mode 1))
          ))
 ;; alias
 (defalias 'kill-tab 'elscreen-kill)
