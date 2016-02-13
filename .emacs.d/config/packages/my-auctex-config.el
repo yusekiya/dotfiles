@@ -298,3 +298,20 @@
         )
   (my:goto-blank-brackets-backward)
 )
+
+(setq latexmkrc-template-alist `(("EN" . ,(expand-file-name
+                                           "lib/template/template_en.latexmkrc"
+                                           user-emacs-directory))
+                                 ("JP (Unicode)" . ,(expand-file-name
+                                                     "lib/template/template_jp_unicode.latexmkrc"
+                                                     user-emacs-directory))
+                                 ("JP (Non unicode)" . ,(expand-file-name
+                                                         "lib/template/template_jp_nonunicode.latexmkrc"
+                                                         user-emacs-directory))))
+
+(defun my:create_latexmkrc (arg)
+  (interactive
+   (list
+    (completing-read "Choose one: " '("EN" "JP (Unicode)" "JP (Non unicode)"))))
+  (let ((file-name (cdr (assoc arg latexmkrc-template-alist))))
+    (copy-file file-name (expand-file-name ".latexmkrc" default-directory))))
