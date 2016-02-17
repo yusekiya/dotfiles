@@ -58,12 +58,6 @@
   :config
   (global-evil-surround-mode 1))
 
-;; evil-jumper
-(use-package evil-jumper
-  :config
-  ;; (turn-on-evil-jumper-mode)
-  (global-evil-jumper-mode))
-
 ;; evil-exchange
 (use-package evil-exchange
   :config
