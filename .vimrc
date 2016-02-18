@@ -124,7 +124,7 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap + <C-a>
 nnoremap - <C-x>
-" Reinden all
+" Reindent all
 nnoremap <leader>i gg=<S-g><C-o><C-o>zz
 " Select all text in current line
 nnoremap <leader>v 0v$h
