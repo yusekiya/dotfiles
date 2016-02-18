@@ -135,7 +135,6 @@
   (set-face-attribute 'mode-line-inactive nil
                       :box nil))
  
-
 ;;;
 ;;; `powerline-angle-left' and `powerline-angle-right'
 ;;; cf. https://gist.github.com/kenoss/b2d2daf38a956644fb04
@@ -280,29 +279,30 @@
                                 (powerline-git-status face1 'l)
                                 ;; ;; separator
                                 (funcall separator-left face1 face1)
-                                ;; ;; major mode
-                                (powerline-major-mode face1 'l)
-                                (powerline-narrow face1 'l)
-                                (powerline-vc face1)
+                                ;; ;; line number
+                                (powerline-raw "%4l" face1 'l)
+                                (powerline-raw " :" face1)
+                                (powerline-raw "%2c" face1 'l)
+                                ;; (powerline-narrow face1 'l)
+                                (powerline-raw "(%3p)" face1 'l)
                                 ))
-                          (rhs (list (powerline-raw global-mode-string face1 'r)
-                                     (powerline-raw "%4l" face1 'r)
-                                     (powerline-raw ":" face1)
-                                     (powerline-raw "%3c" face1 'r)
-                                     (funcall separator-right face1 face1)
-                                     ;; (powerline-raw " ")
-                                     (powerline-raw "%4p" face1 'r)
-                                     ;; (powerline-hud 'region 'default 2)
-                                     ))
-                          (center (list (powerline-raw " " face1)
-                                        (funcall separator-left face1 face2)
-                                        (when (boundp 'erc-modified-channels-object)
-                                          (powerline-raw erc-modified-channels-object face2 'l))
-                                        (powerline-process face2)
-                                        ;; (powerline-raw " :" face2)
-                                        (powerline-minor-modes face2 'l)
-                                        (powerline-raw " " face2)
-                                        (funcall separator-right face2 face1)))
+                          (rhs (list
+                                ;; (powerline-raw global-mode-string face1 'r)
+                                (funcall separator-right face1 face1)
+                                ;; ;; major mode
+                                (powerline-major-mode face1 'r)
+                                ;; (powerline-raw " ")
+                                ))
+                          (center (list
+                                   (powerline-raw " " face1)
+                                   (funcall separator-left face1 face2)
+                                   (when (boundp 'erc-modified-channels-object)
+                                     (powerline-raw erc-modified-channels-object face2 'l))
+                                   (powerline-process face2)
+                                   ;; (powerline-raw " :" face2)
+                                   (powerline-minor-modes face2 'l)
+                                   (powerline-raw " " face2)
+                                   (funcall separator-right face2 face1)))
                           )
                      (concat (powerline-render lhs)
                              (powerline-fill-center face1 (/ (powerline-width center) 2.0))
