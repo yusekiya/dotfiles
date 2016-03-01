@@ -87,7 +87,8 @@ alias ls='ls -hF --color=tty --group-directories-first'    # classify files in c
 # alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
-# alias l='ls -CF'                              #
+alias lly='ls -l --time-style=long-iso'
+# alias l='ls -CF'
 
 # applications
 alias tree='tree --dirsfirst -C'
