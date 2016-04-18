@@ -73,6 +73,7 @@ helm-ag
 helm-core
 helm-flycheck
 helm-flymake
+helm-flyspell
 helm-gtags
 helm-swoop
 heroku-theme

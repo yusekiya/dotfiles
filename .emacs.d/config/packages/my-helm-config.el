@@ -8,9 +8,7 @@
   (bind-keys :map helm-command-map
              ("a" . helm-ag)
              ("o" . helm-occur)
-             ("y" . yas-insert-snippet)
-             ("m" . helm-all-mark-rings))
-)
+             ("y" . yas-insert-snippet)))
 
 (use-package helm
   ;; :init
@@ -131,6 +129,10 @@
                  ))
   (fset 'helm-gtags-mode nil)
   )
+
+(use-package helm-flyspell
+  :config
+  (bind-key "C-; m" 'helm-flyspell-correct flyspell-mode-map))
 
 ;;; Save current position to mark ring
 (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
