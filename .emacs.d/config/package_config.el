@@ -1616,6 +1616,17 @@ The argument icon must be string."
     (smartrep-define-key git-gutter-mode-map
         "C-x" '(("p" . 'git-gutter:previous-hunk)
                 ("n" . 'git-gutter:next-hunk))))
+  (with-eval-after-load 'evil
+    (add-hook 'git-gutter-mode-on-hook
+              (lambda ()
+                (define-key evil-normal-state-map "[c" 'git-gutter:previous-hunk)
+                (define-key evil-normal-state-map "]c" 'git-gutter:next-hunk)))
+    (add-hook 'git-gutter-mode-off-hook
+              (lambda ()
+                (define-key evil-normal-state-map "[c" nil)
+                (define-key evil-normal-state-map "]c" nil)))
+    ;; (evil-define-key 'normal git-gutter-mode-map "]c" #'git-gutter:next-hunk) ;; doesn't work
+    )
   )
 
 
