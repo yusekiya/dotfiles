@@ -1662,7 +1662,8 @@ The argument icon must be string."
   :config
   (diminish 'beacon-mode (my:safe-lighter-icon "*" "lightbulb-o"))
   (beacon-mode 1)
-  (custom-set-variables '(beacon-blink-when-focused t))
+  (custom-set-variables '(beacon-blink-when-focused t)
+                        '(beacon-color (face-attribute 'font-lock-warning-face :foreground nil t)))
   (with-eval-after-load 'company
     (add-hook 'company-mode-hook
               (lambda ()
