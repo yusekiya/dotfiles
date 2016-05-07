@@ -668,7 +668,7 @@ The argument icon must be string."
                     ("l" . ignore)
                     ("i" . ignore)
                     ("s" . dired-rotate-sort)
-                    ("o" . dired-display-file));noh
+                    ("o" . dired-display-file))
          (use-package wdired
            ;; :defer t
            ;; :commands wdired-change-to-dired-mode
