@@ -691,6 +691,9 @@ The argument icon must be string."
                       ("c" . dired-ranger-copy)
                       ("p" . dired-ranger-paste)
                       ("m" . dired-ranger-move)))
+         (use-package dired-filter
+           :config
+           (dired-filter-mode))
          ;; Settings for windows
          (if (equal system-type 'windows-nt)
              (progn

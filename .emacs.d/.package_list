@@ -32,6 +32,7 @@ cython-mode
 dash
 deferred
 diminish
+dired-filter
 dired-hacks-utils
 dired-ranger
 direx
