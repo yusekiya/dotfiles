@@ -140,6 +140,7 @@ visual-regexp
 visual-regexp-steroids
 volatile-highlights
 websocket
+which-key
 with-editor
 yasnippet
 yatex
