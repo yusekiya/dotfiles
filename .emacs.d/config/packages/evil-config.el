@@ -139,7 +139,7 @@
   (evil-define-key 'normal dired-mode-map (kbd "l") #'ignore)
   (evil-define-key 'normal dired-mode-map (kbd "i") #'ignore)
   (evil-define-key 'normal dired-mode-map (kbd "s") #'dired-rotate-sort)
-  (evil-define-key 'normal dired-mode-map (kbd "C-m") #'dired-mark-files-regexp)
+  (evil-define-key 'normal dired-mode-map (kbd "M-m") #'dired-mark-files-regexp)
   (evil-define-key 'normal dired-mode-map (kbd "o") #'dired-display-file)
   (use-package popwin
     :config
