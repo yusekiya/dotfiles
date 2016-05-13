@@ -1533,6 +1533,7 @@ The argument icon must be string."
 ;; markdown mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
   :mode (("\\.text\\'" . gfm-mode)
          ("\\.markdown\\'" . gfm-mode)
          ("\\.md\\'" . gfm-mode))
@@ -1541,7 +1542,8 @@ The argument icon must be string."
     "markdown-mode-hook"
     ;; Read source from stdin (nil) or a file (t)
     (setq markdown-command-needs-filename nil))
-  (add-hook 'markdown-mode-hook 'markdown-custom))
+  (add-hook 'markdown-mode-hook 'markdown-custom)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
