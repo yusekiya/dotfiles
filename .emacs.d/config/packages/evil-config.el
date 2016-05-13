@@ -51,6 +51,8 @@
   (use-package key-chord
     :config
     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
+  (defadvice evil-goto-mark (before ad-evil-goto-mark activate)
+    (evil-set-jump))
   )
 
 ;; evil-surround mode
