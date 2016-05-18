@@ -951,6 +951,7 @@ The argument icon must be string."
  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 ;; User dictionary
 (setq ispell-personal-dictionary "~/en.pws")
+(bind-key "A-$" 'ispell-word)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
