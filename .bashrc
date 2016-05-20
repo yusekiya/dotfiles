@@ -148,7 +148,7 @@ if [ `type -p peco` ]; then
     # cf http://qiita.com/TakaakiFuruse/items/3ad3742ce38441993c36
     function cdt(){
         local goto=$(\tree --charset=o -f -d -L ${1:-1}| sed '$d' |
-                    peco | tr -d '\||`|-' | xargs echo)
+                    peco | sed -E 's/^[-|` ]+//' | xargs echo)
         if [ -n "$goto" ]; then
             echo "cd $goto"
             cd $goto
