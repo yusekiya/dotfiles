@@ -156,9 +156,11 @@ if [ `type -p peco` ]; then
     }
     # Go to directory in which target file exists
     function cda(){
-        local goto=$(\ag -g $1 | peco | sed -E 's/\/[^\/]+$//' | xargs echo)
-        echo "cd $goto"
-        cd $goto
+        local goto=$(\ag -g $1 | peco | xargs dirname | xargs echo)
+        if [ -n "$goto" ]; then
+            echo "cd $goto"
+            cd $goto
+        fi
     }
 fi
 
