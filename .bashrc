@@ -132,9 +132,9 @@ function show_path () {
     echo $PATH | tr ":" "\n"
 }
 
-# Incremental search with peco
-# cf http://qiita.com/comutt/items/f54e755f22508a6c7d78
 if [ `type -p peco` ]; then
+    # Incremental search with peco
+    # cf http://qiita.com/comutt/items/f54e755f22508a6c7d78
     function peco-select-history() {
         declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr |
         perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
@@ -144,6 +144,16 @@ if [ `type -p peco` ]; then
         READLINE_POINT=${#l}
     }
     bind -x '"\C-r": peco-select-history'
+    # change directory with tree and peco
+    # cf http://qiita.com/TakaakiFuruse/items/3ad3742ce38441993c36
+    function cdt(){
+        local goto=$(\tree --charset=o -f -d -L ${1:-1}| sed '$d' |
+                    peco | tr -d '\||`|-' | xargs echo)
+        if [ -n "$goto" ]; then
+            echo "cd $goto"
+            cd $goto
+        fi
+    }
 fi
 
 # aliases and functions for linux
