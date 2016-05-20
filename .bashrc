@@ -108,6 +108,7 @@ function less_table () {
 alias tiga='tig --all'
 alias gg='git graph'
 alias gu='git remote update'
+alias jn='jupyter notebook &> /dev/null &'
 
 if [ `type -p colordiff` ]; then
     alias diff='colordiff -u'
@@ -135,7 +136,10 @@ function show_path () {
 # cf http://qiita.com/comutt/items/f54e755f22508a6c7d78
 if [ `type -p peco` ]; then
     function peco-select-history() {
-        declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+        declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr |
+        perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
+        if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
+        peco --query "$READLINE_LINE")
         READLINE_LINE="$l"
         READLINE_POINT=${#l}
     }
