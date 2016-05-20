@@ -154,6 +154,12 @@ if [ `type -p peco` ]; then
             cd $goto
         fi
     }
+    # Go to directory in which target file exists
+    function cda(){
+        local goto=$(\ag -g $1 | peco | sed -E 's/\/[^\/]+$//' | xargs echo)
+        echo "cd $goto"
+        cd $goto
+    }
 fi
 
 # aliases and functions for linux
