@@ -5,8 +5,8 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	# today = log --since=midnight --author='yusekiya' --oneline
-    today = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\"'"
-    yday = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --since=day.before.yesterday.midnight --until=midnight --oneline --author=\"`git config --get user.name`\"'"
+    today = "!sh -c 'git log --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\"'"
+    yday = "!sh -c 'git log --no-merges --branches=* --date=local --since=day.before.yesterday.midnight --until=midnight --oneline --author=\"`git config --get user.name`\"'"
 [core]
 	whitespace = cr-at-eol
 	autocrlf = input
