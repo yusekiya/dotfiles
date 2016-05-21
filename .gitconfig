@@ -11,7 +11,5 @@
     autocrlf = input
 [include]
     path = .gitconfig.local
-[init]
-    templatedir = ~/.git_template
 [user]
     useConfigOnly = true
