@@ -22,6 +22,7 @@ set novisualbell
 set nowritebackup
 set nobackup
 set noswapfile
+set runtimepath+=/usr/local/opt/fzf
 set spelllang+=cjk
 set spell
 set pumheight=10
