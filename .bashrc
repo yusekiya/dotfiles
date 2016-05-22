@@ -25,7 +25,7 @@ else
 fi
 
 # PS1 setting
-# for windows
+## for windows
 if [ "$(uname -o)" = "Msys" ]; then
     source /usr/share/git/completion/git-prompt.sh
     source /usr/share/git/completion/git-completion.bash
@@ -33,14 +33,14 @@ if [ "$(uname -o)" = "Msys" ]; then
     export PS1='\[\033[33;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
-# for ubuntu
+## for ubuntu
 if [ "$(uname)" = "Linux" ]; then
     source /etc/bash_completion.d/git-prompt
     GIT_PS1_SHOWDIRTYSTATE=true
     export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
-# for mac
+## for mac
 if [ "$(uname)" = "Darwin" ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
     source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -87,8 +87,7 @@ stty stop undef
 # Load bash_completion if it exists
 if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
-fi
-if [ -f "/usr/local/etc/bash_completion" ]; then
+elif [ -f /usr/local/etc/bash_completion ]; then
     source /usr/local/etc/bash_completion
 fi
 
@@ -161,7 +160,7 @@ alias la='ls -A'                              # all but . and ..
 alias lly='ls -l --time-style=long-iso'
 # alias l='ls -CF'
 
-# applications
+# Applications
 alias tree='tree --dirsfirst -C'
 alias pyman='python -m pydoc'
 alias lesst='less_table'
@@ -271,4 +270,3 @@ fi
 # Key bindings
 # Menu completion
 bind "C-j":menu-complete
-
