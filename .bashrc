@@ -242,37 +242,30 @@ if [ `type -p direnv` ]; then
     eval "$(direnv hook bash)"
 fi
 
-# peco
-if [ `type -p peco` ]; then
-    # Incremental search with peco
-    # cf http://qiita.com/comutt/items/f54e755f22508a6c7d78
-    function peco-select-history() {
-        declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr |
-        perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
-        if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
-        peco --query "$READLINE_LINE")
-        READLINE_LINE="$l"
-        READLINE_POINT=${#l}
-    }
-    bind -x '"\C-r": peco-select-history'
-    # Change directory with tree and peco
-    # cf http://qiita.com/TakaakiFuruse/items/3ad3742ce38441993c36
-    function cdt(){
-        local goto=$(\tree --charset=o -f -d -L ${1:-1}| sed '$d' |
-                    peco | sed -E 's/^[-|` ]+//' | xargs echo)
-        if [ -n "$goto" ]; then
-            echo "cd $goto"
-            cd $goto
-        fi
-    }
-    # Go to directory in which target file exists
-    function cda(){
-        local goto=$(\ag -g $1 | peco | xargs dirname | xargs echo)
-        if [ -n "$goto" ]; then
-            echo "cd $goto"
-            cd $goto
-        fi
-    }
+# fzf
+if [ `type -p fzf` ]; then
+   if [ -f ~/.fzf.bash ]; then
+       source ~/.fzf.bash
+   fi
+   # cd to selected directory including hidden ones
+   function cdd() {
+       local dir
+       dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+   }
+   # change directory to a directory in which target file exists
+   function cdf() {
+       local file
+       local dir
+       file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+   }
+   # command history search
+   function fh() {
+       eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
+            perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
+                      if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
+            fzf +s --tac | sed 's/ *[0-9]* *//')
+   }
+   bind -x '"\C-r": fh'
 fi
 
 # Key bindings
