@@ -267,6 +267,12 @@ if [ `type -p fzf` ]; then
    bind -x '"\C-r": fh'
 fi
 
+# enhancd
+if [ -f ~/repos/enhancd/enhancd.sh ]; then
+    source ~/repos/enhancd/enhancd.sh
+    export ENHANCD_FILTER=fzf:peco:gof
+fi
+
 # Key bindings
 # Menu completion
 bind "C-j":menu-complete
