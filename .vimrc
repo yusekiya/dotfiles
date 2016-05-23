@@ -40,48 +40,25 @@ let mapleader = "\<space>"
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-" neobundle settings
-if has('vim_starting')
-  set nocompatible
-  "Install neobundle if it does not installed
-  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-    echo "install neobundle..."
-    " clone repo
-    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-  endif
-  " runtimepath setting
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
-call neobundle#begin(expand('~/.vim/bundle'))
-let g:neobundle_default_git_protocol='https'
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle')
+    Plug 'Shougo/unite.vim'
+    " Plug 'Shougo/vimproc'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'ujihisa/unite-colorscheme'
+    Plug 'tomasr/molokai'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'terryma/vim-expand-region'
+    Plug 'LeafCage/yankround.vim'
+call plug#end()
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'Shougo/unite.vim'
-" NeoBundle 'Shougo/vimproc'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'LeafCage/yankround.vim'
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-syntax on
+" syntax on
 set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
