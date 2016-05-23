@@ -284,12 +284,15 @@ input
 
 (defun change-transparency (num)
   "This command changes the transparency of background.
-Input a number within 20 to 100 as the percent of transparency.
+Input a value within 50(transparent) to 100(opaque) as alpha value.
 If you only input RET without inputting a number, the default is applied."
-  (interactive "sPercent of transparency within 20 to 100 (default 90): ")
-  (if (string= num "")
-      (set-frame-parameter nil 'alpha '(90 90))
-    (set-frame-parameter nil 'alpha (string-to-number num))))
+  (interactive "sInput alpha value within 20 to 100 (default 90): ")
+  (cond ((string= num "")
+         (set-frame-parameter nil 'alpha '(90 90)))
+        ((< (string-to-number num) 50)
+         (error "Too small alpha value"))
+        (t (set-frame-parameter nil 'alpha (string-to-number num)))
+    ))
 
 ;; window size
 (defun window-resizer ()
