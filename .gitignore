@@ -19,6 +19,7 @@
 .emacs.d/config/site-lisp/yatex-config.elc
 .emacs.d/elpa/
 .emacs.d/eshell/
+.emacs.d/games/
 .emacs.d/init_chart.svg
 .emacs.d/init_chart10.svg
 .emacs.d/init_chart2.svg
