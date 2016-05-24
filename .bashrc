@@ -275,4 +275,4 @@ fi
 
 # Key bindings
 # Menu completion
-bind "C-j":menu-complete
+# bind "C-j":menu-complete
