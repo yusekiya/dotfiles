@@ -1,0 +1,3 @@
+layout_anaconda() {
+  source activate $1
+}
