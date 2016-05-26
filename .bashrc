@@ -135,6 +135,9 @@ if [ -f "${HOME}/.bash_aliases" ]; then
   source "${HOME}/.bash_aliases"
 fi
 #
+# Launch vanilla bash
+alias bashq='env -i bash --norc --noprofile'
+#
 # Interactive operations
 alias rm='rm -i'
 alias cp='cp -i'
