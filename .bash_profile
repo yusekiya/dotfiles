@@ -22,18 +22,13 @@ fi
 
 # Python
 ## for windows (anaconda)
-if [ -d "${HOME}/opt/anaconda" ] && [ "$(uname -o)" = "Msys" ]; then
+if [ "$(uname -o)" = "Msys" ] && [ -d "${HOME}/opt/anaconda" ]; then
     export PATH="${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}"
     export PATH="${PATH}:${HOME}/opt/anaconda/Library/bin"
-fi
-
-## for linux (anaconda)
-if [ "$(uname)" = "Linux" -a -d "${HOME}/opt/anaconda3/bin" ]; then
-    export PATH="/home/yseki/opt/anaconda3/bin:$PATH"
-fi
-
-## for mac (anaconda)
-if [ -d "${HOME}/anaconda/bin" ]; then
+## for linux or mac (anaconda)
+elif [ -d "${HOME}/opt/anaconda3/bin" ]; then
+    export PATH="${HOME}/opt/anaconda3/bin:$PATH"
+elif [ -d "${HOME}/anaconda/bin" ]; then
     export PATH="${HOME}/anaconda/bin:${PATH}"
 fi
 
