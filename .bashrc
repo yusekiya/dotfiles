@@ -48,6 +48,10 @@ if [ "$(uname)" = "Darwin" ]; then
     export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
 fi
 
+## Shorten dirname
+export PROMPT_DIRTRIM=4
+
+
 # Shell Options
 #
 # See man bash for more options...
