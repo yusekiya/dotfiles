@@ -35,10 +35,10 @@ elif [ "$(uname)" = "Linux" ]; then
     source /etc/bash_completion.d/git-prompt
     GIT_PS1_SHOWDIRTYSTATE=true
 ## for mac
-# elif [ "$(uname)" = "Darwin" ]; then
-    # source /usr/local/etc/bash_completion.d/git-prompt.sh
-    # source /usr/local/etc/bash_completion.d/git-completion.bash
-    # GIT_PS1_SHOWDIRTYSTATE=true
+elif [ "$(uname)" = "Darwin" ]; then
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    source /usr/local/etc/bash_completion.d/git-completion.bash
+    GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
 # PS1
