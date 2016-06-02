@@ -1468,9 +1468,11 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flycheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(eval-after-load 'flycheck
-  '(custom-set-variables
-   '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
+(use-package flycheck :defer t
+  :config
+  (use-package flycheck-pos-tip
+    :config
+    (flycheck-pos-tip-mode)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
