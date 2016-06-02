@@ -24,29 +24,33 @@ else
     export LESS='-iR'
 fi
 
-# PS1 setting
+# Load git completion
 ## for windows
 if [ "$(uname -o)" = "Msys" ]; then
     source /usr/share/git/completion/git-prompt.sh
     source /usr/share/git/completion/git-completion.bash
     GIT_PS1_SHOWDIRTYSTATE=true
-    export PS1='\[\033[33;1m\]\u@\h\[\e[0m\]: \[\033[35;1m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
-fi
-
 ## for ubuntu
-if [ "$(uname)" = "Linux" ]; then
+elif [ "$(uname)" = "Linux" ]; then
     source /etc/bash_completion.d/git-prompt
     GIT_PS1_SHOWDIRTYSTATE=true
-    export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
+## for mac
+# elif [ "$(uname)" = "Darwin" ]; then
+    # source /usr/local/etc/bash_completion.d/git-prompt.sh
+    # source /usr/local/etc/bash_completion.d/git-completion.bash
+    # GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
-## for mac
-if [ "$(uname)" = "Darwin" ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-    GIT_PS1_SHOWDIRTYSTATE=true
-    export PS1='\[\033[33m\]\u@\h\[\e[0m\]: \[\033[35m\]\w$(__git_ps1)\[\e[0m\]'$'\n\$ '
-fi
+# PS1
+## Red='\[\e[31m\]'
+## Green='\[\e[32m\]'
+## Yellow='\[\e[33m\]'
+## Blue='\[\e[34m\]'
+## Purple='\[\e[35m\]'
+## Cyan='\[\e[36m\]'
+## White='\[\e[37m\]'
+## Reset='\[\e[0m\]'
+export PS1='\[\e[33m\]\u@\h\[\e[0m\]: \[\e[35m\]\w$(if type -p __git_ps1; then __git_ps1; fi)\[\e[0m\]'$'\n\$ '
 
 ## Shorten dirname
 export PROMPT_DIRTRIM=4
