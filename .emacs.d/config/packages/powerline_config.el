@@ -287,6 +287,8 @@
                                 (powerline-raw "(%3p)" face1 'l)
                                 ))
                           (rhs (list
+                                (when which-function-mode
+                                  (powerline-raw which-func-current face1 'r))
                                 ;; (powerline-raw global-mode-string face1 'r)
                                 (funcall separator-right face1 face1)
                                 ;; ;; major mode
