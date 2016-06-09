@@ -13,3 +13,5 @@
     path = .gitconfig.local
 [user]
     useConfigOnly = true
+[merge]
+	tool = vimdiff
