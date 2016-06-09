@@ -16,7 +16,7 @@ set expandtab
 set backspace=indent,eol,start
 set wrap
 set textwidth=0
-set colorcolumn=80
+set colorcolumn=100
 set t_vb=
 set novisualbell
 set nowritebackup
