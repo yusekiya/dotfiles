@@ -50,7 +50,7 @@ fi
 ## Cyan='\[\e[36m\]'
 ## White='\[\e[37m\]'
 ## Reset='\[\e[0m\]'
-export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[35m\]\w$(if type -p __git_ps1; then __git_ps1; fi)\[\e[0m\]'$'\n\$ '
+export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(if type -p __git_ps1; then __git_ps1; fi)\[\e[0m\]'$'\n\$ '
 
 ## Shorten dirname
 export PROMPT_DIRTRIM=4
