@@ -278,6 +278,17 @@ if [ `type -p fzf` ]; then
             fzf +s --tac | sed 's/ *[0-9]* *//')
    }
    bind -x '"\C-r": fh'
+   function mynote_search() {
+       local file
+       local pager
+       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf | perl -pe 's/(.*?):.*/$1/g')
+       if [ `type -p view ` ]; then
+           pager='view -M'
+       else
+           pager='less'
+       fi
+       ${pager} ${file}
+   }
 fi
 
 # enhancd
