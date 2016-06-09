@@ -48,6 +48,7 @@
   (bind-keys :map evil-ex-completion-map
              ("C-b" . backward-char)
              ("C-d" . delete-char))
+  (evil-ex-define-cmd "wc[lean]" 'whitespace-cleanup)
   (use-package key-chord
     :config
     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
