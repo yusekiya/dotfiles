@@ -289,6 +289,15 @@ if [ `type -p fzf` ]; then
        fi
        ${pager} ${file}
    }
+   function run_oneliner() {
+       local file
+       local cmd
+       file=~/.oneliner
+       cmd=$( cat $file | fzf | perl -pe 's/^\[[^\]]+\]\s*//g' )
+       READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
+       READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
+   }
+   bind -x '"\C-s": "run_oneliner"'
 fi
 
 # enhancd
