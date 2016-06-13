@@ -147,7 +147,7 @@ function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
     if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
-        tab-color 119 139 188; echo -ne "\033]1;${user_name}@${host_name}\007"
+        tab-color 65 181 137; echo -ne "\033]1;${user_name}@${host_name}\007"
     else
         tab-reset; echo -ne "\033]1;$(whoami)@${host_name}\007"
     fi
