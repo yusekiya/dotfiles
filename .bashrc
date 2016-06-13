@@ -41,17 +41,6 @@ elif [ "$(uname)" = "Darwin" ]; then
     GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
-# PS1
-## Red='\[\e[31m\]'
-## Green='\[\e[32m\]'
-## Yellow='\[\e[33m\]'
-## Blue='\[\e[34m\]'
-## Purple='\[\e[35m\]'
-## Cyan='\[\e[36m\]'
-## White='\[\e[37m\]'
-## Reset='\[\e[0m\]'
-export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(if type -p __git_ps1; then __git_ps1; fi)\[\e[0m\]'$'\n\$ '
-
 ## Shorten dirname
 export PROMPT_DIRTRIM=4
 
@@ -164,6 +153,33 @@ function change_tab_title() {
     fi
 }
 export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
+
+# PS1
+## Red='\[\e[31m\]'
+## Green='\[\e[32m\]'
+## Yellow='\[\e[33m\]'
+## Blue='\[\e[34m\]'
+## Purple='\[\e[35m\]'
+## Cyan='\[\e[36m\]'
+## White='\[\e[37m\]'
+## Reset='\[\e[0m\]'
+if type -p __git_ps1; then
+    # For remote
+    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
+        export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
+    # For local
+    else
+        export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
+    fi
+else
+    # For remote
+    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
+        export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
+    # For local
+    else
+        export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
+    fi
+fi
 
 # Aliases
 #
