@@ -139,6 +139,7 @@ function show_path () {
 function terminal_device_type() {
     tty | sed "s|/dev/\([^0-9]\+\).*|\1|"
 }
+TERM_TYPE=$(terminal_device_type)
 
 # Settings for iTerm2 window name and tab name
 function tab-color() {
@@ -156,11 +157,10 @@ function change_window_title() {
 function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
-    local term_type=$(terminal_device_type)
-    if [ $term_type = "pty" ] || [ $term_type = "pts" ]; then
+    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
         tab-color 119 139 188; echo -ne "\033]1;${user_name}@${host_name}\007"
     else
-        tab-reset; echo -ne "\033]1;${user_name}@${host_name}\007"
+        tab-reset; echo -ne "\033]1;$(whoami)@${host_name}\007"
     fi
 }
 export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
