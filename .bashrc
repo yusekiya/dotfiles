@@ -136,6 +136,35 @@ function show_path () {
     echo $PATH | tr ":" "\n"
 }
 
+function terminal_device_type() {
+    tty | sed "s|/dev/\([^0-9]\+\).*|\1|"
+}
+
+# Settings for iTerm2 window name and tab name
+function tab-color() {
+    echo -ne "\033]6;1;bg;red;brightness;$1\a"
+    echo -ne "\033]6;1;bg;green;brightness;$2\a"
+    echo -ne "\033]6;1;bg;blue;brightness;$3\a"
+}
+function tab-reset() {
+    echo -ne "\033]6;1;bg;*;default\a"
+}
+function change_window_title() {
+    local cdir=$(pwd | sed -e "s|$HOME|~|")
+    echo -ne "\033]2;$cdir\007" # window title
+}
+function change_tab_title() {
+    local host_name=$(hostname | sed "s/\.local$//")
+    local user_name=$(whoami)
+    local term_type=$(terminal_device_type)
+    if [ $term_type = "pty" ] || [ $term_type = "pts" ]; then
+        tab-color 119 139 188; echo -ne "\033]1;${user_name}@${host_name}\007"
+    else
+        tab-reset; echo -ne "\033]1;${user_name}@${host_name}\007"
+    fi
+}
+export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
+
 # Aliases
 #
 # Load different file for aliases
