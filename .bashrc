@@ -11,18 +11,7 @@ export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWUNTRACKEDFILES=
 export GIT_PS1_SHOWSTASHSTATE=1
 
-# Enable syntax highlight in less
-if [ ! "$(uname -o)" = "Msys" ]\
-    && [ `type -p pygmentize` ]\
-    && [ `type -p lessfilter` ]; then
-    export LESS='-R'
-    export LESSOPEN='| lessfilter %s'
-elif [ `type -p src-hilite-lesspipe.sh` ]; then
-    export LESS='-R'
-    export LESSOPEN='| src-hilite-lesspipe.sh %s'
-else
-    export LESS='-iR'
-fi
+export LESS='-iR'
 
 # Load git completion
 ## for windows
