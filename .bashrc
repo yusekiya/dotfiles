@@ -152,6 +152,10 @@ function change_tab_title() {
         tab-reset; echo -ne "\033]1;$(whoami)@${host_name}\007"
     fi
 }
+# Change tab title when starting bash
+change_tab_title
+# Change tab title when returning back to local
+function ssh() { command ssh "$@"; change_tab_title; }
 export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
 
 # PS1
