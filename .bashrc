@@ -146,7 +146,7 @@ function change_window_title() {
 function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
-    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
+    if [ $TERM_TYPE = "pts" ]; then
         tab-color 65 181 137; echo -ne "\033]1;${user_name}@${host_name}\007"
     else
         tab-reset; echo -ne "\033]1;$(whoami)@${host_name}\007"
@@ -165,7 +165,7 @@ export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
 ## Reset='\[\e[0m\]'
 if type -p __git_ps1; then
     # For remote
-    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
+    if [ $TERM_TYPE = "pts" ]; then
         export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
     # For local
     else
@@ -173,7 +173,7 @@ if type -p __git_ps1; then
     fi
 else
     # For remote
-    if [ $TERM_TYPE = "pty" ] || [ $TERM_TYPE = "pts" ]; then
+    if [ $TERM_TYPE = "pts" ]; then
         export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
     # For local
     else
