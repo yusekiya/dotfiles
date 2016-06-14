@@ -12,4 +12,5 @@
 [Process each file] for val in `find ./*`; do ${process_cmd}; done
 [Process each file] for val in `ag -g '.*' .`; do ${process_cmd}; done
 [Show today] date +%F
+[SSH without profile] ssh -t ${dest} 'bash --norc --noprofile'
 
