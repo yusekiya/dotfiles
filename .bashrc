@@ -126,7 +126,7 @@ function show_path () {
 }
 
 function terminal_device_type() {
-    tty | sed "s|/dev/\([^0-9]\+\).*|\1|"
+    tty | perl -pe 's|/dev/([^/0-9]+)/?.*|\1|'
 }
 TERM_TYPE=$(terminal_device_type)
 
