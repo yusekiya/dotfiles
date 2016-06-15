@@ -38,13 +38,19 @@ if [ -f "${HOME}/.nodebrew/nodebrew" ]; then
 fi
 
 # Set PATH so it includes user's private bin if it exists
+if [ -d "${HOME}/usr/bin" ]; then
+    export PATH="${HOME}/usr/bin:${PATH}"
+fi
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
 fi
 
 # Set MANPATH so it includes users' private man if it exists
 if [ -d "${HOME}/man" ]; then
-  MANPATH="${HOME}/man:${MANPATH}"
+  export MANPATH="${HOME}/man:${MANPATH}"
+fi
+if [ -d "${HOME}/usr/share/man" ]; then
+   export MANPATH="${HOME}/usr/share/man:${MANPATH}"
 fi
 
 # Set INFOPATH so it includes users' private info if it exists
