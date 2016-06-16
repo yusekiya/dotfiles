@@ -1,11 +1,11 @@
-[Start emacs] cd ~ && emacs &
+[Start emacs] cd ~ && emacs &!
 [Make histogram] sort ${File} | uniq -c | sort -nr
 [Pick up specific line] head -n ${line_num} | tail -n 1
 [Search term in files in current directory recursively] ag -G ${fname_regex:-'.*'} ${term} ${dest_dir:-.}
 [Copy files with specific extension] ag -g '.*\.${ext}' ${src_dir:-.} | xargs -I% cp -f % ${dest_dir}
 [Copy files with specific extension] find ${src_dir:-.} -name "*.${ext}"  | xargs -I% cp -f % ${dest_dir}
 [Check process] ps aux | grep ${process}
-[Show path] echo $PATH | tr ":" "\n"
+[Show path] echo $PATH | tr ":" "\n"!
 [Count files in directory] \ls -F ${src_dir} | grep -v / | wc -l
 [Count files in directory recursively] find . -type f | wc -l
 [Count files in directory recursively] ag -g '.*' . | wc -l

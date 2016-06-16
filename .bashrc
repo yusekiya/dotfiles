@@ -332,8 +332,13 @@ if [ `type -p fzf` ]; then
        local cmd
        file=~/.oneliner
        cmd=$( cat $file | fzf | perl -pe 's/^\[[^\]]+\]\s*//g' )
-       READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
-       READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
+       if [ ${cmd:$((${#cmd}-1))} = "!" ]; then
+           cmd=$(echo ${cmd} | sed 's/!$//')
+           eval ${cmd}
+       else
+           READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
+           READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
+       fi
    }
    bind -x '"\C-s": "search_oneliner"'
 fi
