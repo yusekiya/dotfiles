@@ -2,7 +2,6 @@ ac-math
 ace-isearch
 ace-jump-mode
 all
-ample-theme
 anzu
 async
 auctex
@@ -15,10 +14,10 @@ avy
 basic-theme
 beacon
 bind-key
-birds-of-paradise-plus-theme
 buttercup
 cl-generic
 cmake-mode
+color-theme-sanityinc-tomorrow
 company
 company-auctex
 company-irony
@@ -68,7 +67,6 @@ git-ps1-mode
 google-c-style
 goto-chg
 goto-last-change
-greymatters-theme
 helm
 helm-ag
 helm-core
@@ -77,7 +75,6 @@ helm-flymake
 helm-flyspell
 helm-gtags
 helm-swoop
-heroku-theme
 hexrgb
 highlight-indent-guides
 highlight-indentation
@@ -125,7 +122,6 @@ smart-newline
 smartrep
 smooth-scroll
 solarized-theme
-spacegray-theme
 spacemacs-theme
 sublime-themes
 sublimity
