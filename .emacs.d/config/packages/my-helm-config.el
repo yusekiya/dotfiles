@@ -38,8 +38,16 @@
              ("TAB" . helm-execute-persistent-action)
              ("C-i" . helm-execute-persistent-action)
              ("C-z" . helm-select-action)
-             ("C-h" . delete-backward-char))
-   )
+             ("C-h" . delete-backward-char)))
+
+(use-package helm-sys :defer t
+  :bind (("C-; C-t" . helm-top)))
+
+(use-package helm-elscreen
+  :config
+  (bind-keys :map helm-command-map
+             ("t" . nil)
+             ("t" . helm-elscreen)))
 
 (use-package helm-files
   :bind ("C-x C-f" . helm-find-files)
