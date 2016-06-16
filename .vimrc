@@ -122,3 +122,10 @@ nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 :command WClean %s/\s\+$//g
 ca wc WClean
+" key binds for vimdiff
+if &diff
+    nnoremap <leader>1 :diffget LOCAL<CR>
+    nnoremap <leader>2 :diffget BASE<CR>
+    nnoremap <leader>3 :diffget REMOTE<CR>
+endif
+
