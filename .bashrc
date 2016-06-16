@@ -132,6 +132,7 @@ function change_window_title() {
     local cdir=$(pwd | sed -e "s|$HOME|~|")
     echo -ne "\033]2;$cdir\007" # window title
 }
+export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
 function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
@@ -142,10 +143,9 @@ function change_tab_title() {
     fi
 }
 # Change tab title when starting bash
-change_tab_title
+# change_tab_title
 # Change tab title when returning back to local
-function ssh() { command ssh "$@"; change_tab_title; }
-export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
+# function ssh() { command ssh "$@"; change_tab_title; }
 
 # PS1
 ## Red='\[\e[31m\]'
