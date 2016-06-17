@@ -12,7 +12,7 @@
 [Sort directory in disk usage] du -h ${src_dir} | grep -E '^ *([1-9]?\.)?[0-9]+G' | sort -nr
 [Process each file] for val in `find ./*`; do ${process_cmd}; done
 [Process each file] for val in `ag -g '.*' .`; do ${process_cmd}; done
-[Show today] date +%F
+[Show today] date +%F!
 [Delete recursively original file after resolving git conflict] find . -maxdepth ${mdep:-1} -type f -name "*.orig" -delete
 [Delete backup files recursively] find . -maxdepth ${mdep:-1} -name "*.bak" -delte
 
