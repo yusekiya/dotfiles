@@ -335,6 +335,9 @@ if [ `type -p fzf` ]; then
        local cmd
        file=~/.oneliner
        cmd=$( cat $file | fzf | perl -pe 's/^\[[^\]]+\]\s*//g' )
+       # Exit if canceled
+       [[ -z $cmd ]] && return
+       #
        if [ ${cmd:$((${#cmd}-1))} = "!" ]; then
            cmd=$(echo ${cmd} | sed 's/!$//')
            eval ${cmd}
