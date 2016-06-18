@@ -566,24 +566,6 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Highlight
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (require 'hl-line)
-(use-package hl-line)
-(defface hlline-face
-  '(;; (((class color) (background dark))
-    ;;  (:background "black"
-    ;;   :underline nil))
-    ;; (((class color) (background light))
-    ;;  (:background "gray90"
-    ;;   :underline nil))
-    (t ()))
-  "*Face used by hl-line.")
-(setq hl-line-face 'hlline-face)
-(global-hl-line-mode 1);enable
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Scratch buffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun my-make-scratch (&optional arg)
