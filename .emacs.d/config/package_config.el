@@ -1686,6 +1686,7 @@ The argument icon must be string."
   (beacon-mode 1)
   (custom-set-variables '(beacon-blink-when-focused t)
                         '(beacon-color (face-attribute 'font-lock-warning-face :foreground nil t)))
+  (bind-key "M-/" 'beacon-blink)
   (with-eval-after-load 'company
     (add-hook 'company-mode-hook
               (lambda ()
