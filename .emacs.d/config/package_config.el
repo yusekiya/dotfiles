@@ -475,7 +475,7 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; vc-mode
+;; elisp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (with-eval-after-load 'company
   (add-hook 'emacs-lisp-mode-hook
