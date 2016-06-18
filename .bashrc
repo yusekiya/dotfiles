@@ -316,10 +316,13 @@ if [ `type -p fzf` ]; then
             fzf +s --tac | sed 's/ *[0-9]* *//')
    }
    bind -x '"\C-r": fh'
-   function mynote_search() {
+   function mynote-search() {
        local file
        local pager
-       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf | perl -pe 's/(.*?):.*/$1/g')
+       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf -q ${@:-""} | perl -pe 's/(.*?):.*/$1/g')
+       # Exit when canceled
+       [[ -z $file ]] && return
+       #
        if [ `type -p view ` ]; then
            pager='view -M'
        else
