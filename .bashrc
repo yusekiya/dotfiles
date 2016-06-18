@@ -284,8 +284,8 @@ if [ "$(uname -o)" = "Msys" ]; then
 fi
 
 # Dircolors setting
-if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors.256dark" ]; then
-    eval `dircolors ${HOME}/.dircolors.256dark`
+if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors" ]; then
+    eval `dircolors ${HOME}/.dircolors`
 elif [ -f "${HOME}/repos/dircolors-solarized/dircolors.256dark" ]; then
     eval `dircolors ${HOME}/repos/dircolors-solarized/dircolors.256dark`
 fi
