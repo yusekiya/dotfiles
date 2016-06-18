@@ -137,9 +137,9 @@ function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
     if [ $TERM_TYPE = "pts" ]; then
-        tab-color 203 75 22; echo -ne "\033]1;${user_name}@${host_name}\007"
+        echo -ne "\033]1;$(whoami)@${host_name}\007"
     else
-        tab-reset; echo -ne "\033]1;$(whoami)@${host_name}\007"
+        echo -ne "\033]1;$(whoami)@${host_name}\007"
     fi
 }
 # Change tab title when starting bash
