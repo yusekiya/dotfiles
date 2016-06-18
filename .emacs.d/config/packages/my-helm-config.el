@@ -31,8 +31,7 @@
    )
   (bind-keys ("M-x" . helm-M-x)
              ("M-y" . helm-show-kill-ring)
-             ("C-x b" . helm-mini)
-             ("M-/" . helm-dabbrev))
+             ("C-x b" . helm-mini))
   (bind-keys :map helm-map
              ("C-o" . nil)
              ("TAB" . helm-execute-persistent-action)
