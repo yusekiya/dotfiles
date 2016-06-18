@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Jun 08 2016>
+;;     Time-stamp: <Jun 18 2016>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -73,7 +73,9 @@
 (setq load-prefer-newer t)
 
 ;; Distinguish version
-(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4)) (load "core_config"))
+(when (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
+  (load "core_config")
+  (load "package_config"))
 
 ;;start on home directory
 (cd "~")

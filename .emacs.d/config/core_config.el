@@ -281,10 +281,5 @@
   (mac-auto-ascii-mode)
   (setq mac-option-modifier 'alt))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load configuration for packages
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "package_config")
-
 
 ;; end of file
