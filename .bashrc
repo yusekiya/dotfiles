@@ -174,6 +174,9 @@ else
     fi
 fi
 
+# For tramp mode
+[[ $TERM = "dumb" ]] && PS1='$ '
+
 # Aliases
 #
 # Load different file for aliases
