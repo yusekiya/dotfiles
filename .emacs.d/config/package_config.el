@@ -1644,6 +1644,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; git-ps1-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TODO: git-ps1-mode is incompatible with tramp mode
 (use-package git-ps1-mode
   :config
   (when (equal system-type 'windows-nt)
