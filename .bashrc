@@ -283,8 +283,8 @@ fi
 # Dircolors setting
 if [ "$(uname)" = "Linux" ] && [ -f "${HOME}/.dircolors" ]; then
     eval `dircolors ${HOME}/.dircolors`
-elif [ -f "${HOME}/repos/dircolors-solarized/dircolors.256dark" ]; then
-    eval `dircolors ${HOME}/repos/dircolors-solarized/dircolors.256dark`
+elif [ -f "${HOME}/repos/dircolors-solarized/dircolors.ansi-dark" ]; then
+    eval `dircolors ${HOME}/repos/dircolors-solarized/dircolors.ansi-dark`
 fi
 
 # direnv
