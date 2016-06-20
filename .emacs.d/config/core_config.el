@@ -195,6 +195,8 @@
 ;; Do NOT show message in scratch buffer
 (setq initial-scratch-message nil)
 
+;; Default method for remote connection in tramp mode
+(setq tramp-default-method "sshx")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

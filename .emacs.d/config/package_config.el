@@ -876,7 +876,8 @@ The argument icon must be string."
   (setq auto-save-buffers-enhanced-include-regexps '(".+")) ; save all files automatically
   ;; Black list
   (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$" "\\.ipynb"
-                                                     "^/ssh:" "/sudo:" "^/scp:" "^/rsync:"))
+                                                     "^/ssh:" "/sudo:" "^/scp:" "^/rsync:"
+                                                     "^/sshx:" "^/scpx:"))
   ;; Inhibit message
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; *scratch* buffer
