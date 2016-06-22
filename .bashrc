@@ -119,6 +119,11 @@ function terminal_device_type() {
 }
 TERM_TYPE=$(terminal_device_type)
 
+# Detect session type
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    SESSION_TYPE=remote/ssh
+fi
+
 # Settings for iTerm2 window name and tab name
 function tab-color() {
     echo -ne "\033]6;1;bg;red;brightness;$1\a"
@@ -136,7 +141,7 @@ export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
 function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
-    if [ $TERM_TYPE = "pts" ]; then
+    if [[ $SESSION_TYPE = remote/ssh ]]; then
         echo -ne "\033]1;$(whoami)@${host_name}\007"
     else
         echo -ne "\033]1;$(whoami)@${host_name}\007"
@@ -158,7 +163,7 @@ function change_tab_title() {
 ## Reset='\[\e[0m\]'
 if type -p __git_ps1; then
     # For remote
-    if [ $TERM_TYPE = "pts" ]; then
+    if [[ $SESSION_TYPE = remote/ssh ]]; then
         export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
     # For local
     else
@@ -166,7 +171,7 @@ if type -p __git_ps1; then
     fi
 else
     # For remote
-    if [ $TERM_TYPE = "pts" ]; then
+    if [[ $SESSION_TYPE = remote/ssh ]]; then
         export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
     # For local
     else
