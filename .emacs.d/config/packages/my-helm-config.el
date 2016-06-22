@@ -48,6 +48,11 @@
              ("t" . nil)
              ("t" . helm-elscreen)))
 
+(use-package helm-dabbrev
+  :config
+  (bind-keys :map helm-command-map
+             ("d". helm-dabbrev)))
+
 (use-package helm-files
   :bind ("C-x C-f" . helm-find-files)
   :config
