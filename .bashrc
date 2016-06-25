@@ -241,6 +241,10 @@ if [ "$(uname)" = "Linux" ]; then
     alias emacs='XMODIFIERS=@im=none emacs'
 fi
 
+if [ "$(uname)" = "Darwin" ]; then
+    alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/ai
+fi
+
 # aliases and functions for windows
 if [ "$(uname -o)" = "Msys" ]; then
     function trash () {
