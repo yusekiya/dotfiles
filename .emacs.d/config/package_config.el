@@ -757,7 +757,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package which-func
   :config
-  ;; (add-to-list 'which-func-modes 'python-mode)
+  (setq which-func-modes '(python-mode))
   (which-function-mode))
 
 
@@ -1490,8 +1490,7 @@ The argument icon must be string."
 (use-package cython-mode
   :mode (("\\.pyx\\'" . cython-mode)
          ("\\.pxd\\'" . cython-mode)
-         ("\\.pxi\\'" . cython-mode))
-  )
+         ("\\.pxi\\'" . cython-mode)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
