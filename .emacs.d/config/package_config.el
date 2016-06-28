@@ -423,6 +423,9 @@ When region is set, call `kill-ring-save'."
     (setq default-input-method "japanese-mozc")
     (global-set-key [(super space)] 'toggle-input-method)
     (define-key isearch-mode-map "\C-o" 'isearch-toggle-input-method))
+  (use-package mozc-popup
+    :config
+    (setq mozc-candidate-style 'popup))
   )
 
 
