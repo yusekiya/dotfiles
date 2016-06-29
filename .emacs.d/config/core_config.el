@@ -140,7 +140,7 @@
 ;; Automatically reload updated file
 (global-auto-revert-mode 1)
 ;; ;; Reload file under version control system
-;; (setq auto-revert-check-vc-info t)
+(setq auto-revert-check-vc-info t)
 
 ;; auto-insert LAST-MODIFIED-DATE
 (if (not (memq 'time-stamp write-file-hooks))
