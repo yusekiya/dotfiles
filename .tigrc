@@ -12,8 +12,9 @@ bind main G none
 bind main | :toggle commit-title-graph
 bind diff <Ctrl-r> ?git rebase -i %(commit)
 bind main <Esc>r ?git rebase %(commit)
+bind main P ?git cherry-pick %(commit)
 bind main B ?git checkout -b "%(prompt Enter new branch name: )" %(commit)
 bind main v ?git checkout %(commit)
-bind main ! ?git revert %(commit)
+bind main ! ?git revert -n %(commit)
 bind main M ?git merge %(branch)
 bind refs v ?git checkout %(branch)
