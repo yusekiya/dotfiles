@@ -1,11 +1,14 @@
 set tab-size = 4
 set main-view-id = 1
+set horizontal-scroll = 20%
 set ignore-case = true
 bind generic G none
 bind generic g move-first-line
 bind generic G move-last-line
 bind generic <Ctrl-g> view-grep
 bind generic ; prompt
+bind generic <Ctrl-f> scroll-right
+bind generic <Ctrl-b> scroll-left
 bind status V !git commit -v
 bind main <Ctrl-r> ?git rebase -i %(commit)
 bind main G none
