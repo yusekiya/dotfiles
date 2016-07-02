@@ -412,6 +412,11 @@ When region is set, call `kill-ring-save'."
           (set-face-attribute face1 nil attr (face-attribute face2 attr))
           (set-face-attribute face2 nil attr temp-var))))
 
+(defun revert-buffer-without-confirm ()
+  (interactive)
+  (if (not (buffer-modified-p))
+      (revert-buffer :ignore-auto :noconfirm)
+    (error "The buffer has been modified")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mozc
@@ -1889,7 +1894,8 @@ The argument icon must be string."
 (global-set-key (kbd "M-k") 'copy-line)
 ;; Copy current directory to kill ring
 (global-set-key (kbd "C-c 0") 'my:copy-current-path)
-
+;; Revert buffer without confirm
+(global-set-key (kbd "M-r") 'revert-buffer-without-confirm)
 ;; Open lines
 (global-unset-key (kbd "C-x o"))
 ;; Window move and scroll
