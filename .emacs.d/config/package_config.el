@@ -1892,6 +1892,7 @@ The argument icon must be string."
 
 ;; Open lines
 (global-unset-key (kbd "C-x o"))
+;; Window move and scroll
 (use-package smartrep
   :config
   (smartrep-define-key
