@@ -1217,8 +1217,6 @@ The argument icon must be string."
      ((and (featurep 'evil) (or (evil-normal-state-p) (evil-visual-state-p))) (evil-refresh-cursor))
      (t (set-cursor-color myCursorColor) (setq cursor-type '(bar . 3))))))
 
-(advice-add 'keyboard-quit :before #'my:refresh-cursor)
-
 (defmacro my:macro-after-ad-refresh-cursor (f)
  `(defadvice ,f (after my:after-ad-refresh-cursor-color activate)
     (my:refresh-cursor)))
