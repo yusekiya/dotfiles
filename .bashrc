@@ -364,6 +364,9 @@ if [ -f ~/repos/enhancd/enhancd.sh ]; then
     export ENHANCD_FILTER=fzf:peco:gof
 fi
 
+export iterm2_hostname=$(hostname)
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
 # Key bindings
 # Menu completion
 # bind "C-j":menu-complete
