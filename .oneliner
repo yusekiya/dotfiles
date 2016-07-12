@@ -19,3 +19,4 @@
 [Copy specific files with directory structure] rsync -avz --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
 [Copy specific files with directory structure over ssh] rsync -avz -e ssh --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
 [Port scanning] nc -uzv ${PubliIP} ${Port}
+[Monitoring] less +F ${File}
