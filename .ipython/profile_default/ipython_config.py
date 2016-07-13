@@ -8,6 +8,9 @@ c.InlineBackend.rc = {
     'figure.figsize': (4,3),
     'figure.facecolor': (1, 1, 1, 1)}
 
+c.InteractiveShell.colors = 'neutral'
+c.TerminalInteractiveShell.highlighting_style = 'native'
+
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
 #------------------------------------------------------------------------------
