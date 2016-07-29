@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: template_en
+# key: templateEN
+# --
+%%% coding: utf-8
+\documentclass[]{${1:$$(yas-choose-value '(article scrartcl scrreprt scrbook scrlttr2))}}
+%
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+%%%%%%%%% settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[]{setspace}
+% \doublespacing
+%%%%%%%%% settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\geometry{left=30truemm,right=30truemm,textheight=25truecm}
+%%%%%%%% body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+main$0
+\end{document}

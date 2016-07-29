@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: template_jp
+# key: templateJP
+# --
+%%% coding: utf-8
+\documentclass[12pt]{${1:$$(yas-choose-value '(jsarticle jsbook))}}
+%
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx, color}
+%%%%%%%%% settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[]{setspace}
+% \doublespacing
+%%%%%%%%% settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\geometry{left=30truemm,right=30truemm,textheight=25truecm}
+%%%%%%%% body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+main$0
+\end{document}
