@@ -1133,6 +1133,11 @@ The argument icon must be string."
 ;; (setq org-startup-truncated nil)
 ;; (setq org-log-done t)
 
+;; Enable orgtbl-mode by default
+(use-package org-table
+  :config
+  (diminish 'orgtbl-mode (my:safe-lighter-icon "OrgTbl" "table")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; region bindings mode
