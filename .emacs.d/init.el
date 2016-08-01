@@ -1,5 +1,5 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Jun 18 2016>
+;;     Time-stamp: <Aug 01 2016>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
@@ -38,8 +38,8 @@
                '(left . 0))   ; x coordiate of frame
                default-frame-alist))
 
-(cond ((string-match "MacBook\\.local$" system-name) (setq font-height 150))
-      ((string-match "MacBook-Pro\\.local$" system-name) (setq font-height 150))
+(cond ((string-match "MacBook\\.local$" system-name) (setq font-height 140))
+      ((string-match "MacBook-Pro\\.local$" system-name) (setq font-height 140))
       (t (setq font-height 120)))
 
 ;; fonta
