@@ -3,7 +3,7 @@
 # key: templateJP
 # --
 %%% coding: utf-8
-\documentclass[12pt]{${1:$$(yas-choose-value '(jsarticle jsbook))}}
+\documentclass[12pt${1:, uplatex}]{${2:$$(yas-choose-value '(jsarticle jsbook))}}
 %
 \usepackage{cite}
 \usepackage{amsmath,amssymb}
