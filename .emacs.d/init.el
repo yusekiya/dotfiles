@@ -38,7 +38,7 @@
                '(left . 0))   ; x coordiate of frame
                default-frame-alist))
 
-(cond ((string-match "MacBook\\.local$" system-name) (setq font-height 140))
+(cond ((string-match "MacBook\\.local$" system-name) (setq font-height 160))
       ((string-match "MacBook-Pro\\.local$" system-name) (setq font-height 140))
       (t (setq font-height 120)))
 
