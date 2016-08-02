@@ -219,7 +219,6 @@ input
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(eval-when-compile (require 'cl))
 (require 'cl-lib)
 
 ;; Function to get ime mode as string
@@ -408,7 +407,7 @@ When region is set, call `kill-ring-save'."
 
 (defun my:swap-faces (face1 face2)
   (let (temp-var)
-    (loop for (attr . desc) in face-attribute-name-alist do
+    (cl-loop for (attr . desc) in face-attribute-name-alist do
           (setq temp-var (face-attribute face1 attr))
           (set-face-attribute face1 nil attr (face-attribute face2 attr))
           (set-face-attribute face2 nil attr temp-var))))
