@@ -8,19 +8,17 @@
 (eval-when-compile
   (setq byte-compile-warnings '(not cl-functions))
   (require 'cl))
+(require 'cl-lib)
+(require 'powerline)
 
 (defun my:powerline-get-good-height ()
   (let ((original-height (frame-char-height)))
-    (if (evenp original-height)
+    (if (cl-evenp original-height)
         ;; if height of character is even
         original-height
       ;; if height of character is odd
       (+ original-height 1)
       )))
-
-(require 'cl-lib)
- 
-(require 'powerline)
 
 (defun get-buffer-file-eol-type ()
   (case (coding-system-eol-type buffer-file-coding-system)
