@@ -73,7 +73,7 @@ input
   (let ((file_name))
     (setq file_name (f-join my:package_list_change_log_dir
                             (concat "package_list-" (format-time-string "%Y%m%d-%H%M%S") ".log")))
-    (f-write-text (mapconcat 'symbol-name local_package_list "\n") 'utf-8 file_name))
+    (f-write-text (mapconcat 'symbol-name package_list "\n") 'utf-8 file_name))
   )
 
 (defun my:save_package_list()
@@ -219,6 +219,7 @@ input
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(eval-when-compile (require 'cl))
 (require 'cl-lib)
 
 ;; Function to get ime mode as string
@@ -240,18 +241,18 @@ input
         (iter 0)
         (max-iter 10)
         (is-successful nil))
-    (block exit
+    (block my-exit
       (while (< iter max-iter)
         (setq point-eol (save-excursion (end-of-line) (point)))
         (if (re-search-forward "\\(()\\|{}\\|\\[\\]\\)" point-eol t)
             (progn
               (setq is-successful t)
               (backward-char 1)
-              (return-from exit))
+              (return-from my-exit))
           (progn
             (setq iter (1+ iter))
             (forward-line)
-            (when (eobp) (return-from exit))))))
+            (when (eobp) (return-from my-exit))))))
     (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
 
 ;; Function to go into a previous blank brackets
@@ -262,18 +263,18 @@ input
         (iter 0)
         (max-iter 10)
         (is-successful nil))
-    (block exit
+    (block my-exit
       (while (< iter max-iter)
         (setq point-bol (save-excursion (beginning-of-line) (point)))
         (if (re-search-backward "\\(()\\|{}\\|\\[\\]\\)" point-bol t)
             (progn
               (setq is-successful t)
               (forward-char 1)
-              (return-from exit))
+              (return-from my-exit))
           (progn
             (setq iter (1+ iter))
             (forward-line -1)
-            (when (bobp) (return-from exit))
+            (when (bobp) (return-from my-exit))
             (end-of-line)))))
     (unless is-successful (message "Can't find any blank brackets around here") (goto-char init-pos))))
 
@@ -1135,6 +1136,7 @@ The argument icon must be string."
 
 ;; Enable orgtbl-mode by default
 (use-package org-table
+  ;; :commands orgtbl-mode
   :config
   (diminish 'orgtbl-mode (my:safe-lighter-icon "OrgTbl" "table")))
 
