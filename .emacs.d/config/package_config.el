@@ -1135,7 +1135,7 @@ The argument icon must be string."
 
 ;; Enable orgtbl-mode by default
 (use-package org-table
-  ;; :commands orgtbl-mode
+  :commands orgtbl-mode
   :config
   (diminish 'orgtbl-mode (my:safe-lighter-icon "OrgTbl" "table")))
 
