@@ -135,7 +135,8 @@
 
 ;; Resurrect cursor point
 (require 'saveplace)
-(setq-default save-place t)
+; (setq-default save-place t)
+(save-place-mode 1)
 
 ;; Automatically reload updated file
 (global-auto-revert-mode 1)

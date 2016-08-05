@@ -1,10 +1,11 @@
 ;;; -*- mode: Emacs-Lisp; syntax: elisp -*-
-;;     Time-stamp: <Aug 01 2016>
+;;     Time-stamp: <Aug 05 2016>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings depending on devices
 ;; This file must be in %HOME% (= (getenv "HOME")) directory
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(package-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setting for path
@@ -73,9 +74,13 @@
 (setq load-prefer-newer t)
 
 ;; Distinguish version
-(when (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
+(when (>= emacs-major-version 25)
   (load "core_config")
   (load "package_config"))
+
+;; custom variables
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;;start on home directory
 (cd "~")
