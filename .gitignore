@@ -92,3 +92,4 @@ work/
 .emacs.d/elscreen
 .emacs.d/kkcrc
 .jupyter/nbconfig/
+.emacs.d/custom.el
