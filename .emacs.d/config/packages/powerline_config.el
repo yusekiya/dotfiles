@@ -11,15 +11,6 @@
 (require 'cl-lib)
 (require 'powerline)
 
-(defun my:powerline-get-good-height ()
-  (let ((original-height (frame-char-height)))
-    (if (cl-evenp original-height)
-        ;; if height of character is even
-        original-height
-      ;; if height of character is odd
-      (+ original-height 1)
-      )))
-
 (defun get-buffer-file-eol-type ()
   (case (coding-system-eol-type buffer-file-coding-system)
     (0 "LF")
@@ -125,7 +116,7 @@
 (defpowerline powerline-git-status
   (if (featurep 'git-ps1-mode) git-ps1-mode-lighter-text ""))
 
-(custom-set-variables '(powerline-height (+ 2 (my:powerline-get-good-height))))
+(custom-set-variables '(powerline-height (+ 4 (frame-char-height))))
 
 (defadvice load-theme (after my:ad-disable-box-mode-line activate)
   (set-face-attribute 'mode-line nil
