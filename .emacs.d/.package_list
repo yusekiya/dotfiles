@@ -85,6 +85,7 @@ indent-guide
 irony
 ivy
 jedi-core
+json-reformat
 key-chord
 let-alist
 lice
