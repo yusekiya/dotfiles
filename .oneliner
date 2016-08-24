@@ -3,6 +3,7 @@
 [Remove duplicates] sort ${File} | uniq
 [Pick up specific line] head -n ${line_num} | tail -n 1
 [Search term in files in current directory recursively] ag -G ${fname_regex:-'.*'} ${term} ${dest_dir:-.}
+[Search files with specific extension] find ${src_dir:-.} -name "*.${ext}"
 [Copy files with specific extension] ag -g '.*\.${ext}' ${src_dir:-.} | xargs -I% cp -f % ${dest_dir}
 [Copy files with specific extension] find ${src_dir:-.} -name "*.${ext}"  | xargs -I% cp -f % ${dest_dir}
 [Check process] ps aux | grep ${process}
