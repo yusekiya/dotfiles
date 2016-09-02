@@ -25,10 +25,12 @@ company-irony-c-headers
 company-jedi
 company-quickhelp
 company-statistics
+company-tern
 concurrent
 ctable
 cython-mode
 dash
+dash-functional
 deferred
 diminish
 dired-filter
@@ -85,6 +87,7 @@ indent-guide
 irony
 ivy
 jedi-core
+js2-mode
 key-chord
 let-alist
 lice
@@ -130,6 +133,7 @@ swap-buffers
 swiper
 switch-window
 swoop
+tern
 undo-tree
 use-package
 viewer
