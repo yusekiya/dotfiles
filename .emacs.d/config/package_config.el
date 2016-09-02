@@ -1521,6 +1521,23 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; javascript
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package js2-mode
+  :mode (("\\.js\\'" . js2-mode))
+  :init
+  (use-package tern
+    :defer t
+    :if (executable-find "tern")
+    :init
+    (defun my-tern-setup ()
+      (tern-mode)
+      (add-to-list (make-local-variable 'company-backends)
+                   '(company-tern :with company-yasnippet company-dabbrev-code)))
+    (add-hook 'js2-mode-hook 'my-tern-setup)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; json
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package json :defer t
