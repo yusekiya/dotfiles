@@ -46,7 +46,7 @@ elif [ -d "${HOME}/miniconda3/bin" ]; then
 fi
 
 # Add path for node
-if [ -f "${HOME}/.nodebrew/nodebrew" ]; then
+if [ -d "${HOME}/.nodebrew" ]; then
     export PATH=${HOME}/.nodebrew/current/bin:${PATH}
 fi
 
