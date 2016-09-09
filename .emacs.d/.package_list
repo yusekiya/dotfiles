@@ -140,6 +140,7 @@ viewer
 visual-regexp
 visual-regexp-steroids
 volatile-highlights
+web-mode
 websocket
 which-key
 with-editor
