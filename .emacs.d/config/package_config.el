@@ -1532,6 +1532,7 @@ The argument icon must be string."
     (setq web-mode-css-indent-offset 2)
     (setq web-mode-code-indent-offset 2)
     (setq evil-shift-width 2)
+    (setq web-mode-enable-auto-expanding t)
     (add-to-list (make-local-variable 'company-backends)
                  '(company-yasnippet company-dabbrev-code))
     (yas-activate-extra-mode 'html-mode)
