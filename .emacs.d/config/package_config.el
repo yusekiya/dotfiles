@@ -1546,6 +1546,10 @@ The argument icon must be string."
 (use-package js2-mode
   :mode (("\\.js\\'" . js2-mode))
   :init
+  (defun my-js2-mode-setup ()
+    (setq js2-basic-offset 2)
+    (setq evil-shift-width 2))
+  (add-hook 'js2-mode-hook 'my-js2-mode-setup)
   (use-package tern
     :defer t
     :if (executable-find "tern")
