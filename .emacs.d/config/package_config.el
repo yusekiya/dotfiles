@@ -1534,7 +1534,7 @@ The argument icon must be string."
     (setq evil-shift-width 2)
     (setq web-mode-enable-auto-expanding t)
     (add-to-list (make-local-variable 'company-backends)
-                 '(company-yasnippet company-dabbrev-code))
+                 '(company-yasnippet company-css :with company-files company-dabbrev-code))
     (yas-activate-extra-mode 'html-mode)
     (yas-activate-extra-mode 'css-mode))
   (add-hook 'web-mode-hook  'my-web-setup))
