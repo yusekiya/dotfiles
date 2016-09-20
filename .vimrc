@@ -57,6 +57,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
     Plug 'LeafCage/yankround.vim'
+    Plug 'gabrielelana/vim-markdown'
 call plug#end()
 
 " syntax on
