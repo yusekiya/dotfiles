@@ -40,6 +40,16 @@ let mapleader = "\<space>"
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
+" tab settings depending on extensions
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.yaml,*.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   call system('mkdir -p ~/.vim/autoload')
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
