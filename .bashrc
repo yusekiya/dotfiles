@@ -304,10 +304,10 @@ if [ `type -p direnv` ]; then
 fi
 
 # fzf
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
 if [ `type -p fzf` ]; then
-   if [ -f ~/.fzf.bash ]; then
-       source ~/.fzf.bash
-   fi
    # cd to selected directory including hidden ones
    function cdd() {
        local dir
