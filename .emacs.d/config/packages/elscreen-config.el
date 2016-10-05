@@ -76,9 +76,6 @@
          (use-package elscreen-persist
            :init
            (elscreen-persist-mode 1))
-         (use-package elscreen-separate-buffer-list
-           :config
-           (elscreen-separate-buffer-list-mode))
          ))
 ;; alias
 (defalias 'kill-tab 'elscreen-kill)
