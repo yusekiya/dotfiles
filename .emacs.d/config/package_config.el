@@ -902,8 +902,10 @@ The argument icon must be string."
   ;; :defer t
   :config
   ;; Default color
-  (progn (setq pos-tip-foreground-color "white")
-         (setq pos-tip-background-color "steelblue")))
+  (setq pos-tip-foreground-color "white")
+  (setq pos-tip-background-color "steelblue")
+  ;; Hide tip window when unfocused 
+  (add-hook 'focus-out-hook 'pos-tip-hide))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
