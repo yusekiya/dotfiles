@@ -16,3 +16,5 @@
     useConfigOnly = true
 [merge]
 	tool = vimdiff
+[diff]
+	tool = vimdiff
