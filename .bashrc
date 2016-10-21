@@ -361,8 +361,8 @@ if [ `type -p fzf` ]; then
 fi
 
 # enhancd
-if [ -f ~/repos/enhancd/enhancd.sh ]; then
-    source ~/repos/enhancd/enhancd.sh
+if [ -f ~/repos/enhancd/init.sh ]; then
+    source ~/repos/enhancd/init.sh
     export ENHANCD_FILTER=fzf:peco:gof
 fi
 
