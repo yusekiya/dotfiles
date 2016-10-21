@@ -253,8 +253,6 @@
 
 ;; C-M-d to kill-visual-line
 (global-set-key (kbd "C-M-d") 'kill-visual-line)
-;; Kill whole line with C-k
-(global-set-key (kbd "C-k") 'kill-whole-line)
 
 ;; Window move
 (global-set-key "\C-ql" 'windmove-right)
