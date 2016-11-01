@@ -22,3 +22,4 @@
 [Port scanning] nc -uzv ${PubliIP} ${Port}
 [Monitoring] less +F ${File}
 [Show login history] last | head -n ${num_lines:-20}
+[Get public IP] curl httpbin.org/ip!
