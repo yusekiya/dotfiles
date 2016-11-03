@@ -19,7 +19,7 @@
 [Delete backup files recursively] find . -maxdepth ${mdep:-1} -name "*.bak" -delete
 [Copy specific files with directory structure] rsync -avz --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
 [Copy specific files with directory structure over ssh] rsync -avz -e ssh --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
-[Port scanning] nc -uzv ${PubliIP} ${Port}
+[Scan port] nc -uzv ${PublicIP} ${Port}
 [Monitoring] less +F ${File}
 [Show login history] last | head -n ${num_lines:-20}
-[Get public IP] curl httpbin.org/ip!
+[Show public IP] curl httpbin.org/ip!
