@@ -101,7 +101,7 @@ else
     emacs_gui=emacs
 fi
 function emacs () {
-    emacsclient "$@" >& /dev/null || command ${emacs_gui} "$@"
+    emacsclient "$@" >& /dev/null || $(${emacs_gui} "$@")
 }
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
