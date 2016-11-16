@@ -201,7 +201,6 @@ alias df='df -h'
 alias du='du -h'
 #
 # Misc
-alias less='less -X'
 alias m='\less +F'
 # alias whence='type -a'                        # where, of a sort
 alias grep='grep -i --color'                     # show differences in colour
