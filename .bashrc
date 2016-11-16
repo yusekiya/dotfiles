@@ -11,7 +11,7 @@ export GIT_PS1_SHOWUPSTREAM=1
 export GIT_PS1_SHOWUNTRACKEDFILES=
 export GIT_PS1_SHOWSTASHSTATE=1
 
-export LESS='-iR'
+export LESS='-iRFX'
 
 # Load git completion
 ## for windows
