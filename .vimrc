@@ -36,11 +36,11 @@ set mouse=a
 set wildmenu
 set wildmode=longest:full,full
 let mapleader = "\<space>"
-" Neobundle
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-" tab settings depending on extensions
+" Tab settings for each file type
 augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
