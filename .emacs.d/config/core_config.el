@@ -158,12 +158,6 @@
 ;; Diff
 (setq diff-switches "-u")
 
-;; Enable CUA mode
-(cua-mode t)
-(setq cua-enable-cua-keys nil)
-;; Set key
-(define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
-
 (setq dabbrev-ignored-buffer-names '("*Messages*"))
 
 ;; Scrolling
