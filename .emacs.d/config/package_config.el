@@ -1770,7 +1770,9 @@ The argument icon must be string."
                 (add-hook 'company-completion-finished-hook
                           (lambda (&optional arg) (beacon-mode 1)) nil t))))
   (with-eval-after-load 'evil
-    (setq beacon-dont-blink-commands (append beacon-dont-blink-commands '(evil-scroll-line-up evil-scroll-line-down))))
+    (setq beacon-dont-blink-commands
+          (append beacon-dont-blink-commands
+                  '(evil-scroll-line-up evil-scroll-line-down dired-next-line dired-previous-line))))
   )
 
 
