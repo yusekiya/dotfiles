@@ -116,7 +116,7 @@
     `(lambda nil
        (/ ,(* (/ (preview-inherited-face-attribute
                   'preview-reference-face
-                  :height 'default) 10.0) 1.1)
+                  :height 'default) 10.0) 0.8)
           (preview-document-pt))))
   (setq-default preview-scale-function #'my:preview-scale-from-face)
   (custom-set-variables
