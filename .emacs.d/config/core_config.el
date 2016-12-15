@@ -16,7 +16,7 @@
 ;; IME setting for japanese environment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for windows
-(when (eq system-type 'windows-nt)
+(when (and (eq system-type 'windows-nt) (fboundp 'w32-ime-initialize))
   (set-keyboard-coding-system 'japanese-shift-jis)
   ;; (set-keyboard-coding-system 'utf-8)
   (setq default-input-method "W32-IME")
