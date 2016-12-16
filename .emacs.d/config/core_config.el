@@ -143,14 +143,6 @@
 ;; Reload file under version control system
 (setq auto-revert-check-vc-info t)
 
-;; auto-insert LAST-MODIFIED-DATE
-(if (not (memq 'time-stamp write-file-hooks))
-    (setq write-file-hooks
-          (cons 'time-stamp write-file-hooks)))
-(setq time-stamp-line-limit 40)
-(setq time-stamp-format "%3b %02d %:y")
-(setq system-time-locale "C")
-
 ;; Beep
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
