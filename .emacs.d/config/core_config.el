@@ -185,6 +185,9 @@
 ;; Default method for remote connection in tramp mode
 (setq tramp-default-method "sshx")
 
+;; Enable desktop save mode
+(desktop-save-mode 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mode
