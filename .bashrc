@@ -344,7 +344,7 @@ if [ `type -p fzf` ]; then
        fi
        ${pager} ${file}
    }
-   function search_oneliner() {
+   function _search_oneliner() {
        local file
        local cmd
        file=~/.oneliner
@@ -360,7 +360,7 @@ if [ `type -p fzf` ]; then
            READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
        fi
    }
-   bind -x '"\C-s": "search_oneliner"'
+   bind -x '"\C-s": "_search_oneliner"'
 fi
 
 # enhancd
