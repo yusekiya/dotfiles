@@ -319,13 +319,17 @@ if [ `type -p fzf` ]; then
        file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
    # command history search
-   function fh() {
-       eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
-            perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
-                      if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
-            fzf +s --tac | sed 's/ *[0-9]* *//')
+   function _search_history() {
+       local cmd
+       cmd=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
+              perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
+                        if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
+              fzf +s --tac | sed 's/ *[0-9]* *//')
+       [[ -z $cmd ]] && return
+       READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
+       READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
    }
-   bind -x '"\C-r": fh'
+   bind -x '"\C-r": _search_history'
    function mynote-search() {
        local file
        local pager
