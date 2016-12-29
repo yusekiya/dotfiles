@@ -68,6 +68,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'terryma/vim-expand-region'
     Plug 'LeafCage/yankround.vim'
     Plug 'gabrielelana/vim-markdown'
+    Plug 'tpope/vim-surround'
 call plug#end()
 
 " syntax on
