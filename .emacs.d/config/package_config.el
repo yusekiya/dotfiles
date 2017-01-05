@@ -1656,23 +1656,7 @@ The argument icon must be string."
 (use-package highlight-indent-guides
   :defer t
   :config
-  (defun my:set-indent-guide-face ()
-    (let* ((base-color (face-attribute 'default :background))
-           (lighten-color1 (color-lighten-name base-color 8))
-           (lighten-color2 (color-lighten-name base-color 4))
-           (darken-color1 (color-darken-name base-color 10))
-           (darken-color2 (color-darken-name base-color 4)))
-      (custom-set-faces
-       `(highlight-indent-guides-odd-face (
-                                           (((class color) (background dark)) (:background ,lighten-color1))
-                                           (((class color) (background light)) (:background ,darken-color1))))
-       `(highlight-indent-guides-even-face (
-                                            (((class color) (background dark)) (:background ,lighten-color2))
-                                            (((class color) (background light)) (:background ,darken-color2)))))))
-  (add-hook 'highlight-indent-guides-mode-hook 'my:set-indent-guide-face)
-  (defadvice load-theme (after my:ad-set-indent-guide-face activate)
-    (my:set-indent-guide-face))
-  )
+  (setq highlight-indent-guides-method 'column))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
