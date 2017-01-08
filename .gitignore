@@ -95,3 +95,4 @@ work/
 .emacs.d/custom.el
 .emacs.d/.emacs.desktop
 .emacs.d/.emacs.desktop.lock
+.emacs.d/abbrev_defs
