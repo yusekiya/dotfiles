@@ -1911,6 +1911,19 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package dockerfile-mode :defer t
   :mode (("Dockerfile\\'" . dockerfile-mode))
+  :init
+  (defun my:dockerfile-setup ()
+    (abbrev-mode))
+  (add-hook 'dockerfile-mode-hook 'my:dockerfile-setup)
+  :config
+  (setq abbrev-mode t)
+  ;; TODO: The following config does not uppercase keywords after "ONBUILD" for now.
+  (define-abbrev-table 'dockerfile-mode-abbrev-table
+    (mapcar #'(lambda (v) (list v (upcase v) nil 1))
+            '("from" "maintainer" "run" "cmd" "label" "expose" "env"
+              "add" "copy" "entrypoint" "volume" "user" "workdir"
+              "arg" "onbuild" "stopsignal" "healthcheck" "shell"))
+    :regexp "^\\([a-z]+\\)")
   )
 
 
