@@ -37,6 +37,7 @@ dired-filter
 dired-hacks-utils
 dired-ranger
 direx
+dockerfile-mode
 ein
 elscreen
 elscreen-persist
