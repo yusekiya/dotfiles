@@ -25,5 +25,5 @@
 [Monitoring] less +F ${File}
 [Show login history] last | head -n ${num_lines:-20}
 [Show public IP] curl httpbin.org/ip!
-[Docker|Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
-[Docker|Remove stopped/exited containers] docker rm $(docker ps -aq)
+[Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
+[Docker| Remove stopped/exited containers] docker rm $(docker ps -aq)
