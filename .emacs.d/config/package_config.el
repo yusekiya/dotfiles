@@ -1578,7 +1578,14 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package yaml-mode
   :mode (("\\.ya?ml\\'" . yaml-mode))
-  )
+  :init
+  (defun my:yaml-mode-setup()
+    (setq tab-width 2
+          evil-shift-width 2)
+    (use-package highlight-indent-guides
+      :config
+      (highlight-indent-guides-mode)))
+  (add-hook 'yaml-mode-hook 'my:yaml-mode-setup))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
