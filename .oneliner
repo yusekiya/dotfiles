@@ -27,4 +27,4 @@
 [Show public IP] curl httpbin.org/ip!
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
 [Docker| Remove stopped/exited containers] docker rm $(docker ps -aq)
-[Ansible| Encrypt string] echo -n ${SECRET} | ansible-vault encrypt
+[Ansible| Encrypt string] read -sp "Encrypting string: " secret; echo ''; echo -n ${secret} | ansible-vault encrypt; unset secret
