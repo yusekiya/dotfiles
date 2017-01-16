@@ -154,6 +154,23 @@ function change_tab_title() {
 # Change tab title when returning back to local
 # function ssh() { command ssh "$@"; change_tab_title; }
 
+# git functions
+function git-lookover() {
+    local dirs=$(find . -maxdepth 1 -type d -regex '\./.*')
+    local status
+    for drepo in ${dirs}; do
+        if [ -d "${drepo}/.git" ]; then
+            status="$(cd ${drepo}; git status --porcelain --branch)"
+            if [ -n "`echo "$status" | head -n 1 | grep '\[ahead'`" ]; then
+                echo -e "\e[33m${drepo}\e[m": `echo "${status}" | sed 's/##//g'`
+            fi
+            if [ "`echo "$status" | wc -l`" -gt 1 ]; then
+                echo -e "\e[33m${drepo}\e[m": working directory is not clean
+            fi
+        fi
+    done
+}
+
 # PS1
 ## Red='\[\e[31m\]'
 ## Green='\[\e[32m\]'
