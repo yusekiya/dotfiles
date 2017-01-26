@@ -1190,8 +1190,7 @@ The argument icon must be string."
   :init
   (use-package key-chord
     :config
-    (key-chord-define-global "io" 'bool-flip-do-flip)))
-
+    (key-chord-define-global ";'" 'bool-flip-do-flip)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight linum
