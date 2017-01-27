@@ -775,6 +775,7 @@ The argument icon must be string."
   (setq tab-width 4
         python-indent-offset 4
         evil-shift-width 4)
+  (set (make-local-variable 'smart-newline/ignore-reindent) t)
   (use-package highlight-indent-guides
     :config
     (highlight-indent-guides-mode 1))
@@ -1679,8 +1680,14 @@ The argument icon must be string."
 ;; smart newline
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package smart-newline
+  :init
+  (setq smart-newline/ignore-reindent nil)
   :bind (("RET" . smart-newline)
-         ("<S-return>" . newline)))
+         ("<S-return>" . newline))
+  :config
+  (defun wrap-smart-newline/newline-and-indent (orig-fun &rest args)
+    (if (not smart-newline/ignore-reindent) (apply orig-fun args) (newline-and-indent)))
+  (advice-add 'smart-newline/newline-and-indent :around #'wrap-smart-newline/newline-and-indent))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
