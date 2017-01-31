@@ -1592,6 +1592,7 @@ The argument icon must be string."
   (defun my:yaml-mode-setup()
     (setq tab-width 2
           evil-shift-width 2)
+    (set (make-local-variable 'smart-newline/ignore-reindent) t)
     (use-package highlight-indent-guides
       :config
       (highlight-indent-guides-mode)))
