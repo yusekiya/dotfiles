@@ -84,7 +84,9 @@ if type -p git-manage > /dev/null; then
     _git_manage()
     {
         local word="${COMP_WORDS[COMP_CWORD]}"
-        COMPREPLY=($(compgen -W "add remove ls lookover" -- "$word"))
+        if [ $COMP_CWORD -lt 3 ]; then
+            COMPREPLY=($(compgen -W "add remove ls lookover" -- "$word"))
+        fi
     }
     complete -F _git_manage git-manage
 fi
