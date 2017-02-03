@@ -889,8 +889,7 @@ The argument icon must be string."
   ;; Inhibit message
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; *scratch* buffer
-  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
-  (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer (concat user-emacs-directory "scratch"))
+  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p nil)
   (auto-save-buffers-enhanced t)
   (bind-key "C-x a s" 'auto-save-buffers-enhanced-toggle-activity)
   )
