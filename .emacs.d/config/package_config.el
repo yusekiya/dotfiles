@@ -1700,7 +1700,7 @@ The argument icon must be string."
   (defvar git-gutter-mode-map
     (make-sparse-keymap))
   :config
-  (diminish 'git-gutter-mode (my:safe-lighter-icon "GG" "code-fork"))
+  (diminish 'git-gutter-mode (my:safe-lighter-icon "GG" "git"))
   (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
   (use-package smartrep
     :config

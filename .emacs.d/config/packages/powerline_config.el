@@ -111,7 +111,7 @@
 (use-package git-ps1-mode
   :diminish git-ps1-mode
   :config
-  (setq git-ps1-mode-lighter-text-format "[%s]"))
+  (setq git-ps1-mode-lighter-text-format (concat (my:safe-awesomefont-icon "" "code-fork") " %s")))
 
 (defpowerline powerline-git-status
   (if (featurep 'git-ps1-mode) git-ps1-mode-lighter-text ""))
@@ -265,6 +265,9 @@
                                 (funcall separator-left face1 face1)
                                 ;; ;; buffer id
                                 (powerline-buffer-id face1 'l)
+                                ;; ;; separator
+                                (funcall separator-left face1 face1)
+                                ;; ;; git status
                                 (powerline-git-status face1 'l)
                                 ;; ;; separator
                                 (funcall separator-left face1 face1)
