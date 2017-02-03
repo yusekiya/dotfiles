@@ -83,7 +83,8 @@ fi
 if type -p git-manage > /dev/null; then
     _git_manage()
     {
-        COMPREPLY=( add remove ls lookover)
+        local word="${COMP_WORDS[COMP_CWORD]}"
+        COMPREPLY=($(compgen -W "add remove ls lookover" -- "$word"))
     }
     complete -F _git_manage git-manage
 fi
