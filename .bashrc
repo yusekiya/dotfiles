@@ -180,23 +180,33 @@ function git-lookover() {
 ## Cyan='\[\e[36m\]'
 ## White='\[\e[37m\]'
 ## Reset='\[\e[0m\]'
-if type -p __git_ps1; then
-    # For remote
-    if [[ $SESSION_TYPE = remote/ssh ]]; then
-        export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
-    # For local
-    else
-        export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
-    fi
-else
-    # For remote
-    if [[ $SESSION_TYPE = remote/ssh ]]; then
-        export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
-    # For local
-    else
-        export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
-    fi
-fi
+case "$TERM" in
+    "dump")
+        PS1="> "
+        ;;
+    xterm*|rxvt*|eterm*|screen*)
+        if type -p __git_ps1; then
+            # For remote
+            if [[ $SESSION_TYPE = remote/ssh ]]; then
+                export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
+            # For local
+            else
+                export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]\[\e[35m\]$(__git_ps1)\[\e[0m\]'$'\n\$ '
+            fi
+        else
+            # For remote
+            if [[ $SESSION_TYPE = remote/ssh ]]; then
+                export PS1='\[\e[32;1m\]\u@\[\e[0m\]\[\e[33;1m\]\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
+            # For local
+            else
+                export PS1='\[\e[32;1m\]\u@\h\[\e[0m\]: \[\e[34;1m\]\w\[\e[0m\]'$'\n\$ '
+            fi
+        fi
+        ;;
+    *)
+        PS1="> "
+        ;;
+esac
 
 # Aliases
 #
