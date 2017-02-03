@@ -79,6 +79,15 @@ elif [ -f /usr/local/share/bash-completion/bash_completion ]; then
     source /usr/local/share/bash-completion/bash_completion
 fi
 
+# My completion
+if type -p git-manage > /dev/null; then
+    _git_manage()
+    {
+        COMPREPLY=( add remove ls lookover)
+    }
+    complete -F _git_manage git-manage
+fi
+
 # History Options
 #
 # Don't put duplicate lines in the history.
