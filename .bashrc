@@ -181,7 +181,7 @@ function git-lookover() {
 ## White='\[\e[37m\]'
 ## Reset='\[\e[0m\]'
 case "$TERM" in
-    "dump")
+    "dumb")
         PS1="> "
         ;;
     xterm*|rxvt*|eterm*|screen*)
