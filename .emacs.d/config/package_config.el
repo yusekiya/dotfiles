@@ -842,7 +842,6 @@ The argument icon must be string."
 )
 
 (use-package solarized-theme
-  :defer t
   :init
   (setq solarized-high-contrast-mode-line nil)
   (custom-set-variables
@@ -862,6 +861,11 @@ The argument icon must be string."
       (powerline-reset)))
   (defadvice load-theme (after my:ad-swap-faces-solarized activate)
     (my:swap-faces-solarized))
+  (with-eval-after-load 'perspeen-tab
+    (custom-set-faces
+     '(perspeen-tab--powerline-inactive1 ((t (:foreground "#839496" :background "#002b36" :box nil))))
+     '(perspeen-tab--header-line-inactive ((t (:foreground "#839496" :background "#002b36" :box nil))))
+     '(perspeen-tab--header-line-active ((t (:foreground "#002b36" :background "#eee8d5" :box nil))))))
   )
 
 (defun my:load-default-theme ()
@@ -1043,6 +1047,21 @@ The argument icon must be string."
 ;; elscreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (load "elscreen-config")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; perspeen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package perspeen
+  :init
+  (setq perspeen-use-tab t)
+  (setq perspeen-keymap-prefix (kbd "C-q C-q"))
+  :config
+  (bind-keys ("M-t" . perspeen-tab-create-tab)
+             ("<C-tab>" . perspeen-tab-next)
+             ("<C-S-tab>" . perspeen-tab-prev)
+             ("C-q x" . perspeen-tab-del))
+  (perspeen-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
