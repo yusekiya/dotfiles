@@ -42,7 +42,7 @@
 (use-package helm-sys :defer t
   :bind (("C-; C-t" . helm-top)))
 
-(use-package helm-elscreen
+(use-package helm-elscreen :disabled
   :config
   (bind-keys :map helm-command-map
              ("t" . nil)

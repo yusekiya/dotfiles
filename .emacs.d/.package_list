@@ -40,8 +40,6 @@ dired-ranger
 direx
 dockerfile-mode
 ein
-elscreen
-elscreen-persist
 epc
 epl
 evil
@@ -108,6 +106,7 @@ open-junk-file
 ov
 paper-theme
 pcre2el
+perspeen
 pkg-info
 popup
 popwin
