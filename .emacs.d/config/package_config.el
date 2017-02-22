@@ -869,6 +869,8 @@ The argument icon must be string."
   (enable-theme my-default-theme)
   )
 
+(my:load-default-theme)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
@@ -1040,7 +1042,7 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elscreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "elscreen-config")
+;; (load "elscreen-config")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1789,7 +1791,6 @@ The argument icon must be string."
 (use-package zoom-window
   :bind ("C-q z" . zoom-window-zoom)
   :config
-  (setq zoom-window-use-elscreen t)
   (setq zoom-window-mode-line-color "DarkGreen")
   (zoom-window-setup)
   ;; Disable split window
@@ -1847,9 +1848,6 @@ The argument icon must be string."
          'mode-line-buffer-identification
          " "
          '"%p (%3l:%3c)"
-         '(elscreen-display-screen-number
-           (" " elscreen-mode-line-string))
-         " "
          'evil-mode-line-tag
          'smartrep-mode-line-string
          '(vc-mode vc-mode)
@@ -1868,14 +1866,7 @@ The argument icon must be string."
     (Zen:refresh))
   ;; Set Zen:theme-level1 to current theme
   (advice-add 'Zen:initialization :after '(lambda() (setq Zen:theme-level1 (car custom-enabled-themes))))
-  ;; If elscreen tabs are displayed, hide them.
-  (defvar my:elscreen-display-tab-p elscreen-display-tab)
-  (defadvice Zen:initialization (before ad-hide-elscreen-tab activate)
-    (set (make-local-variable 'elscreen-display-tab) nil))
-  (defadvice Zen:go-back (before ad-show-elscreen-tab activate)
-    (kill-local-variable 'elscreen-display-tab))
   ;; Update screen tab when Zen-mode state changes
-  (advice-add 'Zen:go-deeper :after '(lambda() (elscreen-notify-screen-modification 'force)))
   (with-eval-after-load 'evil
     (before-ad-quit-Zen-mind evil-window-split)
     (before-ad-quit-Zen-mind evil-window-vsplit)
@@ -2015,17 +2006,6 @@ The argument icon must be string."
                          ("j" . 'windmove-down)
                          ("k" . 'windmove-up)
                          ("l" . 'windmove-right))))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Load theme
-;;; This is preferred to be put at the last of init file
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(if (featurep 'elscreen-persist)
-    (defadvice elscreen-persist-restore (after my:ad-modify-theme activate)
-      (my:load-default-theme)
-      (my:swap-faces-solarized))
-  (my:load-default-theme))
 
 
 ;; end of file
