@@ -776,6 +776,7 @@ The argument icon must be string."
         python-indent-offset 4
         evil-shift-width 4)
   (set (make-local-variable 'smart-newline/ignore-reindent) t)
+  (bind-key "C-h" 'python-indent-dedent-line-backspace python-mode-map)
   (use-package highlight-indent-guides
     :config
     (highlight-indent-guides-mode 1))
@@ -1533,7 +1534,9 @@ The argument icon must be string."
 (use-package cython-mode
   :mode (("\\.pyx\\'" . cython-mode)
          ("\\.pxd\\'" . cython-mode)
-         ("\\.pxi\\'" . cython-mode)))
+         ("\\.pxi\\'" . cython-mode))
+  :config
+  (bind-key "C-h" 'python-indent-dedent-line-backspace cython-mode-map))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
