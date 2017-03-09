@@ -1064,6 +1064,13 @@ The argument icon must be string."
              ("C-q x" . perspeen-tab-del))
   (perspeen-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; heml-perspeen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package helm-perspeen :defer t
+  :init
+  (with-eval-after-load 'helm-config
+    (bind-key "SPC" 'helm-perspeen helm-command-map)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; view-mode

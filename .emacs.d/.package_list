@@ -76,6 +76,7 @@ helm-flycheck
 helm-flymake
 helm-flyspell
 helm-gtags
+helm-perspeen
 helm-swoop
 hexrgb
 highlight-indent-guides
