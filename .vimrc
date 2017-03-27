@@ -29,7 +29,7 @@ set pumheight=10
 set scrolloff=3
 " set iskeyword-=_
 set clipboard=unnamed,autoselect
-set t_Co=16
+" set t_Co=16
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set mouse=a
@@ -62,6 +62,7 @@ call plug#begin('~/.vim/bundle')
     " Plug 'Shougo/vimproc'
     Plug 'scrooloose/nerdcommenter'
     Plug 'altercation/vim-colors-solarized'
+    Plug 'arcticicestudio/nord-vim'
     Plug 'ujihisa/unite-colorscheme'
     Plug 'tomasr/molokai'
     Plug 'junegunn/vim-easy-align'
@@ -72,9 +73,7 @@ call plug#begin('~/.vim/bundle')
 call plug#end()
 
 " syntax on
-set background=dark
-let g:solarized_termtrans=1
-colorscheme solarized
+colorscheme nord
 
 " nerdcommenter
 let NERDSpaceDelims = 1
