@@ -80,7 +80,7 @@
 
 ;; custom variables
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(if (file-exists-p "~/.emacs.d/custom.el") (load custom-file))
 
 ;;start on home directory
 (cd "~")
