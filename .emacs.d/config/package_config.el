@@ -812,72 +812,6 @@ The argument icon must be string."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Theme
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq custom-theme-directory (concat user-emacs-directory "lib/themes/"))
-(defcustom my-default-theme 'solarized-dark "default theme")
-;; set safe themes
-(custom-set-variables
- '(custom-safe-themes
-   '(
-     "3c9d994e18db86ae397d077b6324bfdc445ecc7dc81bb9d528cd9bba08c1dac1"
-     "367e859d84bdd85bf9ab7edfee035a7cce5d3db0f75ffaf85e7753da84e4920c"
-     "729b17c0c54263c489d13ac0ce89ef17fcedf9d36f920c635c22a4b33a6ca59d"
-     "64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33"
-     default)
-  )
-)
-
-(defun change-theme(theme &optional no-confirm no-enable)
-  "Disable all enabled themes, and load Custom theme named THEME."
-  (interactive
-   (list
-    (intern (completing-read "Load custom theme: "
-                 (mapcar 'symbol-name
-                     (custom-available-themes))))
-    nil nil))
-  (unless (custom-theme-name-valid-p theme)
-    (error "Invalid theme name `%s'" theme))
-  (mapc 'disable-theme custom-enabled-themes)
-  (load-theme theme)
-)
-
-(use-package solarized-theme
-  :init
-  (setq solarized-high-contrast-mode-line nil)
-  (custom-set-variables
-   ;; Don't scale font
-   '(solarized-use-variable-pitch nil)
-   '(solarized-height-minus-1 1.0)
-   '(solarized-height-plus-1 1.0)
-   '(solarized-height-plus-2 1.0)
-   '(solarized-height-plus-3 1.0)
-   '(solarized-height-plus-4 1.0)
-   )
-  (setq x-underline-at-descent-line t)
-  (defun my:swap-faces-solarized ()
-    (when (and (featurep 'powerline) (eq (car custom-enabled-themes) 'solarized-dark))
-      (my:swap-faces 'powerline-active1 'powerline-inactive1)
-      (my:swap-faces 'powerline-active2 'powerline-inactive2)
-      (powerline-reset)))
-  (defadvice load-theme (after my:ad-swap-faces-solarized activate)
-    (my:swap-faces-solarized))
-  (with-eval-after-load 'perspeen-tab
-    (custom-set-faces
-     '(perspeen-tab--powerline-inactive1 ((t (:foreground "#839496" :background "#002b36" :box nil))))
-     '(perspeen-tab--header-line-inactive ((t (:foreground "#839496" :background "#002b36" :box nil))))
-     '(perspeen-tab--header-line-active ((t (:foreground "#002b36" :background "#eee8d5" :box nil))))))
-  )
-
-(defun my:load-default-theme ()
-  (load-theme my-default-theme t t)
-  (enable-theme my-default-theme)
-  )
-
-(my:load-default-theme)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired-async
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (with-eval-after-load 'dired (use-package dired-async))
@@ -2036,5 +1970,91 @@ The argument icon must be string."
                          ("k" . 'windmove-up)
                          ("l" . 'windmove-right))))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Theme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq custom-theme-directory (concat user-emacs-directory "lib/themes/"))
+(defcustom my-default-theme 'nord "default theme")
+;; set safe themes
+(custom-set-variables
+ '(custom-safe-themes
+   '(
+     "3c9d994e18db86ae397d077b6324bfdc445ecc7dc81bb9d528cd9bba08c1dac1"
+     "367e859d84bdd85bf9ab7edfee035a7cce5d3db0f75ffaf85e7753da84e4920c"
+     "729b17c0c54263c489d13ac0ce89ef17fcedf9d36f920c635c22a4b33a6ca59d"
+     "64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33"
+     default)
+  )
+)
+
+(defun change-theme(theme &optional no-confirm no-enable)
+  "Disable all enabled themes, and load Custom theme named THEME."
+  (interactive
+   (list
+    (intern (completing-read "Load custom theme: "
+                 (mapcar 'symbol-name
+                     (custom-available-themes))))
+    nil nil))
+  (unless (custom-theme-name-valid-p theme)
+    (error "Invalid theme name `%s'" theme))
+  (mapc 'disable-theme custom-enabled-themes)
+  (load-theme theme)
+)
+
+(use-package solarized-theme :disabled
+  :init
+  (setq solarized-high-contrast-mode-line nil)
+  (custom-set-variables
+   ;; Don't scale font
+   '(solarized-use-variable-pitch nil)
+   '(solarized-height-minus-1 1.0)
+   '(solarized-height-plus-1 1.0)
+   '(solarized-height-plus-2 1.0)
+   '(solarized-height-plus-3 1.0)
+   '(solarized-height-plus-4 1.0)
+   )
+  (setq x-underline-at-descent-line t)
+  (defun my:swap-faces-solarized ()
+    (when (and (featurep 'powerline) (eq (car custom-enabled-themes) 'solarized-dark))
+      (my:swap-faces 'powerline-active1 'powerline-inactive1)
+      (my:swap-faces 'powerline-active2 'powerline-inactive2)
+      (powerline-reset)))
+  (defadvice load-theme (after my:ad-swap-faces-solarized activate)
+    (my:swap-faces-solarized))
+  (with-eval-after-load 'perspeen-tab
+    (custom-set-faces
+     '(perspeen-tab--powerline-inactive1 ((t (:foreground "#839496" :background "#002b36" :box nil))))
+     '(perspeen-tab--header-line-inactive ((t (:foreground "#839496" :background "#002b36" :box nil))))
+     '(perspeen-tab--header-line-active ((t (:foreground "#002b36" :background "#eee8d5" :box nil))))))
+  )
+
+(use-package nord-theme
+  :init
+  (custom-set-variables
+   '(myCursorColor "#BF616A")
+   '(myCursorColor_ime "#A3BE8C")
+   '(myCursorColor_SR "#D08770")
+   '(myCursorColor_view "#5E81AC")
+   '(myCursorColor_mc "#BF616A"))
+  (with-eval-after-load 'perspeen-tab
+    (custom-set-faces
+     '(perspeen-tab--powerline-inactive1 ((t (:foreground "#839496" :background "#434C5E" :box nil))))
+     '(perspeen-tab--header-line-inactive ((t (:foreground "#839496" :background "#434C5E" :box nil))))
+     '(perspeen-tab--header-line-active ((t (:foreground "#ECEFF4" :background "#B48EAD" :box nil))))))
+  (custom-set-faces
+   '(mode-line-inactive ((t (:foreground "#D8DEE9"))))
+   '(powerline-active5 ((t (:foreground "#ECEFF4" :background "#5E81AC"))))
+   '(powerline-active4 ((t (:foreground "#ECEFF4" :background "#BF616A"))))
+   '(powerline-active7 ((t (:foreground "#ECEFF4" :background "#D08770"))))
+   '(powerline-active3 ((t (:foreground "#ECEFF4" :background "#A3BE8C"))))))
+
+
+(defun my:load-default-theme ()
+  (load-theme my-default-theme t t)
+  (enable-theme my-default-theme)
+  )
+
+(my:load-default-theme)
 
 ;; end of file
