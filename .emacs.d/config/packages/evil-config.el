@@ -7,9 +7,14 @@
 ;; Assign scroll-up C-u
 (setq evil-want-C-u-scroll t)
 ;; cursor style
-(setq evil-insert-state-cursor '("VioletRed" (bar . 4)))
-(setq evil-normal-state-cursor '("#0088cc" box))
-(setq evil-emacs-state-cursor '("VioletRed" (bar . 4)))
+;; For Solarized dark
+;; (setq evil-insert-state-cursor '("VioletRed" (bar . 4)))
+;; (setq evil-normal-state-cursor '("#0088cc" box))
+;; (setq evil-emacs-state-cursor '("VioletRed" (bar . 4)))
+;; For Nord
+(setq evil-insert-state-cursor '("#BF616A" (bar . 4)))
+(setq evil-normal-state-cursor '("#5E81AC" box))
+(setq evil-emacs-state-cursor '("#BF616A" (bar . 4)))
 (setq evil-cross-lines t
       evil-search-module 'evil-search
       evil-ex-search-vim-style-regexp t)
