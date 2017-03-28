@@ -2047,7 +2047,16 @@ The argument icon must be string."
    '(powerline-active5 ((t (:foreground "#ECEFF4" :background "#5E81AC"))))
    '(powerline-active4 ((t (:foreground "#ECEFF4" :background "#BF616A"))))
    '(powerline-active7 ((t (:foreground "#ECEFF4" :background "#D08770"))))
-   '(powerline-active3 ((t (:foreground "#ECEFF4" :background "#A3BE8C"))))))
+   '(powerline-active3 ((t (:foreground "#ECEFF4" :background "#A3BE8C")))))
+  :config
+  (custom-theme-set-variables
+   'nord
+   '(pos-tip-foreground-color "#4C566A")
+   '(pos-tip-background-color "#D8DEE9"))
+  (custom-theme-set-faces
+   'nord
+   '(popup-tip-face ((t (:foreground "#4C566A" :background "#D8DEE9")))))
+)
 
 
 (defun my:load-default-theme ()
