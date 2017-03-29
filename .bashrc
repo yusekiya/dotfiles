@@ -312,6 +312,11 @@ if [ "$(uname -o)" = "Msys" ]; then
     alias cmd='winpty cmd'
 fi
 
+# dircolors
+if [ -f "${HOME}/.dircolors" ]; then
+    eval `dircolors ${HOME}/.dircolors`
+fi
+
 # direnv
 if [ `type -p direnv` ]; then
     eval "$(direnv hook bash)"
