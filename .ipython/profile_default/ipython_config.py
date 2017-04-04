@@ -9,12 +9,13 @@ c.InlineBackend.rc = {
     'figure.facecolor': (1, 1, 1, 1)}
 
 c.InteractiveShell.colors = 'linux'
-c.TerminalInteractiveShell.highlighting_style = 'legacy'
-#  import pygments
-#  if 'solarizeddark' in pygments.styles.get_all_styles():
-    #  c.TerminalInteractiveShell.highlighting_style = 'solarizeddark'
-#  else:
-    #  c.TerminalInteractiveShell.highlighting_style = 'legacy'
+#  c.TerminalInteractiveShell.highlighting_style = 'legacy'
+import pygments
+thistheme = 'fruity'
+if thistheme in pygments.styles.get_all_styles():
+    c.TerminalInteractiveShell.highlighting_style = thistheme
+else:
+    c.TerminalInteractiveShell.highlighting_style = 'legacy'
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
