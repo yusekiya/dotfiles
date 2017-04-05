@@ -2056,8 +2056,18 @@ The argument icon must be string."
   (custom-theme-set-faces
    'nord
    '(popup-tip-face ((t (:foreground "#4C566A" :background "#D8DEE9")))))
+  ;; Workaround issue of almost invisible comment face
+  (custom-set-faces
+   `(font-lock-comment-face ((t (:foreground ,(color-lighten-name
+                                               (face-attribute 'font-lock-comment-face :foreground)
+                                               10)))))
+   `(font-lock-comment-delimiter-face ((t (:foreground ,(color-lighten-name
+                                               (face-attribute 'font-lock-comment-delimiter-face :foreground)
+                                               10)))))
+   `(font-lock-doc-face ((t (:foreground ,(color-lighten-name
+                                               (face-attribute 'font-lock-doc-face :foreground)
+                                               10))))))
 )
-
 
 (defun my:load-default-theme ()
   (load-theme my-default-theme t t)
