@@ -1592,7 +1592,9 @@ The argument icon must be string."
   (defun markdown-custom ()
     "markdown-mode-hook"
     ;; Read source from stdin (nil) or a file (t)
-    (setq markdown-command-needs-filename nil))
+    (setq markdown-command-needs-filename nil)
+    (setq tab-width 2
+          evil-shift-width 2))
   (add-hook 'markdown-mode-hook 'markdown-custom)
   )
 
