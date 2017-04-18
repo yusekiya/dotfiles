@@ -1399,13 +1399,6 @@ The argument icon must be string."
    '(irony-server-install-prefix "~/.emacs.d/irony/")
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
-  (if (equal system-type 'darwin)
-      (custom-set-variables
-       '(irony-additional-clang-options '("-I/usr/local/include"
-                                          "-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"
-                                          "-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"
-                                          "-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
-                                          "-I/usr/include"))))
   (defun my-irony-mode-setup ()
     (define-key irony-mode-map [remap completion-at-point]
       'irony-completion-at-point-async)
