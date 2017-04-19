@@ -499,16 +499,6 @@ The argument icon must be string."
 ;; Get default include path
 ;; shell-command for clang: "echo \"\" | clang++ -E -x c++ - -v"
 ;; shell-command for g++: "echo \"\" | g++ -v -x c++ -E -"
-(defun my:get-include-dirs ()
-  (let* ((command-result (shell-command-to-string "echo \"\" | clang++ -E -x c++ - -v"))
-         (start-string "#include <...> search starts here:\n")
-         (end-string "End of search list.\n")
-         (start-pos (string-match start-string command-result))
-         (end-pos (string-match end-string command-result))
-         (include-string (substring command-result (+ start-pos (length start-string)) end-pos)))
-    (split-string include-string)))
-(defun my:include-dirs-with-I ()
-  (mapcar (lambda (item) (concat "-I" item)) (my:get-include-dirs)))
 ;; Replace macro in template files
 (defvar my:autoinsert-template-replace-alist
   '(("%file%" .
@@ -535,14 +525,9 @@ The argument icon must be string."
       (nconc '(
                ;("\\.cpp$" . ["template.cpp" my:template])
                ;("\\.h$"   . ["template.h" my:template])
-               ("\\.clang_complete" . ["template.clang_complete" my:template])
                ) auto-insert-alist))
 
 (add-hook 'find-file-hooks 'auto-insert)
-
-(defun my:insert-include-dirs-option ()
-  (interactive)
-  (insert (mapconcat #'identity (my:include-dirs-with-I) "\n")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
