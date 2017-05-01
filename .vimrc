@@ -72,6 +72,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-surround'
 call plug#end()
 
+" modify bgcolor on visual mode
+autocmd ColorScheme * highlight Visual ctermbg=8
 " syntax on
 colorscheme nord
 
