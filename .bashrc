@@ -217,6 +217,7 @@ alias bashq='env -i bash --norc --noprofile'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias cdh='cd ~'
 #
 # Default to human readable figures
 alias df='df -h'
