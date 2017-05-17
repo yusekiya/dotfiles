@@ -1385,8 +1385,6 @@ The argument icon must be string."
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
   (defun my-irony-mode-setup ()
-    (define-key irony-mode-map [remap completion-at-point]
-      'irony-completion-at-point-async)
     (define-key irony-mode-map [remap complete-symbol]
       'irony-completion-at-point-async))
   (defun my:company-irony-setup ()
