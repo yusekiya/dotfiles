@@ -125,6 +125,8 @@ restart-emacs
 revive
 s
 seq
+simple-httpd
+skewer-mode
 smart-newline
 smartrep
 smooth-scroll
