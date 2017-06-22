@@ -24,7 +24,7 @@
 [Scan private IP in LAN] sudo arp-scan -l
 [Scan private IP] sudo nmap -sP ${IP/MASK}
 [Monitoring] less +F ${File}
-[Show login history] last | head -n ${num_lines:-20}
+[Show login history] last -f /var/log/wtmp -f /var/log/wtmp.1 | head -n ${num_lines:-20}
 [Show public IP] curl httpbin.org/ip!
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
 [Docker| Remove stopped/exited containers] docker rm $(docker ps -aq)
