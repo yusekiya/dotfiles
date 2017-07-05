@@ -1540,6 +1540,7 @@ The argument icon must be string."
     (setq tab-width 2
           evil-shift-width 2)
     (set (make-local-variable 'smart-newline/ignore-reindent) t)
+    (bind-key "C-h" 'yaml-electric-backspace yaml-mode-map)
     (use-package highlight-indent-guides
       :config
       (highlight-indent-guides-mode)))
