@@ -50,10 +50,36 @@
   (define-key evil-normal-state-map (kbd "<SPC>y") (kbd "0v$hy"))
   (define-key evil-normal-state-map (kbd "<SPC>d") (kbd "0v$hd"))
   (define-key evil-normal-state-map (kbd "<SPC>i") (kbd "gg=G C-o zz"))
+  ;; keybindings for window configuration
+  (define-key evil-normal-state-map "s" nil)
+  (define-key evil-normal-state-map (kbd "ss") 'evil-window-split)
+  (define-key evil-normal-state-map (kbd "sv") 'evil-window-vsplit)
+  (define-key evil-normal-state-map (kbd "sh") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "sj") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "sk") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "sl") 'evil-window-right)
+  (define-key evil-normal-state-map (kbd "sw") 'evil-window-next)
+  (define-key evil-normal-state-map (kbd "sH") 'evil-window-move-far-left)
+  (define-key evil-normal-state-map (kbd "sJ") 'evil-window-move-very-bottom)
+  (define-key evil-normal-state-map (kbd "sK") 'evil-window-move-very-top)
+  (define-key evil-normal-state-map (kbd "sL") 'evil-window-move-far-aight)
+  (define-key evil-normal-state-map (kbd "sr") 'evil-window-rotate-downwards)
+  (define-key evil-normal-state-map (kbd "s=") 'balance-windows)
+  (define-key evil-normal-state-map (kbd "sq") 'delete-window)
+  (define-key evil-normal-state-map (kbd "sQ") 'kill-buffer)
+  (use-package smartrep
+    :config
+    (smartrep-define-key
+        evil-normal-state-map "s" '((">" . 'evil-window-increase-width)
+                                    ("<" . 'evil-window-decrease-width)
+                                    ("+" . 'evil-window-increase-height)
+                                    ("-" . 'evil-window-decrease-height))))
+  ;; keybindings in ex mode
   (bind-keys :map evil-ex-completion-map
              ("C-b" . backward-char)
              ("C-d" . delete-char))
   (evil-ex-define-cmd "wc[lean]" 'whitespace-cleanup)
+  ;; map jj to leave insert mode
   (use-package key-chord
     :config
     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state))
