@@ -58,8 +58,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-    Plug 'Shougo/unite.vim'
-    " Plug 'Shougo/vimproc'
     Plug 'scrooloose/nerdcommenter'
     Plug 'altercation/vim-colors-solarized'
     Plug 'arcticicestudio/nord-vim'
