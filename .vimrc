@@ -61,7 +61,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'scrooloose/nerdcommenter'
     Plug 'altercation/vim-colors-solarized'
     Plug 'arcticicestudio/nord-vim'
-    Plug 'ujihisa/unite-colorscheme'
     Plug 'tomasr/molokai'
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
