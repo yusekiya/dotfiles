@@ -77,7 +77,7 @@
   ;; keybidings to flip boolean variable
   (use-package bool-flip :defer t
     :init
-    (define-key evil-normal-state-map (kbd "<SPC>f") 'bool-flip-do-flip))
+    (define-key evil-normal-state-map (kbd "gs") 'bool-flip-do-flip))
   ;; keybindings in ex mode
   (bind-keys :map evil-ex-completion-map
              ("C-b" . backward-char)
