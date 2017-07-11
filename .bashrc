@@ -337,7 +337,7 @@ if [ `type -p fzf` ]; then
    function cdf() {
        local file
        local dir
-       file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+       file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
    # command history search
    function _search_history() {
@@ -345,7 +345,7 @@ if [ `type -p fzf` ]; then
        cmd=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
               perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
                         if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
-              fzf +s --tac | sed 's/ *[0-9]* *//')
+              fzf --height 30% --reverse +s --tac | sed 's/ *[0-9]* *//')
        [[ -z $cmd ]] && return
        READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
        READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
@@ -354,7 +354,7 @@ if [ `type -p fzf` ]; then
    function mynote-search() {
        local file
        local pager
-       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf -q ${@:-""} | perl -pe 's/(.*?):.*/$1/g')
+       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf --height 30% --reverse -q ${@:-""} | perl -pe 's/(.*?):.*/$1/g')
        # Exit when canceled
        [[ -z $file ]] && return
        #
@@ -369,7 +369,7 @@ if [ `type -p fzf` ]; then
        local file
        local cmd
        file=~/.oneliner
-       cmd=$( cat $file | fzf | perl -pe 's/^\[[^\]]+\]\s*//g' )
+       cmd=$( cat $file | fzf --height 30% --reverse | perl -pe 's/^\[[^\]]+\]\s*//g' )
        # Exit if canceled
        [[ -z $cmd ]] && return
        #
