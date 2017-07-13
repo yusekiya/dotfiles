@@ -248,6 +248,12 @@ alias gg='git graph'
 alias gu='git remote update'
 alias jn='jupyter notebook &> /dev/null &'
 alias v='view -M'
+alias d='docker'
+alias dcom='docker-compose'
+
+# Enable completion for aliases
+complete -F _docker d
+complete -F _docker_compose dcom
 
 if [ `type -p colordiff` ]; then
     alias diff='colordiff -u'
