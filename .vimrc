@@ -68,6 +68,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'gabrielelana/vim-markdown'
     Plug 'tpope/vim-surround'
     Plug 'kana/vim-submode'
+    Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " modify bgcolor on visual mode
