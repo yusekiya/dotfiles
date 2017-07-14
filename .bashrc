@@ -337,7 +337,7 @@ if [ `type -p fzf` ]; then
    # cd to selected directory including hidden ones
    function cdd() {
        local dir
-       dir=$(find ${1:-.} -type d -maxdepth ${2:-1} 2> /dev/null | fzf +m) && cd "$dir"
+       dir=$(find ${1:-.} -type d -maxdepth ${2:-1} 2> /dev/null | fzf +m --height 30% --reverse) && cd "$dir"
    }
    # change directory to a directory in which target file exists
    function cdf() {
