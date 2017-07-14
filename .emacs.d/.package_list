@@ -39,6 +39,7 @@ dired-hacks-utils
 dired-ranger
 direx
 dockerfile-mode
+editorconfig
 ein
 epc
 epl
