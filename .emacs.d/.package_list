@@ -5,7 +5,6 @@ all
 anzu
 async
 auctex
-aurora-theme
 auto-complete
 auto-complete-auctex
 auto-complete-c-headers
@@ -16,7 +15,6 @@ beacon
 bind-key
 bool-flip
 buttercup
-cl-generic
 cmake-mode
 color-theme-sanityinc-tomorrow
 company
@@ -49,7 +47,6 @@ evil-args
 evil-exchange
 evil-indent-plus
 evil-indent-textobject
-evil-jumper
 evil-matchit
 evil-nerd-commenter
 evil-numbers
@@ -91,7 +88,6 @@ ivy
 jedi-core
 js2-mode
 key-chord
-let-alist
 lice
 load-theme-buffer-local
 manage-minor-mode
