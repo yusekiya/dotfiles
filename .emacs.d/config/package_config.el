@@ -928,47 +928,71 @@ The argument icon must be string."
   (defadvice  popwin:popup-buffer (before ad-popwin-auto-window-position-and-sizse activate)
     (popwin-auto-set-popup-window-position-and-size)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; all the icons
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package all-the-icons :defer t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; neotree
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package neotree :defer t
+  :bind (("C-x C-d" . neotree-toggle)
+         ([f8] . neotree-toggle))
+  ;;:init
+  :config
+  (defun my:setup-neotree (arg)
+    (visual-line-mode -1)
+    (toggle-truncate-lines 1)
+    (setq hscroll-step 1))
+  (add-hook 'neo-after-create-hook 'my:setup-neotree)
+  (setq neo-show-hidden-files t
+        neo-window-width 30)
+  (use-package all-the-icons
+    :config
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; direx
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package direx
-  :bind ("C-x C-d" . direx:jump-to-directory-other-window)
-  :config
-  (if (is-fontawesome-ready)
-      (use-package fontawesome
-        :config
-        (defface my:direx-folder
-          '((t (:family "FontAwesome"
-                        :height 0.8
-                        :inherit dired-directory)))
-          "direx face for folder icon")
-        (defface my:direx-file
-          '((t (:family "FontAwesome"
-                        :height 0.8
-                        :inherit default)))
-          "direx face for file icon")
-        (setq direx:leaf-icon (concat (propertize (fontawesome "file-o")
-                                                  'face 'my:direx-file)
-                                      " ")
-              direx:open-icon (concat (propertize (fontawesome "folder-open")
-                                                  'face 'my:direx-folder)
-                                      " ")
-              direx:closed-icon (concat (propertize (fontawesome "folder")
-                                                    'face 'my:direx-folder)
-                                        " ")
-              )
-        )
-    )
-  (push '(direx:direx-mode :position left :width 50 :dedicated t)
-        popwin:special-display-config)
-  )
+;; (use-package direx
+;;   :bind ("C-x C-d" . direx:jump-to-directory-other-window)
+;;   :config
+;;   (if (is-fontawesome-ready)
+;;       (use-package fontawesome
+;;         :config
+;;         (defface my:direx-folder
+;;           '((t (:family "FontAwesome"
+;;                         :height 0.8
+;;                         :inherit dired-directory)))
+;;           "direx face for folder icon")
+;;         (defface my:direx-file
+;;           '((t (:family "FontAwesome"
+;;                         :height 0.8
+;;                         :inherit default)))
+;;           "direx face for file icon")
+;;         (setq direx:leaf-icon (concat (propertize (fontawesome "file-o")
+;;                                                   'face 'my:direx-file)
+;;                                       " ")
+;;               direx:open-icon (concat (propertize (fontawesome "folder-open")
+;;                                                   'face 'my:direx-folder)
+;;                                       " ")
+;;               direx:closed-icon (concat (propertize (fontawesome "folder")
+;;                                                     'face 'my:direx-folder)
+;;                                         " ")
+;;               )
+;;         )
+;;     )
+;;   (push '(direx:direx-mode :position left :width 50 :dedicated t)
+;;         popwin:special-display-config)
+;;   )
 
-(defun my:direx-mode-hook()
-  (visual-line-mode -1)
-  (toggle-truncate-lines 1))
+;; (defun my:direx-mode-hook()
+;;   (visual-line-mode -1)
+;;   (toggle-truncate-lines 1))
 
-(add-hook 'direx:direx-mode-hook 'my:direx-mode-hook)
+;; (add-hook 'direx:direx-mode-hook 'my:direx-mode-hook)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -218,19 +218,31 @@
   (evil-define-key 'visual region-bindings-mode-map "\C-c*" 'mc/mark-all-like-this)
   (evil-define-key 'visual region-bindings-mode-map "\C-cd" 'mc/mark-all-like-this-dwim))
 
+;; Difine key bind for neotree
+(with-eval-after-load 'neotree
+  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "j") 'neotree-next-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "k") 'neotree-previous-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "l") 'evil-scroll-right)
+  (evil-define-key 'normal neotree-mode-map (kbd "h") 'evil-scroll-left)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
+
 ;; Define key bind for direx mode
-(with-eval-after-load 'direx
-  (evil-define-key 'normal direx:direx-mode-map (kbd "j") 'direx:next-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "k") 'direx:previous-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "J") 'direx:next-sibling-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "K") 'direx:previous-sibling-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "RET") 'direx:maybe-find-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "TAB") 'direx:toggle-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "^") 'direx:up-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "u") 'direx:up-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "o") 'direx:find-item)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "E") 'direx:expand-item-recursively)
-  (evil-define-key 'normal direx:direx-mode-map (kbd "g") 'direx:refresh-whole-tree))
+;; (with-eval-after-load 'direx
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "j") 'direx:next-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "k") 'direx:previous-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "J") 'direx:next-sibling-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "K") 'direx:previous-sibling-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "RET") 'direx:maybe-find-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "TAB") 'direx:toggle-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "^") 'direx:up-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "u") 'direx:up-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "o") 'direx:find-item)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "E") 'direx:expand-item-recursively)
+;;   (evil-define-key 'normal direx:direx-mode-map (kbd "g") 'direx:refresh-whole-tree))
 
 (with-eval-after-load "helm-gtags"
   (global-unset-key "\C-t")

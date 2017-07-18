@@ -2,6 +2,7 @@ ac-math
 ace-isearch
 ace-jump-mode
 all
+all-the-icons
 anzu
 async
 auctex
@@ -59,6 +60,7 @@ farmhouse-theme
 flatui-theme
 flycheck
 flycheck-pos-tip
+font-lock+
 fontawesome
 fringe-helper
 function-args
@@ -94,12 +96,14 @@ manage-minor-mode
 markdown-mode
 material-theme
 math-symbol-lists
+memoize
 monokai-theme
 mozc
 mozc-popup
 multi-term
 multicolumn
 multiple-cursors
+neotree
 nord-theme
 open-junk-file
 ov
