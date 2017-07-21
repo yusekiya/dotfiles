@@ -26,6 +26,7 @@ company-jedi
 company-quickhelp
 company-statistics
 company-tern
+company-web
 concurrent
 ctable
 cython-mode
@@ -40,6 +41,7 @@ direx
 dockerfile-mode
 editorconfig
 ein
+emmet-mode
 epc
 epl
 evil
@@ -146,6 +148,7 @@ viewer
 visual-regexp
 visual-regexp-steroids
 volatile-highlights
+web-completion-data
 web-mode
 websocket
 which-key

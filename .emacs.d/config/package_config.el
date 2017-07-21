@@ -1525,10 +1525,15 @@ The argument icon must be string."
     (setq evil-shift-width 2)
     (setq web-mode-enable-auto-expanding t)
     (add-to-list (make-local-variable 'company-backends)
-                 '(company-yasnippet company-css :with company-files company-dabbrev-code))
+                 '(company-web-html company-yasnippet company-css :with company-files company-dabbrev-code))
     (yas-activate-extra-mode 'html-mode)
-    (yas-activate-extra-mode 'css-mode))
-  (add-hook 'web-mode-hook  'my-web-setup))
+    (yas-activate-extra-mode 'css-mode)
+    (use-package emmet-mode
+      :config
+      (diminish 'emmet-mode "")
+      (emmet-mode 1)))
+  (add-hook 'web-mode-hook  'my-web-setup)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
