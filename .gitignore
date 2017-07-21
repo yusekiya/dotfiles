@@ -97,3 +97,4 @@ work/
 .emacs.d/.emacs.desktop.lock
 .emacs.d/abbrev_defs
 .matplotlib/fontList.cache
+.emacs.d/url/
