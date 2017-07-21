@@ -495,8 +495,8 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (with-eval-after-load 'company
   (add-hook 'emacs-lisp-mode-hook
-            (lambda () (add-to-list (make-local-variable 'company-backends) 'company-elisp))))
-
+            (lambda () (add-to-list (make-local-variable 'company-backends)
+                                    '(company-capf company-dabbrev :with company-yasnippet)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-insert-mode
