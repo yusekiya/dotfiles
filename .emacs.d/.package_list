@@ -16,6 +16,7 @@ beacon
 bind-key
 bool-flip
 buttercup
+cl-generic
 cmake-mode
 color-theme-sanityinc-tomorrow
 company
@@ -92,6 +93,7 @@ ivy
 jedi-core
 js2-mode
 key-chord
+let-alist
 lice
 load-theme-buffer-local
 manage-minor-mode
