@@ -5,7 +5,7 @@
     :config
     (company-statistics-mode))
   (diminish 'company-mode "")
-  (setq company-minimum-prefix-length 3)
+  (setq company-minimum-prefix-length 2)
   (setq company-transformers '(company-sort-by-statistics company-sort-by-backend-importance))
   ;; ;; Disable auto start of completion
   ;; (custom-set-variables
