@@ -11,7 +11,7 @@
 [Count files in directory] \ls -F ${src_dir} | grep -v / | wc -l
 [Count files in directory recursively] find . -type f | wc -l
 [Count files in directory recursively] ag -g '.*' . | wc -l
-[Sort directory in disk usage] du -h ${src_dir} | sort -hr
+[Sort directory in disk usage] du -h -d1 ${src_dir} | sort -hr
 [Process each file] for val in `find ./*`; do ${process_cmd}; done
 [Process each file] for val in `ag -g '.*' .`; do ${process_cmd}; done
 [Show today] date +%F!
