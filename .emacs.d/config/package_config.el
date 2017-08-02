@@ -1286,11 +1286,10 @@ The argument icon must be string."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smooth scroll
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package smooth-scroll
+(use-package smooth-scroll :defer t
   :config
   (diminish 'smooth-scroll-mode "")
-  (custom-set-variables '(smooth-scroll/vscroll-step-size 3))
-  (smooth-scroll-mode 1))
+  (custom-set-variables '(smooth-scroll/vscroll-step-size 3)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
