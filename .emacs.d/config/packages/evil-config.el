@@ -42,6 +42,8 @@
   (define-key evil-normal-state-map (kbd "Y") (kbd "y$")) ; remap Y to y$ which copies text to the end-of-line
   (define-key evil-normal-state-map (kbd "gh") (kbd "^"))
   (define-key evil-normal-state-map (kbd "gl") (kbd "$"))
+  (define-key evil-normal-state-map (kbd "gH") 'evil-window-top)
+  (define-key evil-normal-state-map (kbd "gL") 'evil-window-bottom)
   (define-key evil-normal-state-map (kbd ";") 'evil-ex)
   (define-key evil-visual-state-map (kbd ";") 'evil-ex)
   (define-key evil-normal-state-map (kbd ":") 'evil-repeat-find-char)
