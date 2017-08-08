@@ -418,6 +418,11 @@ When region is set, call `kill-ring-save'."
       (revert-buffer :ignore-auto :noconfirm)
     (error "The buffer has been modified")))
 
+
+(defun open-with-atom ()
+  (interactive)
+  (call-process "atom" nil nil nil buffer-file-name))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mozc
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
