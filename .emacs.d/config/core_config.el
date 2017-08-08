@@ -216,10 +216,10 @@
 (defalias 'exit 'save-buffers-kill-emacs)
 (global-unset-key (kbd "C-x C-c"))
 
-;; Change encoding
-(defalias 'change-encoding 'set-buffer-file-coding-system)
-;; Change encoding and reload buffer
-(defalias 'reload-with-different-encoding 'revert-buffer-with-coding-system)
+;; Change encoding of file
+(defalias 'change-fileencoding 'set-buffer-file-coding-system)
+;; Reload buffer with different encoding
+(defalias 'change-bufferencoding 'revert-buffer-with-coding-system)
 
 ;; Zoom and zoom-out
 (defalias 'zoom-in '(lambda() "`text-scale-adjust' can reset face to global default." (interactive) (text-scale-increase +1)))
