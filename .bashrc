@@ -225,10 +225,7 @@ alias du='du -h'
 #
 # Misc
 alias m='\less +F'
-# alias whence='type -a'                        # where, of a sort
-alias grep='grep -i --color'                     # show differences in colour
-# alias egrep='egrep --color=auto'              # show differences in colour
-# alias fgrep='fgrep --color=auto'              # show differences in colour
+alias grep='grep --color'
 #
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
