@@ -1618,8 +1618,8 @@ The argument icon must be string."
     "markdown-mode-hook"
     ;; Read source from stdin (nil) or a file (t)
     (setq markdown-command-needs-filename nil)
-    (setq tab-width 2
-          evil-shift-width 2))
+    (setq tab-width 4
+          evil-shift-width 4))
   (add-hook 'markdown-mode-hook 'markdown-custom)
   )
 

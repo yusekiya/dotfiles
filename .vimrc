@@ -44,6 +44,7 @@ if 0 | endif
 augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.yaml,*.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -65,7 +66,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
     Plug 'LeafCage/yankround.vim'
-    Plug 'gabrielelana/vim-markdown'
+    Plug 'plasticboy/vim-markdown'
     Plug 'tpope/vim-surround'
     Plug 'kana/vim-submode'
     Plug 'editorconfig/editorconfig-vim'
@@ -79,6 +80,8 @@ colorscheme nord
 " nerdcommenter
 let NERDSpaceDelims = 1
 
+" markdown
+let g:vim_markdown_new_list_item_indent = 4
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
