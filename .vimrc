@@ -82,6 +82,7 @@ let NERDSpaceDelims = 1
 
 " markdown
 let g:vim_markdown_new_list_item_indent = 4
+let g:vim_markdown_folding_disabled = 1
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
