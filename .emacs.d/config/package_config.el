@@ -1420,16 +1420,12 @@ The argument icon must be string."
    '(irony-server-install-prefix "~/.emacs.d/irony/")
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
-  (defun my-irony-mode-setup ()
-    (define-key irony-mode-map [remap complete-symbol]
-      'irony-completion-at-point-async))
   (defun my:company-irony-setup ()
     (add-to-list (make-local-variable 'company-backends) '(company-irony :with company-yasnippet))
     (use-package company-irony-c-headers
       :config
       (add-to-list (make-local-variable 'company-backends) 'company-irony-c-headers)))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (add-hook 'irony-mode-hook 'my-irony-mode-setup)
   (add-hook 'irony-mode-hook 'my:company-irony-setup)
 )
 
