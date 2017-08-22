@@ -1437,6 +1437,7 @@ The argument icon must be string."
   :defer t
   :init
   (defun my:function-args-mode-setup ()
+    (require 'ivy)
     (function-args-mode 1))
   (add-hook 'c++-mode-hook 'my:function-args-mode-setup)
   (add-hook 'c-mode-hook 'my:function-args-mode-setup)
