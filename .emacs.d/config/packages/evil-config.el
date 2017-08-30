@@ -64,7 +64,7 @@
   (define-key evil-normal-state-map (kbd "sH") 'evil-window-move-far-left)
   (define-key evil-normal-state-map (kbd "sJ") 'evil-window-move-very-bottom)
   (define-key evil-normal-state-map (kbd "sK") 'evil-window-move-very-top)
-  (define-key evil-normal-state-map (kbd "sL") 'evil-window-move-far-aight)
+  (define-key evil-normal-state-map (kbd "sL") 'evil-window-move-far-right)
   (define-key evil-normal-state-map (kbd "sr") 'evil-window-rotate-downwards)
   (define-key evil-normal-state-map (kbd "s=") 'balance-windows)
   (define-key evil-normal-state-map (kbd "sq") 'delete-window)
