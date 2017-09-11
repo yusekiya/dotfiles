@@ -1469,6 +1469,11 @@ The argument icon must be string."
 ;; flycheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package flycheck :defer t
+  :init
+  (use-package flycheck-irony :defer t
+    :init
+    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+    )
   :config
   (use-package flycheck-pos-tip
     :config
