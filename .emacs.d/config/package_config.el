@@ -1427,6 +1427,11 @@ The argument icon must be string."
       (add-to-list (make-local-variable 'company-backends) 'company-irony-c-headers)))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'irony-mode-hook 'my:company-irony-setup)
+  :config
+  (use-package smart-newline
+    :config
+    (bind-keys :map irony-mode-map
+               ((kbd "RET") . smart-newline)))
 )
 
 
