@@ -1421,7 +1421,7 @@ The argument icon must be string."
    '(irony-server-build-dir "~/.emacs.d/irony/build/")
    '(irony-user-dir "~/.emacs.d/irony/"))
   (defun my:company-irony-setup ()
-    (add-to-list (make-local-variable 'company-backends) '(company-irony :with company-yasnippet))
+    (add-to-list (make-local-variable 'company-backends) '(company-irony company-dabbrev :with company-yasnippet))
     (use-package company-irony-c-headers
       :config
       (add-to-list (make-local-variable 'company-backends) 'company-irony-c-headers)))
