@@ -248,6 +248,18 @@ alias v='view -M'
 alias d='docker'
 alias dcom='docker-compose'
 
+alias nbstrip-jq="jq --indent 1 \
+    '(.cells[] | select(has(\"outputs\")) | .outputs) = []  \
+    | (.cells[] | select(has(\"execution_count\")) | .execution_count) = null  \
+    | .metadata = {\"language_info\": {\"name\": \"python\", \"pygments_lexer\": \"ipython3\"}} \
+    | .cells[].metadata = {} \
+    '"
+function nbstrip-all-cwd {
+    for nbfile in *.ipynb; do
+        echo "$( nbstrip_jq $nbfile )" > $nbfile
+    done
+    unset nbfile
+}
 # Enable completion for aliases
 complete -F _docker d
 complete -F _docker_compose dcom
