@@ -256,7 +256,7 @@ alias nbstrip-jq="jq --indent 1 \
     '"
 function nbstrip-all-cwd {
     for nbfile in *.ipynb; do
-        echo "$( nbstrip_jq $nbfile )" > $nbfile
+        echo "$( nbstrip-jq $nbfile )" > $nbfile
     done
     unset nbfile
 }
