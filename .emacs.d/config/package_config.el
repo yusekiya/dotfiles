@@ -1441,12 +1441,12 @@ The argument icon must be string."
 (use-package function-args
   :defer t
   :init
+  (use-package ivy :ensure t)
   (defun my:function-args-mode-setup ()
     (function-args-mode 1))
   (add-hook 'c++-mode-hook 'my:function-args-mode-setup)
   (add-hook 'c-mode-hook 'my:function-args-mode-setup)
   :config
-  (use-package ivy :ensure t)
   (bind-keys :map function-args-mode-map
              ("M-i" . nil)
              ("M-o" . nil)
