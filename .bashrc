@@ -248,14 +248,41 @@ alias v='view -M'
 alias d='docker'
 alias dcom='docker-compose'
 
-alias nbstrip-jq="jq --indent 1 \
-    '(.cells[] | select(has(\"outputs\")) | .outputs) = []  \
-    | (.cells[] | select(has(\"execution_count\")) | .execution_count) = null  \
-    | .cells[].metadata = {} \
-    '"
+function nbstrip-jq {
+    FLAG_INPLACE=
+    for ARG in "$@"; do
+        case "$ARG" in
+            '-i')
+                FLAG_INPLACE=1
+                shift
+                ;;
+            -*)
+                echo "Invalid option $(echo $1 | sed 's/^-*//')"
+                exit 1
+                ;;
+            *)
+                SRC="$ARG"
+                shift
+                ;;
+        esac
+    done
+    output=$(cat "$SRC" | jq --indent 1 \
+        '(.cells[] | select(has("outputs"))
+        | .outputs) = [] | (.cells[] | select(has("execution_count"))
+        | .execution_count) = null | .cells[].metadata = {}')
+    if [ -n "$FLAG_INPLACE" ]; then
+        echo "${output}" > "${SRC}"
+    else
+        echo "${output}"
+    fi
+    unset ARG
+    unset SRC
+    unset FLAG_INPLACE
+}
+
 function nbstrip-all-cwd {
     for nbfile in *.ipynb; do
-        echo "$( nbstrip-jq $nbfile )" > $nbfile
+        nbstrip-jq -i $nbfile
     done
     unset nbfile
 }
