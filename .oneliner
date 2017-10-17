@@ -32,3 +32,4 @@
 [Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n ${secret} | ansible-vault encrypt; unset secret
 [Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
 [Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
+[View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' ${file.csv:*.csv} | column -s, -t | less -S
