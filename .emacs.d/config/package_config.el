@@ -683,6 +683,7 @@ The argument icon must be string."
                       ("m" . dired-ranger-move)))
          (use-package dired-filter
            :config
+           (diminish 'dired-filter-mode "")
            (dired-filter-mode))
          ;; Settings for windows
          (if (equal system-type 'windows-nt)
