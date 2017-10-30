@@ -195,7 +195,6 @@
 
 ;; expand-region with evil
 (use-package expand-region
-  :defer t
   :init
   (define-key evil-visual-state-map "v" #'er/expand-region)
   (define-key evil-visual-state-map "\C-v" #'er/contract-region))
