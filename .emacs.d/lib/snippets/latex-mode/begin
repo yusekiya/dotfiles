@@ -1,11 +1,7 @@
 # -*- mode: snippet -*-
 # name: begin
 # key: begin
-# expand-env: ((yas-wrap-around-region 't))
-# type: command
 # --
-(let ((snippet-text "")
-      (original-parameter yas-triggers-in-field))
-     (setq yas-triggers-in-field nil)
-     (setq snippet-text "\\begin{${1:$$(if yas-moving-away-p (setq yas-triggers-in-field t))}}\n $0\n\\end{$1}")
-     (yas-expand-snippet snippet-text))
+\begin{$1}
+$0
+\end{$1}
