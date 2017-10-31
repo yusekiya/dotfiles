@@ -3,5 +3,5 @@
 # key: minipage
 # --
 \begin{minipage}${1:[${2:position t, c, b?}]}{${3:width}}
- $0
+$0
 \end{minipage}

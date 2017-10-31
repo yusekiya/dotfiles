@@ -3,5 +3,5 @@
 # key: multline
 # --
 \begin{multline}
- $0
+$0
 \end{multline}

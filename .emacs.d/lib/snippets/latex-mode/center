@@ -3,5 +3,5 @@
 #key : center
 # --
 \begin{center}
-  $0
+$0
 \end{center}

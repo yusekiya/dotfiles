@@ -3,6 +3,6 @@
 # key: thebibliography
 # --
 \begin{thebibliography}{${1:99}}%
- \bibitem{$2}%
-         $0
+\bibitem{$2}%
+$0
 \end{thebibliography}

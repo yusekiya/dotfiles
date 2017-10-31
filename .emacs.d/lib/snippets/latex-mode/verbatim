@@ -1,5 +1,5 @@
 #name : verbatim(Env)
 # --
 \begin{verbatim}
-  $0
+$0
 \end{verbatim}

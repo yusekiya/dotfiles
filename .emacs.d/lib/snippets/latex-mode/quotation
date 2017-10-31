@@ -1,5 +1,5 @@
 #name : quotation(Env)
 # --
 \begin{quotation}
-  $0
+$0
 \end{quotation}

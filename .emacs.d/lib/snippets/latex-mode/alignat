@@ -3,5 +3,5 @@
 # key: alignat
 # --
 \begin{alignat}{${1:#equations}}
-    $0 &=
+$0 &=
 \end{alignat}

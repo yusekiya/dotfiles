@@ -3,5 +3,5 @@
 # key: gather
 # --
 \begin{gather}
-  $0
+$0
 \end{gather}

@@ -2,5 +2,5 @@
 #name : flushright(Env)
 # --
 \begin{flushright}
-  $0
+$0
 \end{flushright}
