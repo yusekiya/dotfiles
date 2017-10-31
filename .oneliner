@@ -26,7 +26,7 @@
 [Monitoring] less +F ${File}
 [Show login history] last | head -n ${num_lines:-20}
 [Show login history (last month)] last -f /var/log/wtmp.1 | head -n ${num_lines:-20}
-[Show public IP] curl httpbin.org/ip!
+[Show public IP] curl -s httpbin.org/ip | jq -r '.origin'!
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
 [Docker| Remove stopped/exited containers] docker rm $(docker ps -aq)
 [Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n ${secret} | ansible-vault encrypt; unset secret
