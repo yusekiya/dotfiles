@@ -49,12 +49,8 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Screen
+;; Basic screen theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; region color
-(global-font-lock-mode t)  ; enalbe global-font-lock-moe
-(transient-mark-mode t)    ; enable region color
-
 (defvar dark_BG "#2d3743")
 (defvar dark_FG "gray90")
 (defvar myCursorColor "VioletRed")
@@ -76,6 +72,14 @@
 
 ;; Default transparency
 (add-to-list 'default-frame-alist '(alpha . 90))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; parameter and mode configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; region color
+(global-font-lock-mode t)  ; enalbe global-font-lock-moe
+(transient-mark-mode t)    ; enable region color
 
 ;; Inhibit memubar, scrollbar
 ;; (menu-bar-mode -1)
@@ -101,10 +105,6 @@
 ;; Show end of buffer in fringe
 (setq-default indicate-buffer-boundaries 'left)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Behavior configuration
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hide password in shell-mode
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
@@ -190,7 +190,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Mode
+;; Major mode assignment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto mode
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
