@@ -218,6 +218,7 @@
 
 ;; LaTeX setup
 (defun my:latex-setup ()
+  (setq fill-column 80)
   (use-package smart-newline
     :config
     (bind-keys :map LaTeX-mode-map
