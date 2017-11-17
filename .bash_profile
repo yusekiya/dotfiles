@@ -11,6 +11,11 @@ if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
+# Linuxbrew
+if [ -d "${HOME}/.linuxbrew" ]; then
+    export PATH=${HOME}/.linuxbrew/bin:${PATH}
+fi
+
 # Python
 ## for windows (anaconda)
 if [ "$(uname -o)" = "Msys" ] && [ -d "${HOME}/opt/anaconda" ]; then
