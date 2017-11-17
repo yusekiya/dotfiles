@@ -11,15 +11,6 @@ if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
-# include path
-if [ -d "/usr/local/include" ] ; then
-    export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
-fi
-# library path
-if [ -d "/usr/local/lib" ] ; then
-    export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}
-fi
-
 # Python
 ## for windows (anaconda)
 if [ "$(uname -o)" = "Msys" ] && [ -d "${HOME}/opt/anaconda" ]; then
@@ -50,25 +41,34 @@ if [ -d "${HOME}/.nodebrew" ]; then
     export PATH=${HOME}/.nodebrew/current/bin:${PATH}
 fi
 
-# Set PATH so it includes user's private bin if it exists
-if [ -d "${HOME}/usr/bin" ]; then
-    export PATH="${HOME}/usr/bin:${PATH}"
-fi
-if [ -d "${HOME}/bin" ] ; then
-    export PATH="${HOME}/bin:${PATH}"
+# executable path
+if [ -d "${HOME}/.local/bin" ]; then
+    export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-# Set MANPATH so it includes users' private man if it exists
-if [ -d "${HOME}/man" ]; then
-  export MANPATH="${HOME}/man:${MANPATH}"
+# include path
+if [ -d "/usr/local/include" ] ; then
+    export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
 fi
-if [ -d "${HOME}/usr/share/man" ]; then
-   export MANPATH="${HOME}/usr/share/man:${MANPATH}"
+if [ -d "${HOME}/.local/include" ] ; then
+    export CPLUS_INCLUDE_PATH=${HOME}/.local/include:${CPLUS_INCLUDE_PATH}
+fi
+# library path
+if [ -d "/usr/local/lib" ] ; then
+    export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}
+fi
+if [ -d "${HOME}/.local/lib" ] ; then
+    export CPLUS_INCLUDE_PATH=${HOME}/.local/lib:${CPLUS_INCLUDE_PATH}
+fi
+
+# MANPATH
+if [ -d "${HOME}/.local/share/man" ]; then
+   export MANPATH="${HOME}/.local/share/man:${MANPATH}"
 fi
 
 # Set INFOPATH so it includes users' private info if it exists
-if [ -d "${HOME}/info" ]; then
-  INFOPATH="${HOME}/info:${INFOPATH}"
+if [ -d "${HOME}/.local/info" ]; then
+  INFOPATH="${HOME}/.local/info:${INFOPATH}"
 fi
 
 # source the users bashrc if it exists
