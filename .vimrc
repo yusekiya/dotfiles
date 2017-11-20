@@ -74,10 +74,10 @@ call plug#end()
 
 " modify bgcolor on visual mode
 autocmd ColorScheme * highlight Visual ctermbg=8
-" syntax on
-colorscheme nord
 " diff color
 let g:nord_uniform_diff_background = 1
+" activate nord theme
+colorscheme nord
 
 " nerdcommenter
 let NERDSpaceDelims = 1
