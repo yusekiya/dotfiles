@@ -61,7 +61,7 @@ endif
 call plug#begin('~/.vim/bundle')
     Plug 'scrooloose/nerdcommenter'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
     Plug 'tomasr/molokai'
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
@@ -76,6 +76,8 @@ call plug#end()
 autocmd ColorScheme * highlight Visual ctermbg=8
 " syntax on
 colorscheme nord
+" diff color
+let g:nord_uniform_diff_background = 1
 
 " nerdcommenter
 let NERDSpaceDelims = 1
