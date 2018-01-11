@@ -98,3 +98,4 @@ work/
 .emacs.d/abbrev_defs
 .matplotlib/fontList.cache
 .emacs.d/url/
+.matplotlib/fontList.json
