@@ -23,8 +23,8 @@ set nowritebackup
 set nobackup
 set noswapfile
 set runtimepath+=/usr/local/opt/fzf
-set spelllang+=cjk
 set spell
+set spelllang=en,cjk
 set pumheight=10
 set scrolloff=3
 " set iskeyword-=_
@@ -78,6 +78,11 @@ autocmd ColorScheme * highlight Visual ctermbg=8
 let g:nord_uniform_diff_background = 1
 " activate nord theme
 colorscheme nord
+" highlight for spell check
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi clear SpellCap
+hi SpellCap cterm=underline,bold
 
 " nerdcommenter
 let NERDSpaceDelims = 1
