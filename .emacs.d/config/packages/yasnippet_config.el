@@ -9,10 +9,11 @@
   ;; (setq yas-key-syntaxes (delete "w" yas-key-syntaxes))
   ;; ;; Don't expand snippets after dot
   ;; (setq yas-key-syntaxes (delete "w_" yas-key-syntaxes))
-  (setq yas-snippet-dirs
-        `(,(concat user-emacs-directory "lib/snippets") ;; local snippets directory
-          ,yas-installed-snippets-dir
-          ))
+
+  ;; Load user defined snippets
+  (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "lib/snippets"))
+  ;; Load community-developed snippets
+  (use-package yasnippet-snippets)
   (yas-global-mode 1)
   (custom-set-variables '(yas-trigger-key "TAB"))
   (setq yas-triggers-in-field t) ; for nested forms
