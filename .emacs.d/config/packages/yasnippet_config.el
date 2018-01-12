@@ -26,7 +26,9 @@
   (use-package popup)
   (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
   ;; Alias
-  (defalias 'describe-snippets 'yas-describe-tables))
+  (defalias 'describe-snippets 'yas-describe-tables)
+  (defalias 'show-snippets 'yas-describe-tables)
+  (defalias 'list-snippets 'yas-describe-tables))
 
 ;; Use popup menu for yas-choose-value
 ;; (require 'popup)
