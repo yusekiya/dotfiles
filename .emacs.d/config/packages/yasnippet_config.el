@@ -2,7 +2,9 @@
 ;; Yasnippet
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package yasnippet
-  ;; :init
+  :init
+  ;; Load user defined snippets
+  (setq yas-snippet-dirs (list (concat user-emacs-directory "lib/snippets")))
   :config
   (diminish 'yas-minor-mode "")
   ;; ;; Don't expand snippets after symbol constituents like underscore (_)
@@ -10,8 +12,6 @@
   ;; ;; Don't expand snippets after dot
   ;; (setq yas-key-syntaxes (delete "w_" yas-key-syntaxes))
 
-  ;; Load user defined snippets
-  (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "lib/snippets"))
   ;; Load community-developed snippets
   (use-package yasnippet-snippets)
   (yas-global-mode 1)
