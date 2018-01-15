@@ -22,7 +22,6 @@ set novisualbell
 set nowritebackup
 set nobackup
 set noswapfile
-set runtimepath+=/usr/local/opt/fzf
 set spell
 set spelllang=en,cjk
 set pumheight=10
@@ -70,6 +69,12 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-surround'
     Plug 'kana/vim-submode'
     Plug 'editorconfig/editorconfig-vim'
+    " setup fzf
+    if isdirectory("/usr/local/opt/fzf")
+      Plug '/usr/local/opt/fzf'
+    elseif isdirectory(expand("~/.fzf"))
+      Plug '~/.fzf'
+    endif
 call plug#end()
 
 " modify bgcolor on visual mode
