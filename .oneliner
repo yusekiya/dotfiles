@@ -34,3 +34,4 @@
 [Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
 [Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
 [View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' ${file.csv:*.csv} | column -s, -t | less -S
+[Generate random passwords] pwgen ${pw_length:-7} ${num_pw:-2}
