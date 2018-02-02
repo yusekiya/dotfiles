@@ -1631,7 +1631,10 @@ The argument icon must be string."
     (setq tab-width 4
           evil-shift-width 4))
   (add-hook 'markdown-mode-hook 'markdown-custom)
-  )
+  :config
+  (custom-set-faces
+   '(markdown-code-face ((t (:inherit default))))
+   '(markdown-pre-face ((t (:inherit font-lock-constant-face))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
