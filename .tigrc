@@ -2,6 +2,7 @@ set tab-size = 4
 set main-view-id = 1
 set horizontal-scroll = 20%
 set ignore-case = true
+set diff-options = -m --first-parent
 bind generic G none
 bind generic g move-first-line
 bind generic G move-last-line
