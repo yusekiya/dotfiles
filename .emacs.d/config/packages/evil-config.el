@@ -85,6 +85,8 @@
              ("C-b" . backward-char)
              ("C-d" . delete-char))
   (evil-ex-define-cmd "wc[lean]" 'whitespace-cleanup)
+  ;; kill buffer with :q instead of quit Emacs
+  (evil-ex-define-cmd "q[uit]" 'kill-this-buffer)
   ;; map jj to leave insert mode
   (use-package key-chord
     :config
