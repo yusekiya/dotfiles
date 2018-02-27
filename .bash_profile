@@ -16,31 +16,6 @@ if [ -d "${HOME}/.linuxbrew" ]; then
     export PATH=${HOME}/.linuxbrew/bin:${PATH}
 fi
 
-# Python
-## for windows (anaconda)
-if [ "$(uname -o)" = "Msys" ] && [ -d "${HOME}/opt/anaconda" ]; then
-    export PATH="${HOME}/opt/anaconda:${HOME}/opt/anaconda/Scripts:${PATH}"
-    export PATH="${PATH}:${HOME}/opt/anaconda/Library/bin"
-## for linux or mac (anaconda)
-elif [ -d "${HOME}/opt/anaconda3/bin" ]; then
-    export PATH="${HOME}/opt/anaconda3/bin:$PATH"
-elif [ -d "${HOME}/opt/anaconda/bin" ]; then
-    export PATH="${HOME}/opt/anaconda/bin:$PATH"
-elif [ -d "${HOME}/anaconda3/bin" ]; then
-    export PATH="${HOME}/anaconda3/bin:$PATH"
-elif [ -d "${HOME}/anaconda/bin" ]; then
-    export PATH="${HOME}/anaconda/bin:${PATH}"
-## for linux or mac (miniconda)
-elif [ -d "${HOME}/opt/miniconda3/bin" ]; then
-    export PATH="${HOME}/opt/miniconda3/bin:$PATH"
-elif [ -d "${HOME}/opt/miniconda/bin" ]; then
-    export PATH="${HOME}/opt/miniconda/bin:$PATH"
-elif [ -d "${HOME}/miniconda/bin" ]; then
-    export PATH="${HOME}/miniconda/bin:${PATH}"
-elif [ -d "${HOME}/miniconda3/bin" ]; then
-    export PATH="${HOME}/miniconda3/bin:${PATH}"
-fi
-
 # Add path for node
 if [ -d "${HOME}/.nodebrew" ]; then
     export PATH=${HOME}/.nodebrew/current/bin:${PATH}

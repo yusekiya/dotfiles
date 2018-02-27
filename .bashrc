@@ -426,6 +426,20 @@ if [ `type -p fzf` ]; then
    bind -x '"\C-s": "_search_oneliner"'
 fi
 
+# anaconda
+anaconda_base_list=("${HOME}"{,/opt}/{anaconda,Anaconda,miniconda}{,3,2})
+for anaconda_base in "${anaconda_base_list[@]}"
+do
+    if [ -f "${anaconda_base}"/etc/profile.d/conda.sh ]; then
+        source "${anaconda_base}"/etc/profile.d/conda.sh
+        conda activate base
+        break
+    elif [ -d "${anaconda_base}"/bin ]; then
+        export PATH="${anaconda_base}"/bin:$PATH
+        break
+    fi
+done
+
 # enhancd
 if [ -f ~/repos/enhancd/init.sh ]; then
     source ~/repos/enhancd/init.sh
