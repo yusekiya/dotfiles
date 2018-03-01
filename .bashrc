@@ -443,7 +443,7 @@ done
 # enhancd
 if [ -f ~/repos/enhancd/init.sh ]; then
     source ~/repos/enhancd/init.sh
-    export ENHANCD_FILTER=fzf:peco:gof
+    export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 fi
 
 # Key bindings
