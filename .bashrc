@@ -370,6 +370,7 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 if [ `type -p fzf` ]; then
+   export FZF_CTRL_R_OPTS="--reverse"
    # cd to selected directory including hidden ones
    function cdd() {
        local dir
@@ -381,18 +382,6 @@ if [ `type -p fzf` ]; then
        local dir
        file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
-   # command history search
-   function _search_history() {
-       local cmd
-       cmd=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
-              perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_;
-                        if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' |
-              fzf --height 30% --reverse +s --tac | sed 's/ *[0-9]* *//')
-       [[ -z $cmd ]] && return
-       READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$cmd${READLINE_LINE:$READLINE_POINT}"
-       READLINE_POINT=$(( READLINE_POINT + ${#cmd} ))
-   }
-   bind -x '"\C-r": _search_history'
    function mynote-search() {
        local file
        local pager
