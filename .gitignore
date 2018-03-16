@@ -99,3 +99,4 @@ work/
 .matplotlib/fontList.cache
 .emacs.d/url/
 .matplotlib/fontList.json
+.jupyter/lab/
