@@ -39,8 +39,12 @@
                '(left . 0))   ; x coordiate of frame
                default-frame-alist))
 
+(setq display-size (list (display-pixel-width) (display-pixel-height)))
+
 (cond ((string-match "MacBook\\.local$" system-name) (setq font-height 160))
       ((string-match "MacBook-Pro\\.local$" system-name) (setq font-height 140))
+      ((equal display-size '(2560 1440)) (setq font-height 140))
+      ((equal display-size '(1440 900)) (setq font-height 140))
       (t (setq font-height 120)))
 
 ;; fonta
