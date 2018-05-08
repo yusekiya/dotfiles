@@ -109,7 +109,7 @@ export PROMPT_COMMAND="history -a;${PROMPT_COMMAND}"
 # Functions
 #
 if [ "$(uname)" = "Darwin" ]; then
-    emacs_gui=/Applications/Emacs.app/Contents/MacOS/Emacs
+    emacs_gui=$(brew --prefix)/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs
 else
     emacs_gui=emacs
 fi
