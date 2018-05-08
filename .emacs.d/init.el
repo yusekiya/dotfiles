@@ -78,7 +78,7 @@
 (setq load-prefer-newer t)
 
 ;; Distinguish version
-(when (>= emacs-major-version 25)
+(when (>= emacs-major-version 26)
   (load "core_config")
   (load "package_config"))
 
