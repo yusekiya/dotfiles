@@ -210,7 +210,7 @@
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char) ;; enable \C-h in isearch mode
 ;; Make C-q to a prefix key
 (define-key global-map "\C-q" (make-sparse-keymap))
-(global-set-key "\C-q\C-q" 'quoted-insert) ; assign quoted-insert to C-q C-q
+(global-set-key (kbd "C-q q") 'quoted-insert) ; assign quoted-insert to C-q q
 
 ;; Kill emacs with M-x exit
 (defalias 'exit 'save-buffers-kill-emacs)
@@ -259,6 +259,9 @@
 
 ;; Cycle spacing
 (global-set-key (kbd "S-SPC") 'cycle-spacing)
+
+;; open current dir with dired
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
