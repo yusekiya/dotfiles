@@ -260,9 +260,6 @@
 ;; Cycle spacing
 (global-set-key (kbd "S-SPC") 'cycle-spacing)
 
-;; open current dir with dired
-(global-set-key (kbd "C-x C-j") 'dired-jump)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup for mac

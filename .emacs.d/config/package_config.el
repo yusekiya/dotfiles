@@ -701,6 +701,10 @@ The argument icon must be string."
                    ad-do-it))))
          ))
 
+;; Setup dired-x
+(use-package dired-x
+  :bind ("C-x C-j" . dired-jump))
+
 ;; Don't make new buffer when visit new directory
 (defvar my-dired-before-buffer nil)
 (defadvice dired-up-directory
