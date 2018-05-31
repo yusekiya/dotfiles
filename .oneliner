@@ -36,3 +36,4 @@
 [Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
 [View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' ${file.csv:*.csv} | column -s, -t | less -S
 [Generate random passwords] pwgen ${pw_length:-7} ${num_pw:-2}
+[Export to pdf from markdown through pandoc] pandoc ${input:-input.md} -o ${output:-output.pdf} --latex-engine=lualatex
