@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: boldsymbol
+# key: boldsymbol
+# --
+\boldsymbol{${1:italic bold}}
