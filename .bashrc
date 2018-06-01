@@ -129,14 +129,6 @@ function show_path () {
     echo $PATH | tr ":" "\n"
 }
 
-function today () {
-    date '+%Y%m%d' "$@"
-}
-
-function todaymd () {
-    date '+%m%d' "$@"
-}
-
 function terminal_device_type() {
     tty | perl -pe 's|/dev/([^/0-9]+)/?.*|\1|'
 }
