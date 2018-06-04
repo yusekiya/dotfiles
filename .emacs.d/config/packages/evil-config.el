@@ -40,8 +40,8 @@
   (evil-swap-key evil-motion-state-map "k" "gk")
   ;; Set key
   (define-key evil-normal-state-map (kbd "Y") (kbd "y$")) ; remap Y to y$ which copies text to the end-of-line
-  (define-key evil-normal-state-map (kbd "gh") (kbd "^"))
-  (define-key evil-normal-state-map (kbd "gl") (kbd "$"))
+  (define-key evil-normal-state-map (kbd "gh") 'evil-first-non-blank-of-visual-line)
+  (define-key evil-normal-state-map (kbd "gl") 'evil-end-of-visual-line)
   (define-key evil-normal-state-map (kbd "gH") 'evil-window-top)
   (define-key evil-normal-state-map (kbd "gL") 'evil-window-bottom)
   (define-key evil-normal-state-map (kbd ";") 'evil-ex)
