@@ -271,7 +271,7 @@ function nbstrip-jq {
     output=$(cat "$SRC" | jq --indent 1 \
         '(.cells[] | select(has("outputs"))
         | .outputs) = [] | (.cells[] | select(has("execution_count"))
-        | .execution_count) = null | .cells[].metadata = {}')
+        | .execution_count) = null')
     if [ -n "$FLAG_INPLACE" ]; then
         echo "${output}" > "${SRC}"
     else
