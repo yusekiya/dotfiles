@@ -39,3 +39,4 @@
 [Export to pdf from markdown] pandoc ${input:-input.md} -o ${output:-output.pdf} --pdf-engine=lualatex -sN
 [Export to pdf from markdown with nicer code block] pandoc ${input:-input.md} -o ${output:-output.pdf} --pdf-engine=lualatex -sN --listings -H ${HOME}/.pandoc/templates/listings-setup.tex
 [Export to markdown from jupyter notebook] jupyter nbconvert ${input:-input.ipynb} --to markdown --no-prompt
+[Export to LaTeX from jupyter notebook] jupyter nbconvert ${input:-input.ipynb} --to latex --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
