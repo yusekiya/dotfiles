@@ -17,6 +17,7 @@ beacon
 bind-key
 bool-flip
 buttercup
+cl-generic
 cmake-mode
 color-theme-sanityinc-tomorrow
 company
@@ -64,6 +65,7 @@ flatui-theme
 flycheck
 flycheck-irony
 flycheck-pos-tip
+font-lock+
 fontawesome
 fringe-helper
 function-args
@@ -81,6 +83,7 @@ helm-flyspell
 helm-gtags
 helm-perspeen
 helm-swoop
+hexrgb
 highlight-indent-guides
 highlight-indentation
 highlight-symbol
@@ -92,6 +95,7 @@ ivy
 jedi-core
 js2-mode
 key-chord
+let-alist
 lice
 load-theme-buffer-local
 manage-minor-mode
@@ -126,7 +130,9 @@ region-bindings-mode
 request
 request-deferred
 restart-emacs
+revive
 s
+seq
 simple-httpd
 skewer-mode
 smart-newline
