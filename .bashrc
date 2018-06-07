@@ -3,6 +3,10 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+# Setup iterm2 shell integration
+export iterm2_hostname=$(hostname)
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
 # Environment variables
 export EDITOR='vim'
 

@@ -56,10 +56,6 @@ if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
 fi
 
-export iterm2_hostname=$(hostname)
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "${HOME}/opt/google-cloud-sdk/path.bash.inc" ]; then source "${HOME}/opt/google-cloud-sdk/path.bash.inc"; fi
 
