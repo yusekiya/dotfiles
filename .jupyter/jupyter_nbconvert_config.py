@@ -232,6 +232,7 @@
 
 ## Shell command used to compile latex.
 #c.PDFExporter.latex_command = ['xelatex', '{filename}']
+c.PDFExporter.latex_command = ['lualatex', '{filename}']
 
 ## How many times latex will be called.
 #c.PDFExporter.latex_count = 3
