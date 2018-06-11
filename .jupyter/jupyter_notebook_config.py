@@ -1,4 +1,5 @@
 # Configuration file for jupyter-notebook.
+import os
 
 #------------------------------------------------------------------------------
 # SingletonConfigurable configuration
@@ -102,6 +103,8 @@
 # standard library module, which allows setting of the BROWSER environment
 # variable to override it.
 # c.NotebookApp.browser = ''
+if os.path.isdir('/Applications/Google Chrome.app/'):
+    c.NotebookApp.browser = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %s'
 
 # Supply SSL options for the tornado HTTPServer. See the tornado docs for
 # details.
