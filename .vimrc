@@ -69,6 +69,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-surround'
     Plug 'kana/vim-submode'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'dhruvasagar/vim-table-mode'
     " setup fzf
     if isdirectory("/usr/local/opt/fzf")
       Plug '/usr/local/opt/fzf'
@@ -95,6 +96,8 @@ let NERDSpaceDelims = 1
 " markdown
 let g:vim_markdown_new_list_item_indent = 4
 let g:vim_markdown_folding_disabled = 1
+let g:table_mode_corner="|"
+
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
