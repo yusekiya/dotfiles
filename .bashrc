@@ -365,11 +365,6 @@ if [ -f "${HOME}/.dircolors" ]; then
     eval `dircolors ${HOME}/.dircolors`
 fi
 
-# direnv
-if [ `type -p direnv` ]; then
-    eval "$(direnv hook bash)"
-fi
-
 # fzf
 if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
@@ -438,6 +433,12 @@ done
 if [ -f ~/repos/enhancd/init.sh ]; then
     source ~/repos/enhancd/init.sh
     export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
+fi
+
+# direnv
+if [ `type -p direnv` ]; then
+    eval "${PROMPT_COMMAND}"
+    eval "$(direnv hook bash)"
 fi
 
 # Key bindings
