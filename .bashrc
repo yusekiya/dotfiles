@@ -253,6 +253,9 @@ alias jl='jupyter lab &> /dev/null &'
 alias v='view -M'
 alias d='docker'
 alias dcom='docker-compose'
+# Enable completion for aliases
+complete -F _docker d
+complete -F _docker_compose dcom
 
 function nbstrip-jq {
     FLAG_INPLACE=
@@ -292,9 +295,6 @@ function nbstrip-all-cwd {
     done
     unset nbfile
 }
-# Enable completion for aliases
-complete -F _docker d
-complete -F _docker_compose dcom
 
 if [ `type -p colordiff` ]; then
     alias diff='colordiff -u'
