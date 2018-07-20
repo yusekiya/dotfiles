@@ -441,6 +441,8 @@ if [ `type -p direnv` ]; then
     eval "$(direnv hook bash)"
 fi
 
+export PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
+
 # Key bindings
 # Menu completion
 # bind "C-j":menu-complete
