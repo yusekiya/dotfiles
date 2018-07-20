@@ -1,0 +1,5 @@
+note_dir = "~/my-note"
+dir_format = "%Y/%m/"
+file_name_format = "%d-%H%M%S.md"
+editor = "vim"
+viewer = "view -M"

@@ -382,20 +382,6 @@ if [ `type -p fzf` ]; then
        local dir
        file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
-   function mynote-search() {
-       local file
-       local pager
-       file=$(ag --markdown --nonumber --nogroup "keywords:" ~/my-note | fzf --height 30% --reverse -q ${@:-""} | perl -pe 's/(.*?):.*/$1/g')
-       # Exit when canceled
-       [[ -z $file ]] && return
-       #
-       if [ `type -p view ` ]; then
-           pager='view -M'
-       else
-           pager='less'
-       fi
-       ${pager} ${file}
-   }
    function _search_oneliner() {
        local file
        local cmd
