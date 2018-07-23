@@ -108,8 +108,8 @@ imap <c-y> <esc>pa
 imap <c-b> <left>
 imap <c-f> <right>
 """" 
-map gh ^
-map gl $
+map <leader>h ^
+map <leader>l $
 " Go back to normal mode when typing jj quickly
 inoremap jj <Esc>
 " Turn off highlight with <Esc><Esc>
@@ -120,12 +120,12 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nmap n nzz
-nmap N Nzz
-nmap * *zz
-nmap # #zz
-nmap g* g*zz
-nmap g# g#zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 noremap ; :
 noremap : ;
 vmap <Enter> <Plug>(EasyAlign)
@@ -142,9 +142,6 @@ nnoremap <leader>v 0v$h
 nnoremap <leader>d 0v$hx
 " Yank all text in current line
 nnoremap <leader>y 0v$hy
-" nerdcommenter
-nmap <leader><Space> <Plug>NERDCommenterToggle
-vmap <leader><Space> <Plug>NERDCommenterToggle
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
 nmap gp <Plug>(yankround-gp)
