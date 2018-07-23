@@ -40,8 +40,8 @@
   (evil-swap-key evil-motion-state-map "k" "gk")
   ;; Set key
   (define-key evil-normal-state-map (kbd "Y") (kbd "y$")) ; remap Y to y$ which copies text to the end-of-line
-  (define-key evil-normal-state-map (kbd "gh") 'evil-first-non-blank-of-visual-line)
-  (define-key evil-normal-state-map (kbd "gl") 'evil-end-of-visual-line)
+  (define-key evil-normal-state-map (kbd "<SPC>h") 'evil-first-non-blank-of-visual-line)
+  (define-key evil-normal-state-map (kbd "<SPC>l") 'evil-end-of-visual-line)
   (define-key evil-normal-state-map (kbd "gH") 'evil-window-top)
   (define-key evil-normal-state-map (kbd "gL") 'evil-window-bottom)
   (define-key evil-normal-state-map (kbd ";") 'evil-ex)
@@ -135,7 +135,6 @@
     (define-key evil-normal-state-map " c " 'evilnc-comment-or-uncomment-lines)
     (define-key evil-visual-state-map " c " 'evilnc-comment-or-uncomment-lines)
     (define-key evil-normal-state-map " cl" 'evilnc-quick-comment-or-uncomment-to-the-line)
-    (define-key evil-normal-state-map " ll" 'evilnc-quick-comment-or-uncomment-to-the-line)
     (define-key evil-normal-state-map " cc" 'evilnc-copy-and-comment-lines)
     (define-key evil-visual-state-map " cc" 'evilnc-copy-and-comment-lines)
     (define-key evil-normal-state-map " cp" 'evilnc-comment-or-uncomment-paragraphs)
