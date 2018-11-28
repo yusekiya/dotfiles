@@ -30,7 +30,7 @@
 [Show public IP] curl -s httpbin.org/ip | jq -r '.origin'!
 [Who is that IP?] curl -sL https://rdap.apnic.net/ip/${IP:-8.8.8.8} | jq -C . | less
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
-[Docker| Remove stopped/exited containers] docker rm $(docker ps -aq)
+[Docker| Remove exited containers] docker rm $(docker ps -aq --filter "status=exited")
 [Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n ${secret} | ansible-vault encrypt; unset secret
 [Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
 [Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
