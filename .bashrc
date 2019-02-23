@@ -29,7 +29,11 @@ if [ "$(uname -o)" = "Msys" ]; then
     GIT_PS1_SHOWDIRTYSTATE=true
 ## for ubuntu
 elif [ "$(uname)" = "Linux" ]; then
-    source /etc/bash_completion.d/git-prompt
+    if [ -f /etc/bash_completion.d/git-prompt ]; then
+        source /etc/bash_completion.d/git-prompt
+    elif [ -f /etc/bash_completion.d/git ]; then
+        source /etc/bash_completion.d/git
+    fi
     GIT_PS1_SHOWDIRTYSTATE=true
 ## for mac
 elif [ "$(uname)" = "Darwin" ]; then
