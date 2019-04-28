@@ -73,6 +73,9 @@
   #Space: magic-space
 #$endif
 
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
 # MSYSTEM is emacs based
 $if mode=emacs
   # Common to Console & RXVT
