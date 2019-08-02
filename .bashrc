@@ -159,11 +159,6 @@ function tab-color() {
 function tab-reset() {
     echo -ne "\033]6;1;bg;*;default\a"
 }
-function change_window_title() {
-    local cdir=$(pwd | sed -e "s|$HOME|~|")
-    echo -ne "\033]2;$cdir\007" # window title
-}
-export PROMPT_COMMAND="change_window_title;${PROMPT_COMMAND}"
 function change_tab_title() {
     local host_name=$(hostname | sed "s/\.local$//")
     local user_name=$(whoami)
@@ -173,10 +168,6 @@ function change_tab_title() {
         echo -ne "\033]1;$(whoami)@${host_name}\007"
     fi
 }
-# Change tab title when starting bash
-# change_tab_title
-# Change tab title when returning back to local
-# function ssh() { command ssh "$@"; change_tab_title; }
 
 # PS1
 ## Red='\[\e[31m\]'
