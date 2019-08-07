@@ -70,6 +70,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'kana/vim-submode'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'dhruvasagar/vim-table-mode'
+    Plug 'justinmk/vim-sneak'
     " setup fzf
     if isdirectory("/usr/local/opt/fzf")
       Plug '/usr/local/opt/fzf'
@@ -127,7 +128,9 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 noremap ; :
-noremap : ;
+nmap : <Plug>SneakNext
+xmap : <Plug>SneakNext
+omap : <Plug>SneakNext
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 vmap v <Plug>(expand_region_expand)
@@ -157,7 +160,6 @@ if &diff
     nnoremap <leader>3 :diffget REMOTE<CR>
 endif
 " key binds for window configuration
-nnoremap s <Nop>
 nnoremap <leader>sj <C-w>j
 nnoremap <leader>sk <C-w>k
 nnoremap <leader>sl <C-w>l
