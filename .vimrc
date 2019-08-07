@@ -128,9 +128,8 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 noremap ; :
-nmap : <Plug>SneakNext
-xmap : <Plug>SneakNext
-omap : <Plug>SneakNext
+noremap : ;
+map : <Plug>SneakNext
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 vmap v <Plug>(expand_region_expand)
