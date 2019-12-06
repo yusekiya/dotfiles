@@ -51,6 +51,10 @@ if [ -d "${HOME}/.local/info" ]; then
   INFOPATH="${HOME}/.local/info:${INFOPATH}"
 fi
 
+# Load bash completion
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 # source the users bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
