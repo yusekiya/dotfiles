@@ -253,7 +253,7 @@ alias d='docker'
 alias dcm='docker-compose'
 # Enable completion for aliases
 complete -F _docker d
-complete -F _docker_compose dom
+complete -F _docker_compose dcm
 
 function nbstrip-jq {
     FLAG_INPLACE=
