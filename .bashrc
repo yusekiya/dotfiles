@@ -250,10 +250,10 @@ alias jn='jupyter notebook &> /dev/null &'
 alias jl='jupyter lab &> /dev/null &'
 alias v='view -M'
 alias d='docker'
-alias dcom='docker-compose'
+alias dcm='docker-compose'
 # Enable completion for aliases
 complete -F _docker d
-complete -F _docker_compose dcom
+complete -F _docker_compose dom
 
 function nbstrip-jq {
     FLAG_INPLACE=
