@@ -1,46 +1,46 @@
 [Start emacs] cd ~ && emacs &!
-[Make histogram] sort ${File} | uniq -c | sort -nr
-[Remove duplicates] sort ${File} | uniq
-[Pick up specific line] head -n ${line_num} | tail -n 1
-[Search term in files in current directory recursively] ag -G ${fname_regex:-'.*'} ${term} ${dest_dir:-.}
-[Search files with specific extension] find ${src_dir:-.} -name "*.${ext}"
-[Copy files with specific extension] ag -g '.*\.${ext}' ${src_dir:-.} | xargs -I% cp -f % ${dest_dir}
-[Copy files with specific extension] find ${src_dir:-.} -name "*.${ext}"  | xargs -I% cp -f % ${dest_dir}
-[Check process] ps aux | grep ${process}
+[Make histogram] sort <File> | uniq -c | sort -nr
+[Remove duplicates] sort <File> | uniq
+[Pick up specific line] head -n <line_num> | tail -n 1
+[Search term in files in current directory recursively] ag -G <fname_regex:'.*'> <term> <dest_dir:.>
+[Search files with specific extension] find <src_dir:.> -name "*.<ext>"
+[Copy files with specific extension] ag -g '.*\.<ext>' <src_dir:.> | xargs -I% cp -f % <dest_dir>
+[Copy files with specific extension] find <src_dir:.> -name "*.<ext>"  | xargs -I% cp -f % <dest_dir>
+[Check process] ps aux | grep <process>
 [Show path] echo $PATH | tr ":" "\n"!
-[Count files in directory] \ls -F ${src_dir} | grep -v / | wc -l
+[Count files in directory] \ls -F <src_dir> | grep -v / | wc -l
 [Count files in directory recursively] find . -type f | wc -l
 [Count files in directory recursively] ag -g '.*' . | wc -l
-[Sort directory in disk usage] du -h -d1 ${src_dir} | sort -hr
-[Process each file] for val in `find ./*`; do ${process_cmd}; done
-[Process each file] for val in `ag -g '.*' .`; do ${process_cmd}; done
-[Process each file including keyword] ag -l -0 ${keyword} | xargs -0 ${command:-echo}
-[Process each line in a file] while read line; do echo $line; done < ${filename}
+[Sort directory in disk usage] du -h -d1 <src_dir> | sort -hr
+[Process each file] for val in `find ./*`; do <process_cmd>; done
+[Process each file] for val in `ag -g '.*' .`; do <process_cmd>; done
+[Process each file including keyword] ag -l -0 <keyword> | xargs -0 <command:-echo>
+[Process each line in a file] while read line; do <cmd:echo $line>; done < <filename>
 [Show today] date +%F!
-[Delete recursively original file after resolving git conflict] find . -maxdepth ${mdep:-1} -type f -name "*.orig" -delete
-[Delete backup files recursively] find . -maxdepth ${mdep:-1} -name "*.bak" -delete
-[Copy specific files with directory structure] rsync -avz --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
-[Copy specific files with directory structure over ssh] rsync -avz -e ssh --include='*/' --include='*.${ext}' --exclude='*' ${src_dir} ${dest_dir}
+[Delete recursively original file after resolving git conflict] find . -maxdepth <depth> -type f -name "*.orig" -delete
+[Delete backup files recursively] find . -maxdepth <depth> -name "*.bak" -delete
+[Copy specific files with directory structure] rsync -avz --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
+[Copy specific files with directory structure over ssh] rsync -avz -e ssh --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
 [SSH tunneling] ssh -fN -L <LocalPort>:<Host seen from RemoteHost>:<Port> <user>@<RemoteHost>
-[Scan port] nc -uzv ${PublicIP} ${Port}
+[Scan port] nc -uzv <PublicIP> <Port>
 [Scan listening port on localhost] sudo lsof -i -P | grep "LISTEN"
 [Scan private IP in LAN] sudo arp-scan -l
-[Scan private IP] sudo nmap -sP ${IP/MASK}
-[Monitoring] less +F ${File}
+[Scan private IP] sudo nmap -sP <IP/MASK>
+[Monitoring] less +F <File>
 [Show login history] last | head -n ${num_lines:-20}
 [Show login history (last month)] last -f /var/log/wtmp.1 | head -n ${num_lines:-20}
 [Show public IP] curl -s httpbin.org/ip | jq -r '.origin'!
-[Who is that IP?] curl -sL https://rdap.apnic.net/ip/${IP:-8.8.8.8} | jq -C . | less
+[Who is that IP?] curl -sL https://rdap.apnic.net/ip/<IP:8.8.8.8> | jq -C . | less
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
 [Docker| Remove exited containers] docker rm $(docker ps -aq --filter "status=exited")
-[Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n ${secret} | ansible-vault encrypt; unset secret
+[Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n <secret> | ansible-vault encrypt; unset secret
 [Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
 [Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
-[View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' ${file.csv:*.csv} | column -s, -t | less -S
-[Generate random passwords] pwgen ${pw_length:-7} ${num_pw:-2}
-[Export to pdf from markdown] pandoc ${input:-input.md} -o ${output:-output.pdf} --pdf-engine=lualatex -sN
-[Export to pdf from markdown with nicer code block] pandoc ${input:-input.md} -o ${output:-output.pdf} --pdf-engine=lualatex -sN --listings -H ${HOME}/.pandoc/templates/listings-setup.tex
-[Export to markdown from jupyter notebook] jupyter nbconvert ${input:-*.ipynb} --to markdown --no-prompt
-[Export to LaTeX from jupyter notebook] jupyter nbconvert ${input:-*.ipynb} --to latex --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
-[Export to PDF from jupyter notebook] jupyter nbconvert ${input:-*.ipynb} --to pdf --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
-[Rename iTerm2 tab title] echo -ne "\e]1;${name}\a"
+[View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' <csv file:*.csv> | column -s, -t | less -S
+[Generate random passwords] pwgen --secure <length:7> <num:2>
+[Export to pdf from markdown] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN
+[Export to pdf from markdown with nicer code block] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN --listings -H ${HOME}/.pandoc/templates/listings-setup.tex
+[Export to markdown from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to markdown --no-prompt
+[Export to LaTeX from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to latex --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
+[Export to PDF from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to pdf --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
+[Rename iTerm2 tab title] echo -ne "\e]1;<name>\a"
