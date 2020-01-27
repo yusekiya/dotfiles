@@ -4,6 +4,7 @@
 [Pick up specific line] head -n <line_num> | tail -n 1
 [Search term in files in current directory recursively] ag -G <fname_regex:'.*'> <term> <dest_dir:.>
 [Search files with specific extension] find <src_dir:.> -name "*.<ext>"
+[Rename file] find . -type f -name '<file_*_name>' | sed 'p;s/<Before>/<After>/' | xargs -n2 mv
 [Copy files with specific extension] ag -g '.*\.<ext>' <src_dir:.> | xargs -I% cp -f % <dest_dir>
 [Copy files with specific extension] find <src_dir:.> -name "*.<ext>"  | xargs -I% cp -f % <dest_dir>
 [Check process] ps aux | grep <process>
