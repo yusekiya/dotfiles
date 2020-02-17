@@ -174,7 +174,10 @@ if [[ -x `which fzf` ]]; then
         cmd=$( cat $file | fzf --height 30% --reverse | perl -pe 's/^\[[^\]]+\]\s*//g' )
         local ret=$?
         # Exit if canceled
-        [[ -z $cmd ]] && return
+        if [[ -z $cmd ]]; then
+            zle fzf-redraw-prompt
+            return $ret
+        fi
         #
         if [ ${cmd:$((${#cmd}-1))} = "!" ]; then
             cmd=$(echo -E ${cmd} | sed 's/!$//')
