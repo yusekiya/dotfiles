@@ -227,3 +227,6 @@ fi
 export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 
 zplug load
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
