@@ -3,7 +3,6 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 unsetopt beep
-setopt noflowcontrol
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -13,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt noflowcontrol
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
   eval `dircolors ~/.dircolors`
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
