@@ -224,4 +224,6 @@ if ! zplug check --verbose; then
     fi
 fi
 
+export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
+
 zplug load
