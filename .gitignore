@@ -100,3 +100,5 @@ work/
 .emacs.d/url/
 .matplotlib/fontList.json
 .jupyter/lab/
+.matplotlib/fontlist-v300.json
+.matplotlib/fontlist-v310.json
