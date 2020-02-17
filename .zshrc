@@ -216,6 +216,9 @@ fi
 source ~/.zplug/init.zsh
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
