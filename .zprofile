@@ -22,17 +22,24 @@ fi
 
 # anaconda
 anaconda_base_list=("${HOME}"{,/opt}/{anaconda,Anaconda,miniconda}{,3,2})
-for anaconda_base in "${anaconda_base_list[@]}"
-do
-    if [ -f "${anaconda_base}"/etc/profile.d/conda.sh ]; then
-        source "${anaconda_base}"/etc/profile.d/conda.sh
-        conda activate base
-        break
-    elif [ -d "${anaconda_base}"/bin ]; then
-        export PATH="${anaconda_base}"/bin:$PATH
+for anaconda_base in "${anaconda_base_list[@]}"; do
+    if [ -d "${anaconda_base}" ]; then
+        export ANACONDA_BASE_DIR="${anaconda_base}"
         break
     fi
 done
+unset anaconda_base_list
+if [ -n "${ANACONDA_BASE_DIR}" ]; then
+    __conda_setup="$(${ANACONDA_BASE_DIR}/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    elif [ -f "${ANACONDA_BASE_DIR}/etc/profile.d/conda.sh" ]; then
+        . "${ANACONDA_BASE_DIR}/etc/profile.d/conda.sh"
+    else
+        export PATH="${ANACONDA_BASE_DIR}"/bin:$PATH
+    fi
+fi
+unset __conda_setup
 
 # executable path
 if [ -d "${HOME}/.local/bin" ]; then
