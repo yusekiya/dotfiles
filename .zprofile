@@ -20,6 +20,20 @@ if [ -d "${HOME}/.nodebrew" ]; then
     export PATH=${HOME}/.nodebrew/current/bin:${PATH}
 fi
 
+# anaconda
+anaconda_base_list=("${HOME}"{,/opt}/{anaconda,Anaconda,miniconda}{,3,2})
+for anaconda_base in "${anaconda_base_list[@]}"
+do
+    if [ -f "${anaconda_base}"/etc/profile.d/conda.sh ]; then
+        source "${anaconda_base}"/etc/profile.d/conda.sh
+        conda activate base
+        break
+    elif [ -d "${anaconda_base}"/bin ]; then
+        export PATH="${anaconda_base}"/bin:$PATH
+        break
+    fi
+done
+
 # executable path
 if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
