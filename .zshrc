@@ -215,6 +215,9 @@ zstyle ':prompt:pure:host'                color 244
 zstyle ':prompt:pure:git:branch'          color 244
 zstyle ':prompt:pure:git:action'          color 244
 
+export ZSH_AUTOSUGGEST_STRATEGY=(completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 zplug load
 
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
