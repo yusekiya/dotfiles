@@ -211,7 +211,9 @@ export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 
 zplug load
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
 # if (which zprof > /dev/null 2>&1) ;then
   # zprof | less
