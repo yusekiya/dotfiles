@@ -215,7 +215,7 @@ zstyle ':prompt:pure:host'                color 244
 zstyle ':prompt:pure:git:branch'          color 244
 zstyle ':prompt:pure:git:action'          color 244
 
-export ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 typeset -A ZSH_HIGHLIGHT_STYLES
