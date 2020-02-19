@@ -188,7 +188,7 @@ if [[ -x `which fzf` ]]; then
 fi
 
 # direnv
-if [[ -x`which direnv` ]]; then
+if [[ -x `which direnv` ]]; then
     eval "$(direnv hook zsh)"
 fi
 
