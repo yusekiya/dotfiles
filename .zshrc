@@ -208,6 +208,12 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # fi
 
 export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
+zstyle ':prompt:pure:prompt:continuation' color 244
+zstyle ':prompt:pure:virtualenv'          color 244
+zstyle ':prompt:pure:user'                color 244
+zstyle ':prompt:pure:host'                color 244
+zstyle ':prompt:pure:git:branch'          color 244
+zstyle ':prompt:pure:git:action'          color 244
 
 zplug load
 
