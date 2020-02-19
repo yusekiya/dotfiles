@@ -1,18 +1,14 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt noflowcontrol
 unsetopt beep
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/yseki/.zshrc'
-
+zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# Don't call compinit here because it will be called when loading zplug
+# compinit
 
-setopt noflowcontrol
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
   eval `dircolors ~/.dircolors`
@@ -30,9 +26,6 @@ function unlink_files () {
     do
         unlink $f
     done
-}
-function show_path () {
-    echo $PATH | tr ":" "\n"
 }
 
 function terminal_device_type() {
