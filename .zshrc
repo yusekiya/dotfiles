@@ -218,6 +218,10 @@ zstyle ':prompt:pure:git:action'          color 244
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+
 zplug load
 
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
