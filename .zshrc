@@ -18,6 +18,11 @@ fi
 
 export LESS='-iRFX -# 5'
 export SYSTEMD_LESS='FRSXMK -# 5'
+if [[ -x `which vim` ]]; then
+    export EDITOR=vim
+elif [[ -x `which emacs` ]]; then
+    export EDITOR=emacs
+fi
 
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
