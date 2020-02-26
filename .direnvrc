@@ -1,5 +1,5 @@
 layout_anaconda() {
-  local ACTIVATE="${ANACONDA_BASE_DIR}"/bin/activate"
+  local ACTIVATE="${ANACONDA_BASE_DIR}/bin/activate"
 
   if [ -n "$1" ]; then
     # Explicit environment name from layout command.
