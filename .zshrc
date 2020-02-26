@@ -4,6 +4,7 @@ SAVEHIST=10000
 setopt noflowcontrol
 unsetopt beep
 bindkey -e
+bindkey "^[[Z" reverse-menu-complete
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 # Don't call compinit here because it will be called when loading zplug
