@@ -46,6 +46,11 @@ if [ -n "${ANACONDA_BASE_DIR}" ]; then
 fi
 unset __conda_setup
 
+# latex path
+if [ -d "/Library/TeX/texbin" ]; then
+    export PATH="/Library/TeX/texbin:${PATH}"
+fi
+
 # executable path
 if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
@@ -76,3 +81,4 @@ if [ -d "${HOME}/.local/info" ]; then
   INFOPATH="${HOME}/.local/info:${INFOPATH}"
 fi
 
+typeset -U path
