@@ -2,6 +2,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt noflowcontrol
+setopt IGNOREEOF
 unsetopt beep
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
