@@ -90,6 +90,7 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline,bold
+hi markdownH1 ctermfg=3
 
 " nerdcommenter
 let NERDSpaceDelims = 1
