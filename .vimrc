@@ -71,6 +71,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'editorconfig/editorconfig-vim'
     Plug 'dhruvasagar/vim-table-mode'
     Plug 'justinmk/vim-sneak'
+    Plug 'easymotion/vim-easymotion'
     " setup fzf
     if isdirectory("/usr/local/opt/fzf")
       Plug '/usr/local/opt/fzf'
