@@ -81,7 +81,12 @@ call plug#begin('~/.vim/bundle')
 call plug#end()
 
 " modify bgcolor on visual mode
-autocmd ColorScheme * highlight Visual ctermbg=8
+augroup nord-theme-overrides
+    autocmd!
+    autocmd ColorScheme nord highlight Visual ctermbg=8
+    autocmd ColorScheme nord highlight Comment ctermfg=242
+    autocmd ColorScheme nord highlight LineNr ctermfg=242
+augroup END
 " diff color
 let g:nord_uniform_diff_background = 1
 " activate nord theme
