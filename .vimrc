@@ -85,7 +85,7 @@ augroup nord-theme-overrides
     autocmd!
     autocmd ColorScheme nord highlight Visual ctermbg=8
     autocmd ColorScheme nord highlight Comment ctermfg=243
-    autocmd ColorScheme nord highlight LineNr ctermfg=240
+    autocmd ColorScheme nord highlight LineNr ctermfg=243
 augroup END
 " diff color
 let g:nord_uniform_diff_background = 1
