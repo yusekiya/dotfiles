@@ -229,6 +229,8 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
+
 zplug load
 
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
