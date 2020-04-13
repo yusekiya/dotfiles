@@ -4,6 +4,15 @@
 \documentclass[11pt]{ltjsarticle}
 ((*- endblock docclass -*))
 
+((*- block packages -*))
+    ((( super() )))
+    \setmainfont[BoldFont=Times Bold, ItalicFont=Times Italic, BoldItalicFont=Times Bold Italic]{Times}
+    \setsansfont[BoldFont=Helvetica Neue Bold, ItalicFont=Helvetica Neue Italic, BoldItalicFont=Helvetica Neue Bold Italic]{Helvetica Neue}
+    \setmonofont{Menlo}
+    \usepackage{luatexja-fontspec}
+    \usepackage[hiragino-pron]{luatexja-preset}
+((*- endblock packages -*))
+
 ((*- block margins -*))
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.5in,rmargin=.5in}
 ((*- endblock margins -*))
