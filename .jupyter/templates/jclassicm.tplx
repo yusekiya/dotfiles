@@ -13,6 +13,13 @@
     \usepackage[hiragino-pron]{luatexja-preset}
 ((*- endblock packages -*))
 
+((*- block definitions -*))
+    ((( super() )))
+    % Style for inline code block
+    \let\originaltexttt\texttt
+    \renewcommand{\texttt}[1]{\textcolor[rgb]{0.761,0.643,0.435}{\originaltexttt{{#1}}}}
+((*- endblock definitions -*))
+
 ((*- block margins -*))
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.5in,rmargin=.5in}
 ((*- endblock margins -*))
