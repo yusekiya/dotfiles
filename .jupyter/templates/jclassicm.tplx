@@ -35,7 +35,7 @@ SOFTWARE.
     ((( super() )))
     \setmainfont[BoldFont=Times Bold, ItalicFont=Times Italic, BoldItalicFont=Times Bold Italic]{Times}
     \setsansfont[BoldFont=Helvetica Neue Bold, ItalicFont=Helvetica Neue Italic, BoldItalicFont=Helvetica Neue Bold Italic]{Helvetica Neue}
-    \setmonofont{Menlo}
+    \setmonofont{Menlo}[Scale=MatchLowercase]
     \usepackage{luatexja-fontspec}
     \usepackage[hiragino-pron]{luatexja-preset}
 ((*- endblock packages -*))
@@ -44,13 +44,6 @@ SOFTWARE.
     ((( super() )))
 
     ((* block repygments *))
-    \makeatletter
-    \newcommand*\@iflatexlater{\@ifl@t@r\fmtversion}
-    \@iflatexlater{2016/03/01}{
-	    \newcommand{\wordboundary}{4095}}{
-	    \newcommand{\wordboundary}{255}}
-    \makeatother
-
     \newif\ifcode
     \codefalse
     \definecolor{Grey}{rgb}{0.40,0.40,0.40}
@@ -71,7 +64,35 @@ SOFTWARE.
 
     % Style for inline code block
     \let\originaltexttt\texttt
-    \renewcommand{\texttt}[1]{\textcolor[rgb]{0.761,0.643,0.435}{\originaltexttt{{#1}}}}
+    \renewcommand{\texttt}[1]{\tcbox[size=fbox,on line,colback=cellbackground, colframe=cellborder]%
+    {\textcolor[rgb]{0.761,0.643,0.435}{\originaltexttt{{#1}}}}}
+
+    % Reduce baseline height in Verbatim environment
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+        
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct,baselinestretch=0.8]%
+    }
+    \makeatother
 ((*- endblock definitions -*))
 
 ((*- block margins -*))
