@@ -23,6 +23,7 @@
 [Copy specific files with directory structure] rsync -avz --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
 [Copy specific files with directory structure over ssh] rsync -avz -e ssh --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
 [Add SSH public key] cat <public_key> | ssh <remote> 'cat >> .ssh/authorized_keys'
+[Add SSH public key for another user] cat <public_key> | ssh -t <remote> 'cat | sudo -u <user> tee -a /home/<user>/.ssh/authorized_keys > /dev/null'
 [SSH tunneling] ssh -fN -L <LocalPort>:<Host seen from RemoteHost>:<Port> <user>@<RemoteHost>
 [Scan port] nc -uzv <PublicIP> <Port>
 [Scan listening port on localhost] sudo lsof -i -P | grep "LISTEN"
