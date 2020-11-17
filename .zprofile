@@ -57,16 +57,10 @@ if [ -d "${HOME}/.local/bin" ]; then
 fi
 
 # include path
-if [ -d "/usr/local/include" ] ; then
-    export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
-fi
 if [ -d "${HOME}/.local/include" ] ; then
     export CPLUS_INCLUDE_PATH=${HOME}/.local/include:${CPLUS_INCLUDE_PATH}
 fi
 # library path
-if [ -d "/usr/local/lib" ] ; then
-    export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}
-fi
 if [ -d "${HOME}/.local/lib" ] ; then
     export CPLUS_INCLUDE_PATH=${HOME}/.local/lib:${CPLUS_INCLUDE_PATH}
 fi
