@@ -62,7 +62,7 @@ if [ -d "${HOME}/.local/include" ] ; then
 fi
 # library path
 if [ -d "${HOME}/.local/lib" ] ; then
-    export CPLUS_INCLUDE_PATH=${HOME}/.local/lib:${CPLUS_INCLUDE_PATH}
+    export LIBRARY_PATH=${HOME}/.local/lib:${LIBRARY_PATH}
 fi
 
 # MANPATH
