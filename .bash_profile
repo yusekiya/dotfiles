@@ -1,6 +1,7 @@
 # User dependent .bash_profile file
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
+[[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
 if [ -d "/mingw64/local/bin" ]; then
     export PATH="/mingw64/local/bin:${PATH}"

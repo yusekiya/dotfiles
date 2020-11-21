@@ -1,6 +1,7 @@
 # User dependent .bash_profile file
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
+[[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
 
 if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
