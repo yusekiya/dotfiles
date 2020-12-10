@@ -1,19 +1,6 @@
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
-
-if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-fi
-
-if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-fi
-
-if [ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]; then
-    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
-fi
-
 #Rust
 [[ ":$PATH:" != *":${HOME}/.cargo:"* ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
 
