@@ -14,6 +14,9 @@ if [ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]; then
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
 fi
 
+#Rust
+[[ ":$PATH:" != *":${HOME}/.cargo:"* ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
+
 # Linuxbrew
 if [ -d "${HOME}/.linuxbrew" ]; then
     export PATH=${HOME}/.linuxbrew/bin:${PATH}
