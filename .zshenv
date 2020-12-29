@@ -2,7 +2,7 @@
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
 #Rust
-[[ ":$PATH:" != *":${HOME}/.cargo:"* ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
+source "$HOME/.cargo/env"
 
 # Linuxbrew
 if [ -d "${HOME}/.linuxbrew" ]; then
