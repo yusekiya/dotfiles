@@ -9,7 +9,7 @@ bindkey "^[[Z" reverse-menu-complete
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 # Don't call compinit here because it will be called when loading zplug
-# compinit
+#compinit
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
@@ -200,7 +200,7 @@ if [[ -x `which direnv` ]]; then
 fi
 
 source ~/.zplug/init.zsh
-zplug "mafredri/zsh-async",                from:github
+zplug "mafredri/zsh-async",                from:"github", use:"async.zsh"
 zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
 zplug "b4b4r07/enhancd",                   use:init.sh
 zplug "zsh-users/zsh-completions"
