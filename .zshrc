@@ -7,9 +7,7 @@ unsetopt beep
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
 zstyle :compinstall filename "${HOME}/.zshrc"
-autoload -Uz compinit
-# Don't call compinit here because it will be called when loading zplug
-#compinit
+autoload -Uz compinit && compinit
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
@@ -199,20 +197,38 @@ if [[ -x `which direnv` ]]; then
     eval "$(direnv hook zsh)"
 fi
 
-source ~/.zplug/init.zsh
-zplug "mafredri/zsh-async",                from:"github", use:"async.zsh"
-zplug "sindresorhus/pure",                 use:pure.zsh, from:github, as:theme
-zplug "b4b4r07/enhancd",                   use:init.sh
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions",     defer:2
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# if ! zplug check --verbose; then
-    # printf "Install? [y/N]: "
-    # if read -q; then
-        # echo; zplug install
-    # fi
-# fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+
+zinit ice pick"init.sh"
+zinit light b4b4r07/enhancd
 
 export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 zstyle ':prompt:pure:prompt:continuation' color 244
@@ -231,8 +247,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 
-zplug load
-
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
     source "${HOME}/.iterm2_shell_integration.zsh"
 fi
@@ -240,3 +254,4 @@ fi
 # if (which zprof > /dev/null 2>&1) ;then
   # zprof | less
 # fi
+
