@@ -7,7 +7,6 @@ unsetopt beep
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
 zstyle :compinstall filename "${HOME}/.zshrc"
-autoload -Uz compinit && compinit
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
@@ -220,9 +219,13 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
