@@ -172,19 +172,24 @@ if [[ -x `which fzf` ]]; then
         local ret=$?
         # Exit if canceled
         if [[ -z $cmd ]]; then
-            zle fzf-redraw-prompt
+            zle redisplay
             return $ret
         fi
         #
         if [ ${cmd:$((${#cmd}-1))} = "!" ]; then
             cmd=$(echo -E ${cmd} | sed 's/!$//')
-            echo -E "!${cmd}"
-            eval ${cmd}
-            zle fzf-redraw-prompt
+            zle push-line
+            BUFFER=${cmd}
+            zle accept-line
+            ret=$?
         else
+            zle push-line
             BUFFER=${cmd}
             CURSOR+=${#cmd}
+            ret=$?
         fi
+        unset file cmd
+        zle reset-prompt
         return $ret
     }
     zle -N search_oneliner
