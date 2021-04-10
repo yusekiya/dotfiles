@@ -21,6 +21,11 @@ if [ -d "/Library/TeX/texbin" ]; then
     export PATH="/Library/TeX/texbin:${PATH}"
 fi
 
+# poetry path
+if [ -d "${HOME}/.local/etc/poetry/bin" ]; then
+    export PATH="${HOME}/.local/etc/poetry/bin:${PATH}"
+fi
+
 # executable path
 if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
