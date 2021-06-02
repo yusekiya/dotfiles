@@ -19,6 +19,16 @@ if [ -n "${ANACONDA_BASE_DIR}" ]; then
 fi
 unset __conda_setup
 
+if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
+    export HOMEBREW_PREFIX="/usr/local";
+fi
 
 if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ]; then
     export PATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:${PATH}

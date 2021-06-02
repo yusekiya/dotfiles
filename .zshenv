@@ -9,18 +9,6 @@ if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
-# Homebrew for Mac with Apple Silicon
-if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
-    export HOMEBREW_PREFIX="/opt/homebrew";
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-    export HOMEBREW_REPOSITORY="/opt/homebrew";
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
-    export HOMEBREW_PREFIX="/usr/local";
-fi
-
 # Linuxbrew
 if [ -d "${HOME}/.linuxbrew" ]; then
     export PATH=${HOME}/.linuxbrew/bin:${PATH}
