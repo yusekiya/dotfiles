@@ -4,7 +4,9 @@
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
 # Rust
-source "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
 
 # Homebrew for Mac with Apple Silicon
 if [ -d "/opt/homebrew" ]; then
