@@ -20,13 +20,13 @@ fi
 unset __conda_setup
 
 
-if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
-    export PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
+if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ]; then
+    export PATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:${PATH}
 fi
-if [ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]; then
-    export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}
+if [ -d "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" ]; then
+    export PATH=$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:${PATH}
 fi
-if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
-    export PATH=/usr/local/opt/coreutils/libexec/gnuman:${PATH}
+if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman" ]; then
+    export PATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${PATH}
 fi
 

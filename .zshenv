@@ -1,4 +1,5 @@
 # zmodload zsh/zprof && zprof
+ARCH=$(uname -m)
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
@@ -9,13 +10,15 @@ if [ -d "$HOME/.cargo/env" ]; then
 fi
 
 # Homebrew for Mac with Apple Silicon
-if [ -d "/opt/homebrew" ]; then
+if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
     export HOMEBREW_PREFIX="/opt/homebrew";
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
     export HOMEBREW_REPOSITORY="/opt/homebrew";
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
+    export HOMEBREW_PREFIX="/usr/local";
 fi
 
 # Linuxbrew
