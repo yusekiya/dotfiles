@@ -19,12 +19,14 @@ if [ -n "${ANACONDA_BASE_DIR}" ]; then
 fi
 unset __conda_setup
 
-[[ ":$PATH:" != *":/usr/local/opt/coreutils/libexec/gnubin:"* ]] \
-    && export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
-[[ ":$PATH:" != *":/usr/local/opt/gnu-sed/libexec/gnubin:"* ]] \
-    && export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
-
-[[ ":$MANPATH:" != *":/usr/local/opt/coreutils/libexec/gnuman:"* ]] \
-    && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${PATH}"
+if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
+    export PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
+fi
+if [ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]; then
+    export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}
+fi
+if [ -d "/usr/local/opt/coreutils/libexec/gnuman" ]; then
+    export PATH=/usr/local/opt/coreutils/libexec/gnuman:${PATH}
+fi
 
