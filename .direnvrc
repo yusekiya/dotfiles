@@ -18,3 +18,19 @@ layout_anaconda() {
     exit 1;
   fi
 }
+
+verify_arm64() {
+  if [ "$(uname -m)" != "arm64" ]; then
+    echo '*********************************'
+    echo '* This is NOT ARM64 environment *'
+    echo '*********************************'
+  fi
+}
+
+verify_x86_64() {
+  if [ "$(uname -m)" != "x86_64" ]; then
+    echo '**********************************'
+    echo '* This is NOT x86_64 environment *'
+    echo '**********************************'
+  fi
+}
