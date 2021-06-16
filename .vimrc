@@ -137,7 +137,7 @@ nnoremap g# g#zz
 noremap ; :
 noremap : ;
 map : <Plug>SneakNext
-vmap <Enter> <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
