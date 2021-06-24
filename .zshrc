@@ -130,7 +130,7 @@ function nbstrip-all-cwd {
     unset nbfile
 }
 
-if [[ -x `which colordiff` ]]; then
+if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
 else
     alias diff='diff -u'
