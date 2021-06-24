@@ -137,7 +137,7 @@ else
 fi
 
 # The alias for tmux doesn't work on windows msys2
-if [ "$(uname)" = "Linux" ] && [ `type -p direnv` ]; then
+if ([ "$(uname)" = "Linux" ] && (( $+commands[direnv] ))); then
     alias tmux='direnv exec / tmux'
 fi
 
@@ -197,7 +197,7 @@ if [[ -x `which fzf` ]]; then
 fi
 
 # direnv
-if [[ -x `which direnv` ]]; then
+if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
