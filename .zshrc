@@ -9,16 +9,16 @@ bindkey "^[[Z" reverse-menu-complete
 zstyle :compinstall filename "${HOME}/.zshrc"
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
-if [[ -f ~/.dircolors && -x `which dircolors` ]]; then
+if ([ -f ~/.dircolors ] && (( $+commands[dircolors] ))); then
   eval `dircolors ~/.dircolors`
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
 export LESS='-iRFX -# 5'
 export SYSTEMD_LESS='FRSXMK -# 5'
-if [[ -x `which vim` ]]; then
+if (( $+commands[vim] )); then
     export EDITOR=vim
-elif [[ -x `which emacs` ]]; then
+elif (( $+commands[emacs] )); then
     export EDITOR=emacs
 fi
 
@@ -151,7 +151,7 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [[ -x `which fzf` ]]; then
+if (( $+commands[fzf] )); then
     export FZF_CTRL_R_OPTS="--reverse"
     # cd to selected directory including hidden ones
     function cdd() {
