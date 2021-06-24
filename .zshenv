@@ -27,6 +27,8 @@ fi
 # poetry path
 if [ -d "${HOME}/.local/etc/poetry/bin" ]; then
     export PATH="${HOME}/.local/etc/poetry/bin:${PATH}"
+elif [ -d "${HOME}/.poetry/bin" ]; then
+    export PATH="${HOME}/.poetry/bin:${PATH}"
 fi
 
 # executable path
