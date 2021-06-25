@@ -31,7 +31,9 @@ set clipboard=unnamed,autoselect
 " set t_Co=16
 "set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
-set mouse=a
+if has('mouse')
+  set mouse=a
+endif
 set wildmenu
 set wildmode=longest:full,full
 let mapleader = "\<space>"
