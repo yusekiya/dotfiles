@@ -224,13 +224,12 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+# Load packages
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
       zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
+      zsh-users/zsh-autosuggestions
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
@@ -238,6 +237,10 @@ zinit light sindresorhus/pure
 zinit ice pick"init.sh"
 zinit light b4b4r07/enhancd
 
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions
+
+# Configure packages
 export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 zstyle ':prompt:pure:prompt:continuation' color 244
 zstyle ':prompt:pure:virtualenv'          color 244
@@ -255,6 +258,7 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 
+# Setting for iTerm2 shell integration
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
     source "${HOME}/.iterm2_shell_integration.zsh"
 fi
