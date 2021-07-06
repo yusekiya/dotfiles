@@ -37,6 +37,6 @@ if [ -d "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" ]; then
     export PATH=$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:${PATH}
 fi
 if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman" ]; then
-    export PATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${PATH}
+    export MANPATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}
 fi
 
