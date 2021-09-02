@@ -1,0 +1,6 @@
+{
+  "project_name": "proj",
+  "date_format": "none",
+  "date_prefix": "{% if cookiecutter.date_format == 'ymd' %}{% now 'local', '%Y%m%d' %}_{% elif cookiecutter.date_format == 'md' %}{% now 'local', '%m%d' %}_{% else %}{% endif %}",
+  "project_slug": "{{ cookiecutter.date_prefix }}{{ cookiecutter.project_name|replace(' ', '_')|replace('.', '_')|trim() }}"
+}
