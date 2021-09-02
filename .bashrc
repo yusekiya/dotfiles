@@ -380,6 +380,10 @@ if [ `type -p fzf` ]; then
        local dir
        file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
+   function fcookie() {
+       local dir
+       dir=$(find ~/.cookiecutters ~/.cookiecutter_templates -follow -type d -maxdepth 1 -mindepth 1 2> /dev/null | sort | fzf +m --height 30% --reverse) && cookiecutter "$dir"
+   }
    function _search_oneliner() {
        local file
        local cmd
