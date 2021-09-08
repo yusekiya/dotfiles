@@ -120,8 +120,9 @@ imap <c-f> <right>
 """" 
 map <leader>h ^
 map <leader>l $
-" Go back to normal mode when typing jj quickly
+" Go back to normal mode when typing jj quickly or <C-j>
 inoremap jj <Esc>
+inoremap <C-j> <Esc>
 " Turn off highlight with <Esc><Esc>
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 " Search forward under a current cursor with *
