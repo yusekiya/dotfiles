@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+{% if cookiecutter.utf8 == "yes" -%}
+$latex = 'uplatex -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %O %S';
+$bibtex = 'upbibtex %O %B';
+{% elif cookiecutter.utf8 == "no" -%}
+$latex = 'platex -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %O %S';
+$bibtex = 'pbibtex %O %B';
+{% endif -%}
+$biber = 'biber --bblencoding=utf8 -u -U --output_safechars';
+$dvipdf = 'dvipdfmx %O -o %D %S';
+$pdf_mode = 3; # use dvipdf
+$max_repeat = 5;
