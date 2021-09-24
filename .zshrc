@@ -241,7 +241,7 @@ zinit light sindresorhus/pure
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 zinit ice wait"2" as"command" from"gh-r" lucid \
   mv"zoxide*/zoxide -> zoxide" \
-  atclone"./zoxide init zsh > init.zsh" \
+  atclone"./zoxide init --cmd c zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
