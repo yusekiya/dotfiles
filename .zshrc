@@ -238,14 +238,17 @@ zinit wait lucid light-mode for \
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-zinit ice pick"init.sh"
-zinit light b4b4r07/enhancd
+export _ZO_FZF_OPTS="+m --height 50% --reverse"
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  mv"zoxide*/zoxide -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 # Configure packages
-export ENHANCD_FILTER="fzf +m --height 50% --reverse:peco:gof"
 zstyle ':prompt:pure:prompt:continuation' color 244
 zstyle ':prompt:pure:virtualenv'          color 244
 zstyle ':prompt:pure:user'                color 244
