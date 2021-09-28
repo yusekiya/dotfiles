@@ -40,3 +40,5 @@ if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman" ]; then
     export MANPATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:${MANPATH}
 fi
 
+export ZELLIJ_CONFIG_DIR=~/.zellij
+
