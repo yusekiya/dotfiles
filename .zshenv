@@ -56,3 +56,5 @@ if [ -d "${HOME}/.local/info" ]; then
 fi
 
 typeset -U path
+
+setopt no_global_rcs
