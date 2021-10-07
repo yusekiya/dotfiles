@@ -4,38 +4,6 @@ ARCH=$(uname -m)
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
-# Rust
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-fi
-
-# Linuxbrew
-if [ -d "${HOME}/.linuxbrew" ]; then
-    export PATH=${HOME}/.linuxbrew/bin:${PATH}
-fi
-
-# Add path for node
-if [ -d "${HOME}/.nodebrew" ]; then
-    export PATH=${HOME}/.nodebrew/current/bin:${PATH}
-fi
-
-# latex path
-if [ -d "/Library/TeX/texbin" ]; then
-    export PATH="/Library/TeX/texbin:${PATH}"
-fi
-
-# poetry path
-if [ -d "${HOME}/.local/etc/poetry/bin" ]; then
-    export PATH="${HOME}/.local/etc/poetry/bin:${PATH}"
-elif [ -d "${HOME}/.poetry/bin" ]; then
-    export PATH="${HOME}/.poetry/bin:${PATH}"
-fi
-
-# executable path
-if [ -d "${HOME}/.local/bin" ]; then
-    export PATH="${HOME}/.local/bin:${PATH}"
-fi
-
 # include path
 if [ -d "${HOME}/.local/include" ] ; then
     export CPLUS_INCLUDE_PATH=${HOME}/.local/include:${CPLUS_INCLUDE_PATH}
@@ -57,4 +25,3 @@ fi
 
 typeset -U path
 
-setopt no_global_rcs
