@@ -1,6 +1,9 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+if [ "$SSH_TTY" != "" ]; then
+        stty stop undef
+fi
 setopt noflowcontrol
 setopt IGNOREEOF
 unsetopt beep
