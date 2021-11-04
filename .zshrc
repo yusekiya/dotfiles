@@ -208,6 +208,11 @@ if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
+# todo.sh
+if (( $+commands[todo.sh] )); then
+    alias todo='todo.sh'
+fi
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
