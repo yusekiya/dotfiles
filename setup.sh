@@ -81,24 +81,6 @@ make_link_safely() {
         fi
 
     done
-
-    # Create symbolic link ~/.profile which points to .bash_profile on linux
-    if [ "$(uname)" = "Linux" -a -f "${source_dir}/.bash_profile" ]; then
-        src="${source_dir}/.bash_profile"
-        dest="${dest_dir}/.profile"
-        if [ -L ${dest} ]; then
-            mv ${dest} ${dest}.bak
-            ln -s ${src} ${dest}
-            echo Existing link ${dest} renamed to ${dest}.bak
-        elif [ -f ${dest} ]; then
-            mv ${dest} ${dest}.bak
-            ln -s ${src} ${dest}
-            echo Existing regular file ${dest} renamed to ${dest}.bak
-        else
-            ln -s ${src} ${dest}
-        fi
-        echo File symbolic link created: ${dest}
-    fi
 }
 
 
