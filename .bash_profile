@@ -27,7 +27,9 @@ fi
 
 # Linuxbrew
 if [ -d "${HOME}/.linuxbrew" ]; then
-    export PATH=${HOME}/.linuxbrew/bin:${PATH}
+    eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
+elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Add path for node
