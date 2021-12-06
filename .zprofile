@@ -20,9 +20,9 @@ fi
 unset __conda_setup
 
 if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
-    eval $(/usr/local/bin/brew shellenv)
+    eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ]; then
