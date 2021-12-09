@@ -229,13 +229,17 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit proto"git" light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
 
 # Load packages
 zinit wait lucid proto"git" light-mode for \
   atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
+      zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions
 
@@ -244,7 +248,7 @@ zinit light sindresorhus/pure
 
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 zinit ice wait"2" as"command" from"gh-r" lucid \
-  mv"zoxide*/zoxide -> zoxide" \
+  cp"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init --cmd c zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!' \
   proto"git"
