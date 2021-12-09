@@ -217,7 +217,7 @@ fi
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone git@github.com:zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -228,32 +228,29 @@ autoload -Uz _zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+zinit proto"git" light-mode for \
 
 ### End of Zinit's installer chunk
 
 # Load packages
-zinit wait lucid light-mode for \
+zinit wait lucid proto"git" light-mode for \
   atinit"zicompinit; zicdreplay" \
       zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions
 
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh' proto"git"
 zinit light sindresorhus/pure
 
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 zinit ice wait"2" as"command" from"gh-r" lucid \
   mv"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init --cmd c zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
+  atpull"%atclone" src"init.zsh" nocompile'!' \
+  proto"git"
 zinit light ajeetdsouza/zoxide
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay" proto"git" blockf for \
     zsh-users/zsh-completions
 
 # Configure packages
