@@ -1,10 +1,11 @@
 # dotfiles
 ## Setup
 
-- [Windows (MSYS2)][1]
-- [Mac][2]
-- [Ubuntu][3]
-- [Raspbian][4]
+- [Mac][1]
+- [Windows (WSL2)][2]
+- [Windows (MSYS2)][3]
+- [Ubuntu][4]
+- [Raspbian][5]
 
 ## Setup (dotfiles only)
 
@@ -20,7 +21,8 @@ When a dotfile already exists in your home directory,
 the dotfile will be renamed with suffix `.bak`.
 
 
-[1]: https://github.com/yusekiya/dotfiles/wiki#windows-msys2
-[2]: https://github.com/yusekiya/mac_setup#setup-of-mac
-[3]: https://github.com/yusekiya/ubuntu_setup#setup-ubuntu-1604-with-ansible
-[4]: https://github.com/yusekiya/raspi3_setup#setup-raspi3-with-ansible
+[1]: https://github.com/yusekiya/mac_setup#setup-of-mac
+[2]: https://github.com/yusekiya/dotfiles/wiki#windows-wsl2
+[3]: https://github.com/yusekiya/dotfiles/wiki#windows-msys2
+[4]: https://github.com/yusekiya/ubuntu_setup#setup-ubuntu-1604-with-ansible
+[5]: https://github.com/yusekiya/raspi3_setup#setup-raspi3-with-ansible
