@@ -23,6 +23,11 @@ if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
     eval "$(/usr/local/bin/brew shellenv)"
+elif [ -d "${HOME}/.linuxbrew" ]; then
+    # Linuxbrew
+    eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
+elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ]; then
@@ -38,13 +43,6 @@ fi
 # Rust
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
-fi
-
-# Linuxbrew
-if [ -d "${HOME}/.linuxbrew" ]; then
-    eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
-elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Add path for node
