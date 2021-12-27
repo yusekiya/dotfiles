@@ -47,3 +47,7 @@
 [Export to LaTeX from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to latex --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
 [Export to PDF from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to pdf --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
 [Rename iTerm2 tab title] echo -ne "\e]1;<name>\a"
+[Slurm| Cancel all jobs] squeue --me -h -o "%i" | sed -e 's/_.*//' | xargs scancel
+[Slurm| List jobs since a date] sacct -S<YYYY-MM-DD> -ojobid,jobname,start,end,alloccpu,cputime | column -t
+[Slurm| List jobs within relative time range] sacct -Snow<+/-count(seconds(default)|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime | column -t
+
