@@ -90,7 +90,7 @@ alias gg='git graph'
 alias gu='git remote update'
 alias jn='jupyter notebook &> /dev/null &'
 alias jl='jupyter lab &> /dev/null &'
-alias v='view -M'
+alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 
