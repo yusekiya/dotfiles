@@ -50,4 +50,6 @@
 [Slurm| Cancel all jobs] squeue --me -h -o "%i" | sed -e 's/_.*//' | xargs scancel
 [Slurm| List jobs since a date] sacct -S<YYYY-MM-DD> -ojobid,jobname,start,end,alloccpu,cputime | column -t
 [Slurm| List jobs within relative time range] sacct -Snow<+/-count(seconds(default)|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime | column -t
+[Slurm| Show efficiency] seff <jobid>
+[Slurm| Show job status] scontrol show job <jobid>
 
