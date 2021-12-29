@@ -247,10 +247,11 @@ zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh' proto"git"
 zinit light sindresorhus/pure
 
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
-zinit ice wait"2" as"command" from"gh-r" lucid \
+zinit ice as"command" from"gh-r" lucid \
   cp"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init --cmd c zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!' \
+  atload'zicompinit' \
   proto"git"
 zinit light ajeetdsouza/zoxide
 
