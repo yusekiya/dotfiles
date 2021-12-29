@@ -169,31 +169,31 @@ if &diff
     nnoremap <leader>3 :diffget REMOTE<CR>
 endif
 " key binds for window configuration
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap sr <C-w>r
-nnoremap sn gt
-nnoremap sp gT
-nnoremap s= <C-w>=
-nnoremap sw <C-w>w
-nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
-nnoremap sN :<C-u>bn<CR>
-nnoremap sP :<C-u>bp<CR>
-nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
-nnoremap sq :<C-u>q<CR>
-nnoremap sQ :<C-u>bd<CR>
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+nnoremap <leader>sj <C-w>j
+nnoremap <leader>sk <C-w>k
+nnoremap <leader>sl <C-w>l
+nnoremap <leader>sh <C-w>h
+nnoremap <leader>sJ <C-w>J
+nnoremap <leader>sK <C-w>K
+nnoremap <leader>sL <C-w>L
+nnoremap <leader>sH <C-w>H
+nnoremap <leader>sr <C-w>r
+nnoremap <leader>sn gt
+nnoremap <leader>sp gT
+nnoremap <leader>s= <C-w>=
+nnoremap <leader>sw <C-w>w
+nnoremap <leader>so <C-w>_<C-w>|
+nnoremap <leader>sO <C-w>=
+nnoremap <leader>sN :<C-u>bn<CR>
+nnoremap <leader>sP :<C-u>bp<CR>
+nnoremap <leader>ss :<C-u>sp<CR>
+nnoremap <leader>sv :<C-u>vs<CR>
+nnoremap <leader>sq :<C-u>q<CR>
+nnoremap <leader>sQ :<C-u>bd<CR>
+call submode#enter_with('bufmove', 'n', '', '<leader>s>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<leader>s<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<leader>s+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<leader>s-', '<C-w>-')
 call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
