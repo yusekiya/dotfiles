@@ -60,7 +60,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-    Plug 'scrooloose/nerdcommenter'
+    Plug 'tpope/vim-commentary'
     Plug 'altercation/vim-colors-solarized'
     Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
     Plug 'junegunn/vim-easy-align'
@@ -99,9 +99,6 @@ hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline,bold
 hi markdownH1 ctermfg=3
-
-" nerdcommenter
-let NERDSpaceDelims = 1
 
 " markdown
 let g:vim_markdown_new_list_item_indent = 4
@@ -160,6 +157,9 @@ nmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
+xmap <leader>c gc
+nmap <leader>c gc
+omap <leader>c gc
 :command WClean %s/\s\+$//g
 ca wc WClean
 " key binds for vimdiff
