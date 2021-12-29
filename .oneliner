@@ -52,4 +52,5 @@
 [Slurm| List jobs within relative time range] sacct -Snow<+/-count(seconds(default)|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime | column -t
 [Slurm| Show efficiency] seff <jobid>
 [Slurm| Show job status] scontrol show job <jobid>
+[Slurm| Show job priority] sprio -n
 
