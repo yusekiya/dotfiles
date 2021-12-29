@@ -63,7 +63,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'scrooloose/nerdcommenter'
     Plug 'altercation/vim-colors-solarized'
     Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-    Plug 'tomasr/molokai'
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
     Plug 'LeafCage/yankround.vim'
@@ -74,6 +73,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'dhruvasagar/vim-table-mode'
     Plug 'justinmk/vim-sneak'
     Plug 'easymotion/vim-easymotion'
+    Plug 'tpope/vim-repeat'
     " setup fzf
     if isdirectory("/usr/local/opt/fzf")
       Plug '/usr/local/opt/fzf'
