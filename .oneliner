@@ -48,8 +48,8 @@
 [Export to PDF from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to pdf --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
 [Rename iTerm2 tab title] echo -ne "\e]1;<name>\a"
 [Slurm| Cancel all jobs] squeue --me -h -o "%i" | sed -e 's/_.*//' | xargs scancel
-[Slurm| List jobs since a date] sacct -S<YYYY-MM-DD> -ojobid,jobname,start,end,alloccpu,cputime | column -t
-[Slurm| List jobs within relative time range] sacct -S now-<count(seconds|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime | column -t
+[Slurm| List jobs since a date] sacct -S<YYYY-MM-DD> -ojobid,jobname,start,end,alloccpu,cputime,partition | column -t
+[Slurm| List jobs within relative time range] sacct -S now-<count(seconds|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime,partition | column -t
 [Slurm| Show efficiency] seff <jobid>
 [Slurm| Show job status] scontrol show job <jobid>
 [Slurm| Show job priority] sprio -n
