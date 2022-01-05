@@ -9,7 +9,7 @@
 
 ## Setup (dotfiles only)
 
-To install the dotfiles, run the setup script `setup.py` as
+To install the dotfiles, run the setup script `setup.sh` as
 
 ```shell
 $ ./setup.sh
