@@ -21,7 +21,7 @@ fi
 
 
 make_link_safely() {
-    echo "This script makes symbolic links to files in ${source_dir}."
+    echo "This script makes symbolic links pointing to files in ${source_dir}."
     echo "The links will be created in ${dest_dir}."
     echo "When a link duplicates with a file in ${dest_dir},"
     echo "the file will be renamed by adding a suffix \".bak\"."

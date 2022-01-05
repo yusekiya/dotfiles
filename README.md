@@ -15,7 +15,7 @@ To install the dotfiles, run the setup script `setup.sh` as
 $ ./setup.sh
 ```
 
-This script creates symbolic links to the dotfiles of this repository
+This script makes symbolic links pointing to the dotfiles of this repository
 in your home directory.
 When a dotfile already exists in your home directory,
 the dotfile will be renamed with suffix `.bak`.
