@@ -53,4 +53,6 @@
 [Slurm| Show efficiency] seff <jobid>
 [Slurm| Show job status] scontrol show job <jobid>
 [Slurm| Show job priority] sprio -n
+[Encode secret input on zsh] read -s "input?Input: " && echo -n "\nEncoded: " && echo -n $input | base64 && unset input!
+[Encode secret input on bash] read -sp "Input: " input && echo -en "\nEncoded: " && echo -n $input | base64 && unset input
 
