@@ -58,42 +58,6 @@ function change_tab_title() {
     fi
 }
 
-# Interactive operations
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias cdh='cd ~'
-#
-# Default to human readable figures
-alias df='df -h'
-alias du='du -h'
-#
-# Misc
-alias m='\less +F'
-alias grep='grep --color'
-#
-# Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
-# alias dir='ls --color=auto --format=vertical'
-# alias vdir='ls --color=auto --format=long'
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias lly='ls -l --time-style=long-iso'
-# alias l='ls -CF'
-
-# Applications
-alias tree='tree --dirsfirst -C'
-alias pyman='python -m pydoc'
-alias lesst='less_table'
-alias tiga='tig --all'
-alias gg='git graph'
-alias gu='git remote update'
-alias jn='jupyter notebook &> /dev/null &'
-alias jl='jupyter lab &> /dev/null &'
-alias v='vim -RM'
-alias d='docker'
-alias dcm='docker-compose'
-
 function nbstrip-jq {
     FLAG_INPLACE=
     for ARG in "$@"; do
@@ -132,6 +96,42 @@ function nbstrip-all-cwd {
     done
     unset nbfile
 }
+
+# Interactive operations
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias cdh='cd ~'
+#
+# Default to human readable figures
+alias df='df -h'
+alias du='du -h'
+#
+# Misc
+alias m='\less +F'
+alias grep='grep --color'
+#
+# Some shortcuts for different directory listings
+alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
+# alias dir='ls --color=auto --format=vertical'
+# alias vdir='ls --color=auto --format=long'
+alias ll='ls -l'                              # long list
+alias la='ls -A'                              # all but . and ..
+alias lly='ls -l --time-style=long-iso'
+# alias l='ls -CF'
+
+# Applications
+alias tree='tree --dirsfirst -C'
+alias pyman='python -m pydoc'
+alias lesst='less_table'
+alias tiga='tig --all'
+alias gg='git graph'
+alias gu='git remote update'
+alias jn='jupyter notebook &> /dev/null &'
+alias jl='jupyter lab &> /dev/null &'
+alias v='vim -RM'
+alias d='docker'
+alias dcm='docker-compose'
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
