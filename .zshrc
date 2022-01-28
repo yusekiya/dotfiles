@@ -133,6 +133,12 @@ alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 
+if (( $+commands[kubectl] )); then
+    source <(kubectl completion zsh)
+    alias k='kubectl'
+    complete -o default -F __start_kubectl k
+fi
+
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
 else
