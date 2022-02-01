@@ -256,7 +256,7 @@ zinit ice as"command" from"gh-r" lucid \
   cp"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init --cmd c zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!' \
-  atload'zicompinit' \
+  atload'zicompinit'
 zinit light ajeetdsouza/zoxide
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
