@@ -246,7 +246,9 @@ zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
@@ -258,9 +260,6 @@ zinit ice as"command" from"gh-r" lucid \
   atpull"%atclone" src"init.zsh" nocompile'!' \
   atload'zicompinit'
 zinit light ajeetdsouza/zoxide
-
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions
 
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
