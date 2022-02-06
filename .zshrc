@@ -134,7 +134,6 @@ alias d='docker'
 alias dcm='docker-compose'
 
 if (( $+commands[kubectl] )); then
-    source <(kubectl completion zsh)
     alias k='kubectl'
 fi
 
@@ -260,6 +259,11 @@ zinit ice as"command" from"gh-r" lucid \
   atpull"%atclone" src"init.zsh" nocompile'!' \
   atload'zicompinit'
 zinit light ajeetdsouza/zoxide
+
+# Completions
+if (( $+commands[kubectl] )); then
+    source <(kubectl completion zsh)
+fi
 
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
