@@ -261,9 +261,13 @@ zinit ice as"command" from"gh-r" lucid \
 zinit light ajeetdsouza/zoxide
 
 # Completions
-if (( $+commands[kubectl] )); then
-    source <(kubectl completion zsh)
-fi
+zinit light-mode has"kubectl" id-as"kubectl-completion" wait as=null lucid \
+    blockf \
+    atclone"kubectl completion zsh > _kubectl" \
+    atpull"%atclone" \
+    atload="[[ ! -f ${ZINIT[COMPLETIONS_DIR]}/_kubectl ]] && \
+            zi creinstall -q kubectl-completion" for \
+    zdharma-continuum/null
 
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
