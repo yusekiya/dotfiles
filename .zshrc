@@ -256,17 +256,14 @@ export _ZO_FZF_OPTS="+m --height 50% --reverse"
 zinit ice as"command" from"gh-r" lucid \
   cp"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init --cmd c zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!' \
-  atload'zicompinit'
+  atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
 # Completions
 zinit light-mode has"kubectl" id-as"kubectl-completion" wait as=null lucid \
     blockf \
-    atclone"kubectl completion zsh > _kubectl" \
-    atpull"%atclone" \
-    atload="[[ ! -f ${ZINIT[COMPLETIONS_DIR]}/_kubectl ]] && \
-            zi creinstall -q kubectl-completion" for \
+    atclone"kubectl completion zsh > _kubectl; zi creinstall -q kubectl-completion" \
+    atpull"%atclone" for \
     zdharma-continuum/null
 
 # Configure packages
