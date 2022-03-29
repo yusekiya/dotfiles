@@ -19,6 +19,15 @@ if [ "$(uname -o)" = "Msys" -a -z "$(id -Gn | grep Administrators)" ]; then
     exit;
 fi
 
+is_excluded() {
+    for ignore_file in "${ignore_list[@]}"
+    do
+        if [ "$( basename "$1")" = $ignore_file ]; then
+            return 0
+        fi
+    done
+    return 1
+}
 
 make_link_safely() {
     echo "This script makes symbolic links pointing to files in ${source_dir}."
@@ -36,15 +45,7 @@ make_link_safely() {
     echo "==== log output ===="
     for f in ${source_dir}/.??*
     do
-        flag_ignore=false
-        for ignore_file in "${ignore_list[@]}"
-        do
-            if [ "$( basename "$f")" = $ignore_file ]; then
-                flag_ignore=true
-                continue
-            fi
-        done
-        if $flag_ignore; then
+        if is_excluded "$f"; then
             continue
         fi
         
@@ -88,15 +89,7 @@ make_link_forcibly() {
     echo "==== log output ===="
     for f in ${source_dir}/.??*
     do
-        flag_ignore=false
-        for ignore_file in "${ignore_list[@]}"
-        do
-            if [ "$( basename "$f")" = $ignore_file ]; then
-                flag_ignore=true
-                continue
-            fi
-        done
-        if $flag_ignore; then
+        if is_excluded "$f"; then
             continue
         fi
 
