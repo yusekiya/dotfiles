@@ -417,5 +417,5 @@ fi
 
 export PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
 
-BASHRC_LOADED=yes
+__BASHRC_LOADED=yes
 

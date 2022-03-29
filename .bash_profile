@@ -6,10 +6,9 @@ if [ -f "${HOME}/.profile" ]; then
 fi
 
 # Load the users bashrc if it exists and is not loaded yet
-if [[ -f "${HOME}/.bashrc" && -z "$BASHRC_LOADED" ]]; then
+if [[ -f "${HOME}/.bashrc" && -z "$__BASHRC_LOADED" ]]; then
   source "${HOME}/.bashrc"
 fi
-unset BASHRC_LOADED
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
