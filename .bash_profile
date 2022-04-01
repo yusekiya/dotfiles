@@ -13,10 +13,6 @@ fi
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
 
-if [ -d "/mingw64/local/bin" ]; then
-    export PATH="/mingw64/local/bin:${PATH}"
-fi
-
 if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 fi
@@ -29,11 +25,6 @@ if [ -d "${HOME}/.linuxbrew" ]; then
     eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
 elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# Add path for node
-if [ -d "${HOME}/.nodebrew" ]; then
-    export PATH=${HOME}/.nodebrew/current/bin:${PATH}
 fi
 
 # executable path
@@ -64,31 +55,3 @@ fi
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "${HOME}/opt/google-cloud-sdk/path.bash.inc" ]; then source "${HOME}/opt/google-cloud-sdk/path.bash.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "${HOME}/opt/google-cloud-sdk/completion.bash.inc" ]; then source "${HOME}/opt/google-cloud-sdk/completion.bash.inc"; fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-anaconda_base_list=("${HOME}"{,/opt}/{anaconda,Anaconda,miniconda}{,3,2})
-for anaconda_base in "${anaconda_base_list[@]}"; do
-    if [ -d "${anaconda_base}" ]; then
-        export ANACONDA_BASE_DIR="${anaconda_base}"
-        break
-    fi
-done
-unset anaconda_base_list
-__conda_setup="$(${ANACONDA_BASE_DIR}/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${ANACONDA_BASE_DIR}/etc/profile.d/conda.sh" ]; then
-        . "${ANACONDA_BASE_DIR}/etc/profile.d/conda.sh"
-    else
-        export PATH="${ANACONDA_BASE_DIR}/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
