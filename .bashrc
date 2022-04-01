@@ -417,5 +417,10 @@ fi
 
 export PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
 
+# Load site-local config for shell if any
+if [[ -f "${HOME}/.bashrc.site" ]]; then
+  source "${HOME}/.bashrc.site"
+fi
+
 __BASHRC_LOADED=yes
 

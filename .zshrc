@@ -288,6 +288,11 @@ if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
     source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
+# Load site-local config for shell if any
+if [ -f ~/.zshrc.site ]; then
+    source ~/.zshrc.site
+fi
+
 # if (which zprof > /dev/null 2>&1) ;then
   # zprof | less
 # fi
