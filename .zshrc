@@ -133,10 +133,7 @@ alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
-
-if (( $+commands[kubectl] )); then
-    alias k='kubectl'
-fi
+alias k='kubectl'
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
