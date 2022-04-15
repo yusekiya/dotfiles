@@ -132,6 +132,7 @@ alias jl='jupyter lab &> /dev/null &'
 alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
+alias p='poetry'
 
 if (( $+commands[kubectl] )); then
     alias k='kubectl'

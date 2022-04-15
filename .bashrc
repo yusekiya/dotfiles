@@ -251,6 +251,8 @@ alias jl='jupyter lab &> /dev/null &'
 alias v='view -M'
 alias d='docker'
 alias dcm='docker-compose'
+alias p='poetry'
+
 # Enable completion for aliases
 complete -F _docker d
 complete -F _docker_compose dcm
