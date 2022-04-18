@@ -226,10 +226,6 @@ alias cdh='cd ~'
 alias df='df -h'
 alias du='du -h'
 #
-# Misc
-alias m='\less +F'
-alias grep='grep --color'
-#
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
@@ -238,8 +234,10 @@ alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias lly='ls -l --time-style=long-iso'
 # alias l='ls -CF'
-
+#
 # Applications
+alias m='\less +F'
+alias grep='grep --color'
 alias tree='tree --dirsfirst -C'
 alias pyman='python -m pydoc'
 alias lesst='less_table'
@@ -248,7 +246,7 @@ alias gg='git graph'
 alias gu='git remote update'
 alias jn='jupyter notebook &> /dev/null &'
 alias jl='jupyter lab &> /dev/null &'
-alias v='view -M'
+alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
