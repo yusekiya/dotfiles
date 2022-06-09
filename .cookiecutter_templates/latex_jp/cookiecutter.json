@@ -1,6 +1,6 @@
 {
   "project_name": "draft",
-  "project_slug": "{{ cookiecutter.project_name|replace(' ', '_')|replace('.', '_')|trim() }}",
+  "__project_slug": "{{ cookiecutter.project_name|replace(' ', '_')|replace('.', '_')|trim() }}",
   "documentclass": ["jsarticle", "jsbook", "jsreport"],
   "utf8": ["yes", "no"],
   "bibliography": ["manual", "biblatex+bibtex", "biblatex+biber", "bibtex"]
