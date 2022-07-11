@@ -131,11 +131,7 @@ alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
-
-if (( $+commands[kubectl] )); then
-    source <(kubectl completion zsh)
-    alias k='kubectl'
-fi
+alias k='kubectl'
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
