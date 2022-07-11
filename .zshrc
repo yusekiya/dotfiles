@@ -215,6 +215,8 @@ fi
 # sheldon: package manager
 mkdir -p ~/.zsh.site
 touch ~/.zsh.site/{sync,defer,defer-after-compinit}.zsh
+export _ZO_FZF_OPTS="+m --height 50% --reverse"
+
 if (( $+commands[sheldon] )); then
     eval "$(sheldon source)"
 fi
@@ -222,12 +224,6 @@ fi
 # direnv
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
-fi
-
-# zoxide
-if (( $+commands[zoxide] )); then
-    export _ZO_FZF_OPTS="+m --height 50% --reverse"
-    eval "$(zoxide init --cmd c zsh)"
 fi
 
 # Configure packages
