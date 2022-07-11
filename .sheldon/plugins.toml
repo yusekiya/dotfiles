@@ -36,12 +36,12 @@ apply = ["defer"]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
 
-[plugins.dotfiles-sync]
+[plugins.zshrc-local-sync]
 local = '~/.zsh.site'
 use = ['sync.zsh']
 apply = ['source']
 
-[plugins.dotfiles-defer]
+[plugins.zshrc-local-defer]
 local = '~/.zsh.site'
 use = ['defer.zsh']
 apply = ['defer']
@@ -49,5 +49,8 @@ apply = ['defer']
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
-[plugins.kubectl-completion]
-inline = 'zsh-defer compdef __start_kubectl k'
+[plugins.zshrc-local-defer-after-compinit]
+local = '~/.zsh.site'
+use = ['defer-after-compinit.zsh']
+apply = ['defer']
+

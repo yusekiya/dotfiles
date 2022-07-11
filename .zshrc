@@ -214,7 +214,7 @@ fi
 
 # sheldon: package manager
 mkdir -p ~/.zsh.site
-touch ~/.zsh.site/{defer.zsh,sync.zsh}
+touch ~/.zsh.site/{sync,defer,defer-after-compinit}.zsh
 if (( $+commands[sheldon] )); then
     eval "$(sheldon source)"
 fi
