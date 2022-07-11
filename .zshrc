@@ -218,7 +218,7 @@ touch ~/.zsh.site/{sync,defer,defer-after-compinit}.zsh
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 
 if (( $+commands[sheldon] )); then
-    eval "$(sheldon source)"
+    eval "$(sheldon --config-file ~/.sheldon/plugins.toml source)"
 fi
 
 # direnv
