@@ -45,9 +45,6 @@ apply = ['defer']
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
-[plugins.zoxide-init]
-inline = 'zsh-defer eval "$(zoxide init --cmd c zsh)"'
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
