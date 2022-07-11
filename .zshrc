@@ -25,6 +25,10 @@ elif (( $+commands[emacs] )); then
     export EDITOR=emacs
 fi
 
+###############################################################################
+# Functions & aliases
+###############################################################################
+
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
@@ -203,19 +207,21 @@ if (( $+commands[fzf] )); then
     bindkey "^s" search_oneliner
 fi
 
+
+###############################################################################
+# Packages
+###############################################################################
+
+# sheldon: package manager
+mkdir -p ~/.zsh.site
+touch ~/.zsh.site/{defer.zsh,sync.zsh}
+if (( $+commands[sheldon] )); then
+    eval "$(sheldon source)"
+fi
+
 # direnv
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
-fi
-
-# todo.sh
-if (( $+commands[todo.sh] )); then
-    alias todo='todo.sh'
-fi
-
-# sheldon
-if (( $+commands[sheldon] )); then
-    eval "$(sheldon source)"
 fi
 
 # zoxide
@@ -244,11 +250,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 # Setting for iTerm2 shell integration
 if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
     source "${HOME}/.iterm2_shell_integration.zsh"
-fi
-
-# Load site-local config for shell if any
-if [ -f ~/.zshrc.site ]; then
-    source ~/.zshrc.site
 fi
 
 # if (which zprof > /dev/null 2>&1) ;then

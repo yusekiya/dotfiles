@@ -36,6 +36,16 @@ apply = ["defer"]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
 
+[plugins.dotfiles-sync]
+local = '~/.zsh.site'
+use = ['sync.zsh']
+apply = ['source']
+
+[plugins.dotfiles-defer]
+local = '~/.zsh.site'
+use = ['defer.zsh']
+apply = ['defer']
+
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
