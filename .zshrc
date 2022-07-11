@@ -131,7 +131,11 @@ alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
-alias k='kubectl'
+
+if (( $+commands[kubectl] )); then
+    source <(kubectl completion zsh)
+    alias k='kubectl'
+fi
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
@@ -213,54 +217,16 @@ if (( $+commands[todo.sh] )); then
     alias todo='todo.sh'
 fi
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# sheldon
+if (( $+commands[sheldon] )); then
+    eval "$(sheldon source)"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-readurl \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-### End of Zinit's installer chunk
-
-# Load packages
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
-
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
-
-export _ZO_FZF_OPTS="+m --height 50% --reverse"
-zinit ice as"command" from"gh-r" lucid \
-  cp"zoxide*/zoxide -> zoxide" \
-  atclone"./zoxide init --cmd c zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
-zinit light ajeetdsouza/zoxide
-
-# Completions
-zinit light-mode has"kubectl" id-as"kubectl-completion" wait as=null lucid \
-    blockf \
-    atclone"kubectl completion zsh > _kubectl; zi creinstall -q kubectl-completion" \
-    atpull"%atclone" for \
-    zdharma-continuum/null
+# zoxide
+if (( $+commands[zoxide] )); then
+    export _ZO_FZF_OPTS="+m --height 50% --reverse"
+    eval "$(zoxide init --cmd c zsh)"
+fi
 
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
