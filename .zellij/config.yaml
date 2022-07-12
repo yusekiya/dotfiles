@@ -11,6 +11,8 @@ keybinds:
           key: [Ctrl: 'g', Char: ' ', Char: "\n"]
         - action: [SwitchToMode: Pane,]
           key: [Char: 'p',]
+        - action: [SwitchToMode: Move,]
+          key: [Char: 'h',]
         - action: [SwitchToMode: Resize,]
           key: [Char: 'n',]
         - action: [SwitchToMode: Tab,]
@@ -109,6 +111,35 @@ keybinds:
           key: [ Alt: '[',]
         - action: [FocusNextPane,]
           key: [ Alt: ']',]
+        - action: [ToggleFloatingPanes, SwitchToMode: Locked,]
+          key: [Char: 'w']
+        - action: [TogglePaneEmbedOrFloating, SwitchToMode: Locked,]
+          key: [Char: 'e']
+    move:
+        - action: [SwitchToMode: Locked,]
+          key: [Ctrl: 'h', Ctrl: 'g', Char: "\n", Char: ' ',]
+        - action: [SwitchToMode: Pane,]
+          key: [Ctrl: 'p',]
+        - action: [SwitchToMode: Tab,]
+          key: [Ctrl: 't',]
+        - action: [SwitchToMode: Resize,]
+          key: [Ctrl: 'n',]
+        - action: [SwitchToMode: Scroll,]
+          key: [Ctrl: 's']
+        - action: [SwitchToMode: Session,]
+          key: [Ctrl: 'o',]
+        - action: [Quit,]
+          key: [Ctrl: 'q',]
+        - action: [MovePane: ,]
+          key: [Char: 'n', Char: "\t",]
+        - action: [MovePane: Left,]
+          key: [Char: 'h', Left,]
+        - action: [MovePane: Down,]
+          key: [Char: 'j', Down,]
+        - action: [MovePane: Up,]
+          key: [Char: 'k', Up, ]
+        - action: [MovePane: Right,]
+          key: [Char: 'l', Right,]
     tab:
         - action: [SwitchToMode: Locked,]
           key: [Ctrl: 't', Ctrl: 'g',  Char: "\n", Char: ' ']
@@ -239,6 +270,16 @@ keybinds:
           key: [Ctrl: 'q',]
         - action: [Detach,]
           key: [Char: 'd',]
+
+plugins:
+    - path: tab-bar
+      tag: tab-bar
+    - path: status-bar
+      tag: status-bar
+    - path: strider
+      tag: strider
+    - path: compact-bar
+      tag: compact-bar
 
 default_mode: locked
 # Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
