@@ -171,6 +171,20 @@ if (( $+commands[fzf] )); then
         local dir
         file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
     }
+    # cd to selected parent directory
+    function cdr() {
+        local declare dirs=()
+        get_parent_dirs() {
+            if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+            if [[ "${1}" == '/' ]]; then
+            for _dir in "${dirs[@]}"; do echo $_dir; done
+            else
+            get_parent_dirs $(dirname "$1")
+            fi
+        }
+        local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf --reverse --preview "ls -lhF --group-directories-first {}")
+        cd "$DIR"
+    }
     function fcookie() {
         local dir
         dir=$(find ~/.cookiecutters ~/.cookiecutter_templates -follow -type d -maxdepth 1 -mindepth 1 2> /dev/null | sort | fzf +m --height 30% --reverse) && cookiecutter "$dir"
