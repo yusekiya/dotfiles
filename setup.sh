@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -eu
+
 source_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 dest_dir=~
 config_dir="${dest_dir}"/.config
