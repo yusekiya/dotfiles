@@ -44,7 +44,10 @@ wezterm.on(
 )
 
 return {
-  font = wezterm.font('Fira Code'),
+  font = wezterm.font_with_fallback {
+      'Fira code',
+      'Noto Sans JP',
+  },
   font_size = 13.1,
   color_scheme = "nordfox",
   -- window_background_opacity = 0.9,
