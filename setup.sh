@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 source_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 dest_dir=~
+config_dir="${dest_dir}"/.config
 ignore_list=(".." "." ".git" ".gitignore" ".DS_Store")
 
 usage_exit() {
@@ -113,3 +114,9 @@ fi
 
 echo "==== log output ===="
 make_link "${dest_dir}" ${source_dir}/.*
+
+if [ ! -d "${config_dir}" ]; then
+    mkdir "${config_dir}"
+fi
+
+make_link "${config_dir}" ${source_dir}/config/*
