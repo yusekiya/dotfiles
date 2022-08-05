@@ -4,11 +4,12 @@ dest_dir=~
 ignore_list=(".." "." ".git" ".gitignore" ".DS_Store")
 
 usage_exit() {
-        echo "Usage: $( basename $0) [-h] [-f]" 1>&2
+        echo "Usage: $( basename $0) [options]" 1>&2
         echo
         echo "Options:"
-        echo "  -h  show this help"
-        echo "  -f  do not prompt before creating links in ${dest_dir}"
+        echo "  -h            Show this help"
+        echo "  -f            Do not prompt before creating links in ${dest_dir}"
+        echo "  -e x1,x2,..   Exclude files/directories separated by comma"
         exit 1
 }
 
@@ -81,12 +82,15 @@ make_link() {
 
 
 flag_force=false
-while getopts :hf OPT
+while getopts e:hf OPT
 do
     case $OPT in
         h)  usage_exit
             ;;
         f)  flag_force=true
+            ;;
+        e)  excludes=(${OPTARG//,/ })
+            ignore_list+=(${excludes[@]})
             ;;
         \?) usage_exit
             ;;
