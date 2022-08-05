@@ -1,6 +1,6 @@
 [color]
     ui = auto
-    attributesfile = ~/.gitattributes_global
+    attributesfile = ~/.config/git/attributes
 [alias]
     graph = log --graph --all --oneline --decorate=full
     unstage = reset HEAD --
