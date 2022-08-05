@@ -11,7 +11,6 @@
 [core]
     whitespace = cr-at-eol
     autocrlf = input
-    excludesfile = ~/.gitignore_global
 [include]
     path = .gitconfig.local
 [user]
