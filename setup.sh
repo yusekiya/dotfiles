@@ -29,7 +29,7 @@ is_excluded() {
     return 1
 }
 
-make_link_safely() {
+make_link() {
     for f in "${@:2}"
     do
         if is_excluded "$f"; then
@@ -40,9 +40,13 @@ make_link_safely() {
 
         if [ -d "$f" ]; then
             if [ -L ${dest} ]; then
-                mv ${dest} ${dest}.bak
-                ln -s "$f" ${dest}
-                echo Existing link ${dest} renamed to ${dest}.bak
+                if $flag_force; then
+                    ln -snf "$f" ${dest}
+                else
+                    mv ${dest} ${dest}.bak
+                    ln -s "$f" ${dest}
+                    echo Existing link ${dest} renamed to ${dest}.bak
+                fi
             elif [ -d ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
@@ -55,48 +59,13 @@ make_link_safely() {
 
         if [ -f "$f" ]; then
             if [ -L ${dest} ]; then
-                mv ${dest} ${dest}.bak
-                ln -s "$f" ${dest}
-                echo Existing link ${dest} renamed to ${dest}.bak
-            elif [ -f ${dest} ]; then
-                mv ${dest} ${dest}.bak
-                ln -s "$f" ${dest}
-                echo Existing regular file ${dest} renamed to ${dest}.bak
-            else
-                ln -s "$f" ${dest}
-            fi
-            echo File symbolic link created: ${dest}
-        fi
-
-    done
-}
-
-
-make_link_forcibly() {
-    for f in "${@:2}"
-    do
-        if is_excluded "$f"; then
-            continue
-        fi
-
-        dest="$1/$( basename "$f")"
-
-        if [ -d "$f" ]; then
-            if [ -L ${dest} ]; then
-                ln -snf "$f" ${dest}
-            elif [ -d ${dest} ]; then
-                mv ${dest} ${dest}.bak
-                ln -s "$f" ${dest}
-                echo Existing regular directory ${dest} renamed to ${dest}.bak
-            else
-                ln -s "$f" ${dest}
-            fi
-            echo Directory symbolic link created: ${dest}/
-        fi
-
-        if [ -f "$f" ]; then
-            if [ -L ${dest} ]; then
-                ln -snf "$f" ${dest}
+                if $flag_force; then
+                    ln -snf "$f" ${dest}
+                else
+                    mv ${dest} ${dest}.bak
+                    ln -s "$f" ${dest}
+                    echo Existing link ${dest} renamed to ${dest}.bak
+                fi
             elif [ -f ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
@@ -124,10 +93,7 @@ do
     esac
 done
 
-if $flag_force; then
-    echo "==== log output ===="
-    make_link_forcibly "${dest_dir}" ${source_dir}/.*
-else
+if ! $flag_force; then
     echo "This script makes symbolic links pointing to files in ${source_dir}."
     echo "The links will be created in ${dest_dir}."
     echo "When a link duplicates with a file in ${dest_dir},"
@@ -139,7 +105,7 @@ else
         echo "Setup aborted"
         exit;
     fi
-
-    echo "==== log output ===="
-    make_link_safely "${dest_dir}" ${source_dir}/.*
 fi
+
+echo "==== log output ===="
+make_link "${dest_dir}" ${source_dir}/.*
