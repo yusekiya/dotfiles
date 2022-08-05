@@ -41,6 +41,5 @@ if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-export ZELLIJ_CONFIG_DIR=~/.zellij
 
 typeset -U PATH path
