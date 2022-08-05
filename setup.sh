@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 dest_dir=~
-ignore_list=(".git" ".gitignore" ".DS_Store")
+ignore_list=(".." "." ".git" ".gitignore" ".DS_Store")
 
 usage_exit() {
         echo "Usage: $( basename $0) [-h] [-f]" 1>&2
@@ -30,26 +30,13 @@ is_excluded() {
 }
 
 make_link_safely() {
-    echo "This script makes symbolic links pointing to files in ${source_dir}."
-    echo "The links will be created in ${dest_dir}."
-    echo "When a link duplicates with a file in ${dest_dir},"
-    echo "the file will be renamed by adding a suffix \".bak\"."
-    echo 
-    echo -n "Are you sure to continue? [yes/no] "
-    read answer
-    if [ "$answer" != "yes" ]; then
-        echo "Setup aborted"
-        exit;
-    fi
-
-    echo "==== log output ===="
-    for f in ${source_dir}/.??*
+    for f in "${@:2}"
     do
         if is_excluded "$f"; then
             continue
         fi
         
-        dest="${dest_dir}/$( basename "$f")"
+        dest="$1/$( basename "$f")"
 
         if [ -d "$f" ]; then
             if [ -L ${dest} ]; then
@@ -86,14 +73,13 @@ make_link_safely() {
 
 
 make_link_forcibly() {
-    echo "==== log output ===="
-    for f in ${source_dir}/.??*
+    for f in "${@:2}"
     do
         if is_excluded "$f"; then
             continue
         fi
 
-        dest="${dest_dir}/$( basename "$f")"
+        dest="$1/$( basename "$f")"
 
         if [ -d "$f" ]; then
             if [ -L ${dest} ]; then
@@ -139,7 +125,21 @@ do
 done
 
 if $flag_force; then
-    make_link_forcibly
+    echo "==== log output ===="
+    make_link_forcibly "${dest_dir}" ${source_dir}/.*
 else
-    make_link_safely
+    echo "This script makes symbolic links pointing to files in ${source_dir}."
+    echo "The links will be created in ${dest_dir}."
+    echo "When a link duplicates with a file in ${dest_dir},"
+    echo "the file will be renamed by adding a suffix \".bak\"."
+    echo 
+    echo -n "Are you sure to continue? [yes/no] "
+    read answer
+    if [ "$answer" != "yes" ]; then
+        echo "Setup aborted"
+        exit;
+    fi
+
+    echo "==== log output ===="
+    make_link_safely "${dest_dir}" ${source_dir}/.*
 fi
