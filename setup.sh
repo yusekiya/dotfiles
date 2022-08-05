@@ -11,6 +11,7 @@ usage_exit() {
         echo "  -h            Show this help"
         echo "  -f            Do not prompt before creating links in ${dest_dir}"
         echo "  -e x1,x2,..   Exclude files/directories separated by comma"
+        echo "  -q            Quiet mode"
         exit 1
 }
 
@@ -47,16 +48,22 @@ make_link() {
                 else
                     mv ${dest} ${dest}.bak
                     ln -s "$f" ${dest}
-                    echo Existing link ${dest} renamed to ${dest}.bak
+                    if [ $verbose -ge 1 ]; then
+                        echo Existing link ${dest} renamed to ${dest}.bak
+                    fi
                 fi
             elif [ -d ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
-                echo Existing regular directory ${dest} renamed to ${dest}.bak
+                if [ $verbose -ge 1 ]; then
+                    echo Existing regular directory ${dest} renamed to ${dest}.bak
+                fi
             else
                 ln -s "$f" ${dest}
             fi
-            echo Directory symbolic link created: ${dest}/
+            if [ $verbose -ge 1 ]; then
+                echo Directory symbolic link created: ${dest}/
+            fi
         fi
 
         if [ -f "$f" ]; then
@@ -66,24 +73,30 @@ make_link() {
                 else
                     mv ${dest} ${dest}.bak
                     ln -s "$f" ${dest}
-                    echo Existing link ${dest} renamed to ${dest}.bak
+                    if [ $verbose -ge 1 ]; then
+                        echo Existing link ${dest} renamed to ${dest}.bak
+                    fi
                 fi
             elif [ -f ${dest} ]; then
                 mv ${dest} ${dest}.bak
                 ln -s "$f" ${dest}
-                echo Existing regular file ${dest} renamed to ${dest}.bak
+                if [ $verbose -ge 1 ]; then
+                    echo Existing regular file ${dest} renamed to ${dest}.bak
+                fi
             else
                 ln -s "$f" ${dest}
             fi
-            echo File symbolic link created: ${dest}
+            if [ $verbose -ge 1 ]; then
+                echo File symbolic link created: ${dest}
+            fi
         fi
-
     done
 }
 
 
 flag_force=false
-while getopts e:hf OPT
+verbose=1
+while getopts e:hfaq OPT
 do
     case $OPT in
         h)  usage_exit
@@ -92,6 +105,8 @@ do
             ;;
         e)  excludes=(${OPTARG//,/ })
             ignore_list+=(${excludes[@]})
+            ;;
+        q)  verbose=0
             ;;
         \?) usage_exit
             ;;
@@ -112,7 +127,9 @@ if ! $flag_force; then
     fi
 fi
 
-echo "==== log output ===="
+if [ $verbose -ge 1 ]; then
+    echo "==== log output ===="
+fi
 make_link "${dest_dir}" ${source_dir}/.*
 
 if [ ! -d "${config_dir}" ]; then
