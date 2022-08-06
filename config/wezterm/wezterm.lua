@@ -2,10 +2,8 @@ local wezterm = require 'wezterm'
 
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
-
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-
 local SOLID_RECTANGLE = utf8.char(0x2590)
 
 local scheme = wezterm.color.get_builtin_schemes()['nordfox']
