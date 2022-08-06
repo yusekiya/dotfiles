@@ -1,7 +1,5 @@
 local wezterm = require 'wezterm'
 
-local my_default = wezterm.color.get_default_colors()
-
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
@@ -9,6 +7,9 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
 local SOLID_RECTANGLE = utf8.char(0x2590)
+
+local scheme = wezterm.color.get_builtin_schemes()['nordfox']
+scheme.scrollbar_thumb = '#3B4252'
 
 wezterm.on(
   'format-tab-title',
@@ -51,7 +52,10 @@ return {
       'Noto Sans JP',
   },
   font_size = 13.1,
-  color_scheme = "nordfox",
+  color_schemes = {
+      ['myscheme'] = scheme,
+  },
+  color_scheme = 'myscheme',
   -- window_background_opacity = 0.9,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
