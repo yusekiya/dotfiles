@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
@@ -57,4 +58,8 @@ return {
   -- window_background_opacity = 0.9,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
+  keys = {
+    { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
+    { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
+  },
 }
