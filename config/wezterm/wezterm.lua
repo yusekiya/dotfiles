@@ -8,6 +8,8 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
+local SOLID_RECTANGLE = utf8.char(0x2590)
+
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
@@ -32,7 +34,7 @@ wezterm.on(
     return {
       { Background = { Color = edge_background } },
       { Foreground = { Color = edge_foreground } },
-      { Text = " " },
+      { Text = SOLID_RECTANGLE },
       { Background = { Color = background } },
       { Foreground = { Color = foreground } },
       { Text = title },
