@@ -54,4 +54,5 @@ return {
   color_scheme = "nordfox",
   -- window_background_opacity = 0.9,
   window_decorations = "RESIZE",
+  enable_scroll_bar = true,
 }
