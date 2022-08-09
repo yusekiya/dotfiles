@@ -45,7 +45,29 @@ wezterm.on(
   end
 )
 
-return {
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+function merge_all(...)
+  local ret = {}
+  for _, tbl in ipairs({...}) do
+    for k, v in pairs(tbl) do
+      ret[k] = v
+    end
+  end
+  return ret
+end
+
+
+-- Load site local configurations
+local sitecfg = {}
+if file_exists(wezterm.config_dir .. '/site_cfg.lua') then
+    sitecfg = require "site_cfg"
+end
+
+local cfg =  {
   font = wezterm.font_with_fallback {
       'Fira Code',
       'Noto Sans JP',
@@ -118,3 +140,5 @@ return {
     },
   },
 }
+
+return merge_all(cfg, sitecfg)
