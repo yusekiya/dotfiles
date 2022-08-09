@@ -89,7 +89,7 @@ local cfg =  {
       'Fira Code',
       'Noto Sans JP',
   },
-  font_size = 13.1,
+  font_size = 13.0,
   use_ime = true,
   color_schemes = {
       ['myscheme'] = scheme,
