@@ -45,6 +45,23 @@ wezterm.on(
   end
 )
 
+local function update_ssh_status(window, pane)
+    local foreground = '#8FBCBB'
+	local text = pane:get_domain_name()
+	if text == "local" then
+		text = ""
+	end
+	return {
+        { Foreground = { Color = foreground } },
+		{ Text = text .. "  " },
+	}
+end
+
+wezterm.on("update-right-status", function(window, pane)
+	local ssh = update_ssh_status(window, pane)
+	window:set_right_status(wezterm.format(ssh))
+end)
+
 function file_exists(name)
    local f=io.open(name,"r")
    if f~=nil then io.close(f) return true else return false end
