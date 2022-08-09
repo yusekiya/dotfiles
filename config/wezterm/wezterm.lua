@@ -90,6 +90,8 @@ local cfg =  {
       'Noto Sans JP',
   },
   font_size = 13.0,
+  initial_cols = 120,
+  initial_rows = 40,
   use_ime = true,
   color_schemes = {
       ['myscheme'] = scheme,
