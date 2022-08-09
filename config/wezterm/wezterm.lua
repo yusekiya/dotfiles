@@ -59,8 +59,62 @@ return {
   -- window_background_opacity = 0.9,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
+  leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
     { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
+    {
+        key = '-',
+        mods = 'LEADER',
+        action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+    {
+        key = '|',
+        mods = 'LEADER',
+        action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+    {
+        key = 'h',
+        mods = 'LEADER',
+        action = act.ActivatePaneDirection 'Left',
+    },
+    {
+        key = 'j',
+        mods = 'LEADER',
+        action = act.ActivatePaneDirection 'Down',
+    },
+    {
+        key = 'k',
+        mods = 'LEADER',
+        action = act.ActivatePaneDirection 'Up',
+    },
+    {
+        key = 'l',
+        mods = 'LEADER',
+        action = act.ActivatePaneDirection 'Right',
+    },
+    {
+        key = '0',
+        mods = 'LEADER',
+        action = act.PaneSelect {
+            alphabet = 'asdfjkl'
+        },
+    },
+    {
+      key = 'H',
+      mods = 'LEADER',
+      action = act.AdjustPaneSize { 'Left', 5 },
+    },
+    {
+      key = 'J',
+      mods = 'LEADER',
+      action = act.AdjustPaneSize { 'Down', 5 },
+    },
+    { key = 'K', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
+    {
+      key = 'L',
+      mods = 'LEADER',
+      action = act.AdjustPaneSize { 'Right', 5 },
+    },
   },
 }
