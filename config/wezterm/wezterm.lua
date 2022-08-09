@@ -47,7 +47,7 @@ wezterm.on(
 
 return {
   font = wezterm.font_with_fallback {
-      'Fira code',
+      'Fira Code',
       'Noto Sans JP',
   },
   font_size = 13.1,
