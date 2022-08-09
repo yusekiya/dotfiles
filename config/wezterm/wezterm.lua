@@ -102,6 +102,8 @@ local cfg =  {
   keys = {
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
     { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
+    { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollToPrompt(-1) },
+    { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollToPrompt(1) },
     {
         key = '-',
         mods = 'LEADER',
@@ -154,6 +156,11 @@ local cfg =  {
       key = 'L',
       mods = 'LEADER',
       action = act.AdjustPaneSize { 'Right', 5 },
+    },
+    {
+      key = 'z',
+      mods = 'LEADER',
+      action = wezterm.action.TogglePaneZoomState,
     },
   },
 }
