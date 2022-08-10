@@ -92,6 +92,7 @@ local cfg =  {
   font_size = 13.0,
   initial_cols = 120,
   initial_rows = 40,
+  tab_max_width = 20,
   use_ime = true,
   color_schemes = {
       ['myscheme'] = scheme,
