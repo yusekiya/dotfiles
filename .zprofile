@@ -34,5 +34,9 @@ if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
+if [ -d "${HOME}/.zsh.site/completion" ]; then
+    fpath=( "${HOME}/.zsh.site/completion" "${fpath[@]}" )
+fi
+
 
 typeset -U PATH path
