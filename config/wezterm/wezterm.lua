@@ -112,42 +112,13 @@ local cfg =  {
   window_padding = {
     right = '1.5cell',
   },
-  leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 },
+  leader = { key = 'Space', mods = 'SHIFT', timeout_milliseconds = 1000 },
   keys = {
+    { key = 's', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'pane_control', one_shot = false, } },
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
     { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
     { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollToPrompt(-1) },
     { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollToPrompt(1) },
-    {
-        key = '-',
-        mods = 'LEADER',
-        action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-    },
-    {
-        key = '|',
-        mods = 'LEADER',
-        action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-    },
-    {
-        key = 'h',
-        mods = 'LEADER',
-        action = act.ActivatePaneDirection 'Left',
-    },
-    {
-        key = 'j',
-        mods = 'LEADER',
-        action = act.ActivatePaneDirection 'Down',
-    },
-    {
-        key = 'k',
-        mods = 'LEADER',
-        action = act.ActivatePaneDirection 'Up',
-    },
-    {
-        key = 'l',
-        mods = 'LEADER',
-        action = act.ActivatePaneDirection 'Right',
-    },
     {
         key = '0',
         mods = 'LEADER',
@@ -156,25 +127,38 @@ local cfg =  {
         },
     },
     {
-      key = 'H',
-      mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Left', 5 },
-    },
-    {
-      key = 'J',
-      mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Down', 5 },
-    },
-    { key = 'K', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
-    {
-      key = 'L',
-      mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Right', 5 },
-    },
-    {
       key = 'z',
       mods = 'LEADER',
       action = wezterm.action.TogglePaneZoomState,
+    },
+  },
+
+  key_tables = {
+    pane_control = {
+      {
+        key = '-',
+        action = act.Multiple {
+          act.SplitVertical { domain = 'CurrentPaneDomain' },
+          'PopKeyTable',
+        },
+      },
+      {
+        key = '|',
+        action = act.Multiple {
+          act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+          'PopKeyTable',
+        },
+      },
+      { key = 'h', action = act.ActivatePaneDirection 'Left' },
+      { key = 'j', action = act.ActivatePaneDirection 'Down' },
+      { key = 'k', action = act.ActivatePaneDirection 'Up' },
+      { key = 'l', action = act.ActivatePaneDirection 'Right' },
+      { key = 'H', action = act.AdjustPaneSize { 'Left', 5 } },
+      { key = 'J', action = act.AdjustPaneSize { 'Down', 2 } },
+      { key = 'K', action = act.AdjustPaneSize { 'Up', 2 } },
+      { key = 'L', action = act.AdjustPaneSize { 'Right', 5 } },
+      { key = 'Escape', action = 'PopKeyTable' },
+      { key = 'Enter', action = 'PopKeyTable' },
     },
   },
 }
