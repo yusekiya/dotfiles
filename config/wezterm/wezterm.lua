@@ -102,6 +102,10 @@ local cfg =  {
       ['myscheme'] = scheme,
   },
   color_scheme = 'myscheme',
+  inactive_pane_hsb = {
+    saturation = 0.9,
+    brightness = 0.6,
+  },
   window_background_opacity = 0.90,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
