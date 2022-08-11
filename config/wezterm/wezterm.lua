@@ -8,7 +8,7 @@ local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 local SOLID_RECTANGLE = utf8.char(0x2590)
 
 local scheme = wezterm.color.get_builtin_schemes()['nordfox']
-scheme.scrollbar_thumb = '#3B4252'
+scheme.scrollbar_thumb = '#4C566A'
 
 wezterm.on(
   'format-tab-title',
@@ -109,6 +109,9 @@ local cfg =  {
   window_background_opacity = 0.90,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
+  window_padding = {
+    right = '1.5cell',
+  },
   leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
