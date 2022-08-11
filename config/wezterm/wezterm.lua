@@ -102,7 +102,7 @@ local cfg =  {
       ['myscheme'] = scheme,
   },
   color_scheme = 'myscheme',
-  -- window_background_opacity = 0.9,
+  window_background_opacity = 0.95,
   window_decorations = "RESIZE",
   enable_scroll_bar = true,
   leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 },
