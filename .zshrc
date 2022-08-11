@@ -268,11 +268,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 
-# Setting for iTerm2 shell integration
-if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
-    source "${HOME}/.iterm2_shell_integration.zsh"
-fi
-
 # if (which zprof > /dev/null 2>&1) ;then
   # zprof | less
 # fi

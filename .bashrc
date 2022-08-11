@@ -6,10 +6,6 @@
 # Reset variables
 export PROMPT_COMMAND=
 
-# Setup iterm2 shell integration
-export iterm2_hostname=$(hostname)
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
 # Environment variables
 export EDITOR='vim'
 
@@ -149,25 +145,6 @@ TERM_TYPE=$(terminal_device_type)
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     SESSION_TYPE=remote/ssh
 fi
-
-# Settings for iTerm2 window name and tab name
-function tab-color() {
-    echo -ne "\033]6;1;bg;red;brightness;$1\a"
-    echo -ne "\033]6;1;bg;green;brightness;$2\a"
-    echo -ne "\033]6;1;bg;blue;brightness;$3\a"
-}
-function tab-reset() {
-    echo -ne "\033]6;1;bg;*;default\a"
-}
-function change_tab_title() {
-    local host_name=$(hostname | sed "s/\.local$//")
-    local user_name=$(whoami)
-    if [[ $SESSION_TYPE = remote/ssh ]]; then
-        echo -ne "\033]1;$(whoami)@${host_name}\007"
-    else
-        echo -ne "\033]1;$(whoami)@${host_name}\007"
-    fi
-}
 
 # PS1
 ## Red='\[\e[31m\]'
