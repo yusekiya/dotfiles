@@ -112,6 +112,7 @@ local cfg =  {
   window_padding = {
     right = '1.5cell',
   },
+  adjust_window_size_when_changing_font_size = false,
   leader = { key = 'Space', mods = 'SHIFT', timeout_milliseconds = 1000 },
   keys = {
     { key = 's', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'pane_control', one_shot = false, } },
