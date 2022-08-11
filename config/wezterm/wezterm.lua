@@ -136,20 +136,8 @@ local cfg =  {
 
   key_tables = {
     pane_control = {
-      {
-        key = '-',
-        action = act.Multiple {
-          act.SplitVertical { domain = 'CurrentPaneDomain' },
-          'PopKeyTable',
-        },
-      },
-      {
-        key = '|',
-        action = act.Multiple {
-          act.SplitHorizontal { domain = 'CurrentPaneDomain' },
-          'PopKeyTable',
-        },
-      },
+      { key = '-', action = act.SplitVertical { domain = 'CurrentPaneDomain' }, },
+      { key = '|', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
       { key = 'h', action = act.ActivatePaneDirection 'Left' },
       { key = 'j', action = act.ActivatePaneDirection 'Down' },
       { key = 'k', action = act.ActivatePaneDirection 'Up' },
