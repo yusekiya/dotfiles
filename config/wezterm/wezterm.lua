@@ -61,7 +61,7 @@ local function update_ssh_status(window, pane)
 	}
 end
 
-wezterm.on("update-right-status", function(window, pane)
+wezterm.on("update-status", function(window, pane)
 	local ssh = update_ssh_status(window, pane)
 	window:set_right_status(wezterm.format(ssh))
 end)
