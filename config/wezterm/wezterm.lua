@@ -118,6 +118,18 @@ local cfg =  {
     { key = 's', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'pane_control', one_shot = false, } },
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
     { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
+    {
+        key = 't', mods = 'SUPER|SHIFT',
+        action = act.SpawnCommandInNewTab {
+            cwd = wezterm.home_dir,
+        },
+    },
+    {
+        key = 'n', mods = 'SUPER|SHIFT',
+        action = act.SpawnCommandInNewWindow {
+            cwd = wezterm.home_dir,
+        },
+    },
     { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollToPrompt(-1) },
     { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollToPrompt(1) },
     {
