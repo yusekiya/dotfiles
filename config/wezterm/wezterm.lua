@@ -51,12 +51,15 @@ wezterm.on(
 
 local function update_ssh_status(window, pane)
     local foreground = '#8FBCBB'
+    local background = '#D8DEE9'
 	local text = pane:get_domain_name()
 	if text == "local" then
 		text = ""
+        background = '#333333'
 	end
 	return {
         { Foreground = { Color = foreground } },
+        { Background = { Color = background } },
 		{ Text = text .. "  " },
 	}
 end
