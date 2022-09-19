@@ -50,7 +50,8 @@ wezterm.on(
 )
 
 local function update_ssh_status(window, pane)
-    local foreground = '#8FBCBB'
+    -- local foreground = '#8FBCBB'
+    local foreground = '#5E81AC'
     local background = '#D8DEE9'
 	local text = pane:get_domain_name()
 	if text == "local" then
@@ -60,7 +61,7 @@ local function update_ssh_status(window, pane)
 	return {
         { Foreground = { Color = foreground } },
         { Background = { Color = background } },
-		{ Text = text .. "  " },
+		{ Text = "  " .. text .. "  " },
 	}
 end
 
