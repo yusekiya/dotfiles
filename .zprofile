@@ -29,6 +29,9 @@ if [ -d "/Library/TeX/texbin" ]; then
     export PATH="/Library/TeX/texbin:${PATH}"
 fi
 
+# Config path for tealdeer
+export TEALDEER_CONFIG_DIR="${HOME}/.config/tealdeer/"
+
 # add path to raise priority of ~/.local/bin
 if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
