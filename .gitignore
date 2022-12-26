@@ -102,3 +102,4 @@
 .pkgbuild/nkf/pkg/
 .pkgbuild/nkf/src/
 work/
+config/git/config.d/*

@@ -30,7 +30,7 @@
         '"
     smudge = cat
     required = true
-[credential]
-	helper = osxkeychain
 [init]
 	defaultBranch = main
+[include]
+    path = config.d/credential
