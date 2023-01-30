@@ -7,9 +7,6 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 local SOLID_RECTANGLE = utf8.char(0x2590)
 
-local scheme = wezterm.color.get_builtin_schemes()['nordfox']
-scheme.scrollbar_thumb = '#4C566A'
-
 -- wezterm.on(
 --   "format-tab-title",
 --   function(tab, tabs, panes, config, hover, max_width)
@@ -17,23 +14,23 @@ scheme.scrollbar_thumb = '#4C566A'
 --     local background = '#4C566A'
 --     local foreground = '#D8DEE9'
 --     local zoomed = ''
---     -- if tab.active_pane.is_zoomed then
---     --     zoomed = 'Z | '
---     -- end
+--     if tab.active_pane.is_zoomed then
+--         zoomed = 'Z | '
+--     end
 
---     -- if tab.is_active then
---     --   background = '#BF616A'
---     --   foreground = '#ECEFF4'
---     -- elseif hover then
---     --   background = (wezterm.color.parse '#BF616A'):darken(0.35)
---     --   foreground = '#ECEFF4'
---     -- end
+--     if tab.is_active then
+--       background = '#BF616A'
+--       foreground = '#ECEFF4'
+--     elseif hover then
+--       background = (wezterm.color.parse '#BF616A'):darken(0.35)
+--       foreground = '#ECEFF4'
+--     end
 
 --     local edge_foreground = background
 
 --     -- ensure that the titles fit in the available space,
 --     -- and that we have room for the edges.
---     -- local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+--     local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
 
 --     return {
 --       { Background = { Color = edge_background } },
@@ -75,24 +72,13 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
-function merge_all(...)
-  local ret = {}
-  for _, tbl in ipairs({...}) do
-    for k, v in pairs(tbl) do
-      ret[k] = v
-    end
-  end
-  return ret
-end
-
-
 -- Load site local configurations
-local sitecfg = {}
+sitecfg = {}
 if file_exists(wezterm.config_dir .. '/site_cfg.lua') then
     sitecfg = require "site_cfg"
 end
 
-local cfg =  {
+cfg = {
   font = wezterm.font_with_fallback {
       'Fira Code',
       'Noto Sans JP',
@@ -102,10 +88,10 @@ local cfg =  {
   initial_rows = 40,
   tab_max_width = 20,
   use_ime = true,
-  color_schemes = {
-      ['myscheme'] = scheme,
+  color_scheme = "nordfox",
+  colors = {
+    scrollbar_thumb = '#4C566A'
   },
-  color_scheme = 'myscheme',
   inactive_pane_hsb = {
     saturation = 0.9,
     brightness = 0.6,
@@ -168,4 +154,5 @@ local cfg =  {
   },
 }
 
-return merge_all(cfg, sitecfg)
+for k,v in pairs(sitecfg) do cfg[k] = v end
+return cfg
