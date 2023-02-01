@@ -50,15 +50,19 @@ local function update_ssh_status(window, pane)
     -- local foreground = '#8FBCBB'
     local foreground = '#5E81AC'
     local background = '#D8DEE9'
+    local left_delim = SOLID_LEFT_ARROW
 	local text = pane:get_domain_name()
 	if text == "local" then
 		text = ""
+        left_delim = ""
         background = '#333333'
 	end
 	return {
+        { Foreground = { Color = background } },
+        { Text = left_delim },
         { Foreground = { Color = foreground } },
         { Background = { Color = background } },
-		{ Text = "  " .. text .. "  " },
+		{ Text = text .. "  " },
 	}
 end
 
