@@ -254,8 +254,8 @@ fi
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
 zstyle ':prompt:pure:virtualenv'          color 244
-zstyle ':prompt:pure:user'                color 244
-zstyle ':prompt:pure:host'                color 244
+zstyle ':prompt:pure:user'                color '#EBCB8B'
+zstyle ':prompt:pure:host'                color '#EBCB8B'
 zstyle ':prompt:pure:git:branch'          color 244
 zstyle ':prompt:pure:git:action'          color 244
 
