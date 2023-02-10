@@ -73,6 +73,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'justinmk/vim-sneak'
     Plug 'easymotion/vim-easymotion'
     Plug 'tpope/vim-repeat'
+    Plug 'inkarkat/vim-ReplaceWithRegister'
     " setup fzf
     if isdirectory("/usr/local/opt/fzf")
       Plug '/usr/local/opt/fzf'
