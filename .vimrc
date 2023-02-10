@@ -65,7 +65,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
     Plug 'junegunn/vim-easy-align'
     Plug 'terryma/vim-expand-region'
-    Plug 'LeafCage/yankround.vim'
     Plug 'plasticboy/vim-markdown'
     Plug 'tpope/vim-surround'
     Plug 'kana/vim-submode'
@@ -149,14 +148,7 @@ nnoremap <leader>i gg=<S-g><C-o><C-o>zz
 nnoremap <leader>v 0v$h
 " Delete all text in current line
 nnoremap <leader>d 0v$hx
-" Yank all text in current line
-nnoremap <leader>y 0v$hy
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
+" Comment out
 xmap <leader>c gc
 nmap <leader>c gc
 omap <leader>c gc
