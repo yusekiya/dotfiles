@@ -104,6 +104,10 @@ let g:vim_markdown_new_list_item_indent = 4
 let g:vim_markdown_folding_disabled = 1
 let g:table_mode_corner="|"
 
+" Add command to clean up trailing whitespace
+:command WClean %s/\s\+$//g
+ca wc WClean
+
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
@@ -152,8 +156,6 @@ nnoremap <leader>d 0v$hx
 xmap <leader>c gc
 nmap <leader>c gc
 omap <leader>c gc
-:command WClean %s/\s\+$//g
-ca wc WClean
 " key binds for vimdiff
 if &diff
     nnoremap <leader>1 :diffget LOCAL<CR>
