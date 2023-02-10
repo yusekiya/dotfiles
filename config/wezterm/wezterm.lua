@@ -126,6 +126,7 @@ cfg = {
   keys = {
     { key = 's', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'pane_control', one_shot = false, } },
     { key = 'p', mods = 'SUPER', action = wezterm.action.ActivateCommandPalette },
+    { key = 'c', mods = 'SUPER', action = wezterm.action.ActivateCopyMode },
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
     { key = 'l', mods = 'SUPER|CTRL', action = act.MoveTabRelative(1)},
     {
