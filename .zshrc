@@ -32,6 +32,11 @@ fi
 # Functions & aliases
 ###############################################################################
 
+# mkdir & cd
+function mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
@@ -109,11 +114,11 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias cdh='cd ~'
-#
+
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
-#
+
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty --group-directories-first'    # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
@@ -122,7 +127,7 @@ alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias lly='ls -l --time-style=long-iso'
 # alias l='ls -CF'
-#
+
 # Applications
 alias m='\less +F'
 alias grep='grep --color'
