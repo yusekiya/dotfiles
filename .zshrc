@@ -125,7 +125,7 @@ alias ls='ls -hF --color=tty --group-directories-first'    # classify files in c
 # alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
-alias lly='ls -l --time-style=long-iso'
+alias llt='ls -lt --time-style=long-iso'
 # alias l='ls -CF'
 
 # Applications
