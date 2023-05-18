@@ -41,5 +41,9 @@ if [ -d "${HOME}/.zsh.site/completion" ]; then
     fpath=( "${HOME}/.zsh.site/completion" "${fpath[@]}" )
 fi
 
+if [[ "$TERM_PROGRAM" == "WezTerm" && -f "$HOME"/.config/wezterm/wezterm.sh ]]; then
+    source "$HOME"/.config/wezterm/wezterm.sh
+fi
+
 
 typeset -U PATH path
