@@ -227,6 +227,8 @@ alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
+alias pls='pueue status'
+alias pad='pueue add --'
 
 # Enable completion for aliases
 complete -F _docker d

@@ -144,6 +144,8 @@ alias d='docker'
 alias dcm='docker-compose'
 alias p='poetry'
 alias k='kubectl'
+alias pls='pueue status'
+alias pad='pueue add --'
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
