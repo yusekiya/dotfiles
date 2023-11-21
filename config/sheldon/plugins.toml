@@ -17,9 +17,9 @@ shell = "zsh"
 github = "romkatv/zsh-defer"
 
 [templates]
-defer = """{{ hooks | get: "pre" | nl }}{% for file in files %}
+defer = """{{ hooks?.pre | nl }}{% for file in files %}
 zsh-defer source "{{ file }}"
-{% endfor %}{{ hooks | get: "post" | nl }}"""
+{% endfor %}{{ hooks?.post | nl }}"""
 
 
 [plugins.zsh-autosuggestions]
