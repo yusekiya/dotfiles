@@ -1,5 +1,5 @@
 # zmodload zsh/zprof && zprof
-ARCH=$(uname -m)
+ARCH=$(/usr/bin/uname -m)
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
