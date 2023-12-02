@@ -28,5 +28,7 @@ if [ -d "${HOME}/.local/info" ]; then
   INFOPATH="${HOME}/.local/info:${INFOPATH}"
 fi
 
+SHELL_SESSIONS_DISABLE=1
+
 typeset -U path
 
