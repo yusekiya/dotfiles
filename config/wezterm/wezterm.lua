@@ -125,6 +125,7 @@ cfg = {
   leader = { key = 'Space', mods = 'SHIFT', timeout_milliseconds = 1000 },
   keys = {
     { key = 's', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'pane_control', one_shot = false, } },
+    { key = 'w', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'workspace' } },
     { key = 'p', mods = 'SUPER', action = wezterm.action.ActivateCommandPalette },
     { key = 'c', mods = 'SUPER', action = wezterm.action.ActivateCopyMode },
     { key = 'h', mods = 'SUPER|CTRL', action = act.MoveTabRelative(-1)},
@@ -171,6 +172,37 @@ cfg = {
       { key = 'L', action = act.AdjustPaneSize { 'Right', 5 } },
       { key = 'Escape', action = 'PopKeyTable' },
       { key = 'Enter', action = 'PopKeyTable' },
+    },
+    workspace = {
+      { key = "l", action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" } },
+      { key = "r", 
+        action = act.PromptInputLine {
+            description = '(wezterm) Set workspace title:',
+            action = wezterm.action_callback(function(win,pane,line)
+                if line then
+                wezterm.mux.rename_workspace(
+                    wezterm.mux.get_active_workspace(),
+                    line
+                )
+                end
+            end),
+        }
+      },
+      { key = "n", 
+        action = act.PromptInputLine {
+            description = "(wezterm) Create new workspace:",
+            action = wezterm.action_callback(function(window, pane, line)
+                if line then
+                window:perform_action(
+                    act.SwitchToWorkspace {
+                    name = line,
+                    },
+                    pane
+                )
+                end
+            end),
+        },
+      },
     },
   },
 }
