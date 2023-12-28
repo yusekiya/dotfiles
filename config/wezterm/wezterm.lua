@@ -6,6 +6,18 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 local SOLID_RECTANGLE = utf8.char(0x2590)
+-- Background colors in status bar from right to left
+local BG_COLORS = {
+    '#88C0D0',
+    '#81A1C1',
+    '#5E81AC',
+}
+-- Text color in status bar
+local TEXT_COLOR = '#4C566A'
+-- Lighter white
+-- local TEXT_COLOR = '#ECEFF4'
+-- Darker white
+-- local TEXT_COLOR = '#D8DEE9'
 
 -- wezterm.on(
 --   "format-tab-title",
@@ -46,29 +58,35 @@ local SOLID_RECTANGLE = utf8.char(0x2590)
 --   end
 -- )
 
-local function update_ssh_status(window, pane)
-    -- local foreground = '#8FBCBB'
-    local foreground = '#5E81AC'
-    local background = '#D8DEE9'
-    local left_delim = SOLID_LEFT_ARROW
-	local text = pane:get_domain_name()
-	if text == "local" then
-		text = ""
-        left_delim = ""
-        background = '#333333'
-	end
-	return {
-        { Foreground = { Color = background } },
-        { Text = left_delim },
-        { Foreground = { Color = foreground } },
-        { Background = { Color = background } },
-		{ Text = text .. "  " },
-	}
-end
-
+-- c.f. https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
 wezterm.on("update-status", function(window, pane)
-	local ssh = update_ssh_status(window, pane)
-	window:set_right_status(wezterm.format(ssh))
+    -- Table containing cells from right to left
+    local cells = {}
+    -- Add workspace name
+    table.insert(cells, window:active_workspace())
+    -- Add domain name unless it is local
+    local domain = pane:get_domain_name()
+    if domain ~= "local" then
+        table.insert(cells, domain)
+    end
+    -- Elements in status bar
+    local elements = {}
+    local num_cells = #cells
+    -- Convert a cell into elements
+    function push(text, is_last)
+        table.insert(elements, { Foreground = { Color = BG_COLORS[num_cells] } })
+        table.insert(elements, { Text = SOLID_LEFT_ARROW })
+        table.insert(elements, { Foreground = { Color = TEXT_COLOR } })
+        table.insert(elements, { Background = { Color = BG_COLORS[num_cells] } })
+        table.insert(elements, { Text = ' ' ..  text .. '  ' })
+        num_cells = num_cells - 1
+    end
+    -- Build elements
+    while #cells > 0 do
+        local cell = table.remove(cells)
+        push(cell, #cells == 0)
+    end
+	window:set_right_status(wezterm.format(elements))
 end)
 
 function file_exists(name)
