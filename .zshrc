@@ -165,6 +165,7 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
     alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
+    alias x86term='/usr/bin/env PATH=$(getconf PATH) /usr/bin/arch -x86_64 /bin/zsh -l'
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
