@@ -1,11 +1,11 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 -- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-local SOLID_RECTANGLE = utf8.char(0x2590)
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+
 -- Background colors in status bar from right to left
 local BG_COLORS = {
     '#88C0D0',
@@ -14,49 +14,6 @@ local BG_COLORS = {
 }
 -- Text color in status bar
 local TEXT_COLOR = '#4C566A'
--- Lighter white
--- local TEXT_COLOR = '#ECEFF4'
--- Darker white
--- local TEXT_COLOR = '#D8DEE9'
-
--- wezterm.on(
---   "format-tab-title",
---   function(tab, tabs, panes, config, hover, max_width)
---     local edge_background = '#333333'
---     local background = '#4C566A'
---     local foreground = '#D8DEE9'
---     local zoomed = ''
---     if tab.active_pane.is_zoomed then
---         zoomed = 'Z | '
---     end
-
---     if tab.is_active then
---       background = '#BF616A'
---       foreground = '#ECEFF4'
---     elseif hover then
---       background = (wezterm.color.parse '#BF616A'):darken(0.35)
---       foreground = '#ECEFF4'
---     end
-
---     local edge_foreground = background
-
---     -- ensure that the titles fit in the available space,
---     -- and that we have room for the edges.
---     local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
-
---     return {
---       { Background = { Color = edge_background } },
---       { Foreground = { Color = edge_foreground } },
---       { Text = SOLID_RECTANGLE },
---       { Background = { Color = background } },
---       { Foreground = { Color = foreground } },
---       { Text = zoomed .. title },
---       { Background = { Color = edge_background } },
---       { Foreground = { Color = edge_foreground } },
---       { Text = SOLID_RIGHT_ARROW },
---     }
---   end
--- )
 
 -- c.f. https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
 wezterm.on("update-status", function(window, pane)
@@ -109,6 +66,7 @@ cfg = {
   initial_cols = 120,
   initial_rows = 40,
   tab_max_width = 20,
+  use_fancy_tab_bar = true,
   use_ime = true,
   color_scheme = "nordfox",
   colors = {
@@ -128,6 +86,27 @@ cfg = {
             fg_color = '#ECEFF4',
         },
     },
+  },
+  window_frame = {
+    -- The font used in the tab bar.
+    -- Roboto Bold is the default; this font is bundled
+    -- with wezterm.
+    -- Whatever font is selected here, it will have the
+    -- main font setting appended to it to pick up any
+    -- fallback fonts you may have used there.
+    -- font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+
+    -- The size of the font in the tab bar.
+    -- Default to 10.0 on Windows but 12.0 on other systems
+    font_size = 12.0,
+
+    -- The overall background color of the tab bar when
+    -- the window is focused
+    active_titlebar_bg = '#333333',
+
+    -- The overall background color of the tab bar when
+    -- the window is not focused
+    inactive_titlebar_bg = '#333333',
   },
   inactive_pane_hsb = {
     saturation = 0.9,
