@@ -116,15 +116,15 @@ cfg = {
     tab_bar = {
         background = '#333333',
         active_tab = {
-            bg_color = '#BF616A',
+            bg_color = '#5E81AC',
             fg_color = '#ECEFF4',
         },
         inactive_tab = {
-            bg_color = '#4C566A',
+            bg_color = '#434C5E',
             fg_color = '#D8DEE9',
         },
         inactive_tab_hover = {
-            bg_color = (wezterm.color.parse '#BF616A'):darken(0.35),
+            bg_color = (wezterm.color.parse '#5E81AC'):darken(0.35),
             fg_color = '#ECEFF4',
         },
     },
