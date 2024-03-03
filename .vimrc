@@ -132,6 +132,7 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+vnoremap y y`]
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
