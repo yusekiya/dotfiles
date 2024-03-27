@@ -24,6 +24,11 @@ if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
+# Rye
+if [ -f "$HOME/.rye/env" ]; then
+    source "$HOME/.rye/env"
+fi
+
 # latex path
 if [ -d "/Library/TeX/texbin" ]; then
     export PATH="/Library/TeX/texbin:${PATH}"
