@@ -109,6 +109,16 @@ function nbstrip-all-cwd {
     unset nbfile
 }
 
+# For yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Interactive operations
 alias rm='rm -i'
 alias cp='cp -i'
