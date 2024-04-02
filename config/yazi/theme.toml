@@ -1,0 +1,9 @@
+[status]
+# Mode
+mode_normal = { fg = "#D8DEE9", bg = "#5E81AC", bold = true }
+mode_select = { fg = "#D8DEE9", bg = "#8FBCBB", bold = true }
+mode_unset  = { fg = "#D8DEE9", bg = "#BF616A", bold = true }
+
+progress_label  = { fg = "#D8DEE9", bold = true }
+progress_normal = { fg = "#89b4fa", bg = "#3B4252" }
+progress_error  = { fg = "#BF616A", bg = "#3B4252" }
