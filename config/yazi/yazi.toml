@@ -1,0 +1,5 @@
+[opener]
+edit = [
+    { run = '${EDITOR:=vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+    { run = 'code "$@"', desc = "VSCode", block = true, for = "unix" },
+]
