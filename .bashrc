@@ -396,6 +396,11 @@ fi
 
 export PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
 
+# zoxide
+if [ -x "$(command -v zoxide)" ]; then
+    eval "$(zoxide init --cmd c bash)"
+fi
+
 # Load site-local config for shell if any
 if [[ -f "${HOME}/.bashrc.site" ]]; then
   source "${HOME}/.bashrc.site"
