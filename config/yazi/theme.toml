@@ -7,3 +7,39 @@ mode_unset  = { fg = "#D8DEE9", bg = "#BF616A", bold = true }
 progress_label  = { fg = "#D8DEE9", bold = true }
 progress_normal = { fg = "#89b4fa", bg = "#3B4252" }
 progress_error  = { fg = "#BF616A", bg = "#3B4252" }
+
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#88C0D0" },
+
+	# Media
+	{ mime = "video/*", fg = "#EBCB8B" },
+	{ mime = "audio/*", fg = "#EBCB8B" },
+
+	# Archives
+	{ mime = "application/zip",             fg = "#B48EAD" },
+	{ mime = "application/gzip",            fg = "#B48EAD" },
+	{ mime = "application/x-tar",           fg = "#B48EAD" },
+	{ mime = "application/x-bzip",          fg = "#B48EAD" },
+	{ mime = "application/x-bzip2",         fg = "#B48EAD" },
+	{ mime = "application/x-7z-compressed", fg = "#B48EAD" },
+	{ mime = "application/x-rar",           fg = "#B48EAD" },
+	{ mime = "application/x-xz",            fg = "#B48EAD" },
+
+	# Documents
+	{ mime = "application/doc",   fg = "#A3BE8C" },
+	{ mime = "application/pdf",   fg = "#A3BE8C" },
+	{ mime = "application/rtf",   fg = "#A3BE8C" },
+	{ mime = "application/vnd.*", fg = "#A3BE8C" },
+
+	# Fallback
+	{ name = "*", fg = "#D8DEE9" },
+	{ name = "*/", fg = "#81A1C1" }
+]
+
+[icon]
+
+rules = [
+    { name = "*.pdf" , text = "", fg = "#BF616A" },
+]
