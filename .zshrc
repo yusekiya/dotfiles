@@ -178,7 +178,13 @@ if [ "$(uname)" = "Darwin" ]; then
     alias x86term='/usr/bin/env PATH=$(getconf PATH) /usr/bin/arch -x86_64 /bin/zsh -l'
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf
+if (( $+commands[fzf] )); then
+    eval "$(fzf --zsh)"
+elif [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
+
 if (( $+commands[fzf] )); then
     export FZF_CTRL_R_OPTS="--reverse"
     # cd to selected directory including hidden ones
