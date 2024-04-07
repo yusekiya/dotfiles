@@ -352,8 +352,10 @@ if [ -f "${HOME}/.dircolors" ]; then
 fi
 
 # fzf
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
 if [ `type -p fzf` ]; then
-   eval "$(fzf --bash)"
    export FZF_CTRL_R_OPTS="--reverse"
    # cd to selected directory including hidden ones
    function cdd() {
