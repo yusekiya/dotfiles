@@ -7,5 +7,28 @@ edit = [
 ]
 
 view = [
-    { run = 'vim -RM "$@"', desc = "readonly", block = true, for = "unix" },
+    { run = 'vim -RM "$@"', desc = "readonly view", block = true, for = "unix" },
+]
+
+[open]
+rules = [
+	{ name = "*/", use = [ "edit", "open", "reveal" ] },
+
+	{ mime = "text/*",  use = [ "edit", "view", "reveal" ] },
+	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "video/*", use = [ "play", "reveal" ] },
+	{ mime = "audio/*", use = [ "play", "reveal" ] },
+	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+
+	{ mime = "application/json", use = [ "edit", "view", "reveal" ] },
+	{ mime = "*/javascript",     use = [ "edit", "view", "reveal" ] },
+
+	{ mime = "application/*zip",            use = [ "extract", "reveal" ] },
+	{ mime = "application/x-tar",           use = [ "extract", "reveal" ] },
+	{ mime = "application/x-bzip*",         use = [ "extract", "reveal" ] },
+	{ mime = "application/x-7z-compressed", use = [ "extract", "reveal" ] },
+	{ mime = "application/x-rar",           use = [ "extract", "reveal" ] },
+	{ mime = "application/x-xz",            use = [ "extract", "reveal" ] },
+
+	{ mime = "*", use = [ "open", "reveal" ] },
 ]
