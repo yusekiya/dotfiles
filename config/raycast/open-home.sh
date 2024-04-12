@@ -7,6 +7,7 @@
 # @raycast.packageName Navigation
 
 # Optional parameters:
+# @raycast.icon 🏠
 # @raycast.icon images/folder-home.png
 
 # Documentation:
