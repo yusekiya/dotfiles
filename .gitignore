@@ -103,3 +103,4 @@
 .pkgbuild/nkf/src/
 work/
 config/git/config.d/*
+config/raycast/extensions
