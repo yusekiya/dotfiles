@@ -266,22 +266,20 @@ mkdir -p ~/.zsh.site
 touch ~/.zsh.site/{sync,defer,defer-after-compinit}.zsh
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 
-# if (( $+commands[sheldon] )); then
-#     eval "$(sheldon --config-file ~/.config/sheldon/plugins.toml source)"
-# fi
-
-# The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
-# Prepare file names for caching
-cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}
-sheldon_cache="$cache_dir/sheldon.zsh"
-sheldon_toml="$HOME/.config/sheldon/plugins.toml"
-# Create cache if necessary
-if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
-  mkdir -p $cache_dir
-  sheldon --config-file $sheldon_toml source > $sheldon_cache
+if (( $+commands[sheldon] )); then
+    # The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
+    # Prepare file names for caching
+    cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}
+    sheldon_cache="$cache_dir/sheldon.zsh"
+    sheldon_toml="$HOME/.config/sheldon/plugins.toml"
+    # Create cache if necessary
+    if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
+    mkdir -p $cache_dir
+    sheldon --config-file $sheldon_toml source > $sheldon_cache
+    fi
+    source "$sheldon_cache"
+    unset cache_dir sheldon_cache sheldon_toml
 fi
-source "$sheldon_cache"
-unset cache_dir sheldon_cache sheldon_toml
 
 # direnv
 if (( $+commands[direnv] )); then
