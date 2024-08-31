@@ -34,10 +34,20 @@ apply = ["defer"]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
 
+[plugins.zshrc-sync]
+local = '~/.config/zsh'
+use = ['sync.zsh']
+apply = ['source']
+
 [plugins.zshrc-local-sync]
 local = '~/.config/zsh.site'
 use = ['sync.zsh']
 apply = ['source']
+
+[plugins.zshrc-defer]
+local = '~/.config/zsh'
+use = ['defer.zsh']
+apply = ['defer']
 
 [plugins.zshrc-local-defer]
 local = '~/.config/zsh.site'
