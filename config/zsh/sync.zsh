@@ -29,7 +29,7 @@ elif (( $+commands[emacs] )); then
 fi
 
 ###############################################################################
-# Functions & aliases
+# Aliases
 ###############################################################################
 # Interactive operations
 alias rm='rm -i'
@@ -75,14 +75,6 @@ else
     alias diff='diff -u'
 fi
 
-function scroll-and-clear-screen() {
-  local i=1
-  while read; do ((i++)); done <<< $PS1
-  printf '\n%.0s' {$i..$LINES}
-  zle clear-screen
-}
-zle -N scroll-and-clear-screen
-bindkey '^l' scroll-and-clear-screen
 
 ###############################################################################
 # Packages
