@@ -37,7 +37,7 @@ if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-if [ -d "${HOME}/.zsh.site/completion" ]; then
+if [ -d "${HOME}/.config/zsh.site/completion" ]; then
     fpath=( "${HOME}/.config/zsh.site/completion" "${fpath[@]}" )
 fi
 
