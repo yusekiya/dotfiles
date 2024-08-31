@@ -1,3 +1,10 @@
+# Prepare directory for local configuration
+local_zsh_dir=$HOME/.config/zsh.site
+mkdir -p $local_zsh_dir
+touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
+unset local_zsh_dir
+
+# Load zsh configuration with Sheldon
 if (( $+commands[sheldon] )); then
     # The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
     # Prepare file names for caching

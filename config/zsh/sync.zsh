@@ -79,12 +79,6 @@ fi
 ###############################################################################
 # Packages
 ###############################################################################
-local_zsh_dir=$HOME/.config/zsh.site
-mkdir -p $local_zsh_dir
-touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
-unset local_zsh_dir
-
-
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
 zstyle ':prompt:pure:virtualenv'          color 244
