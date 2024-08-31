@@ -75,22 +75,6 @@ else
     alias diff='diff -u'
 fi
 
-# The alias for tmux doesn't work on windows msys2
-if ([ "$(uname)" = "Linux" ] && (( $+commands[direnv] ))); then
-    alias tmux='direnv exec / tmux'
-fi
-
-# aliases and functions for linux
-if [ "$(uname)" = "Linux" ]; then
-    alias emacs='XMODIFIERS=@im=none emacs'
-fi
-
-if [ "$(uname)" = "Darwin" ]; then
-    alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
-    alias x86term='/usr/bin/env PATH=$(getconf PATH) /usr/bin/arch -x86_64 /bin/zsh -l'
-fi
-
-
 function scroll-and-clear-screen() {
   local i=1
   while read; do ((i++)); done <<< $PS1
@@ -103,13 +87,11 @@ bindkey '^l' scroll-and-clear-screen
 ###############################################################################
 # Packages
 ###############################################################################
-
 local_zsh_dir=$HOME/.config/zsh.site
 mkdir -p $local_zsh_dir
 touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
 unset local_zsh_dir
 
-export _ZO_FZF_OPTS="+m --height 50% --reverse"
 
 # Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
