@@ -37,9 +37,7 @@ if [ -d "${HOME}/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-if [ -d "${HOME}/.config/zsh.site/completion" ]; then
-    fpath=( "${HOME}/.config/zsh.site/completion" "${fpath[@]}" )
-fi
+fpath=( "${HOME}/.config/zsh.site/completion" "${fpath[@]}" )
 
 if [[ "$TERM_PROGRAM" == "WezTerm" && -f "$HOME"/.config/wezterm/wezterm.sh ]]; then
     source "$HOME"/.config/wezterm/wezterm.sh

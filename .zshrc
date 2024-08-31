@@ -1,6 +1,7 @@
 # Prepare directory for local configuration
 local_zsh_dir=$HOME/.config/zsh.site
 mkdir -p $local_zsh_dir
+mkdir -p $local_zsh_dir/completion
 touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
 unset local_zsh_dir
 
