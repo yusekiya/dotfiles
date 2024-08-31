@@ -13,7 +13,7 @@ if (( $+commands[sheldon] )); then
     unset cache_dir sheldon_cache sheldon_toml
 else
     echo "**WARNING** Sheldon command not found"
-    echo "Install Sheldon from the folloing URL to load the zsh config."
+    echo "Install Sheldon from the following URL to load the zsh config."
     echo "https://github.com/rossmacarthur/sheldon"
 fi
 
