@@ -1,3 +1,6 @@
+###############################################################################
+# General
+###############################################################################
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -17,6 +20,10 @@ if ([ -f ~/.dircolors ] && (( $+commands[dircolors] ))); then
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
+
+###############################################################################
+# Environment variables
+###############################################################################
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
@@ -27,6 +34,7 @@ if (( $+commands[vim] )); then
 elif (( $+commands[emacs] )); then
     export EDITOR=emacs
 fi
+
 
 ###############################################################################
 # Aliases
@@ -77,9 +85,8 @@ fi
 
 
 ###############################################################################
-# Packages
+# Prompt
 ###############################################################################
-# Configure packages
 zstyle ':prompt:pure:prompt:continuation' color 244
 zstyle ':prompt:pure:virtualenv'          color 244
 zstyle ':prompt:pure:user'                color '#EBCB8B'
@@ -87,11 +94,19 @@ zstyle ':prompt:pure:host'                color '#EBCB8B'
 zstyle ':prompt:pure:git:branch'          color 244
 zstyle ':prompt:pure:git:action'          color 244
 
+
+###############################################################################
+# Suggestion
+###############################################################################
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
+
+###############################################################################
+# Syntax highlighting
+###############################################################################
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
+
