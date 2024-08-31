@@ -38,7 +38,7 @@ if [ -d "${HOME}/.local/bin" ]; then
 fi
 
 if [ -d "${HOME}/.zsh.site/completion" ]; then
-    fpath=( "${HOME}/.zsh.site/completion" "${fpath[@]}" )
+    fpath=( "${HOME}/.config/zsh.site/completion" "${fpath[@]}" )
 fi
 
 if [[ "$TERM_PROGRAM" == "WezTerm" && -f "$HOME"/.config/wezterm/wezterm.sh ]]; then
