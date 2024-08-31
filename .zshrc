@@ -262,8 +262,11 @@ bindkey '^l' scroll-and-clear-screen
 ###############################################################################
 
 # sheldon: package manager
-mkdir -p ~/.zsh.site
-touch ~/.zsh.site/{sync,defer,defer-after-compinit}.zsh
+local_zsh_dir=$HOME/.config/zsh.site
+mkdir -p $local_zsh_dir
+touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
+unset local_zsh_dir
+
 export _ZO_FZF_OPTS="+m --height 50% --reverse"
 
 if (( $+commands[sheldon] )); then
