@@ -200,9 +200,9 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 # app-id can be obtained with `aerospace list-apps` command
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = "move-node-to-workspace T"
+# [[on-window-detected]]
+# if.app-id = 'com.github.wez.wezterm'
+# run = "move-node-to-workspace T"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
@@ -212,6 +212,6 @@ run = "move-node-to-workspace E"
 if.app-id = 'md.obsidian'
 run = "move-node-to-workspace N"
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = "move-node-to-workspace B"
+# [[on-window-detected]]
+# if.app-id = 'com.apple.Safari'
+# run = "move-node-to-workspace B"
