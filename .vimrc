@@ -108,7 +108,6 @@ let g:table_mode_corner="|"
 " Add command to clean up trailing whitespace
 :command WClean %s/\s\+$//g
 ca wc WClean
-
 " Key bind
 """" emacs-like key bind in insert mode
 imap <c-a> <home>
@@ -121,8 +120,8 @@ imap <c-f> <right>
 """" 
 map <leader>h ^
 map <leader>l $
-" Go back to normal mode when typing jj quickly or <C-j>
-inoremap jj <Esc>
+" Go back to normal mode when typing jk quickly or <C-j>
+inoremap jk <Esc>
 inoremap <C-j> <Esc>
 " Turn off highlight with <Esc><Esc>
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
