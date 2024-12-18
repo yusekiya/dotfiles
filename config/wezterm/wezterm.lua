@@ -67,6 +67,7 @@ cfg = {
     initial_rows = 40,
     tab_max_width = 20,
     use_fancy_tab_bar = true,
+    show_close_tab_button_in_tabs = false,
     use_ime = true,
     color_scheme = "nordfox",
     colors = {
