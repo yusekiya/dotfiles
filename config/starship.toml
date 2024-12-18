@@ -1,4 +1,4 @@
-continuation_prompt = '[❯](bold #15a3eb) '
+continuation_prompt = '[└─❯](bold #15a3eb) '
 
 [character]
 success_symbol = '[❯❯❯](bold #15a3eb)'
