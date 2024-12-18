@@ -74,7 +74,7 @@ cfg = {
         tab_bar = {
             background = '#333333',
             active_tab = {
-                bg_color = '#5E81AC',
+                bg_color = '#128bc7',
                 fg_color = '#ECEFF4',
             },
             inactive_tab = {
