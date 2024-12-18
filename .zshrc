@@ -14,8 +14,8 @@ if (( $+commands[sheldon] )); then
     sheldon_toml="$HOME/.config/sheldon/plugins.toml"
     # Create cache if necessary
     if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
-    mkdir -p $cache_dir
-    sheldon --config-file $sheldon_toml source > $sheldon_cache
+        mkdir -p $cache_dir
+        sheldon --config-file $sheldon_toml source > $sheldon_cache
     fi
     source "$sheldon_cache"
     unset cache_dir sheldon_cache sheldon_toml
