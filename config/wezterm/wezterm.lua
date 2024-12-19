@@ -80,11 +80,34 @@ wezterm.on(
         local cells = {}
         -- Add workspace name
         table.insert(cells, window:active_workspace())
-        -- Add domain name unless it is local
-        local domain = pane:get_domain_name()
-        if domain ~= "local" then
-            table.insert(cells, domain)
+        -- Figure out the cwd and host of the current pane.
+        -- This will pick up the hostname for the remote host if your
+        -- shell is using OSC 7 on the remote host.
+        local cwd_uri = pane:get_current_working_dir()
+        local hostname = ''
+        if cwd_uri then
+            if type(cwd_uri) == 'userdata' then
+                hostname = cwd_uri.host or wezterm.hostname()
+            else
+                cwd_uri = cwd_uri:sub(8)
+                local slash = cwd_uri:find '/'
+                if slash then
+                    hostname = cwd_uri:sub(1, slash - 1)
+                end
+            end
         end
+        if hostname:match"%.local$" then
+            hostname = 'local'
+        elseif hostname == '' then
+            hostname = pane:get_domain_name()
+        end
+        table.insert(cells, hostname)
+
+        -- local domain = pane:get_domain_name()
+        -- Add domain name unless it is local
+        -- if domain ~= "local" then
+        --     table.insert(cells, domain)
+        -- end
         -- Elements in status bar
         local elements = {}
         local num_cells = #cells
