@@ -5,6 +5,10 @@ local act = wezterm.action
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+-- The left separator in tab bar
+local LEFT_SEP = wezterm.nerdfonts.ple_upper_right_triangle
+-- The right separator in tab bar
+local RIGHT_SEP = wezterm.nerdfonts.ple_lower_left_triangle
 
 -- Background colors in status bar from right to left
 local BG_COLORS = {
@@ -13,38 +17,95 @@ local BG_COLORS = {
     '#5E81AC',
 }
 -- Text color in status bar
-local TEXT_COLOR = '#4C566A'
+local TEXT_COLOR = '#333333'
 
--- c.f. https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
-wezterm.on("update-status", function(window, pane)
-    -- Table containing cells from right to left
-    local cells = {}
-    -- Add workspace name
-    table.insert(cells, window:active_workspace())
-    -- Add domain name unless it is local
-    local domain = pane:get_domain_name()
-    if domain ~= "local" then
-        table.insert(cells, domain)
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+  -- Otherwise, use the title from the active pane
+  -- in that tab
+  return tab_info.active_pane.title
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local edge_background = '#333333'
+    local background = '#434C5E'
+    local foreground = '#D8DEE9'
+
+    if tab.is_active then
+      background = '#128BC7'
+      foreground = '#E6E6E6'
+    elseif hover then
+      background = (wezterm.color.parse '#5E81AC'):darken(0.35)
+      foreground = '#ECEFF4'
     end
-    -- Elements in status bar
-    local elements = {}
-    local num_cells = #cells
-    -- Convert a cell into elements
-    function push(text, is_last)
-        table.insert(elements, { Foreground = { Color = BG_COLORS[num_cells] } })
-        table.insert(elements, { Text = SOLID_LEFT_ARROW })
-        table.insert(elements, { Foreground = { Color = TEXT_COLOR } })
-        table.insert(elements, { Background = { Color = BG_COLORS[num_cells] } })
-        table.insert(elements, { Text = ' ' ..  text .. '  ' })
-        num_cells = num_cells - 1
+
+    local edge_foreground = background
+
+    local title = tab_title(tab)
+
+    -- ensure that the titles fit in the available space,
+    -- and that we have room for the edges.
+    title = wezterm.truncate_right(title, max_width - 2)
+
+    return {
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = LEFT_SEP },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Attribute = { Intensity = "Bold" } },
+      { Text = '  ' .. title .. '  ' },
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = RIGHT_SEP },
+    }
+  end
+)
+
+-- cf. https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
+wezterm.on(
+    "update-status",
+    function(window, pane)
+        -- Table containing cells from right to left
+        local cells = {}
+        -- Add workspace name
+        table.insert(cells, window:active_workspace())
+        -- Add domain name unless it is local
+        local domain = pane:get_domain_name()
+        if domain ~= "local" then
+            table.insert(cells, domain)
+        end
+        -- Elements in status bar
+        local elements = {}
+        local num_cells = #cells
+        -- Convert a cell into elements
+        function push(text, is_last)
+            table.insert(elements, { Foreground = { Color = BG_COLORS[num_cells] } })
+            table.insert(elements, { Text = SOLID_LEFT_ARROW })
+            table.insert(elements, { Foreground = { Color = TEXT_COLOR } })
+            table.insert(elements, { Background = { Color = BG_COLORS[num_cells] } })
+            table.insert(elements, { Attribute = { Intensity = "Bold" } })
+            table.insert(elements, { Text = ' ' ..  text .. ' ' })
+            num_cells = num_cells - 1
+        end
+        -- Build elements
+        while #cells > 0 do
+            local cell = table.remove(cells)
+            push(cell, #cells == 0)
+        end
+        window:set_right_status(wezterm.format(elements))
     end
-    -- Build elements
-    while #cells > 0 do
-        local cell = table.remove(cells)
-        push(cell, #cells == 0)
-    end
-	window:set_right_status(wezterm.format(elements))
-end)
+)
 
 function file_exists(name)
     local f=io.open(name,"r")
@@ -65,9 +126,11 @@ cfg = {
     font_size = 12.0,
     initial_cols = 120,
     initial_rows = 40,
-    tab_max_width = 20,
-    use_fancy_tab_bar = true,
+    tab_max_width = 100,
+    use_fancy_tab_bar = false,
+    tab_bar_at_bottom = true,
     show_close_tab_button_in_tabs = false,
+    show_new_tab_button_in_tab_bar = false,
     use_ime = true,
     color_scheme = "nordfox",
     colors = {
@@ -99,7 +162,7 @@ cfg = {
 
         -- The size of the font in the tab bar.
         -- Default to 10.0 on Windows but 12.0 on other systems
-        font_size = 12.0,
+        -- font_size = 12.0,
 
         -- The overall background color of the tab bar when
         -- the window is focused
@@ -117,7 +180,10 @@ cfg = {
     window_decorations = "RESIZE",
     enable_scroll_bar = true,
     window_padding = {
+        left = '1.5cell',
         right = '1.5cell',
+        top = '1.0cell',
+        bottom = '0.5cell',
     },
     adjust_window_size_when_changing_font_size = false,
     leader = { key = 'Space', mods = 'SHIFT', timeout_milliseconds = 1000 },
