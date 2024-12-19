@@ -96,8 +96,11 @@ wezterm.on(
                 end
             end
         end
+        local dot = hostname:find '[.]'
         if hostname:match"%.local$" then
             hostname = 'local'
+        elseif dot then
+            hostname = hostname:sub(1, dot - 1)
         elseif hostname == '' then
             hostname = pane:get_domain_name()
         end
