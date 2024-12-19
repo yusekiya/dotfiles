@@ -1,3 +1,12 @@
+HOSTNAME=$(hostname)
+osc7_cwd() {
+    printf '\033]7;file://%s%s\033\\' "$HOSTNAME" "$PWD"
+}
+
+osc7_cwd
+autoload -Uz add-zsh-hook
+add-zsh-hook -Uz chpwd osc7_cwd
+
 ###############################################################################
 # General
 ###############################################################################
