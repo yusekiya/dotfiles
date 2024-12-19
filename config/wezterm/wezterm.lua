@@ -87,7 +87,7 @@ wezterm.on(
         local hostname = ''
         if cwd_uri then
             if type(cwd_uri) == 'userdata' then
-                hostname = cwd_uri.host or wezterm.hostname()
+                hostname = cwd_uri.host or pane:get_domain_name()
             else
                 cwd_uri = cwd_uri:sub(8)
                 local slash = cwd_uri:find '/'
@@ -103,11 +103,6 @@ wezterm.on(
         end
         table.insert(cells, hostname)
 
-        -- local domain = pane:get_domain_name()
-        -- Add domain name unless it is local
-        -- if domain ~= "local" then
-        --     table.insert(cells, domain)
-        -- end
         -- Elements in status bar
         local elements = {}
         local num_cells = #cells
