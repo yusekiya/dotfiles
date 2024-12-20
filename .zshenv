@@ -28,6 +28,10 @@ if [ -d "${HOME}/.local/info" ]; then
   INFOPATH="${HOME}/.local/info:${INFOPATH}"
 fi
 
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    export XDG_RUNTIME_DIR=/run/user/$(id -u)
+fi
+
 SHELL_SESSIONS_DISABLE=1
 
 typeset -U path
