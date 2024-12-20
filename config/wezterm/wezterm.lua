@@ -78,8 +78,6 @@ wezterm.on(
     function(window, pane)
         -- Table containing cells from right to left
         local cells = {}
-        -- Add workspace name
-        table.insert(cells, window:active_workspace())
         -- Figure out the cwd and host of the current pane.
         -- This will pick up the hostname for the remote host if your
         -- shell is using OSC 7 on the remote host.
@@ -105,6 +103,8 @@ wezterm.on(
             hostname = pane:get_domain_name()
         end
         table.insert(cells, hostname)
+        -- Add workspace name
+        table.insert(cells, window:active_workspace())
 
         -- Elements in status bar
         local elements = {}
