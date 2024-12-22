@@ -30,6 +30,10 @@ apply = ["defer"]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
 
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+apply = ["defer"]
+
 [plugins.zshrc-sync]
 local = '~/.config/zsh'
 use = ['sync.zsh']
