@@ -7,7 +7,7 @@ emit_osc7() {
 emit_osc7
 
 autoload -Uz add-zsh-hook
-add-zsh-hook -Uz chpwd emit_osc7
+add-zsh-hook -Uz precmd emit_osc7
 
 ###############################################################################
 # General
