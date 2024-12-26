@@ -19,6 +19,7 @@ opt.shiftround = true
 opt.virtualedit = "block"
 opt.colorcolumn = "100"
 opt.spell = true
+opt.spelllang = "en,cjk"
 opt.pumheight = 20
 opt.scrolloff = 3
 opt.clipboard = "unnamedplus"
