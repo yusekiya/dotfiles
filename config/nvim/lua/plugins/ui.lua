@@ -1,4 +1,5 @@
 return {
+    -- UI for messages, cmdline, and popupmenu
     {
         "folke/noice.nvim",
         lazy = true,
@@ -10,6 +11,21 @@ return {
             "MunifTanjim/nui.nvim",
         },
     },
+    -- Filer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        lazy = true,
+        keys = {
+            {"<leader>e", "<Cmd>Neotree toggle=true<cr>", mode = "n"},
+        },
+        dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+        }
+    },
+    -- Fuzzy finder
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         lazy= true,
@@ -21,6 +37,7 @@ return {
         },
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+    -- Outline
     {
         'stevearc/aerial.nvim',
         lazy = true,
