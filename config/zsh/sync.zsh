@@ -40,7 +40,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 export LESS='-iRFX -# 5'
 export SYSTEMD_LESS='FRSXMK -# 5'
-if (( $+commands[vim] )); then
+if (( $+commands[nvim] )); then
+    export EDITOR=nvim
+elif (( $+commands[vim] )); then
     export EDITOR=vim
 elif (( $+commands[emacs] )); then
     export EDITOR=emacs
