@@ -27,6 +27,7 @@ return {
         event = "VeryLazy",
         keys = {
             {"<leader>a", ":Telescope aerial<cr>", mode = "n"},
+            {"<C-'>", "<Cmd>AerialToggle<cr>", mode = "n"},
         },
         opts = {},
         -- Optional dependencies
