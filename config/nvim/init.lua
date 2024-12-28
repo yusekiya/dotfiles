@@ -2,7 +2,7 @@
 local opt = vim.o
 opt.encoding = "utf-8"
 vim.scriptencoding = "utf-8"
-opt.ambiwidth = "double"
+opt.ambiwidth = "single"
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
