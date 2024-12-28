@@ -21,4 +21,19 @@ return {
         },
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+    {
+        'stevearc/aerial.nvim',
+        lazy = true,
+        event = "VeryLazy",
+        keys = {
+            {"<leader>a", ":Telescope aerial<cr>", mode = "n"},
+        },
+        opts = {},
+        -- Optional dependencies
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
 }
