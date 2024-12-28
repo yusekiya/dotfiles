@@ -12,7 +12,7 @@ return {
                 transparent = true,
                 errors = { mode = "none" },
                 styles = {
-                    comments = { fg = "#7585a6" },
+                    comments = { fg = "#8891A2" },
                     keywords = {},
                     functions = {},
                     variables = {},
