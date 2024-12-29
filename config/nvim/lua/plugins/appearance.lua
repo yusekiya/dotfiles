@@ -23,7 +23,7 @@ return {
                     },
                 },
                 on_highlights = function(highlights, colors)
-                    highlights["LineNr"] = { fg = "#8891A2", bg = colors.none }
+                    highlights["LineNr"] = { fg = "#6A7282", bg = colors.none, bold = false }
                 end,
             })
             vim.cmd.colorscheme("nord")
