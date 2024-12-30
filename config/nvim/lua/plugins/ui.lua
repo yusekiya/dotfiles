@@ -16,6 +16,7 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
         lazy = true,
+        cmd = "Neotree",
         keys = {
             {"<leader>ee", "<Cmd>Neotree toggle=true<cr>", mode = "n", desc = "Toggle file explorer"},
             {"<leader>ef", "<Cmd>Neotree focus<cr>", mode = "n", desc = "Focus on file explorer"},
