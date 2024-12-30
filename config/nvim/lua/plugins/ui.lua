@@ -127,6 +127,9 @@ return {
         opts = {
             enabled = false,
             suppressed_dirs = {"~/", "~/Downloads", "~/Documents", "~/Desktop"},
+            pre_save_cmds = {
+                "Neotree close", -- exclude neotree window
+            },
         },
     },
 }
