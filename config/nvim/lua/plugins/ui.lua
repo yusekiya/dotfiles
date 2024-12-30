@@ -113,4 +113,20 @@ return {
             })
         end,
     },
+    -- session manager
+    {
+        "rmagatti/auto-session",
+        lazy = false,
+        keys = {
+            {"<leader>wr", "<Cmd>SessionRestore<cr>", mode = "n", desc = "Restore session for cwd"},
+            {"<leader>ws", "<Cmd>SessionSave<cr>", mode = "n", desc = "Save session"},
+        },
+        ---enables autocomplete for opts
+        ---@module "auto-session"
+        ---@type AutoSession.Config
+        opts = {
+            enabled = false,
+            suppressed_dirs = {"~/", "~/Downloads", "~/Documents", "~/Desktop"},
+        },
+    },
 }
