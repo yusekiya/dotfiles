@@ -70,4 +70,21 @@ return {
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
     },
+    -- substitute a word in register
+    {
+        "gbprod/substitute.nvim",
+        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            local substitute = require("substitute")
+            -- configure plugin
+            substitute.setup()
+            -- set keymaps
+            local keymap = vim.keymap
+            keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
+            keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
+            keymap.set("n", "S", substitute.eol, { desc = "Substitute to end of line" })
+            keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
+        end,
+    },
 }
