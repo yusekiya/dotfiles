@@ -17,7 +17,9 @@ return {
         branch = "v3.x",
         lazy = true,
         keys = {
-            {"<leader>e", "<Cmd>Neotree toggle=true<cr>", mode = "n"},
+            {"<leader>ee", "<Cmd>Neotree toggle=true<cr>", mode = "n", desc = "Toggle file explorer"},
+            {"<leader>ef", "<Cmd>Neotree focus<cr>", mode = "n", desc = "Focus on file explorer"},
+            {"<leader>ec", "<Cmd>Neotree close<cr>", mode = "n", desc = "Close file explorer"},
         },
         dependencies = {
         "nvim-lua/plenary.nvim",
