@@ -1,15 +1,15 @@
 return {
-    -- toglle comment/uncomment
+    -- toggle comment/uncomment
     {
         "numToStr/Comment.nvim",
         opts = {
             toggler = {
-                line = "<leader>cc",
-                block = "<leader>bc",
+                line = "gcc",
+                block = "gbc",
             },
             opleader = {
-                line = "<leader>c",
-                block = "<leader>b",
+                line = "gc",
+                block = "gb",
             },
         }
     },
