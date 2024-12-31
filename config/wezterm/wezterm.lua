@@ -199,10 +199,10 @@ cfg = {
     },
     window_background_opacity = 0.90,
     window_decorations = "RESIZE",
-    enable_scroll_bar = true,
+    enable_scroll_bar = false,
     window_padding = {
-        left = '1.5cell',
-        right = '1.5cell',
+        left = '1.0cell',
+        right = '0',
         top = '1.0cell',
         bottom = '0.5cell',
     },
