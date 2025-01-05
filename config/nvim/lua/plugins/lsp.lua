@@ -50,6 +50,10 @@ return {
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local keymap = vim.keymap
 
+      -- disable virtual text
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
