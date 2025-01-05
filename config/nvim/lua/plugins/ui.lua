@@ -120,6 +120,8 @@ return {
             maxwidth = 50,
             ellipsis_char = "...",
           }),
+          expandable_indicator = true,
+          fields = { "abbr", "kind", "menu" },
         },
       })
     end,
