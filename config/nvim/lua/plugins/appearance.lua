@@ -24,6 +24,9 @@ return {
         },
         on_highlights = function(highlights, colors)
           highlights["LineNr"] = { fg = "#6A7282", bg = colors.none, bold = false }
+          highlights["NeoTreeDotfile"] = { fg = "#8891A2" }
+          highlights["NeoTreeIndentMarker"] = { fg = "#8891A2" }
+          highlights["NeoTreeMessage"] = { fg = "#8891A2" }
         end,
       })
       vim.cmd.colorscheme("nord")
