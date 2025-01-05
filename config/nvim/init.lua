@@ -62,10 +62,6 @@ setkey("n", ";", ":")
 setkey("n", ":", ";")
 setkey("n", "+", "<C-a>")
 setkey("n", "-", "<C-x>")
--- select whole text in the current line
-setkey("n", "<leader>v", "0v$h")
--- delete whole text in the current line
-setkey("n", "<leader>d", "0v$hx")
 -- keybinds for pane
 setkey("n", "<leader>sj", "<C-w>j")
 setkey("n", "<leader>sk", "<C-w>k")
