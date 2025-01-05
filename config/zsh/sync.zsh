@@ -89,6 +89,7 @@ alias p='poetry'
 alias k='kubectl'
 alias pls='pueue status'
 alias pad='pueue add --'
+alias lz='lazygit'
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
