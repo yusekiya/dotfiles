@@ -24,19 +24,15 @@ opt.pumheight = 20
 opt.scrolloff = 3
 opt.clipboard = "unnamedplus"
 opt.wildmode = "longest:full,full"
-opt.cursorline=true
+opt.cursorline = true
 
 -- mapleader
 -- Make sure that `mapleader` and `maplocalleader` is setup before loadin lazy.nvim.
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- user defined commands
-vim.api.nvim_create_user_command(
-    "WClean",
-    "%s/\\s\\+$//g",
-    {}
-)
+vim.api.nvim_create_user_command("WClean", "%s/\\s\\+$//g", {})
 
 -- keybindings
 local setkey = vim.keymap.set
@@ -51,12 +47,12 @@ setkey("i", "<C-d>", "<Del>")
 setkey("i", "<C-k>", "<Esc>lc$")
 setkey("i", "<C-y>", "<Esc>pa")
 -- others
-setkey('', "<leader>h", "^")
-setkey('', "<leader>l", "$")
+setkey("", "<leader>h", "^")
+setkey("", "<leader>l", "$")
 setkey("i", "jk", "<Esc>")
 setkey("n", "<Esc><Esc>", "<Cmd>nohlsearch<CR>", { silent = true })
-setkey({"n", "v"}, "j", "gj")
-setkey({"n", "v"}, "k", "gk")
+setkey({ "n", "v" }, "j", "gj")
+setkey({ "n", "v" }, "k", "gk")
 setkey("v", "y", "y`]")
 setkey("n", ";", ":")
 setkey("n", ":", ";")
@@ -86,4 +82,3 @@ setkey("n", "<leader>s|", "<Cmd>vsplit<CR>")
 -- load plugins
 -- current plugin manager: lazy.nvim
 require("config.lazy")
-
