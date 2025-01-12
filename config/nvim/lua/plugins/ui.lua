@@ -178,4 +178,9 @@ return {
       -- { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
     },
   },
+  -- highlight code block that is added/changed/deleted from the previous git commit
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre" },
+  },
 }
