@@ -34,6 +34,7 @@ return {
       indent = { enable = true },
     },
   },
+  -- sticky line
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufNewFile", "BufReadPre" },
