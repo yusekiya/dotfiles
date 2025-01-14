@@ -34,13 +34,25 @@ return {
       })
     end,
   },
-  -- sneak move
+  -- cursor jump
   {
-    "ggandor/leap.nvim",
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        char = {
+          keys = { "f", "F", "t", "T", [";"] = ":", "," },
+        },
+      },
+    },
+    -- stylua: ignore
     keys = {
-      { "f", "<Plug>(leap-forward)", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
-      { "F", "<Plug>(leap-backward)", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
-      { "gf", "<Plug>(leap-from-window)", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
+      { "gs", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "gS", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
   -- auto pairs
