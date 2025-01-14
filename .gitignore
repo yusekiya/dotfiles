@@ -104,3 +104,5 @@
 work/
 config/git/config.d/*
 config/raycast/extensions
+*.sqlite
+jupyterlabapputilsextensionannouncements.json
