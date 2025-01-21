@@ -34,6 +34,7 @@ return {
           hide_dotfiles = true,
           hide_gitignored = true,
         },
+        use_libuv_file_watcher = true,
       },
     },
   },
