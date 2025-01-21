@@ -99,11 +99,12 @@ return {
       },
     },
     keys = {
-      { "<leader>tt", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
+      { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>", desc = "Toggle all terminal windows" },
+      { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
       { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
       { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
       { "<leader>tg", "<Cmd>TermExec cmd='lazygit' direction=float<cr>", desc = "Open lazygit" },
-      { "<C-;>", "<Cmd>ToggleTermToggleAll<cr>", mode = { "n", "t" }, desc = "Toggle all terminal windows" },
+      { "<C-w>", [[<C-\><C-n><C-w>]], mode = "t", desc = "Window manager" },
     },
   },
   -- autocompletion
