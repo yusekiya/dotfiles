@@ -103,6 +103,7 @@ return {
       { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
       { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
       { "<leader>tg", "<Cmd>TermExec cmd='lazygit' direction=float<cr>", desc = "Open lazygit" },
+      { "<C-;>", "<Cmd>ToggleTermToggleAll<cr>", mode = { "n", "t" }, desc = "Toggle all terminal windows" },
     },
   },
   -- autocompletion
