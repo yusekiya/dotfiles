@@ -72,40 +72,48 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     lazy = true,
-    opts = {
-      size = function(term)
-        if term.direction == "horizontal" then
-          return 30
-        elseif term.direction == "vertical" then
-          return vim.o.columns * 0.4
-        else
-          return 20
-        end
-      end,
-      shade_terminals = false,
-      highlights = {
-        Normal = {
-          guibg = "#2E3440",
-        },
-        NormalFloat = {
-          link = "Normal",
-        },
-        FloatBorder = {
-          guifg = "#8FBCBB",
-        },
-      },
-      float_opts = {
-        border = "double",
-      },
-    },
     keys = {
       { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>", desc = "Toggle all terminal windows" },
       { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
       { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
       { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
-      { "<leader>tg", "<Cmd>TermExec cmd='lazygit' direction=float<cr>", desc = "Open lazygit" },
+      { "<leader>g", "<Cmd>lua _Lazygit_toggle()<cr>", desc = "Open lazygit" },
       { "<C-w>", [[<C-\><C-n><C-w>]], mode = "t", desc = "Window manager" },
     },
+    config = function()
+      require("toggleterm").setup({
+        size = function(term)
+          if term.direction == "horizontal" then
+            return 30
+          elseif term.direction == "vertical" then
+            return vim.o.columns * 0.4
+          else
+            return 20
+          end
+        end,
+        shade_terminals = false,
+        highlights = {
+          Normal = {
+            guibg = "#2E3440",
+          },
+          NormalFloat = {
+            link = "Normal",
+          },
+          FloatBorder = {
+            guifg = "#8FBCBB",
+          },
+        },
+        float_opts = {
+          border = "double",
+        },
+      })
+      -- lazygit setup
+      local terminal = require("toggleterm.terminal").Terminal
+      local lazygit = terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
+      function _Lazygit_toggle()
+        lazygit:toggle()
+      end
+    end,
   },
   -- autocompletion
   {
