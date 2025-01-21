@@ -67,6 +67,44 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
   },
+  -- terminal
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    lazy = true,
+    opts = {
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 30
+        elseif term.direction == "vertical" then
+          return vim.o.columns * 0.4
+        else
+          return 20
+        end
+      end,
+      shade_terminals = false,
+      highlights = {
+        Normal = {
+          guibg = "#2E3440",
+        },
+        NormalFloat = {
+          link = "Normal",
+        },
+        FloatBorder = {
+          guifg = "#8FBCBB",
+        },
+      },
+      float_opts = {
+        border = "double",
+      },
+    },
+    keys = {
+      { "<leader>tt", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
+      { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
+      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
+      { "<leader>tg", "<Cmd>TermExec cmd='lazygit' direction=float<cr>", desc = "Open lazygit" },
+    },
+  },
   -- autocompletion
   {
     "hrsh7th/nvim-cmp",
