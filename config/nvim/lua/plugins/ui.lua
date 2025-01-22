@@ -82,6 +82,7 @@ return {
       { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
       { "<leader>g", "<Cmd>lua _Lazygit_toggle()<cr>", desc = "Open lazygit" },
       { "<C-w>", [[<C-\><C-n><C-w>]], mode = "t", desc = "Window manager" },
+      { "jk", [[<C-\><C-n>]], mode = "t", desc = "Terminal normal model" },
     },
     config = function()
       require("toggleterm").setup({
