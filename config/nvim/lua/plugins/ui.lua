@@ -57,8 +57,10 @@ return {
     lazy = true,
     event = "VeryLazy",
     keys = {
-      { "<leader>a", ":Telescope aerial<cr>", mode = "n" },
-      { "<C-'>", "<Cmd>AerialToggle<cr>", mode = "n" },
+      { "<leader>oo", "<Cmd>AerialToggle<cr>", mode = "n", desc = "Toggle outline window" },
+      { "<leader>on", "<Cmd>AerialNavToggle<cr>", mode = "n", desc = "Toggle outline navigation window" },
+      { "<leader>of", ":Telescope aerial<cr>", mode = "n", desc = "Outline search" },
+      { "<C-'>", "<Cmd>AerialToggle<cr>", mode = "n", desc = "Toggle outline window" },
     },
     opts = {},
     -- Optional dependencies
