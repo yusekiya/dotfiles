@@ -215,7 +215,7 @@ cfg = {
 			action = wezterm.action.ActivateKeyTable({ name = "pane_control", one_shot = false }),
 		},
 		{ key = "w", mods = "LEADER", action = wezterm.action.ActivateKeyTable({ name = "workspace" }) },
-		{ key = "p", mods = "SUPER", action = wezterm.action.ActivateCommandPalette },
+		{ key = "p", mods = "SUPER|SHIFT", action = wezterm.action.ActivateCommandPalette },
 		{ key = "c", mods = "SUPER", action = wezterm.action.ActivateCopyMode },
 		{ key = "h", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
 		{ key = "l", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
