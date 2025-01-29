@@ -78,6 +78,9 @@ setkey("n", "<leader>sN", "<Cmd><C-u>bn<CR>")
 setkey("n", "<leader>sP", "<Cmd><C-u>bp<CR>")
 setkey("n", "<leader>s-", "<Cmd>split<CR>")
 setkey("n", "<leader>s|", "<Cmd>vsplit<CR>")
+-- keybinds for terminal
+setkey("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "Window manager" })
+setkey("t", "<ESC>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
 
 -- load plugins
 -- current plugin manager: lazy.nvim
