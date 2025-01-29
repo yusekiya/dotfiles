@@ -247,6 +247,17 @@ cfg = {
 			mods = "LEADER",
 			action = wezterm.action.TogglePaneZoomState,
 		},
+		{
+			key = "p",
+			mods = "SUPER",
+			action = wezterm.action_callback(function(window, pane)
+				local is_nvim = pane:get_foreground_process_name():match(".*/([^/]+)$") == "nvim"
+				if not is_nvim then
+					return
+				end
+				window:perform_action({ SendKey = { key = "p", mods = "CTRL|ALT|SHIFT" } }, pane)
+			end),
+		},
 	},
 	key_tables = {
 		pane_control = {

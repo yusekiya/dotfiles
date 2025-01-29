@@ -44,6 +44,7 @@ return {
     tag = "0.1.8",
     lazy = true,
     keys = {
+      { "<C-A-S-p>", "<Cmd>Telescope commands<cr>", mode = "n" },
       { "<leader>ff", "<Cmd>Telescope find_files<cr>", mode = "n" },
       { "<leader>fg", "<Cmd>Telescope live_grep<cr>", mode = "n" },
       { "<leader>fb", "<Cmd>Telescope buffers<cr>", mode = "n" },
