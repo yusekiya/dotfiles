@@ -80,6 +80,11 @@ setkey("n", "<leader>s-", "<Cmd>split<CR>")
 setkey("n", "<leader>s|", "<Cmd>vsplit<CR>")
 -- keybinds for terminal
 setkey("t", "<C-q>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
+-- keybinds for commands
+vim.api.nvim_set_keymap("c", "<Up>", 'wildmenumode() ? "<Left>" : "<Up>"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap("c", "<Down>", 'wildmenumode() ? "<Right>" : "<Down>"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap("c", "<Left>", 'wildmenumode() ? "<Up>" : "<Left>"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap("c", "<Right>", 'wildmenumode() ? "<Down>" : "<Right>"', { expr = true, noremap = true })
 
 -- load plugins
 -- current plugin manager: lazy.nvim
