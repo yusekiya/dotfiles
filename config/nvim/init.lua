@@ -81,6 +81,8 @@ setkey("n", "<leader>s|", "<Cmd>vsplit<CR>")
 -- keybinds for terminal
 setkey("t", "<C-q>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
 -- keybinds for commands
+-- The following settings are made with reference to the comment at the below URL:
+-- https://github.com/neovim/neovim/issues/9953#issuecomment-1732700161
 vim.api.nvim_set_keymap("c", "<Up>", 'wildmenumode() ? "<Left>" : "<Up>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Down>", 'wildmenumode() ? "<Right>" : "<Down>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Left>", 'wildmenumode() ? "<Up>" : "<Left>"', { expr = true, noremap = true })
