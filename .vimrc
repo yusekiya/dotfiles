@@ -118,8 +118,8 @@ imap <c-y> <esc>pa
 imap <c-b> <left>
 imap <c-f> <right>
 """" 
-map <leader>h ^
-map <leader>l $
+map gh ^
+map gl $
 " Go back to normal mode when typing jk quickly or <C-j>
 inoremap jk <Esc>
 inoremap <C-j> <Esc>
@@ -147,16 +147,6 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap + <C-a>
 nnoremap - <C-x>
-" Reindent all
-nnoremap <leader>i gg=<S-g><C-o><C-o>zz
-" Select all text in current line
-nnoremap <leader>v 0v$h
-" Delete all text in current line
-nnoremap <leader>d 0v$hx
-" Comment out
-xmap <leader>c gc
-nmap <leader>c gc
-omap <leader>c gc
 " key binds for vimdiff
 if &diff
     nnoremap <leader>1 :diffget LOCAL<CR>
