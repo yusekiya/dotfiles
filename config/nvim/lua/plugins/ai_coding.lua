@@ -15,7 +15,9 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     config = function()
-      require("sg").setup({})
+      require("sg").setup({
+        -- enable_cody = false,
+      })
     end,
   },
 }
