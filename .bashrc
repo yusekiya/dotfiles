@@ -362,6 +362,17 @@ if [ `type -p fzf` ]; then
        local dir
        file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
    }
+    # cd to selected parent directory
+    function traverse-parent-directories() {
+        local dir=$(
+            while true; do
+                echo "$PWD"
+                [ $PWD = / ] && break
+                cd ..
+            done | fzf --tiebreak=end --height 50% --reverse --preview 'tree -L 1 -C {} | head -200'
+        ) && cd "$dir"
+    }
+   alias ..=traverse-parent-directories
    function fcookie() {
        local dir
        dir=$(find ~/.cookiecutters ~/.cookiecutter_templates -follow -type d -maxdepth 1 -mindepth 1 2> /dev/null | sort | fzf +m --height 30% --reverse) && cookiecutter "$dir"
