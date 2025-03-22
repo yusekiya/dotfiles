@@ -42,6 +42,7 @@ export LESS='-iRFX -# 5'
 export SYSTEMD_LESS='FRSXMK -# 5'
 if (( $+commands[nvim] )); then
     export EDITOR=nvim
+    export SUDO_EDITOR=$(which nvim)
 elif (( $+commands[vim] )); then
     export EDITOR=vim
 elif (( $+commands[emacs] )); then
