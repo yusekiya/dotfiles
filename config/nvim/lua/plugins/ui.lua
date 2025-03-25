@@ -199,6 +199,7 @@ return {
       },
     },
   },
+  -- show keymap when lazy
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -207,9 +208,16 @@ return {
       vim.o.timeoutlen = 500
     end,
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+      spec = {
+        { "<leader>f", group = "fuzzy finder" },
+        { "<leader>e", group = "file explorer" },
+        { "<leader>h", group = "git hunk" },
+        { "<leader>o", group = "outline" },
+        { "<leader>s", group = "window split" },
+        { "<leader>t", group = "terminal" },
+        { "<leader>w", group = "workspace" },
+        { "<leader>x", group = "trouble" },
+      },
     },
   },
   -- interface for diagnostics, references, and other lists
