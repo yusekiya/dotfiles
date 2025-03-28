@@ -213,7 +213,7 @@ return {
         { "<leader>e", group = "file explorer" },
         { "<leader>h", group = "git hunk" },
         { "<leader>o", group = "outline" },
-        { "<leader>s", group = "window split" },
+        { "<leader>s", group = "splitted window" },
         { "<leader>t", group = "terminal" },
         { "<leader>w", group = "workspace" },
         { "<leader>x", group = "trouble" },
