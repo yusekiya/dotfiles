@@ -217,6 +217,7 @@ return {
         { "<leader>t", group = "terminal" },
         { "<leader>w", group = "workspace" },
         { "<leader>x", group = "trouble" },
+        { "<leader>a", group = "AI" },
       },
     },
   },
