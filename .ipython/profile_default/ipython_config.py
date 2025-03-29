@@ -1,34 +1,28 @@
 # Configuration file for ipython.
 
 c = get_config()
-c.IPKernelApp.matplotlib = 'inline'
+c.IPKernelApp.matplotlib = "inline"
 c.InlineBackend.rc = {
-    'font.size': 12,
-    'legend.fontsize': 12,
-    'figure.figsize': (4,3),
-    'figure.facecolor': (1, 1, 1, 1)}
+    "font.size": 12,
+    "legend.fontsize": 12,
+    "figure.figsize": (4, 3),
+    "figure.facecolor": (1, 1, 1, 1),
+}
 
-c.InteractiveShell.colors = 'linux'
-#  c.TerminalInteractiveShell.highlighting_style = 'legacy'
-import pygments
-thistheme = 'fruity'
-if thistheme in pygments.styles.get_all_styles():
-    c.TerminalInteractiveShell.highlighting_style = thistheme
-else:
-    c.TerminalInteractiveShell.highlighting_style = 'legacy'
+c.InteractiveShell.colors = "linux"
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # InteractiveShellApp configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # A Mixin for applications that start InteractiveShell instances.
-# 
+#
 # Provides configurables for loading extensions and executing files as part of
 # configuring a Shell environment.
-# 
+#
 # The following methods should be called by the :meth:`initialize` method of the
 # subclass:
-# 
+#
 #   - :meth:`init_path`
 #   - :meth:`init_shell` (to be implemented by the subclass)
 #   - :meth:`init_gui_pylab`
@@ -68,7 +62,7 @@ else:
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
 # an ``import *`` is done from numpy and pylab, when using pylab mode.
-# 
+#
 # When False, pylab mode should not import any names into the user namespace.
 # c.InteractiveShellApp.pylab_import_all = True
 
@@ -81,9 +75,9 @@ else:
 # Run the module as a script.
 # c.InteractiveShellApp.module_to_run = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # TerminalIPythonApp configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # TerminalIPythonApp will inherit config from: BaseIPythonApplication,
 # Application, InteractiveShellApp
@@ -158,7 +152,7 @@ else:
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
 # an ``import *`` is done from numpy and pylab, when using pylab mode.
-# 
+#
 # When False, pylab mode should not import any names into the user namespace.
 # c.TerminalIPythonApp.pylab_import_all = True
 
@@ -179,17 +173,17 @@ else:
 # c.TerminalIPythonApp.overwrite = False
 
 # Path to an extra config file to load.
-# 
+#
 # If specified, load this config file in addition to any other IPython config.
 # c.TerminalIPythonApp.extra_config_file = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # TerminalInteractiveShell configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # TerminalInteractiveShell will inherit config from: InteractiveShell
 
-# 
+#
 # c.TerminalInteractiveShell.debug = False
 
 # Show rewritten input, e.g. for autocall.
@@ -243,34 +237,34 @@ else:
 # change the default.
 # c.TerminalInteractiveShell.screen_length = 0
 
-# 
+#
 # c.TerminalInteractiveShell.history_length = 10000
 
-# 
+#
 # c.TerminalInteractiveShell.object_info_string_level = 0
 
-# 
+#
 # c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete', '"\\C-l": clear-screen', 'set show-all-if-ambiguous on', '"\\C-o": tab-insert', '"\\C-r": reverse-search-history', '"\\C-s": forward-search-history', '"\\C-p": history-search-backward', '"\\C-n": history-search-forward', '"\\e[A": history-search-backward', '"\\e[B": history-search-forward', '"\\C-k": kill-line', '"\\C-u": unix-line-discard']
 
-# 
+#
 # c.TerminalInteractiveShell.separate_in = '\n'
 
 # The name of the logfile to use.
 # c.TerminalInteractiveShell.logfile = ''
 
-# 
+#
 # c.TerminalInteractiveShell.separate_out = ''
 
-# 
+#
 # c.TerminalInteractiveShell.ipython_dir = ''
 
-# 
+#
 # c.TerminalInteractiveShell.quiet = False
 
 # auto editing of files with syntax errors.
 # c.TerminalInteractiveShell.autoedit_syntax = False
 
-# 
+#
 # c.TerminalInteractiveShell.separate_out2 = ''
 
 # Set to confirm when you try to exit IPython with an EOF (Control-D in Unix,
@@ -278,7 +272,7 @@ else:
 # direct exit without any confirmation.
 # c.TerminalInteractiveShell.confirm_exit = True
 
-# 
+#
 # c.TerminalInteractiveShell.readline_use = True
 
 # If True, anything that would be passed to the pager will be displayed as
@@ -288,7 +282,7 @@ else:
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
 # c.TerminalInteractiveShell.editor = 'notepad'
 
-# 
+#
 # c.TerminalInteractiveShell.xmode = 'Context'
 
 # 'all', 'last', 'last_expr' or 'none', specifying which nodes should be run
@@ -298,7 +292,7 @@ else:
 # Enable auto setting the terminal title.
 # c.TerminalInteractiveShell.term_title = False
 
-# 
+#
 # c.TerminalInteractiveShell.wildcards_case_sensitive = True
 
 # Set the size of the output cache.  The default is 1000, you can change it
@@ -320,7 +314,7 @@ else:
 # normal reload(), but deep_reload will still be available as dreload().
 # c.TerminalInteractiveShell.deep_reload = False
 
-# 
+#
 # c.TerminalInteractiveShell.readline_remove_delims = '-/~'
 
 # Save multi-line entries as one entry in readline history
@@ -344,9 +338,9 @@ else:
 # Don't call post-execute functions that have failed in the past.
 # c.TerminalInteractiveShell.disable_failing_post_execute = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # PromptManager configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # This is the primary interface for producing IPython's prompts.
 
@@ -356,7 +350,7 @@ else:
 # Continuation prompt.
 # c.PromptManager.in2_template = '   .\\D.: '
 
-# 
+#
 # c.PromptManager.color_scheme = 'Linux'
 
 # If True (default), each prompt will be right-aligned with the preceding one.
@@ -365,35 +359,35 @@ else:
 # Output prompt. '\#' will be transformed to the prompt number
 # c.PromptManager.out_template = 'Out[\\#]: '
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HistoryManager configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # A class to organize all history-related functionality in one place.
 
 # HistoryManager will inherit config from: HistoryAccessor
 
 # Options for configuring the SQLite connection
-# 
+#
 # These options are passed as keyword args to sqlite3.connect when establishing
 # database conenctions.
 # c.HistoryManager.connection_options = {}
 
 # Path to file to use for SQLite history database.
-# 
+#
 # By default, IPython will put the history database in the IPython profile
 # directory.  If you would rather share one history among profiles, you can set
 # this value in each, so that they are consistent.
-# 
+#
 # Due to an issue with fcntl, SQLite is known to misbehave on some NFS mounts.
 # If you see IPython hanging, try setting this to something on a local disk,
 # e.g::
-# 
+#
 #     ipython --HistoryManager.hist_file=/tmp/ipython_hist.sqlite
 # c.HistoryManager.hist_file = ''
 
 # enable the SQLite history
-# 
+#
 # set enabled=False to disable the SQLite history, in which case there will be
 # no stored history, no SQLite connection, and no background saving thread.
 # This may be necessary in some threaded environments where IPython is embedded.
@@ -406,15 +400,15 @@ else:
 # Values of 1 or less effectively disable caching.
 # c.HistoryManager.db_cache_size = 0
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ProfileDir configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # An object to manage the profile directory and its resources.
-# 
+#
 # The profile directory is used by all IPython applications, to manage
 # configuration, logging and security.
-# 
+#
 # This object knows how to find, create and manage these directories. This
 # should be used by any code that wants to handle profiles.
 
@@ -422,17 +416,17 @@ else:
 # `profile` option.
 # c.ProfileDir.location = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # PlainTextFormatter configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # The default pretty-printer.
-# 
+#
 # This uses :mod:`IPython.lib.pretty` to compute the format data of the object.
 # If the object cannot be pretty printed, :func:`repr` is used. See the
 # documentation of :mod:`IPython.lib.pretty` for details on how to write pretty
 # printers.  Here is a simple example::
-# 
+#
 #     def dtype_pprinter(obj, p, cycle):
 #         if cycle:
 #             return p.text('dtype(...)')
@@ -450,105 +444,105 @@ else:
 
 # PlainTextFormatter will inherit config from: BaseFormatter
 
-# 
+#
 # c.PlainTextFormatter.newline = '\n'
 
-# 
+#
 # c.PlainTextFormatter.float_precision = ''
 
-# 
+#
 # c.PlainTextFormatter.type_printers = {}
 
-# 
+#
 # c.PlainTextFormatter.singleton_printers = {}
 
 # Truncate large collections (lists, dicts, tuples, sets) to this size.
-# 
+#
 # Set to 0 to disable truncation.
 # c.PlainTextFormatter.max_seq_length = 1000
 
-# 
+#
 # c.PlainTextFormatter.pprint = True
 
-# 
+#
 # c.PlainTextFormatter.max_width = 79
 
-# 
+#
 # c.PlainTextFormatter.deferred_printers = {}
 
-# 
+#
 # c.PlainTextFormatter.verbose = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPCompleter configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # Extension of the completer class with IPython-specific features
 
 # IPCompleter will inherit config from: Completer
 
 # Instruct the completer to omit private method names
-# 
+#
 # Specifically, when completing on ``object.<tab>``.
-# 
+#
 # When 2 [default]: all names that start with '_' will be excluded.
-# 
+#
 # When 1: all 'magic' names (``__foo__``) will be excluded.
-# 
+#
 # When 0: nothing will be excluded.
 # c.IPCompleter.omit__names = 2
 
 # Activate greedy completion
-# 
+#
 # This will enable completion on elements of lists, results of function calls,
 # etc., but can be unsafe because the code is actually evaluated on TAB.
 # c.IPCompleter.greedy = False
 
 # Instruct the completer to use __all__ for the completion
-# 
+#
 # Specifically, when completing on ``object.<tab>``.
-# 
+#
 # When True: only those names in obj.__all__ will be included.
-# 
+#
 # When False [default]: the __all__ attribute is ignored
 # c.IPCompleter.limit_to__all__ = False
 
 # Whether to merge completion results into a single list
-# 
+#
 # If False, only the completion results from the first non-empty completer will
 # be returned.
 # c.IPCompleter.merge_completions = True
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ScriptMagics configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # Magics for talking to scripts
-# 
+#
 # This defines a base `%%script` cell magic for running a cell with a program in
 # a subprocess, and registers a few top-level magics that call %%script with
 # common interpreters.
 
 # Extra script cell magics to define
-# 
+#
 # This generates simple wrappers of `%%script foo` as `%%foo`.
-# 
+#
 # If you want to add script magics that aren't on your path, specify them in
 # script_paths
 # c.ScriptMagics.script_magics = []
 
 # Dict mapping short 'ruby' names to full paths, such as '/opt/secret/bin/ruby'
-# 
+#
 # Only necessary for items in script_magics where the default path will not find
 # the right interpreter.
 # c.ScriptMagics.script_paths = {}
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # StoreMagics configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # Lightweight persistence for python variables.
-# 
+#
 # Provides the %store magic.
 
 # If True, any %store-d variables will be automatically restored when IPython
