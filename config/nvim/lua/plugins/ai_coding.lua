@@ -1,45 +1,38 @@
 return {
   {
     "GeorgesAlkhouri/nvim-aider",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    cmd = { "Aider", "AiderEdit", "AiderChatToggle", "AiderResetChat" },
+    cmd = { "AiderTerminalToggle", "AiderHealth" },
     keys = {
-      { "<leader>aa", "<cmd>Aider<cr>", desc = "Start Aider" },
-      { "<leader>ae", "<cmd>AiderEdit<cr>", desc = "Edit with Aider" },
-      { "<leader>at", "<cmd>AiderChatToggle<cr>", desc = "Toggle Aider chat" },
-      { "<leader>ar", "<cmd>AiderResetChat<cr>", desc = "Reset Aider chat" },
+      { "<leader>a/", "<cmd>AiderTerminalToggle<cr>", desc = "Open Aider" },
+      { "<leader>as", "<cmd>AiderTerminalSend<cr>", desc = "Send to Aider", mode = { "n", "v" } },
+      { "<leader>ac", "<cmd>AiderQuickSendCommand<cr>", desc = "Send Command To Aider" },
+      { "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>", desc = "Send Buffer To Aider" },
+      { "<leader>a+", "<cmd>AiderQuickAddFile<cr>", desc = "Add File to Aider" },
+      { "<leader>a-", "<cmd>AiderQuickDropFile<cr>", desc = "Drop File from Aider" },
+      { "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", desc = "Add File as Read-Only" },
+      -- Example nvim-tree.lua integration if needed
+      { "<leader>a+", "<cmd>AiderTreeAddFile<cr>", desc = "Add File from Tree to Aider", ft = "NvimTree" },
+      { "<leader>a-", "<cmd>AiderTreeDropFile<cr>", desc = "Drop File from Tree from Aider", ft = "NvimTree" },
     },
-    opts = {
-      -- API provider configuration
-      provider = {
-        -- Options: anthropic, openai, ollama, etc.
-        name = "anthropic",
-        -- Model to use (depends on provider)
-        model = "claude-3-opus-20240229",
-        -- API key (can also be set via environment variable)
-        -- api_key = "your_api_key_here", -- or use ANTHROPIC_API_KEY env var
-      },
-      -- UI configuration
-      ui = {
-        -- Width of chat window (can be number or function)
-        width = function()
-          return math.floor(vim.o.columns * 0.4)
+    dependencies = {
+      "folke/snacks.nvim",
+      --- The below dependencies are optional
+      "catppuccin/nvim",
+      "nvim-tree/nvim-tree.lua",
+      --- Neo-tree integration
+      {
+        "nvim-neo-tree/neo-tree.nvim",
+        opts = function(_, opts)
+          require("nvim_aider.neo_tree").setup(opts)
         end,
-        -- Border style for floating windows
-        border = "rounded",
       },
-      -- Additional options
-      auto_focus_chat = true,
-      -- File patterns to include/exclude
-      file_patterns = {
-        include = { "**/*" },
-        exclude = { ".git/", "node_modules/" },
+    },
+    config = true,
+    opts = {
+      args = {
+        "--no-auto-commits",
+        "--pretty",
+        "--stream",
       },
     },
   },
