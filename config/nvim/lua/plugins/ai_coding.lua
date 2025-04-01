@@ -1,32 +1,45 @@
 return {
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false, -- Never set this value to "*"! Never!
-    opts = {
-      provider = "claude",
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    "GeorgesAlkhouri/nvim-aider",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim",
       "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    cmd = { "Aider", "AiderEdit", "AiderChatToggle", "AiderResetChat" },
+    keys = {
+      { "<leader>aa", "<cmd>Aider<cr>", desc = "Start Aider" },
+      { "<leader>ae", "<cmd>AiderEdit<cr>", desc = "Edit with Aider" },
+      { "<leader>at", "<cmd>AiderChatToggle<cr>", desc = "Toggle Aider chat" },
+      { "<leader>ar", "<cmd>AiderResetChat<cr>", desc = "Reset Aider chat" },
+    },
+    opts = {
+      -- API provider configuration
+      provider = {
+        -- Options: anthropic, openai, ollama, etc.
+        name = "anthropic",
+        -- Model to use (depends on provider)
+        model = "claude-3-opus-20240229",
+        -- API key (can also be set via environment variable)
+        -- api_key = "your_api_key_here", -- or use ANTHROPIC_API_KEY env var
+      },
+      -- UI configuration
+      ui = {
+        -- Width of chat window (can be number or function)
+        width = function()
+          return math.floor(vim.o.columns * 0.4)
+        end,
+        -- Border style for floating windows
+        border = "rounded",
+      },
+      -- Additional options
+      auto_focus_chat = true,
+      -- File patterns to include/exclude
+      file_patterns = {
+        include = { "**/*" },
+        exclude = { ".git/", "node_modules/" },
       },
     },
   },
