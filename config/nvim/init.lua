@@ -25,6 +25,7 @@ opt.scrolloff = 3
 opt.clipboard = "unnamedplus"
 opt.wildmode = "longest:full,full"
 opt.cursorline = true
+opt.termguicolors = true
 
 -- mapleader
 -- Make sure that `mapleader` and `maplocalleader` is setup before loadin lazy.nvim.
