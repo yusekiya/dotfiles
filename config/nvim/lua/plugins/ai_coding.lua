@@ -1,23 +1,33 @@
 return {
   {
-    "sourcegraph/sg.nvim",
-    event = "LspAttach",
-    keys = {
-      { "<leader>//", "<Cmd>CodyToggle<cr>", mode = "n", desc = "Toggle cody chat window" },
-      { "<leader>ac", "<Cmd>CodyChat<cr>", mode = "n", desc = "Start a new chat" },
-      { "<leader>ar", "<Cmd>CodyRestart<cr>", mode = "n", desc = "Restart cody" },
-      { "<leader>aa", "<Cmd>'<,'>CodyAsk<cr>", mode = "x", desc = "Ask a question" },
-      { "<leader>ae", "<Cmd>'<,'>CodyExplain<cr>", mode = "x", desc = "Explain current selection" },
-      { "<leader>at", "<Cmd>'<,'>CodyTask<cr>", mode = "x", desc = "Instruct cody to perform a task" },
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    opts = {
+      provider = "claude",
     },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
     },
-    config = function()
-      require("sg").setup({
-        -- enable_cody = false,
-      })
-    end,
   },
 }
