@@ -30,3 +30,4 @@ config/raycast/extensions
 *.sqlite
 jupyterlabapputilsextensionannouncements.json
 .aider*
+!.aider.conf.yml
