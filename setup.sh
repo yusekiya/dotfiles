@@ -25,6 +25,11 @@ if [ "$(uname -o)" = "Msys" -a -z "$(id -Gn | grep Administrators)" ]; then
 fi
 
 is_excluded() {
+    # Check if a target is ignored by git
+    if [ -n "$(git check-ignore $1)" ]; then
+        return 0
+    fi
+    # Check if base name of a target is included in the ignore list
     for ignore_file in "${ignore_list[@]}"
     do
         if [ "$( basename "$1")" = $ignore_file ]; then
