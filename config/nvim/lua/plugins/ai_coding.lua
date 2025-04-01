@@ -34,6 +34,17 @@ return {
         "--pretty",
         "--stream",
       },
+      theme = {
+        user_input_color = "#D8DEE9",
+        tool_output_color = "#81A1C1",
+        tool_error_color = "#BF616A",
+        tool_warning_color = "#EBCB8B",
+        assistant_output_color = "#B48EAD",
+        completion_menu_color = "#ECEFF4",
+        completion_menu_bg_color = "#24273a",
+        completion_menu_current_color = "#ECEFF4",
+        completion_menu_current_bg_color = "#4C566A",
+      },
     },
   },
 }
