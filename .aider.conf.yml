@@ -1,2 +1,30 @@
 auto-commits: false
+
+## Set the color for user input (default: #00cc00)
+user-input-color: "#D8DEE9"
+
+## Set the color for tool output (default: None)
+tool-output-color: "#81A1C1"
+
+## Set the color for tool error messages (default: #FF2222)
+tool-error-color: "#BF616A"
+
+## Set the color for tool warning messages (default: #FFA500)
+tool-warning-color: "#EBCB8B"
+
+## Set the color for assistant output (default: #0088ff)
+assistant-output-color: "#B48EAD"
+
+## Set the color for the completion menu (default: terminal's default text color)
+completion-menu-color: "#ECEFF4"
+
+## Set the background color for the completion menu (default: terminal's default background color)
+completion-menu-bg-color: "#24273A"
+
+## Set the color for the current item in the completion menu (default: terminal's default background color)
+completion-menu-current-color: "#ECEFF4"
+
+## Set the background color for the current item in the completion menu (default: terminal's default text color)
+completion-menu-current-bg-color: "#4C566A"
+
 code-theme: "nord"
