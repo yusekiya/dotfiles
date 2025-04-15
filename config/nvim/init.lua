@@ -55,15 +55,16 @@ local function set_osc52_clipboard()
   }
 end
 
-function is_running_on_wezterm_mux_server()
-  return vim.uv.os_getenv("WEZTERM_EXECUTABLE"):find("wezterm-mux-server", 1, true) or nil
+local function is_running_on_wezterm_mux_server()
+  local wezexe = os.getenv("WEZTERM_EXECUTABLE")
+  if wezexe ~= nil then
+    return wezexe:find("wezterm-mux-server", 1, true) or nil
+  else
+    return nil
+  end
 end
 
-if
-  vim.uv.os_getenv("SSH_CLIENT") ~= nil
-  or vim.uv.os_getenv("SSH_TTY") ~= nil
-  or is_running_on_wezterm_mux_server() ~= nil
-then
+if os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil or is_running_on_wezterm_mux_server() ~= nil then
   set_osc52_clipboard()
 end
 
