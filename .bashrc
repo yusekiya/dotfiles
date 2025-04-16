@@ -229,6 +229,7 @@ alias dcm='docker-compose'
 alias pls='pueue status'
 alias pad='pueue add --'
 alias lg='lazygit'
+alias n='nvim'
 
 # Enable completion for aliases
 complete -F _docker d
