@@ -102,6 +102,17 @@ return {
       keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
     end,
   },
+  -- snippets
+  {
+    "L3MON4D3/LuaSnip",
+    event = { "BufReadPre", "BufNewFile" },
+    version = "v2.*",
+    build = "make install_jsregexp",
+    config = function()
+      vim.api.nvim_create_user_command("LuaSnipEdit", ':lua require("luasnip.loaders").edit_snippet_files()', {})
+      require("luasnip.loaders.from_lua").load()
+    end,
+  },
   -- formatting
   {
     "stevearc/conform.nvim",
