@@ -140,6 +140,8 @@ end
 
 cfg = {
 	font = wezterm.font_with_fallback({
+		"FiraCode Nerd Font",
+		"Firple",
 		"Fira Code",
 		"Noto Sans JP",
 	}),
