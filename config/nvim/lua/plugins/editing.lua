@@ -110,7 +110,7 @@ return {
     build = "make install_jsregexp",
     config = function()
       vim.api.nvim_create_user_command("LuaSnipEdit", ':lua require("luasnip.loaders").edit_snippet_files()', {})
-      require("luasnip.loaders.from_lua").load()
+      require("luasnip.loaders.from_lua").lazy_load()
     end,
   },
   -- formatting
