@@ -120,6 +120,7 @@ return {
   },
   -- autocompletion
   {
+    event = { "InsertEnter", "CmdLineEnter" },
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
     dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
