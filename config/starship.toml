@@ -7,7 +7,7 @@ success_symbol = '[❯❯❯](bold #15a3eb)'
 error_symbol = '[❯❯❯](bold red)'
 
 [os]
-disabled = false
+disabled = true
 format = """
 [$symbol]($style)\
 [ ]($style)\
