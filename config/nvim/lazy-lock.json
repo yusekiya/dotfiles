@@ -42,5 +42,6 @@
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "vim-expand-region": { "branch": "master", "commit": "966513543de0ddc2d673b5528a056269e7917276" },
+  "vimtex": { "branch": "master", "commit": "57a03797c16a8a1e6555b6822592f78dc38834a5" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
