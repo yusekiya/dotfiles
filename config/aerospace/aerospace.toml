@@ -202,9 +202,9 @@ ctrl-alt-cmd-shift-l = ['join-with right', 'mode main']
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
+3 = ['secondary', 'built-in', 'main']
+4 = ['secondary', 'built-in', 'main']
+5 = ['secondary', 'built-in', 'main']
 6 = ['secondary', 'built-in', 'main']
 7 = ['secondary', 'built-in', 'main']
 8 = ['secondary', 'built-in', 'main']
