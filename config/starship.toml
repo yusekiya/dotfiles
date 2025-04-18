@@ -1,8 +1,18 @@
+format = '$os$all$character'
+
 continuation_prompt = '[└─❯](bold #15a3eb) '
 
 [character]
 success_symbol = '[❯❯❯](bold #15a3eb)'
 error_symbol = '[❯❯❯](bold red)'
+
+[os]
+disabled = false
+format = """
+[$symbol]($style)\
+[ ]($style)\
+"""
+style = "fg:#D8DEE9 bg:#2E3440"
 
 [aws]
 symbol = "  "
