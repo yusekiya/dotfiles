@@ -1,0 +1,85 @@
+\documentclass[%
+{% if cookiecutter.preprint == "true" -%}
+preprint, linenumbers,
+{% endif -%}
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+amsmath,amssymb,
+aps, physrev,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{{ "{" }}revtex4-2{{ "}" }}
+
+{% raw -%}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+%\DeclareMathOperator{\Tr}{Tr}
+%\DeclareMathOperator{\Re}{Re}
+%\DeclareMathOperator{\Im}{Im}
+%\newcommand{\defas}{\equiv}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{title}
+
+\author{Ann Author}
+ \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
+\author{Second Author}%
+ \email{Contact author: Second.Author@institution.edu}
+\affiliation{%
+ Authors' affiliations\\
+  Include all institutions where the work was conducted: department or division, institution, city, state (if relevant), and country, in this order.
+}
+
+\author{Charlie Author}
+ \homepage{http://www.Second.institution.edu/~Charlie.Author}
+\affiliation{
+ First affiliation for this author
+}%
+\affiliation{
+ second institution for this author
+}%
+\author{Delta Author}
+\affiliation{%
+ Authors' institution and/or address\\
+ This line break forced with \textbackslash\textbackslash
+}%
+%
+\date{\today}% It is always \today
+             % but any date may be explicitly specified
+%
+\begin{abstract}
+An article usually includes an abstract, a concise summary of the work
+covered at length in the main body of the article. 
+\end{abstract}
+%
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+%
+\maketitle
+
+\section{\label{sec:intro}Introduction}
+
+% References
+\bibliography{references}
+
+\end{document}
+{% endraw -%}
