@@ -1,12 +1,24 @@
 #!/usr/bin/env perl
-{% if cookiecutter.utf8 == "yes" -%}
+{% if cookiecutter.engine == "lualatex" -%}
+$lualatex = 'lualatex -shell-escape -synctex=1 -interaction=nonstopmode';
+$pdflualatex  = $lualatex;
+$bibtex = 'bibtex %O %B';
+$pdf_mode = 4; # use lualatex
+{% elif cookiecutter.engine == "xelatex" -%}
+$xelatex = 'xelatex -no-pdf -synctex=1 -shell-escape -interaction=nonstopmode';
+$pdfxelatex  = $xelatex;
+$bibtex = 'bibtex %O %B';
+$pdf_mode = 5; # use xelatex
+{% elif cookiecutter.engine == "uplatex" -%}
 $latex = 'uplatex -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %O %S';
 $bibtex = 'upbibtex %O %B';
-{% elif cookiecutter.utf8 == "no" -%}
+$pdf_mode = 3; # use dvipdf
+$dvipdf = 'dvipdfmx %O -o %D %S';
+{% elif cookiecutter.engine == "platex" -%}
 $latex = 'platex -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %O %S';
 $bibtex = 'pbibtex %O %B';
+$pdf_mode = 3; # use dvipdf
+$dvipdf = 'dvipdfmx %O -o %D %S';
 {% endif -%}
 $biber = 'biber --bblencoding=utf8 -u -U --output_safechars';
-$dvipdf = 'dvipdfmx %O -o %D %S';
-$pdf_mode = 3; # use dvipdf
 $max_repeat = 5;

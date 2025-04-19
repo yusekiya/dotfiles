@@ -1,4 +1,16 @@
-\documentclass[11pt{% if cookiecutter.utf8 == "yes" %}, uplatex{% endif %}, dvipdfmx]{{ "{" }}{{ cookiecutter.documentclass }}{{ "}" }}
+{% set class_options = ["11pt"] -%}
+{% set class_name = "js" ~ cookiecutter.doctype -%}
+{% if cookiecutter.engine == "lualatex" -%}
+    {% set class_name = "lt" ~ class_name -%}
+{% elif cookiecutter.engine == "xelatex" -%}
+    {% set _ = class_options.extend(["xelatex", "ja=standard"]) -%}
+    {% set class_name = "bx" ~ class_name -%}
+{% elif cookiecutter.engine == "uplatex" -%}
+    {% set _ = class_options.extend(["uplatex", "dvipdfmx"]) -%}
+{% elif cookiecutter.engine == "platex" -%}
+    {% set _ = class_options.extend(["dvipdfmx"]) -%}
+{% endif -%}
+\documentclass[{{ class_options|join(",") }}]{{ "{" }}{{ class_name }}{{ "}" }}
 %
 %%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{title}
