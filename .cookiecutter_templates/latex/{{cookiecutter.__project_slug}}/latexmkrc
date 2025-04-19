@@ -1,6 +1,12 @@
 #!/usr/bin/env perl
+{% if cookiecutter.engine == "pdflatex" -%}
 $pdflatex = 'pdflatex -file-line-error --synctex=1 -interaction=nonstopmode %O %S';
 $pdf_mode = 1;
-$max_repeat = 5;
+{% elif cookiecutter.engine == "lualatex" -%}
+$lualatex = 'lualatex -shell-escape -synctex=1 -interaction=nonstopmode';
+$pdflualatex  = $lualatex;
+$pdf_mode = 4; # use lualatex
+{% endif -%}
 $bibtex = 'bibtex';
 $biber = 'biber --bblencoding=utf8 -u -U --output_safechars';
+$max_repeat = 5;

@@ -1,6 +1,7 @@
 {
   "project_name": "draft",
   "__project_slug": "{{ cookiecutter.project_name|replace(' ', '_')|replace('.', '_')|trim() }}",
-  "documentclass": ["scrartcl", "scrreprt", "scrbook", "scrlttr2", "article"],
+  "doctype": ["scrartcl", "scrreprt", "scrbook", "scrlttr2", "article"],
+  "engine": ["pdflatex", "lualatex"],
   "bibliography": ["manual", "biblatex+bibtex", "biblatex+biber", "bibtex"]
 }
