@@ -110,7 +110,16 @@ return {
     build = "make install_jsregexp",
     config = function()
       vim.api.nvim_create_user_command("LuaSnipEdit", ':lua require("luasnip.loaders").edit_snippet_files()', {})
-      require("luasnip.loaders.from_lua").lazy_load()
+      require("luasnip.loaders.from_lua").lazy_load({
+        paths = "./luasnippets",
+      })
+      local ls = require("luasnip")
+      ls.config.setup({
+        -- Enable autotriggered snippets
+        enable_autosnippets = true,
+        -- Use Tab (or some other key if you prefer) to trigger visual selection
+        store_selection_keys = "<Tab>",
+      })
     end,
   },
   -- formatting
