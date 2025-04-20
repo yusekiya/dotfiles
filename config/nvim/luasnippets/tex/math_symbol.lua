@@ -1300,26 +1300,6 @@ return {
   ),
   s(
     {
-      trig = "([^%a])para",
-      dscr = "parallel",
-      regTrig = true,
-      wordTrig = false,
-      condition = tex_utils.in_mathzone,
-      snippetType = "autosnippet",
-    },
-    fmta(
-      [[
-        <>\parallel 
-      ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
-    )
-  ),
-  s(
-    {
       trig = "([^%a])xnn",
       dscr = "x sub n",
       regTrig = true,
