@@ -111,7 +111,7 @@ return {
     config = function()
       vim.api.nvim_create_user_command("LuaSnipEdit", ':lua require("luasnip.loaders").edit_snippet_files()', {})
       require("luasnip.loaders.from_lua").lazy_load({
-        paths = "./luasnippets",
+        paths = { "./luasnippets" },
       })
       local ls = require("luasnip")
       vim.keymap.set({ "i" }, "<Tab>", function()
