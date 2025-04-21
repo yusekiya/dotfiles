@@ -1,5 +1,7 @@
 local ls = require("luasnip")
 local s = ls.snippet
+local sn = ls.snippet_node
+local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
 local d = ls.dynamic_node
@@ -8,6 +10,33 @@ local fmta = require("luasnip.extras.fmt").fmta
 local ls_common = require("luasnip-utils.common")
 local get_visual = ls_common.get_visual
 local tex_utils = require("luasnip-utils.tex")
+
+local generate_fraction = function(_, snip)
+  local stripped = snip.captures[1]
+  local depth = 0
+  local j = #stripped
+  while true do
+    local c = stripped:sub(j, j)
+    if c == "(" then
+      depth = depth + 1
+    elseif c == ")" then
+      depth = depth - 1
+    end
+    if depth == 0 then
+      break
+    end
+    j = j - 1
+  end
+  return sn(
+    nil,
+    fmta(
+      [[
+        <>\frac{<>}{<>}
+        ]],
+      { t(stripped:sub(1, j - 1)), t(stripped:sub(j + 1, -2)), i(1) }
+    )
+  )
+end
 
 return {
   s(
@@ -1114,5 +1143,58 @@ return {
         end),
       }
     )
+  ),
+  s(
+    {
+      trig = "//",
+      dscr = "fraction",
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        \frac{<>}{<>}
+      ]],
+      {
+        d(1, get_visual),
+        i(2),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "((\\d+)|(\\d*)(\\\\)?([A-Za-z]+)((\\^|_)(\\{\\d+\\}|\\d))*)\\/",
+      dscr = "fraction without parentheses",
+      regTrig = true,
+      wordTrig = false,
+      trigEngine = "ecma",
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        \frac{<>}{<>}
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(2),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "(^.*\\))/",
+      dscr = "fraction with parentheses",
+      regTrig = true,
+      wordTrig = false,
+      trigEngine = "ecma",
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta("<>", {
+      d(1, generate_fraction),
+    })
   ),
 }
