@@ -38,7 +38,62 @@ local generate_fraction = function(_, snip)
   )
 end
 
-return {
+local add_trigonometric = function(snippets)
+  local fnames = { "arcsin", "arccos", "arctan", "arccot", "arccsc", "arcsec", "sin", "cos", "tan", "cot", "csc" }
+  for _, fname in pairs(fnames) do
+    table.insert(
+      snippets,
+      s(
+        {
+          trig = "([^%a])" .. fname .. "([A-Za-gi-z; ])",
+          dscr = fname .. " function",
+          regTrig = true,
+          wordTrig = false,
+          condition = tex_utils.in_mathzone,
+          snippetType = "autosnippet",
+        },
+        fmta("<>\\" .. fname .. " <>", {
+          f(function(_, snip)
+            return snip.captures[1]
+          end),
+          f(function(_, snip)
+            return string.gsub(snip.captures[2], "%s+", "")
+          end),
+        })
+      )
+    )
+  end
+end
+
+local add_hyperbolic = function(snippets)
+  local fnames =
+    { "arcsinh", "arccosh", "arctanh", "arccoth", "arccsch", "arcsech", "sinh", "cosh", "tanh", "coth", "csch" }
+  for _, fname in pairs(fnames) do
+    table.insert(
+      snippets,
+      s(
+        {
+          trig = "([^%a])" .. fname .. "([A-Za-z; ])",
+          dscr = fname .. " function",
+          regTrig = true,
+          wordTrig = false,
+          condition = tex_utils.in_mathzone,
+          snippetType = "autosnippet",
+        },
+        fmta("<>\\" .. fname .. " <>", {
+          f(function(_, snip)
+            return snip.captures[1]
+          end),
+          f(function(_, snip)
+            return string.gsub(snip.captures[2], "%s+", "")
+          end),
+        })
+      )
+    )
+  end
+end
+
+local snippets = {
   s(
     {
       trig = "([^%a])te",
@@ -1198,3 +1253,8 @@ return {
     })
   ),
 }
+
+add_trigonometric(snippets)
+add_hyperbolic(snippets)
+
+return snippets
