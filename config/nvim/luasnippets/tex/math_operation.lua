@@ -357,7 +357,49 @@ local snippets = {
     },
     fmta(
       [[
-        <>\exp(<>)
+        <>\exp <>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a])log",
+      dscr = "log function",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\log <>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a])ln",
+      dscr = "natural log function",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\ln <>
       ]],
       {
         f(function(_, snip)
