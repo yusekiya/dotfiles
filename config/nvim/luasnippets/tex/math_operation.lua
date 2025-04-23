@@ -536,7 +536,7 @@ return {
   ),
   s(
     {
-      trig = "({%a})(%d)",
+      trig = "(})(%d)",
       dscr = "add sub digit to block",
       regTrig = true,
       wordTrig = false,
