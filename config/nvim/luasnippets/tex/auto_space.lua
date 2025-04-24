@@ -128,7 +128,7 @@ local generate_auto_space_macros = function()
       snippets,
       s(
         {
-          trig = "\\" .. macro .. "([A-Za-z ])",
+          trig = "\\" .. macro .. "([A-Za-z])",
           dscr = "auto space " .. macro,
           regTrig = true,
           wordTrig = false,
@@ -137,7 +137,7 @@ local generate_auto_space_macros = function()
         },
         fmta("\\" .. macro .. " <>", {
           f(function(_, snip)
-            return string.gsub(snip.captures[1], "%s+", "")
+            return snip.captures[1]
           end),
         })
       )
