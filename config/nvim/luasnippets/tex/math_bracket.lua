@@ -22,14 +22,13 @@ return {
     },
     fmta(
       [[
-        <>\langle <> \rangle <>
+        <>\langle <> \rangle
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),
@@ -44,14 +43,13 @@ return {
     },
     fmta(
       [[
-        <>| <> | <>
+        <>| <> |
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),
@@ -129,14 +127,13 @@ return {
     },
     fmt(
       [[
-        {}\left< {} \right> {}
+        {}\left< {} \right>
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),
@@ -151,14 +148,13 @@ return {
     },
     fmta(
       [[
-        <>\left| <> \right| <>
+        <>\left| <> \right|
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),

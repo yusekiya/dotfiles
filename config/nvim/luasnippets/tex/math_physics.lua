@@ -22,7 +22,7 @@ return {
     },
     fmta(
       [[
-        <>k_\mathrm{B}T 
+        <>k_\mathrm{B}T
       ]],
       {
         f(function(_, snip)
@@ -42,7 +42,7 @@ return {
     },
     fmta(
       [[
-        <>\hbar 
+        <>\hbar
       ]],
       {
         f(function(_, snip)
@@ -62,7 +62,7 @@ return {
     },
     fmta(
       [[
-        ^\dagger <>
+        ^\dagger<>
       ]],
       {
         i(0),
@@ -80,7 +80,7 @@ return {
     },
     fmta(
       [[
-        <>\oplus 
+        <>\oplus
       ]],
       {
         f(function(_, snip)
@@ -100,7 +100,7 @@ return {
     },
     fmta(
       [[
-        <>\bigoplus 
+        <>\bigoplus
       ]],
       {
         f(function(_, snip)
@@ -120,7 +120,7 @@ return {
     },
     fmta(
       [[
-        <>\otimes 
+        <>\otimes
       ]],
       {
         f(function(_, snip)
@@ -140,7 +140,7 @@ return {
     },
     fmta(
       [[
-        <>\bigotimes 
+        <>\bigotimes
       ]],
       {
         f(function(_, snip)

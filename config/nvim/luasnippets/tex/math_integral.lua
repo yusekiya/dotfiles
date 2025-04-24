@@ -62,7 +62,7 @@ return {
     },
     fmta(
       [[
-        <>\oint 
+        <>\oint
       ]],
       {
         f(function(_, snip)
@@ -82,7 +82,7 @@ return {
     },
     fmta(
       [[
-        <>\iint 
+        <>\iint
       ]],
       {
         f(function(_, snip)
@@ -102,7 +102,7 @@ return {
     },
     fmta(
       [[
-        <>\iiint 
+        <>\iiint
       ]],
       {
         f(function(_, snip)
@@ -123,7 +123,7 @@ return {
     },
     fmta(
       [[
-        <>\idotsint 
+        <>\idotsint
       ]],
       {
         f(function(_, snip)
