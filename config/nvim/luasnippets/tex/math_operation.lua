@@ -420,7 +420,7 @@ local snippets = {
     },
     fmta(
       [[
-        ^\top
+        ^\top<>
       ]],
       { i(0) }
     )

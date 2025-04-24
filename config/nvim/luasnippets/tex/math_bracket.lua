@@ -134,7 +134,6 @@ return {
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),
@@ -156,7 +155,6 @@ return {
           return snip.captures[1]
         end),
         d(1, get_visual),
-        i(0),
       }
     )
   ),
