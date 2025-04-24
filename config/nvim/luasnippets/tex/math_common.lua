@@ -4,7 +4,6 @@ local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
-local ls_common = require("luasnip-utils.common")
 local tex_utils = require("luasnip-utils.tex")
 
 return {
