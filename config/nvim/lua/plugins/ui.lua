@@ -130,7 +130,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = "enter" },
+      keymap = { preset = "super-tab" },
       appearance = {
         nerd_font_variant = "mono",
       },
