@@ -8,342 +8,257 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a]);a",
+      trig = ";a",
       dscr = "α",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\alpha
+        \alpha
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);b",
+      trig = ";b",
       dscr = "β",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\beta
+        \beta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);g",
+      trig = ";g",
       dscr = "γ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\gamma
+        \gamma
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);G",
+      trig = ";G",
       dscr = "Γ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Gamma
+        \Gamma
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);d",
+      trig = ";d",
       dscr = "δ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\delta
+        \delta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);D",
+      trig = ";D",
       dscr = "Δ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Delta
+        \Delta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);e",
+      trig = ";e",
       dscr = "ε",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\epsilon
+        \epsilon
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);ve",
+      trig = ";ve",
       dscr = "variant of ε",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\varepsilon
+        \varepsilon
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);z",
+      trig = ";z",
       dscr = "ζ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\zeta
+        \zeta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])eta",
+      trig = "eta",
       dscr = "η",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\eta
+        \eta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);t",
+      trig = ";t",
       dscr = "θ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\theta
+        \theta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);vt",
+      trig = ";vt",
       dscr = "variant of θ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\vartheta
+        \vartheta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);T",
+      trig = ";T",
       dscr = "Θ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Theta
+        \Theta
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);i",
+      trig = ";i",
       dscr = "ι",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\iota
+        \iota
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);k",
+      trig = ";k",
       dscr = "κ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\kappa
+        \kappa
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);l",
+      trig = ";l",
       dscr = "λ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\lambda
+        \lambda
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);L",
+      trig = ";L",
       dscr = "Λ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Lambda
+        \Lambda
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -488,142 +403,107 @@ return {
   ),
   s(
     {
-      trig = "([^%a]);vr",
+      trig = ";vr",
       dscr = "variant of ρ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\varrho
+        \varrho
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);s",
+      trig = ";s",
       dscr = "σ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\sigma
+        \sigma
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);vs",
+      trig = ";vs",
       dscr = "variant of σ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\varsigma
+        \varsigma
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);S",
+      trig = ";S",
       dscr = "Σ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Sigma
+        \Sigma
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])tau",
+      trig = "tau",
       dscr = "τ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\tau
+        \tau
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);u",
+      trig = ";u",
       dscr = "υ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\upsilon
+        \upsilon
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);U",
+      trig = ";U",
       dscr = "Υ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Upsilon
+        \Upsilon
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -648,22 +528,17 @@ return {
   ),
   s(
     {
-      trig = "([^%a]);vp",
+      trig = ";vp",
       dscr = "variant of φ",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\varphi
+        \varphi
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -748,42 +623,32 @@ return {
   ),
   s(
     {
-      trig = "([^%a]);o",
+      trig = ";o",
       dscr = "ω",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\omega
+        \omega
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]);O",
+      trig = ";O",
       dscr = "ω",
-      regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Omega
+        \Omega
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
 }
