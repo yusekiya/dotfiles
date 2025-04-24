@@ -18,7 +18,7 @@ return {
     },
     fmta(
       [[
-        <>\infty 
+        <>\infty
       ]],
       {
         f(function(_, snip)
@@ -38,7 +38,7 @@ return {
     },
     fmta(
       [[
-        <>\emptyset 
+        <>\emptyset
       ]],
       {
         f(function(_, snip)
@@ -58,7 +58,7 @@ return {
     },
     fmta(
       [[
-        <>\sum 
+        <>\sum
       ]],
       {
         f(function(_, snip)
@@ -78,7 +78,7 @@ return {
     },
     fmta(
       [[
-        <>\prod 
+        <>\prod
       ]],
       {
         f(function(_, snip)
@@ -120,7 +120,7 @@ return {
     },
     fmta(
       [[
-        <>\dots 
+        <>\dots
       ]],
       {
         f(function(_, snip)
@@ -140,7 +140,7 @@ return {
     },
     fmta(
       [[
-        <>\dotsc 
+        <>\dotsc
       ]],
       {
         f(function(_, snip)
@@ -160,7 +160,7 @@ return {
     },
     fmta(
       [[
-        <>\dotsm 
+        <>\dotsm
       ]],
       {
         f(function(_, snip)
@@ -180,7 +180,7 @@ return {
     },
     fmta(
       [[
-        <>\dotsb 
+        <>\dotsb
       ]],
       {
         f(function(_, snip)
@@ -200,7 +200,7 @@ return {
     },
     fmta(
       [[
-        <>\dotsi 
+        <>\dotsi
       ]],
       {
         f(function(_, snip)
@@ -220,7 +220,7 @@ return {
     },
     fmta(
       [[
-        <>\dotso 
+        <>\dotso
       ]],
       {
         f(function(_, snip)
@@ -240,7 +240,7 @@ return {
     },
     fmta(
       [[
-        <>\cdots 
+        <>\cdots
       ]],
       {
         f(function(_, snip)
@@ -260,7 +260,7 @@ return {
     },
     fmta(
       [[
-        <>\vdots 
+        <>\vdots
       ]],
       {
         f(function(_, snip)
@@ -280,7 +280,7 @@ return {
     },
     fmta(
       [[
-        <>\ddots 
+        <>\ddots
       ]],
       {
         f(function(_, snip)
@@ -300,7 +300,7 @@ return {
     },
     fmta(
       [[
-        <>\leftrightarrow 
+        <>\leftrightarrow
       ]],
       {
         f(function(_, snip)
@@ -320,7 +320,7 @@ return {
     },
     fmta(
       [[
-        <>\longleftrightarrow 
+        <>\longleftrightarrow
       ]],
       {
         f(function(_, snip)
@@ -340,7 +340,7 @@ return {
     },
     fmta(
       [[
-        <>\Leftrightarrow 
+        <>\Leftrightarrow
       ]],
       {
         f(function(_, snip)
@@ -360,7 +360,7 @@ return {
     },
     fmta(
       [[
-        <>\Longleftrightarrow 
+        <>\Longleftrightarrow
       ]],
       {
         f(function(_, snip)
@@ -380,7 +380,7 @@ return {
     },
     fmta(
       [[
-        <>\to 
+        <>\to
       ]],
       {
         f(function(_, snip)
@@ -400,7 +400,7 @@ return {
     },
     fmta(
       [[
-        <>\to 
+        <>\to
       ]],
       {
         f(function(_, snip)
@@ -443,7 +443,7 @@ return {
     },
     fmta(
       [[
-        <>\mapsto 
+        <>\mapsto
       ]],
       {
         f(function(_, snip)
@@ -463,7 +463,7 @@ return {
     },
     fmta(
       [[
-        <>\setminus 
+        <>\setminus
       ]],
       {
         f(function(_, snip)
@@ -483,7 +483,7 @@ return {
     },
     fmta(
       [[
-        <>\mid 
+        <>\mid
       ]],
       {
         f(function(_, snip)
@@ -503,7 +503,7 @@ return {
     },
     fmta(
       [[
-        <>\parallel 
+        <>\parallel
       ]],
       {
         f(function(_, snip)
@@ -523,7 +523,7 @@ return {
     },
     fmta(
       [[
-        <>\cap 
+        <>\cap
       ]],
       {
         f(function(_, snip)
@@ -543,7 +543,7 @@ return {
     },
     fmta(
       [[
-        <>\cup 
+        <>\cup
       ]],
       {
         f(function(_, snip)
@@ -563,7 +563,7 @@ return {
     },
     fmta(
       [[
-        <>\wedge 
+        <>\wedge
       ]],
       {
         f(function(_, snip)
@@ -583,7 +583,7 @@ return {
     },
     fmta(
       [[
-        <>\bigwedge 
+        <>\bigwedge
       ]],
       {
         f(function(_, snip)
@@ -603,7 +603,7 @@ return {
     },
     fmta(
       [[
-        <>\vee 
+        <>\vee
       ]],
       {
         f(function(_, snip)
@@ -623,7 +623,7 @@ return {
     },
     fmta(
       [[
-        <>\bigvee 
+        <>\bigvee
       ]],
       {
         f(function(_, snip)
@@ -643,7 +643,7 @@ return {
     },
     fmta(
       [[
-        <>\cap 
+        <>\cap
       ]],
       {
         f(function(_, snip)
@@ -663,7 +663,7 @@ return {
     },
     fmta(
       [[
-        <>\bigcap 
+        <>\bigcap
       ]],
       {
         f(function(_, snip)
@@ -683,7 +683,7 @@ return {
     },
     fmta(
       [[
-        <>\cup 
+        <>\cup
       ]],
       {
         f(function(_, snip)
@@ -703,7 +703,7 @@ return {
     },
     fmta(
       [[
-        <>\bigcup 
+        <>\bigcup
       ]],
       {
         f(function(_, snip)
@@ -723,7 +723,7 @@ return {
     },
     fmta(
       [[
-        <>\in 
+        <>\in
       ]],
       {
         f(function(_, snip)
@@ -743,7 +743,7 @@ return {
     },
     fmta(
       [[
-        <>\subset 
+        <>\subset
       ]],
       {
         f(function(_, snip)
@@ -763,7 +763,7 @@ return {
     },
     fmta(
       [[
-        <>\subseteq 
+        <>\subseteq
       ]],
       {
         f(function(_, snip)
@@ -783,7 +783,7 @@ return {
     },
     fmta(
       [[
-        <>\implies 
+        <>\implies
       ]],
       {
         f(function(_, snip)
@@ -803,7 +803,7 @@ return {
     },
     fmta(
       [[
-        <>\impliedby 
+        <>\impliedby
       ]],
       {
         f(function(_, snip)
@@ -823,7 +823,7 @@ return {
     },
     fmta(
       [[
-        <>\iff 
+        <>\iff
       ]],
       {
         f(function(_, snip)
@@ -843,7 +843,7 @@ return {
     },
     fmta(
       [[
-        <>\exists 
+        <>\exists
       ]],
       {
         f(function(_, snip)
@@ -863,7 +863,7 @@ return {
     },
     fmta(
       [[
-        <>\forall 
+        <>\forall
       ]],
       {
         f(function(_, snip)
@@ -903,7 +903,7 @@ return {
     },
     fmta(
       [[
-        <>\equiv 
+        <>\equiv
       ]],
       {
         f(function(_, snip)
@@ -923,7 +923,7 @@ return {
     },
     fmta(
       [[
-        <>\coloneq 
+        <>\coloneq
       ]],
       {
         f(function(_, snip)
@@ -943,7 +943,7 @@ return {
     },
     fmta(
       [[
-        <>\eqcolon 
+        <>\eqcolon
       ]],
       {
         f(function(_, snip)
@@ -963,7 +963,7 @@ return {
     },
     fmta(
       [[
-        <>\square 
+        <>\square
       ]],
       {
         f(function(_, snip)
@@ -983,7 +983,7 @@ return {
     },
     fmta(
       [[
-        <>\neq 
+        <>\neq
       ]],
       {
         f(function(_, snip)
@@ -1049,7 +1049,7 @@ return {
     },
     fmta(
       [[
-        <>\gg 
+        <>\gg
       ]],
       {
         f(function(_, snip)
@@ -1069,7 +1069,7 @@ return {
     },
     fmta(
       [[
-        <>\ll 
+        <>\ll
       ]],
       {
         f(function(_, snip)
@@ -1089,7 +1089,7 @@ return {
     },
     fmta(
       [[
-        <>\sim 
+        <>\sim
       ]],
       {
         f(function(_, snip)
@@ -1109,7 +1109,7 @@ return {
     },
     fmta(
       [[
-        <>\simeq 
+        <>\simeq
       ]],
       {
         f(function(_, snip)
@@ -1129,7 +1129,7 @@ return {
     },
     fmta(
       [[
-        <>\approx 
+        <>\approx
       ]],
       {
         f(function(_, snip)
@@ -1149,7 +1149,7 @@ return {
     },
     fmta(
       [[
-        <>\propto 
+        <>\propto
       ]],
       {
         f(function(_, snip)
@@ -1169,7 +1169,7 @@ return {
     },
     fmta(
       [[
-        <>\nabla 
+        <>\nabla
       ]],
       {
         f(function(_, snip)
@@ -1189,7 +1189,7 @@ return {
     },
     fmta(
       [[
-        <>\nabla 
+        <>\nabla
       ]],
       {
         f(function(_, snip)
@@ -1209,7 +1209,7 @@ return {
     },
     fmta(
       [[
-        <>\div 
+        <>\div
       ]],
       {
         f(function(_, snip)
@@ -1229,7 +1229,7 @@ return {
     },
     fmta(
       [[
-        <>\rot 
+        <>\rot
       ]],
       {
         f(function(_, snip)
@@ -1249,7 +1249,7 @@ return {
     },
     fmta(
       [[
-        <>\grad 
+        <>\grad
       ]],
       {
         f(function(_, snip)
@@ -1269,7 +1269,7 @@ return {
     },
     fmta(
       [[
-        <>\times 
+        <>\times
       ]],
       {
         f(function(_, snip)
@@ -1289,7 +1289,7 @@ return {
     },
     fmta(
       [[
-        <>\cdot 
+        <>\cdot
       ]],
       {
         f(function(_, snip)
@@ -1309,7 +1309,7 @@ return {
     },
     fmta(
       [[
-        <>x_n 
+        <>x_n
       ]],
       {
         f(function(_, snip)
@@ -1329,7 +1329,7 @@ return {
     },
     fmta(
       [[
-        <>x_i 
+        <>x_i
       ]],
       {
         f(function(_, snip)
@@ -1349,7 +1349,7 @@ return {
     },
     fmta(
       [[
-        <>x_j 
+        <>x_j
       ]],
       {
         f(function(_, snip)
@@ -1369,7 +1369,7 @@ return {
     },
     fmta(
       [[
-        <>y_n 
+        <>y_n
       ]],
       {
         f(function(_, snip)
@@ -1389,7 +1389,7 @@ return {
     },
     fmta(
       [[
-        <>y_i 
+        <>y_i
       ]],
       {
         f(function(_, snip)
@@ -1409,7 +1409,7 @@ return {
     },
     fmta(
       [[
-        <>y_j 
+        <>y_j
       ]],
       {
         f(function(_, snip)
@@ -1429,7 +1429,7 @@ return {
     },
     fmta(
       [[
-        <>\ell 
+        <>\ell
       ]],
       {
         f(function(_, snip)
@@ -1449,7 +1449,7 @@ return {
     },
     fmta(
       [[
-        <>\ell 
+        <>\ell
       ]],
       {
         f(function(_, snip)

@@ -17,7 +17,7 @@ return {
     },
     fmta(
       [[
-        <>\alpha 
+        <>\alpha
       ]],
       {
         f(function(_, snip)
@@ -37,7 +37,7 @@ return {
     },
     fmta(
       [[
-        <>\beta 
+        <>\beta
       ]],
       {
         f(function(_, snip)
@@ -57,7 +57,7 @@ return {
     },
     fmta(
       [[
-        <>\gamma 
+        <>\gamma
       ]],
       {
         f(function(_, snip)
@@ -77,7 +77,7 @@ return {
     },
     fmta(
       [[
-        <>\Gamma 
+        <>\Gamma
       ]],
       {
         f(function(_, snip)
@@ -97,7 +97,7 @@ return {
     },
     fmta(
       [[
-        <>\delta 
+        <>\delta
       ]],
       {
         f(function(_, snip)
@@ -117,7 +117,7 @@ return {
     },
     fmta(
       [[
-        <>\Delta 
+        <>\Delta
       ]],
       {
         f(function(_, snip)
@@ -137,7 +137,7 @@ return {
     },
     fmta(
       [[
-        <>\epsilon 
+        <>\epsilon
       ]],
       {
         f(function(_, snip)
@@ -157,7 +157,7 @@ return {
     },
     fmta(
       [[
-        <>\varepsilon 
+        <>\varepsilon
       ]],
       {
         f(function(_, snip)
@@ -177,7 +177,7 @@ return {
     },
     fmta(
       [[
-        <>\zeta 
+        <>\zeta
       ]],
       {
         f(function(_, snip)
@@ -197,7 +197,7 @@ return {
     },
     fmta(
       [[
-        <>\eta 
+        <>\eta
       ]],
       {
         f(function(_, snip)
@@ -217,7 +217,7 @@ return {
     },
     fmta(
       [[
-        <>\theta 
+        <>\theta
       ]],
       {
         f(function(_, snip)
@@ -237,7 +237,7 @@ return {
     },
     fmta(
       [[
-        <>\vartheta 
+        <>\vartheta
       ]],
       {
         f(function(_, snip)
@@ -257,7 +257,7 @@ return {
     },
     fmta(
       [[
-        <>\Theta 
+        <>\Theta
       ]],
       {
         f(function(_, snip)
@@ -277,7 +277,7 @@ return {
     },
     fmta(
       [[
-        <>\iota 
+        <>\iota
       ]],
       {
         f(function(_, snip)
@@ -297,7 +297,7 @@ return {
     },
     fmta(
       [[
-        <>\kappa 
+        <>\kappa
       ]],
       {
         f(function(_, snip)
@@ -317,7 +317,7 @@ return {
     },
     fmta(
       [[
-        <>\lambda 
+        <>\lambda
       ]],
       {
         f(function(_, snip)
@@ -337,7 +337,7 @@ return {
     },
     fmta(
       [[
-        <>\Lambda 
+        <>\Lambda
       ]],
       {
         f(function(_, snip)
@@ -357,7 +357,7 @@ return {
     },
     fmta(
       [[
-        <>\mu 
+        <>\mu
       ]],
       {
         f(function(_, snip)
@@ -377,7 +377,7 @@ return {
     },
     fmta(
       [[
-        <>\nu 
+        <>\nu
       ]],
       {
         f(function(_, snip)
@@ -397,7 +397,7 @@ return {
     },
     fmta(
       [[
-        <>\xi 
+        <>\xi
       ]],
       {
         f(function(_, snip)
@@ -417,7 +417,7 @@ return {
     },
     fmta(
       [[
-        <>\Xi 
+        <>\Xi
       ]],
       {
         f(function(_, snip)
@@ -437,7 +437,7 @@ return {
     },
     fmta(
       [[
-        <>\pi 
+        <>\pi
       ]],
       {
         f(function(_, snip)
@@ -457,7 +457,7 @@ return {
     },
     fmta(
       [[
-        <>\Pi 
+        <>\Pi
       ]],
       {
         f(function(_, snip)
@@ -477,7 +477,7 @@ return {
     },
     fmta(
       [[
-        <>\rho 
+        <>\rho
       ]],
       {
         f(function(_, snip)
@@ -497,7 +497,7 @@ return {
     },
     fmta(
       [[
-        <>\varrho 
+        <>\varrho
       ]],
       {
         f(function(_, snip)
@@ -517,7 +517,7 @@ return {
     },
     fmta(
       [[
-        <>\sigma 
+        <>\sigma
       ]],
       {
         f(function(_, snip)
@@ -537,7 +537,7 @@ return {
     },
     fmta(
       [[
-        <>\varsigma 
+        <>\varsigma
       ]],
       {
         f(function(_, snip)
@@ -557,7 +557,7 @@ return {
     },
     fmta(
       [[
-        <>\Sigma 
+        <>\Sigma
       ]],
       {
         f(function(_, snip)
@@ -577,7 +577,7 @@ return {
     },
     fmta(
       [[
-        <>\tau 
+        <>\tau
       ]],
       {
         f(function(_, snip)
@@ -597,7 +597,7 @@ return {
     },
     fmta(
       [[
-        <>\upsilon 
+        <>\upsilon
       ]],
       {
         f(function(_, snip)
@@ -617,7 +617,7 @@ return {
     },
     fmta(
       [[
-        <>\Upsilon 
+        <>\Upsilon
       ]],
       {
         f(function(_, snip)
@@ -637,7 +637,7 @@ return {
     },
     fmta(
       [[
-        <>\phi 
+        <>\phi
       ]],
       {
         f(function(_, snip)
@@ -657,7 +657,7 @@ return {
     },
     fmta(
       [[
-        <>\varphi 
+        <>\varphi
       ]],
       {
         f(function(_, snip)
@@ -677,7 +677,7 @@ return {
     },
     fmta(
       [[
-        <>\Phi 
+        <>\Phi
       ]],
       {
         f(function(_, snip)
@@ -697,7 +697,7 @@ return {
     },
     fmta(
       [[
-        <>\chi 
+        <>\chi
       ]],
       {
         f(function(_, snip)
@@ -717,7 +717,7 @@ return {
     },
     fmta(
       [[
-        <>\psi 
+        <>\psi
       ]],
       {
         f(function(_, snip)
@@ -737,7 +737,7 @@ return {
     },
     fmta(
       [[
-        <>\Psi 
+        <>\Psi
       ]],
       {
         f(function(_, snip)
@@ -757,7 +757,7 @@ return {
     },
     fmta(
       [[
-        <>\omega 
+        <>\omega
       ]],
       {
         f(function(_, snip)
@@ -777,7 +777,7 @@ return {
     },
     fmta(
       [[
-        <>\Omega 
+        <>\Omega
       ]],
       {
         f(function(_, snip)

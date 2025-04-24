@@ -420,7 +420,7 @@ local snippets = {
     },
     fmta(
       [[
-        ^\top <>
+        ^\top
       ]],
       { i(0) }
     )
@@ -436,7 +436,7 @@ local snippets = {
     },
     fmta(
       [[
-        ^* <>
+        ^*<>
       ]],
       { i(0) }
     )
@@ -452,13 +452,12 @@ local snippets = {
     },
     fmta(
       [[
-        <>\Tr <>
+        <>\Tr
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(0),
       }
     )
   ),
@@ -473,13 +472,12 @@ local snippets = {
     },
     fmta(
       [[
-        <>\det <>
+        <>\det
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(0),
       }
     )
   ),
@@ -494,13 +492,12 @@ local snippets = {
     },
     fmta(
       [[
-        <>\Re <>
+        <>\Re
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(0),
       }
     )
   ),
@@ -515,13 +512,12 @@ local snippets = {
     },
     fmta(
       [[
-        <>\Im <>
+        <>\Im
       ]],
       {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(0),
       }
     )
   ),
@@ -1128,7 +1124,7 @@ local snippets = {
     },
     fmta(
       [[
-        <>\lVert <> \rVert 
+        <>\lVert <> \rVert
       ]],
       {
         f(function(_, snip)
