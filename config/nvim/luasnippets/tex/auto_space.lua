@@ -121,29 +121,29 @@ local macros = {
   "ell",
 }
 
--- local generate_auto_space_macros = function()
---   local snippets = {}
---   for _, macro in pairs(macros) do
---     table.insert(
---       snippets,
---       s(
---         {
---           trig = "\\" .. macro .. "([A-Za-z ])",
---           dscr = "auto space " .. macro,
---           regTrig = true,
---           wordTrig = false,
---           condition = tex_utils.in_mathzone,
---           snippetType = "autosnippet",
---         },
---         fmta("\\" .. macro .. " <>", {
---           f(function(_, snip)
---             return string.gsub(snip.captures[1], "%s+", "")
---           end),
---         })
---       )
---     )
---   end
---   return snippets
--- end
+local generate_auto_space_macros = function()
+  local snippets = {}
+  for _, macro in pairs(macros) do
+    table.insert(
+      snippets,
+      s(
+        {
+          trig = "\\" .. macro .. "([A-Za-z ])",
+          dscr = "auto space " .. macro,
+          regTrig = true,
+          wordTrig = false,
+          condition = tex_utils.in_mathzone,
+          snippetType = "autosnippet",
+        },
+        fmta("\\" .. macro .. " <>", {
+          f(function(_, snip)
+            return string.gsub(snip.captures[1], "%s+", "")
+          end),
+        })
+      )
+    )
+  end
+  return snippets
+end
 
-return {}
+return generate_auto_space_macros()
