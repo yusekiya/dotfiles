@@ -104,6 +104,43 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
+      -- setting for LaTeX
+      vim.lsp.config("harper_ls", {
+        settings = {
+          ["harper-ls"] = {
+            userDictPath = "~/dict.txt",
+          },
+        },
+      })
+      lspconfig.harper_ls.setup({
+        filetypes = {
+          "c",
+          "cpp",
+          "cs",
+          "gitcommit",
+          "go",
+          "html",
+          "java",
+          "javascript",
+          "lua",
+          "markdown",
+          "nix",
+          "python",
+          "ruby",
+          "rust",
+          "swift",
+          "toml",
+          "tex",
+          "typescript",
+          "typescriptreact",
+          "haskell",
+          "cmake",
+          "typst",
+          "php",
+          "dart",
+        },
+      })
+
       -- config for each language server
       mason_lspconfig.setup_handlers({
         -- default handler for installed servers
