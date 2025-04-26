@@ -58,10 +58,19 @@ return {
     config = function()
       local cmd = "cat"
       if vim.fn.executable("tte") == 1 then
+        -- local cmd_table = {
+        --   "tte",
+        --   " --anchor-canvas s",
+        --   " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12",
+        --   " --final-gradient-direction diagonal",
+        --   " <",
+        -- }
         local cmd_table = {
           "tte",
           " --anchor-canvas s",
-          " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12",
+          -- " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12 --final-gradient-stops FFFFFF 00D1FF 8A008A",
+          -- " scattered --movement-speed 0.2",
+          " randomsequence --speed 0.05 --starting-color 2E3440 --final-gradient-stops BDFFEA AB9DFF FF9048",
           " --final-gradient-direction diagonal",
           " <",
         }
@@ -81,7 +90,7 @@ return {
               icon = "  > ",
               icon_hl = "Keyword",
               desc = "New file",
-              desc_hl = "String",
+              desc_hl = "Title",
               key = "e",
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
@@ -91,7 +100,7 @@ return {
               icon = "  > ",
               icon_hl = "Keyword",
               desc = "Toggle file explorer",
-              desc_hl = "String",
+              desc_hl = "Title",
               key = "SPC ee",
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
@@ -101,7 +110,7 @@ return {
               icon = "󰱼  > ",
               icon_hl = "Keyword",
               desc = "Find file",
-              desc_hl = "String",
+              desc_hl = "Title",
               key = "SPC ff",
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
@@ -111,7 +120,7 @@ return {
               icon = "󰅙  > ",
               icon_hl = "Keyword",
               desc = "Quit NVIM",
-              desc_hl = "String",
+              desc_hl = "Title",
               key = "q",
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
