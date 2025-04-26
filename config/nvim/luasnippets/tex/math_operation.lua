@@ -1272,7 +1272,7 @@ local snippets = {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(2),
+        i(1),
       }
     )
   ),
