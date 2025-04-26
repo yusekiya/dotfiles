@@ -53,13 +53,9 @@ return {
   },
   -- greeter
   {
-    "goolord/alpha-nvim",
-    lazy = true,
+    "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      local alpha = require("alpha")
-      local dashboard = require("alpha.themes.dashboard")
       local saturn = {
         " ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⣀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀✦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
         " ⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠠⡐⣐⣧⣾⣾⣿⣿⣿⣿⣿⣿⣷⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -81,20 +77,58 @@ return {
         "                        ╔╗╔╔═╗╔═╗╦  ╦╦╔╦╗       .        ✦        ",
         "        ✦  .      .     ║║║║╣ ║ ║╚╗╔╝║║║║     .       .           ",
         "   .         .          ╝╚╝╚═╝╚═╝ ╚╝ ╩╩ ╩                    ✦    ",
+        " ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
       }
-      -- set header
-      dashboard.section.header.val = saturn
-      -- set nemu
-      dashboard.section.buttons.val = {
-        dashboard.button("e", "  > New File", "<Cmd>ene<cr>"),
-        dashboard.button("SPC ee", "  > Toggle file explorer", "<Cmd>Neotree<cr>"),
-        dashboard.button("SPC ff", "󰱼  > Find file", "<Cmd>Telescope find_files<cr>"),
-        dashboard.button("q", "󰅙  > Quit NVIM", "<Cmd>qa<cr>"),
-      }
-      -- send config to alpha
-      alpha.setup(dashboard.opts)
-      -- disable folding on alpha buffer
-      vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+      require("dashboard").setup({
+        theme = "doom",
+        config = {
+          header = saturn,
+          center = {
+            {
+              icon = "  > ",
+              icon_hl = "Keyword",
+              desc = "New file",
+              desc_hl = "String",
+              key = "e",
+              key_hl = "Number",
+              key_format = " %s", -- `%s` will be substituted with value of `key`
+              action = "ene",
+            },
+            {
+              icon = "  > ",
+              icon_hl = "Keyword",
+              desc = "Toggle file explorer",
+              desc_hl = "String",
+              key = "SPC ee",
+              key_hl = "Number",
+              key_format = " %s", -- `%s` will be substituted with value of `key`
+              action = "Neotree",
+            },
+            {
+              icon = "󰱼  > ",
+              icon_hl = "Keyword",
+              desc = "Find file",
+              desc_hl = "String",
+              key = "SPC ff",
+              key_hl = "Number",
+              key_format = " %s", -- `%s` will be substituted with value of `key`
+              action = "Telescope find_files",
+            },
+            {
+              icon = "󰅙  > ",
+              icon_hl = "Keyword",
+              desc = "Quit NVIM",
+              desc_hl = "String",
+              key = "q",
+              key_hl = "Number",
+              key_format = " %s", -- `%s` will be substituted with value of `key`
+              action = "qa",
+            },
+          },
+          footer = {},
+        },
+      })
     end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 }
