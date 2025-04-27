@@ -140,6 +140,16 @@ return {
       })
       vim.lsp.enable("harper_ls")
 
+      -- setting for LaTeX
+      vim.lsp.config("texlab", {
+        settings = {
+          texlab = {
+            formatterLineLength = 100,
+          },
+        },
+      })
+      vim.lsp.enable("texlab")
+
       -- config for each language server
       mason_lspconfig.setup_handlers({
         -- default handler for installed servers
