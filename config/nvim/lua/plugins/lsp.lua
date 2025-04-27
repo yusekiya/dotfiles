@@ -104,15 +104,13 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      -- setting for LaTeX
+      -- setting for Harper, a grammar checker
       vim.lsp.config("harper_ls", {
         settings = {
           ["harper-ls"] = {
             userDictPath = "~/dict.txt",
           },
         },
-      })
-      lspconfig.harper_ls.setup({
         filetypes = {
           "c",
           "cpp",
@@ -140,6 +138,7 @@ return {
           "dart",
         },
       })
+      vim.lsp.enable("harper_ls")
 
       -- config for each language server
       mason_lspconfig.setup_handlers({
