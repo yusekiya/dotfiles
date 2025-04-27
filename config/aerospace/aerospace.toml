@@ -119,7 +119,7 @@ ctrl-alt-cmd-9 = 'workspace 9'
 ctrl-alt-cmd-a = 'workspace A' # For base
 ctrl-alt-cmd-b = 'workspace B' # Browser
 # ctrl-alt-cmd-c = 'workspace C'
-# ctrl-alt-cmd-d = 'workspace D'
+ctrl-alt-cmd-d = 'workspace D' # Development
 ctrl-alt-cmd-e = 'workspace E' # Editing
 # ctrl-alt-cmd-f = 'workspace F'
 # ctrl-alt-cmd-g = 'workspace G'
@@ -131,7 +131,7 @@ ctrl-alt-cmd-n = 'workspace N' # Note taking
 # ctrl-alt-cmd-q = 'workspace Q'
 ctrl-alt-cmd-r = 'workspace R' # Research
 # ctrl-alt-cmd-s = 'workspace S'
-ctrl-alt-cmd-t = 'workspace T' # Terminal
+# ctrl-alt-cmd-t = 'workspace T' # Terminal
 # ctrl-alt-cmd-u = 'workspace U'
 # ctrl-alt-cmd-v = 'workspace V'
 # ctrl-alt-cmd-w = 'workspace W'
@@ -152,7 +152,7 @@ ctrl-alt-cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 ctrl-alt-cmd-shift-a = ['move-node-to-workspace A', 'workspace A']
 ctrl-alt-cmd-shift-b = ['move-node-to-workspace B', 'workspace B']
 # ctrl-alt-cmd-shift-c = 'move-node-to-workspace C'
-# ctrl-alt-cmd-shift-d = 'move-node-to-workspace D'
+ctrl-alt-cmd-shift-d = ['move-node-to-workspace D', 'workspace D']
 ctrl-alt-cmd-shift-e = ['move-node-to-workspace E', 'workspace E']
 # ctrl-alt-cmd-shift-f = 'move-node-to-workspace F'
 # ctrl-alt-cmd-shift-g = 'move-node-to-workspace G'
@@ -164,7 +164,7 @@ ctrl-alt-cmd-shift-n = ['move-node-to-workspace N', 'workspace N']
 # ctrl-alt-cmd-shift-q = 'move-node-to-workspace Q'
 ctrl-alt-cmd-shift-r = ['move-node-to-workspace R', 'workspace R']
 # ctrl-alt-cmd-shift-s = 'move-node-to-workspace S'
-ctrl-alt-cmd-shift-t = ['move-node-to-workspace T', 'workspace T']
+# ctrl-alt-cmd-shift-t = ['move-node-to-workspace T', 'workspace T']
 # ctrl-alt-cmd-shift-u = 'move-node-to-workspace U'
 # ctrl-alt-cmd-shift-v = 'move-node-to-workspace V'
 # ctrl-alt-cmd-shift-w = 'move-node-to-workspace W'
@@ -213,7 +213,7 @@ ctrl-alt-cmd-shift-l = ['join-with right', 'mode main']
 # app-id can be obtained with `aerospace list-apps` command
 # [[on-window-detected]]
 # if.app-id = 'com.github.wez.wezterm'
-# run = "move-node-to-workspace T"
+# run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
