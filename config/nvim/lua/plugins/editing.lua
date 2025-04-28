@@ -17,7 +17,7 @@ return {
   {
     "terryma/vim-expand-region",
     keys = {
-      { "v", "<Plug>(expand_region_expand)", mode = "v", desc = "Expand region recursively" },
+      { "v",     "<Plug>(expand_region_expand)", mode = "v", desc = "Expand region recursively" },
       { "<C-v>", "<Plug>(expand_region_shrink)", mode = "v", desc = "Shrink region recursively" },
     },
     lazy = true,
@@ -38,7 +38,6 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {
       modes = {
         search = {
@@ -51,11 +50,11 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "gs", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "gS", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "gs",    mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "gS",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
   -- auto pairs
@@ -70,11 +69,11 @@ return {
       local autopairs = require("nvim-autopairs")
       -- configure autopairs
       autopairs.setup({
-        check_ts = true, -- enable treesitter
+        check_ts = true,                      -- enable treesitter
         ts_config = {
-          lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+          lua = { "string" },                 -- don't add pairs in lua string treesitter nodes
           javascript = { "template_string" }, -- don't add pairs in javascript template_string treesitter nodes
-          java = false, -- don't check treesitter on java
+          java = false,                       -- don't check treesitter on java
         },
       })
       -- import nvim-autopairs completion functionality

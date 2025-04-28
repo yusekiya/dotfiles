@@ -12,7 +12,7 @@ local TEXT_NODES = {
   label_reference = true,
 }
 
-local CODE_BLOCK_NODES = { -- Add this to define code block node types
+local CODE_BLOCK_NODES = {    -- Add this to define code block node types
   fenced_code_block = true,
   indented_code_block = true, -- Optional: include indented code blocks as well if needed
 }
