@@ -68,7 +68,7 @@ if os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil or is_running_o
   set_osc52_clipboard()
 end
 
--- cycle cursor position recursively
+-- cycle cursor position cyclically
 local zz_cycle_state = 0
 local zz_last_time = vim.loop.hrtime() / 1e6
 
@@ -150,7 +150,7 @@ vim.api.nvim_set_keymap("c", "<Up>", 'wildmenumode() ? "<Left>" : "<Up>"', { exp
 vim.api.nvim_set_keymap("c", "<Down>", 'wildmenumode() ? "<Right>" : "<Down>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Left>", 'wildmenumode() ? "<Up>" : "<Left>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Right>", 'wildmenumode() ? "<Down>" : "<Right>"', { expr = true, noremap = true })
--- recenter-to-bottom
+-- recenter-top-bottom
 setkey("n", "zz", cycle_zz, { noremap = false, silent = true })
 
 -- load plugins
