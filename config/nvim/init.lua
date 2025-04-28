@@ -68,6 +68,35 @@ if os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil or is_running_o
   set_osc52_clipboard()
 end
 
+-- cycle cursor position recursively
+local zz_cycle_state = 0
+local zz_last_time = vim.loop.hrtime() / 1e6
+
+local function cycle_zz()
+  local current_time = vim.loop.hrtime() / 1e6 -- current time
+  local time_diff = current_time - zz_last_time
+
+  -- reset state after 1000ms
+  if time_diff > 1000 then
+    zz_cycle_state = 0
+  end
+
+  -- move cursor position
+  if zz_cycle_state == 0 then
+    vim.cmd('normal! zz')
+  elseif zz_cycle_state == 1 then
+    vim.cmd('normal! zt')
+  elseif zz_cycle_state == 2 then
+    vim.cmd('normal! zb')
+  end
+
+  -- proceed state
+  zz_cycle_state = (zz_cycle_state + 1) % 3
+
+  -- update last time
+  zz_last_time = current_time
+end
+
 -- user defined commands
 vim.api.nvim_create_user_command("WClean", "%s/\\s\\+$//g", {})
 
@@ -121,6 +150,8 @@ vim.api.nvim_set_keymap("c", "<Up>", 'wildmenumode() ? "<Left>" : "<Up>"', { exp
 vim.api.nvim_set_keymap("c", "<Down>", 'wildmenumode() ? "<Right>" : "<Down>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Left>", 'wildmenumode() ? "<Up>" : "<Left>"', { expr = true, noremap = true })
 vim.api.nvim_set_keymap("c", "<Right>", 'wildmenumode() ? "<Down>" : "<Right>"', { expr = true, noremap = true })
+-- recenter-to-bottom
+setkey("n", "zz", cycle_zz, { noremap = false, silent = true })
 
 -- load plugins
 -- current plugin manager: lazy.nvim
