@@ -104,12 +104,14 @@ if (( $+commands[fzf] )); then
         local dir
         dir=$(find ${1:-.} -type d -maxdepth ${2:-1} 2> /dev/null | sort | fzf +m --height 30% --reverse) && cd "$dir"
     }
+
     # change directory to a directory in which target file exists
     function cdf() {
         local file
         local dir
         file=$(fzf --height 30% --reverse +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
     }
+
     # cd to selected parent directory
     function traverse-parent-directories() {
         local dir=$(
@@ -121,11 +123,13 @@ if (( $+commands[fzf] )); then
         ) && cd "$dir"
     }
     alias ..=traverse-parent-directories
+
     # select a cookiecutter template
     function fcookie() {
         local dir
         dir=$(find ~/.cookiecutters ~/.cookiecutter_templates -follow -type d -maxdepth 1 -mindepth 1 2> /dev/null | sort | fzf +m --height 30% --reverse) && cookiecutter "$dir"
     }
+
     # select a oneliner
     function search_oneliner() {
         local file cmd
@@ -157,5 +161,36 @@ if (( $+commands[fzf] )); then
     }
     zle -N search_oneliner
     bindkey "^s" search_oneliner
+
+    # select copier template
+    function fcopier() {
+        local TEMPLATE_FILE=${HOME}/.copier_templates.json
+        if [ ! -f $TEMPLATE_FILE ]; then
+            echo "Template file is not found"
+            echo "Make a template file $TEMPLATE_FILE with the following contents:"
+            echo "["
+            echo "  { \"src\": <template source>, \"description\": <description>},"
+            echo "  ...repeat if necessary..."
+            echo "]"
+            return 1
+        fi
+        if ! (( $+commands[copier] )); then
+            echo "This command needs copier installed"
+        fi
+        if ! (( $+commands[jq] )); then
+            echo "This command needs jq installed"
+        fi
+        local selected=$(jq -r '.[].src' $TEMPLATE_FILE | fzf --exit-0 --preview "jq -r '.[] | select(.src | contains(\""{}\"")) | .description' $TEMPLATE_FILE")
+        if [[ -z $selected ]]; then
+            return 0
+        fi
+        if [[ -z "$1" ]]; then
+            read answer"?What's the target directory? "
+            local target=$answer
+        else
+            local target="$1"
+        fi
+        copier copy --trust "$selected" "$target"
+    }
 fi
 
