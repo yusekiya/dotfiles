@@ -7,6 +7,19 @@ if [ ! -d $local_zsh_dir ] || [ ! -f $local_zsh_dir/sync.zsh ] || [ ! -f $local_
 fi
 unset local_zsh_dir
 
+# cf. https://zenn.dev/fuzmare/articles/zsh-source-zcompile-all
+function source_zcompile {
+    ensure_zcompiled $1
+    builtin source $1
+}
+function ensure_zcompiled {
+    local compiled="$1.zwc"
+    if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+        echo "Compiling $1"
+        zcompile $1
+    fi
+}
+
 # Load zsh configuration with Sheldon
 if (( $+commands[sheldon] )); then
     # The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
@@ -31,4 +44,3 @@ fi
 # if (which zprof > /dev/null 2>&1) ;then
   # zprof | less
 # fi
-

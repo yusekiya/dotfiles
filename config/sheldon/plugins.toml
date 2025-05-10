@@ -18,7 +18,10 @@ github = "romkatv/zsh-defer"
 
 [templates]
 defer = """{{ hooks?.pre | nl }}{% for file in files %}
-zsh-defer source "{{ file }}"
+zsh-defer source_zcompile "{{ file }}"
+{% endfor %}{{ hooks?.post | nl }}"""
+source_zcompile = """{{ hooks?.pre | nl }}{% for file in files %}
+source_zcompile "{{ file }}"
 {% endfor %}{{ hooks?.post | nl }}"""
 
 
@@ -37,12 +40,12 @@ apply = ["defer"]
 [plugins.zshrc-sync]
 local = '~/.config/zsh'
 use = ['sync.zsh']
-apply = ['source']
+apply = ['source_zcompile']
 
 [plugins.zshrc-local-sync]
 local = '~/.config/zsh.site'
 use = ['sync.zsh']
-apply = ['source']
+apply = ['source_zcompile']
 
 [plugins.zshrc-defer]
 local = '~/.config/zsh'

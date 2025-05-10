@@ -31,3 +31,4 @@ config/raycast/extensions
 jupyterlabapputilsextensionannouncements.json
 .aider*
 !.aider.conf.yml
+*.zwc
