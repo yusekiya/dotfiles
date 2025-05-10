@@ -1,8 +1,10 @@
 # Prepare directory for local configuration
 local_zsh_dir=$HOME/.config/zsh.site
-mkdir -p $local_zsh_dir
-mkdir -p $local_zsh_dir/completion
-touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
+if [ ! -d $local_zsh_dir ] || [ ! -f $local_zsh_dir/sync.zsh ] || [ ! -f $local_zsh_dir/defer.zsh ] || [ ! -f $local_zsh_dir/defer-after-compinit.zsh ]; then
+    mkdir -p $local_zsh_dir
+    mkdir -p $local_zsh_dir/completion
+    touch $local_zsh_dir/{sync,defer,defer-after-compinit}.zsh
+fi
 unset local_zsh_dir
 
 # Load zsh configuration with Sheldon
