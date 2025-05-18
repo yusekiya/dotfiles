@@ -26,6 +26,7 @@
 [Add SSH public key] cat <public_key> | ssh <remote> 'cat >> .ssh/authorized_keys'
 [SSH tunneling] ssh -fN -L <LocalPort>:<Host seen from RemoteHost>:<Port> <user>@<RemoteHost>
 [SSH with port forwarding] ssh -L 8888:localhost:8888 <host name>
+[SSH dynamic port forwarding] ssh -fND 1080 <RemoteHost>
 [Scan port] nc -uzv <PublicIP> <Port>
 [Scan listening port on localhost] sudo lsof -i -P | grep "LISTEN"
 [Scan private IP in LAN] sudo arp-scan -l
