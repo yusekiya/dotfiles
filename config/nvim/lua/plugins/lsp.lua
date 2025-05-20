@@ -57,7 +57,7 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls" })
+      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls", "ruff", "pyright" })
     end,
   },
 }
