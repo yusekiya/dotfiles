@@ -57,67 +57,7 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      -- setting for Harper, a grammar checker
-      vim.lsp.config("harper_ls", {
-        settings = {
-          ["harper-ls"] = {
-            userDictPath = "~/dict.txt",
-          },
-        },
-        filetypes = {
-          "c",
-          "cpp",
-          "cs",
-          "gitcommit",
-          "go",
-          "html",
-          "java",
-          "javascript",
-          "lua",
-          "markdown",
-          "nix",
-          "python",
-          "ruby",
-          "rust",
-          "swift",
-          "toml",
-          "tex",
-          "typescript",
-          "typescriptreact",
-          "haskell",
-          "cmake",
-          "typst",
-          "php",
-          "dart",
-        },
-      })
-      vim.lsp.enable("harper_ls")
-
-      -- setting for LaTeX
-      vim.lsp.config("texlab", {
-        settings = {
-          texlab = {
-            formatterLineLength = 100,
-          },
-        },
-      })
-      vim.lsp.enable("texlab")
-
-      -- setting for lua
-      vim.lsp.config("lua_ls", {
-        settings = {
-          Lua = {
-            -- make the language server recognize "vim" global
-            diagnostics = {
-              globals = { "vim" },
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
-      vim.lsp.enable("lua_ls")
+      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls" })
     end,
   },
 }
