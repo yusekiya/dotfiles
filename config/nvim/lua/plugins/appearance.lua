@@ -58,13 +58,6 @@ return {
     config = function()
       local cmd = "cat"
       if vim.fn.executable("tte") == 1 then
-        -- local cmd_table = {
-        --   "tte",
-        --   " --anchor-canvas s",
-        --   " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12",
-        --   " --final-gradient-direction diagonal",
-        --   " <",
-        -- }
         local cmd_table = {
           "tte",
           " --anchor-canvas s",
