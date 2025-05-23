@@ -25,3 +25,5 @@
 	defaultBranch = main
 [include]
     path = config.d/credential
+[fetch]
+	prune = true
