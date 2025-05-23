@@ -32,3 +32,4 @@ jupyterlabapputilsextensionannouncements.json
 .aider*
 !.aider.conf.yml
 *.zwc
+.gitconfig.local
