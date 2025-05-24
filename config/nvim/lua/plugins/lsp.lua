@@ -39,10 +39,6 @@ return {
           opts.desc = "Show LSP type definitions"
           keymap.set("n", "gt", function() Snacks.picker.lsp_type_definitions() end, opts)
 
-          -- see available code actions, in visual mode will apply to selection
-          opts.desc = "See available code actions"
-          keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
           -- smart rename
           opts.desc = "Smart rename"
           keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -83,4 +79,26 @@ return {
       vim.lsp.enable({ "harper_ls", "texlab", "lua_ls", "ruff", "pyright" })
     end,
   },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "folke/snacks.nvim",
+    },
+    event = "LspAttach",
+    opts = {
+      backend = "vim",
+      picker = "snacks",
+    },
+    keys = {
+      {
+        "<leader>ca",
+        function()
+          require("tiny-code-action").code_action()
+        end,
+        mode = { "n", "v" },
+        desc = "Code Actions",
+      },
+    },
+  }
 }
