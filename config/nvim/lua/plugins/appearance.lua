@@ -27,6 +27,8 @@ return {
           highlights["NeoTreeDotfile"] = { fg = "#8891A2" }
           highlights["NeoTreeIndentMarker"] = { fg = "#8891A2" }
           highlights["NeoTreeMessage"] = { fg = "#8891A2" }
+          highlights["SnacksIndent"] = { fg = "#697180" }
+          highlights["SnacksIndentScope"] = { fg = "#B48EAD" }
         end,
       })
       vim.cmd.colorscheme("nord")
@@ -41,15 +43,6 @@ return {
         theme = "nord",
       },
     },
-  },
-  -- highlight indent
-  {
-    "nvimdev/indentmini.nvim",
-    config = function()
-      vim.cmd.highlight("IndentLine guifg=#697180")
-      vim.cmd.highlight("IndentLineCurrent guifg=#B48EAD")
-      require("indentmini").setup()
-    end,
   },
   -- greeter
   {

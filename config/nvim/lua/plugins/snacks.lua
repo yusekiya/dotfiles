@@ -6,7 +6,12 @@ return {
     bigfile = { enabled = false },
     dashboard = { enabled = false },
     explorer = { enabled = false },
-    indent = { enabled = false },
+    indent = {
+      hl = "SnacksIndent",
+      scope = {
+        hl = "SnacksIndentScope",
+      },
+    },
     input = { enabled = false },
     picker = {
       enabled = true,
@@ -19,9 +24,9 @@ return {
             ["<c-e>"] = false,
             ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
-          }
-        }
-      }
+          },
+        },
+      },
     },
     notifier = { enabled = false },
     quickfile = { enabled = false },
@@ -33,13 +38,27 @@ return {
   },
   keys = {
     -- find
-    { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>ff", function() Snacks.picker.smart() end,   desc = "Smart Find Files" },
+    {
+      "<leader>fb",
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = "Buffers",
+    },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = "Smart Find Files",
+    },
     -- grep
     {
       "<leader>fg",
-      function() Snacks.picker.grep({ matcher = { cwd_bonus = true } }) end,
-      desc = "Grep"
+      function()
+        Snacks.picker.grep({ matcher = { cwd_bonus = true } })
+      end,
+      desc = "Grep",
     },
-  }
+  },
 }
