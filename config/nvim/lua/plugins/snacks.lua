@@ -34,6 +34,12 @@ return {
     scroll = { enabled = false },
     statuscolumn = { enabled = false },
     terminal = {},
+    win = {
+      position = "float",
+      height = 0.9,
+      width = 0.9,
+      zindex = 50,
+    },
     words = { enabled = false },
   },
   keys = {
