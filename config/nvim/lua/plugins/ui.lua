@@ -38,20 +38,6 @@ return {
       },
     },
   },
-  -- Fuzzy finder
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    lazy = true,
-    keys = {
-      { "<C-A-S-p>",  "<Cmd>Telescope commands<cr>",   mode = "n" },
-      { "<leader>ff", "<Cmd>Telescope find_files<cr>", mode = "n" },
-      { "<leader>fg", "<Cmd>Telescope live_grep<cr>",  mode = "n" },
-      { "<leader>fb", "<Cmd>Telescope buffers<cr>",    mode = "n" },
-      { "<leader>fh", "<Cmd>Telescope help_tags<cr>",  mode = "n" },
-    },
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
   -- Outline
   {
     "stevearc/aerial.nvim",
@@ -60,13 +46,20 @@ return {
     keys = {
       { "<leader>oo", "<Cmd>AerialToggle<cr>",    mode = "n", desc = "Toggle outline window" },
       { "<leader>on", "<Cmd>AerialNavToggle<cr>", mode = "n", desc = "Toggle outline navigation window" },
-      { "<leader>of", ":Telescope aerial<cr>",    mode = "n", desc = "Outline search" },
-      { "<C-'>",      "<Cmd>AerialToggle<cr>",    mode = "n", desc = "Toggle outline window" },
+      {
+        "<leader>of",
+        function()
+          require("aerial").snacks_picker()
+        end,
+        mode = "n",
+        desc = "Outline search"
+      },
+      { "<C-'>", "<Cmd>AerialToggle<cr>", mode = "n", desc = "Toggle outline window" },
     },
     opts = {},
     -- Optional dependencies
     dependencies = {
-      "nvim-telescope/telescope.nvim",
+      "folke/snacks.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },

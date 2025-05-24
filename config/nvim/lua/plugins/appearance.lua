@@ -107,7 +107,7 @@ return {
               key = "SPC ff",
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
-              action = "Telescope find_files",
+              action = "Snacks.picker.smart()",
             },
             {
               icon = "󰅙  > ",
