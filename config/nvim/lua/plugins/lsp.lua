@@ -21,7 +21,9 @@ return {
           -- keymaps
           -- show definition, references
           opts_nowait.desc = "Show LSP references"
-          keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, opts_nowait)
+          keymap.set("n", "gr", function()
+            Snacks.picker.lsp_references()
+          end, opts_nowait)
 
           -- go to declaration
           opts.desc = "Go to declaration"
@@ -29,31 +31,43 @@ return {
 
           -- show lsp definitions
           opts.desc = "Show LSP definitions"
-          keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, opts)
+          keymap.set("n", "gd", function()
+            Snacks.picker.lsp_definitions()
+          end, opts)
 
           -- show lsp implementations
           opts.desc = "Show LSP implementations"
-          keymap.set("n", "gi", function() Snacks.picker.lsp_implementations() end, opts)
+          keymap.set("n", "gi", function()
+            Snacks.picker.lsp_implementations()
+          end, opts)
 
           -- show lsp type definitions
           opts.desc = "Show LSP type definitions"
-          keymap.set("n", "gt", function() Snacks.picker.lsp_type_definitions() end, opts)
+          keymap.set("n", "gt", function()
+            Snacks.picker.lsp_type_definitions()
+          end, opts)
 
           -- smart rename
           opts.desc = "Smart rename"
           keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
           -- symbols
-          opts.desc = "LSP Symbols"
-          keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, opts)
+          opts.desc = "Find LSP Symbols"
+          keymap.set("n", "<leader>fs", function()
+            Snacks.picker.lsp_symbols()
+          end, opts)
 
           -- workspace symbols
-          opts.desc = "LSP Workspace Symbols"
-          keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, opts)
+          opts.desc = "Find LSP Workspace Symbols"
+          keymap.set("n", "<leader>sS", function()
+            Snacks.picker.lsp_workspace_symbols()
+          end, opts)
 
           -- show  diagnostics for file
           opts.desc = "Show buffer diagnostics"
-          keymap.set("n", "<leader>D", function() Snacks.picker.diagnostics_buffer() end, opts)
+          keymap.set("n", "<leader>D", function()
+            Snacks.picker.diagnostics_buffer()
+          end, opts)
 
           -- show diagnostics for line
           opts.desc = "Show line diagnostics"
@@ -100,5 +114,5 @@ return {
         desc = "Code Actions",
       },
     },
-  }
+  },
 }

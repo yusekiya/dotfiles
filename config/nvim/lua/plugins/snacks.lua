@@ -66,5 +66,13 @@ return {
       end,
       desc = "Grep",
     },
+    -- commands
+    {
+      "<leader>fc",
+      function()
+        Snacks.picker.commands()
+      end,
+      desc = "Find Commands",
+    },
   },
 }
