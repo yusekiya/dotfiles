@@ -59,7 +59,7 @@ return {
 
           -- workspace symbols
           opts.desc = "Find LSP Workspace Symbols"
-          keymap.set("n", "<leader>sS", function()
+          keymap.set("n", "<leader>fS", function()
             Snacks.picker.lsp_workspace_symbols()
           end, opts)
 
