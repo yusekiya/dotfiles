@@ -494,7 +494,7 @@ return {
   ),
   s(
     {
-      trig = "([^%a])\\mid |",
+      trig = "([^%a])\\mid|",
       dscr = "parallel",
       regTrig = true,
       wordTrig = false,
