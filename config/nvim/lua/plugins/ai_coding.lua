@@ -1,44 +1,32 @@
 return {
   {
-    "GeorgesAlkhouri/nvim-aider",
-    cmd = { "AiderTerminalToggle", "AiderHealth" },
-    keys = {
-      { "<leader>aa", "<cmd>AiderTerminalToggle<cr>",    desc = "Open Aider" },
-      { "<leader>as", "<cmd>AiderTerminalSend<cr>",      desc = "Send to Aider",        mode = { "n", "v" } },
-      { "<leader>ac", "<cmd>AiderQuickSendCommand<cr>",  desc = "Send Command To Aider" },
-      { "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>",   desc = "Send Buffer To Aider" },
-      { "<leader>a+", "<cmd>AiderQuickAddFile<cr>",      desc = "Add File to Aider" },
-      { "<leader>a-", "<cmd>AiderQuickDropFile<cr>",     desc = "Drop File from Aider" },
-      { "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", desc = "Add File as Read-Only" },
-    },
+    "coder/claudecode.nvim",
     dependencies = {
-      "folke/snacks.nvim",
-      --- Neo-tree integration
-      {
-        "nvim-neo-tree/neo-tree.nvim",
-        opts = function(_, opts)
-          require("nvim_aider.neo_tree").setup(opts)
-        end,
+      "folke/snacks.nvim", -- Optional for enhanced terminal
+    },
+    opts = {
+      -- Server options
+      port_range = { min = 10000, max = 65535 },
+      auto_start = true,
+      log_level = "info",
+      -- Terminal options
+      terminal = {
+        split_side = "right",
+        split_width_percentage = 0.3,
+        provider = "snacks", -- or "native"
+      },
+      -- Diff options
+      diff_opts = {
+        auto_close_on_accept = true,
+        vertical_split = true,
       },
     },
     config = true,
-    opts = {
-      args = {
-        "--no-auto-commits",
-        "--pretty",
-        "--stream",
-      },
-      theme = {
-        user_input_color = "#D8DEE9",
-        tool_output_color = "#81A1C1",
-        tool_error_color = "#BF616A",
-        tool_warning_color = "#EBCB8B",
-        assistant_output_color = "#B48EAD",
-        completion_menu_color = "#ECEFF4",
-        completion_menu_bg_color = "#24273a",
-        completion_menu_current_color = "#ECEFF4",
-        completion_menu_current_bg_color = "#4C566A",
-      },
+    keys = {
+      { "<leader>ac", "<cmd>ClaudeCode<cr>",      desc = "Toggle Claude" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>",  mode = "v",            desc = "Send to Claude" },
+      { "<leader>ao", "<cmd>ClaudeCodeOpen<cr>",  desc = "Open Claude" },
+      { "<leader>ax", "<cmd>ClaudeCodeClose<cr>", desc = "Close Claude" },
     },
-  },
+  }
 }
