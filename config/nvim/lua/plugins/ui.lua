@@ -238,7 +238,7 @@ return {
         end, { desc = "reset selected hunk" })
         map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "stage whole buffer" })
         map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "reset whole buffer" })
-        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "preview git hunk" })
+        map("n", "<leader>hh", gitsigns.preview_hunk, { desc = "preview git hunk" })
         map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "preview git hunk inline" })
 
         map("n", "<leader>hb", function()
