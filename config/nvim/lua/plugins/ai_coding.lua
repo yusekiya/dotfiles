@@ -23,10 +23,20 @@ return {
     },
     config = true,
     keys = {
-      { "<leader>ac", "<cmd>ClaudeCode<cr>",      desc = "Toggle Claude" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>",  mode = "v",            desc = "Send to Claude" },
-      { "<leader>ao", "<cmd>ClaudeCodeOpen<cr>",  desc = "Open Claude" },
+      { "<leader>a", nil, desc = "AI" },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree" },
+      },
+      { "<leader>ao", "<cmd>ClaudeCodeOpen<cr>", desc = "Open Claude" },
       { "<leader>ax", "<cmd>ClaudeCodeClose<cr>", desc = "Close Claude" },
     },
-  }
+  },
 }
