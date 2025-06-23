@@ -249,6 +249,11 @@ cfg = {
       action = wezterm.action.TogglePaneZoomState,
     },
     {
+      key = "Enter",
+      mods = "SHIFT",
+      action = act.SendString('\n')
+    },
+    {
       key = "p",
       mods = "SUPER",
       action = wezterm.action_callback(function(window, pane)
