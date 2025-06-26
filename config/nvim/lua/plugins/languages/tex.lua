@@ -11,4 +11,11 @@ return {
       vim.g.vimtex_quickfix_mode = 0
     end,
   },
+  {
+    "let-def/texpresso.vim",
+    ft = "tex",
+    config = function()
+      require('texpresso').attach()
+    end
+  }
 }
