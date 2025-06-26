@@ -83,13 +83,17 @@ alias gg='git graph'
 alias gu='git remote update'
 alias jn='jupyter notebook &> /dev/null &'
 alias jl='jupyter lab &> /dev/null &'
-alias v='vim -RM'
 alias d='docker'
 alias dcm='docker-compose'
 alias k='kubectl'
 alias pls='pueue status'
 alias pad='pueue add --'
 alias lg='lazygit'
+if [ $EDITOR = "vim" ]; then
+    alias v='vim -RM'
+elif [ $EDITOR = "nvim" ]; then
+    alias v='nvim -RM'
+fi
 
 if (( $+commands[colordiff] )); then
     alias diff='colordiff -u'
