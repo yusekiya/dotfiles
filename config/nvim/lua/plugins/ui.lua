@@ -19,8 +19,8 @@ return {
     cmd = "Neotree",
     keys = {
       { "<leader>ee", "<Cmd>Neotree toggle=true<cr>", mode = "n", desc = "Toggle file explorer" },
-      { "<leader>ef", "<Cmd>Neotree focus<cr>", mode = "n", desc = "Focus on file explorer" },
-      { "<leader>ec", "<Cmd>Neotree close<cr>", mode = "n", desc = "Close file explorer" },
+      { "<leader>ef", "<Cmd>Neotree focus<cr>",       mode = "n", desc = "Focus on file explorer" },
+      { "<leader>ec", "<Cmd>Neotree close<cr>",       mode = "n", desc = "Close file explorer" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -44,7 +44,7 @@ return {
     lazy = true,
     event = "VeryLazy",
     keys = {
-      { "<leader>oo", "<Cmd>AerialToggle<cr>", mode = "n", desc = "Toggle outline window" },
+      { "<leader>oo", "<Cmd>AerialToggle<cr>",    mode = "n", desc = "Toggle outline window" },
       { "<leader>on", "<Cmd>AerialNavToggle<cr>", mode = "n", desc = "Toggle outline navigation window" },
       {
         "<leader>fo",
@@ -70,11 +70,11 @@ return {
     version = "*",
     lazy = true,
     keys = {
-      { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>", desc = "Toggle all terminal windows" },
-      { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
+      { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>",             desc = "Toggle all terminal windows" },
+      { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>",      desc = "Open float terminal" },
       { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
-      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
-      { "<leader>g", "<Cmd>lua _Lazygit_toggle()<cr>", desc = "Open lazygit" },
+      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>",   desc = "Open terminal vertically" },
+      { "<leader>g",  "<Cmd>lua _Lazygit_toggle()<cr>",           desc = "Open lazygit" },
     },
     config = function()
       require("toggleterm").setup({
@@ -142,7 +142,7 @@ return {
     lazy = false,
     keys = {
       { "<leader>wr", "<Cmd>SessionRestore<cr>", mode = "n", desc = "Restore session for cwd" },
-      { "<leader>ws", "<Cmd>SessionSave<cr>", mode = "n", desc = "Save session" },
+      { "<leader>ws", "<Cmd>SessionSave<cr>",    mode = "n", desc = "Save session" },
     },
     ---enables autocomplete for opts
     ---@module "auto-session"
@@ -191,8 +191,8 @@ return {
         "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
         desc = "Open trouble document diagnostics",
       },
-      { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
-      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
+      { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>",    desc = "Open trouble quickfix list" },
+      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>",     desc = "Open trouble location list" },
       -- { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
     },
   },
