@@ -27,3 +27,5 @@
     path = config.d/credential
 [fetch]
 	prune = true
+[pull]
+	rebase = false
