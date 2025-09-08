@@ -234,8 +234,10 @@ cfg = {
         cwd = wezterm.home_dir,
       }),
     },
-    { key = "UpArrow",   mods = "SHIFT", action = act.ScrollToPrompt(-1) },
-    { key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
+    { key = "UpArrow",   mods = "SHIFT", action = act.ScrollByLine(-1) },
+    { key = "DownArrow", mods = "SHIFT", action = act.ScrollByLine(1) },
+    { key = 'PageUp',    mods = 'SHIFT', action = act.ScrollByPage(-0.5) },
+    { key = 'PageDown',  mods = 'SHIFT', action = act.ScrollByPage(0.5) },
     {
       key = "0",
       mods = "LEADER",
