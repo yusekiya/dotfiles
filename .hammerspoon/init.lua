@@ -62,8 +62,8 @@ PaperWM:bindHotkeys({
     -- focus_window_9 = {cag_key, "9"},
 
     -- switch to a new Mission Control space
-    switch_space_l = {cag_key, ","},
-    switch_space_r = {cag_key, "."},
+    switch_space_l = {cag_key, "up"},
+    switch_space_r = {cag_key, "down"},
     switch_space_1 = {cag_key, "1"},
     switch_space_2 = {cag_key, "2"},
     switch_space_3 = {cag_key, "3"},
