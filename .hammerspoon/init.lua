@@ -91,7 +91,7 @@ PaperWM.window_gap = 10
 PaperWM.swipe_fingers = 3
 PaperWM.drag_window = {"alt", "cmd"}
 PaperWM.lift_window = {"alt", "shift", "cmd"}
-PaperWM.window_ratios = { 1/2, 1/3, 2/3 }
+PaperWM.window_ratios = { 0.38195, 0.5, 0.61804 }
 
 -- WarpMouse
 WarpMouse = hs.loadSpoon("WarpMouse")
