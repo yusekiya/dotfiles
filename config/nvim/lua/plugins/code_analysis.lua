@@ -1,11 +1,13 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufRead", "BufNewFile", "InsertEnter" },
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs",
-    opts = {
-      ensure_installed = {
+    config = function()
+      local nvim_treesitter = require("nvim-treesitter")
+      nvim_treesitter.setup({})
+      nvim_treesitter.install({
         "bash",
         "comment",
         "c",
@@ -27,12 +29,8 @@ return {
         "yaml",
         "regex",
         "vimdoc",
-      },
-      sync_install = false,
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
+      })
+    end,
   },
   -- sticky line
   {
