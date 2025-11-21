@@ -30,6 +30,30 @@ return {
         "regex",
         "vimdoc",
       })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "lua",
+          "python",
+          "html",
+          "css",
+          "javascript",
+          "typescript",
+          "c",
+          "cpp",
+          "rust",
+          "go",
+          "sh",
+          "zsh",
+          "yaml",
+          "json",
+          "markdown",
+          "vim",
+          "tex",
+        },
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
     end,
   },
   -- sticky line
