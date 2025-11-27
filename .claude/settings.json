@@ -183,7 +183,6 @@
       "TodoWrite(**)",
       "Task(**)"
     ],
-    "ask": ["Bash(curl:*)", "Bash(wget:*)"],
     "deny": [
       "Bash(rm -rf /)",
       "Bash(rm -rf ~)",
@@ -288,6 +287,11 @@
       "MultiEdit(build/**)",
       "MultiEdit(.next/**)",
       "MultiEdit(coverage/**)"
+    ],
+    "ask": [
+      "Bash(curl:*)",
+      "Bash(wget:*)"
     ]
-  }
+  },
+  "alwaysThinkingEnabled": false
 }
