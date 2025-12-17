@@ -95,7 +95,7 @@ return {
         },
       })
 
-      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls", "ruff", "pyright" })
+      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls", "ruff", "ty", "pyright" })
     end,
   },
   {
