@@ -45,6 +45,8 @@ PaperWM:bindHotkeys({
 
   -- move the focused window into / out of the tiling layer
   toggle_floating = { hypr_key, "f" },
+  -- raise all floating windows on top of tiled windows
+  focus_floating  = { hypr_key, "space"},
 
   -- focus the first / second / etc window in the current space
   -- focus_window_1 = {cag_key, "1"},
