@@ -27,6 +27,7 @@ return {
         "vim",
         "xml",
         "yaml",
+        "zsh",
         "regex",
         "vimdoc",
       })
