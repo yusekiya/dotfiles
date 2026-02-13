@@ -207,6 +207,7 @@ cfg = {
     top = "1.0cell",
     bottom = "0.5cell",
   },
+  enable_kitty_graphics=true,
   adjust_window_size_when_changing_font_size = false,
   leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1000 },
   keys = {
