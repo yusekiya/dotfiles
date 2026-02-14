@@ -289,7 +289,7 @@ return {
         --   hl_color = { bg = "#7A5A3D" }, -- Dark muted orange
         -- },
         cursor = {
-          hl_color = { bg = "#793D54" }, -- Dark muted pink
+          hl_color = { bg = "#7A5A3D" }, -- Dark muted orange
         },
       },
       priority = 2048 * 3,
