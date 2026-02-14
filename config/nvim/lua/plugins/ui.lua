@@ -19,8 +19,8 @@ return {
     cmd = "Neotree",
     keys = {
       { "<leader>ee", "<Cmd>Neotree toggle=true<cr>", mode = "n", desc = "Toggle file explorer" },
-      { "<leader>ef", "<Cmd>Neotree focus<cr>",       mode = "n", desc = "Focus on file explorer" },
-      { "<leader>ec", "<Cmd>Neotree close<cr>",       mode = "n", desc = "Close file explorer" },
+      { "<leader>ef", "<Cmd>Neotree focus<cr>", mode = "n", desc = "Focus on file explorer" },
+      { "<leader>ec", "<Cmd>Neotree close<cr>", mode = "n", desc = "Close file explorer" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -44,7 +44,7 @@ return {
     lazy = true,
     event = "VeryLazy",
     keys = {
-      { "<leader>oo", "<Cmd>AerialToggle<cr>",    mode = "n", desc = "Toggle outline window" },
+      { "<leader>oo", "<Cmd>AerialToggle<cr>", mode = "n", desc = "Toggle outline window" },
       { "<leader>on", "<Cmd>AerialNavToggle<cr>", mode = "n", desc = "Toggle outline navigation window" },
       {
         "<leader>fo",
@@ -70,11 +70,11 @@ return {
     version = "*",
     lazy = true,
     keys = {
-      { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>",             desc = "Toggle all terminal windows" },
-      { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>",      desc = "Open float terminal" },
+      { "<leader>tt", "<Cmd>ToggleTermToggleAll<cr>", desc = "Toggle all terminal windows" },
+      { "<leader>tf", "<Cmd>ToggleTerm direction=float<cr>", desc = "Open float terminal" },
       { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<cr>", desc = "Open terminal horizontally" },
-      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>",   desc = "Open terminal vertically" },
-      { "<leader>g",  "<Cmd>lua _Lazygit_toggle()<cr>",           desc = "Open lazygit" },
+      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical<cr>", desc = "Open terminal vertically" },
+      { "<leader>g", "<Cmd>lua _Lazygit_toggle()<cr>", desc = "Open lazygit" },
     },
     config = function()
       require("toggleterm").setup({
@@ -142,7 +142,7 @@ return {
     lazy = false,
     keys = {
       { "<leader>wr", "<Cmd>SessionRestore<cr>", mode = "n", desc = "Restore session for cwd" },
-      { "<leader>ws", "<Cmd>SessionSave<cr>",    mode = "n", desc = "Save session" },
+      { "<leader>ws", "<Cmd>SessionSave<cr>", mode = "n", desc = "Save session" },
     },
     ---enables autocomplete for opts
     ---@module "auto-session"
@@ -191,8 +191,8 @@ return {
         "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
         desc = "Open trouble document diagnostics",
       },
-      { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>",    desc = "Open trouble quickfix list" },
-      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>",     desc = "Open trouble location list" },
+      { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
+      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
       -- { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
     },
   },
@@ -257,6 +257,162 @@ return {
         end, { desc = "populate quickfix list for all modified files" })
       end,
     },
+  },
+  -- animated glow/highlight effects to operation (undo, redo, yank, paste and more)
+  {
+    "y3owk1n/undo-glow.nvim",
+    version = "*", -- use stable releases
+    opts = {
+      animation = {
+        enabled = true,
+        duration = 300,
+        animation_type = "zoom",
+        window_scoped = true,
+      },
+      highlights = {
+        undo = {
+          hl_color = { bg = "#693232" }, -- Dark muted red
+        },
+        redo = {
+          hl_color = { bg = "#2F4640" }, -- Dark muted green
+        },
+        yank = {
+          hl_color = { bg = "#7A683A" }, -- Dark muted yellow
+        },
+        paste = {
+          hl_color = { bg = "#325B5B" }, -- Dark muted cyan
+        },
+        search = {
+          hl_color = { bg = "#5C475C" }, -- Dark muted purple
+        },
+        -- comment = {
+        --   hl_color = { bg = "#7A5A3D" }, -- Dark muted orange
+        -- },
+        cursor = {
+          hl_color = { bg = "#793D54" }, -- Dark muted pink
+        },
+      },
+      priority = 2048 * 3,
+    },
+    keys = {
+      {
+        "u",
+        function()
+          require("undo-glow").undo()
+        end,
+        mode = "n",
+        desc = "Undo with highlight",
+        noremap = true,
+      },
+      {
+        "U",
+        function()
+          require("undo-glow").redo()
+        end,
+        mode = "n",
+        desc = "Redo with highlight",
+        noremap = true,
+      },
+      {
+        "p",
+        function()
+          require("undo-glow").paste_below()
+        end,
+        mode = "n",
+        desc = "Paste below with highlight",
+        noremap = true,
+      },
+      {
+        "P",
+        function()
+          require("undo-glow").paste_above()
+        end,
+        mode = "n",
+        desc = "Paste above with highlight",
+        noremap = true,
+      },
+      {
+        "n",
+        function()
+          require("undo-glow").search_next({
+            animation = {
+              animation_type = "strobe",
+            },
+          })
+        end,
+        mode = "n",
+        desc = "Search next with highlight",
+        noremap = true,
+      },
+      {
+        "N",
+        function()
+          require("undo-glow").search_prev({
+            animation = {
+              animation_type = "strobe",
+            },
+          })
+        end,
+        mode = "n",
+        desc = "Search prev with highlight",
+        noremap = true,
+      },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("TextYankPost", {
+        desc = "Highlight when yanking (copying) text",
+        callback = function()
+          require("undo-glow").yank()
+        end,
+      })
+
+      -- This only handles neovim instance and do not highlight when switching panes in tmux
+      vim.api.nvim_create_autocmd("CursorMoved", {
+        desc = "Highlight when cursor moved significantly",
+        callback = function()
+          require("undo-glow").cursor_moved({
+            animation = {
+              animation_type = "slide",
+            },
+          })
+        end,
+      })
+
+      -- This will handle highlights when focus gained, including switching panes in tmux
+      vim.api.nvim_create_autocmd("FocusGained", {
+        desc = "Highlight when focus gained",
+        callback = function()
+          ---@type UndoGlow.CommandOpts
+          local opts = {
+            animation = {
+              animation_type = "slide",
+            },
+          }
+
+          opts = require("undo-glow.utils").merge_command_opts("UgCursor", opts)
+          local pos = require("undo-glow.utils").get_current_cursor_row()
+
+          require("undo-glow").highlight_region(vim.tbl_extend("force", opts, {
+            s_row = pos.s_row,
+            s_col = pos.s_col,
+            e_row = pos.e_row,
+            e_col = pos.e_col,
+            force_edge = opts.force_edge == nil and true or opts.force_edge,
+          }))
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("CmdlineLeave", {
+        desc = "Highlight when search cmdline leave",
+        callback = function()
+          require("undo-glow").search_cmd({
+            animation = {
+              animation_type = "fade",
+            },
+          })
+        end,
+      })
+    end,
   },
   {
     "brenoprata10/nvim-highlight-colors",
