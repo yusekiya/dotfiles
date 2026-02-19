@@ -9,27 +9,28 @@ return {
       nvim_treesitter.setup({})
       nvim_treesitter.install({
         "bash",
-        "comment",
         "c",
+        "comment",
         "css",
         "csv",
         "diff",
         "html",
         "javascript",
         "json",
+        "latex",
         "lua",
         "markdown",
         "python",
+        "regex",
         "rust",
         "ssh_config",
         "tmux",
         "toml",
         "vim",
+        "vimdoc",
         "xml",
         "yaml",
         "zsh",
-        "regex",
-        "vimdoc",
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
