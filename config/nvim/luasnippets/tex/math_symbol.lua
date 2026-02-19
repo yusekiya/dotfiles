@@ -1160,6 +1160,26 @@ return {
   ),
   s(
     {
+      trig = "([^%a])par ",
+      dscr = "partial",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\partial 
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+      }
+    )
+  ),
+  s(
+    {
       trig = "([^%a])nabl",
       dscr = "nabla",
       regTrig = true,
@@ -1320,12 +1340,13 @@ return {
   ),
   s(
     {
-      trig = "([^%a])\\xi i",
+      trig = "([^%a])\\xii",
       dscr = "x sub i",
       regTrig = true,
       wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
+      priority = 1001,
     },
     fmta(
       [[

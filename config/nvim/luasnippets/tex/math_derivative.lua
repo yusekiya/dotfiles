@@ -30,9 +30,11 @@ return {
   ),
   s(
     {
-      trig = "pa_2",
+      trig = "pa2",
       dscr = "second partial derivative",
       condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+      priority = 1001,
     },
     fmta(
       [[
@@ -46,9 +48,11 @@ return {
   ),
   s(
     {
-      trig = "pa_3",
+      trig = "pa3",
       dscr = "third partial derivative",
       condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+      priority = 1001,
     },
     fmta(
       [[
@@ -57,93 +61,6 @@ return {
       {
         i(1),
         i(2),
-      }
-    )
-  ),
-  s(
-    {
-      trig = "([^%a])pa(%a)p(%a)",
-      dscr = "partial derivative with single variable",
-      regTrig = true,
-      wordTrig = false,
-      condition = tex_utils.in_mathzone,
-      snippetType = "autosnippet",
-    },
-    fmta(
-      [[
-        <>\frac{\partial <>}{\partial <>}
-      ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-        f(function(_, snip)
-          return snip.captures[2]
-        end),
-        f(function(_, snip)
-          return snip.captures[3]
-        end),
-      }
-    )
-  ),
-  s(
-    {
-      trig = "([^%a])pa_2(%a)p(%a)p(%a)",
-      dscr = "second partial derivative with two variables",
-      regTrig = true,
-      wordTrig = false,
-      condition = tex_utils.in_mathzone,
-      snippetType = "autosnippet",
-    },
-    fmta(
-      [[
-        <>\frac{\partial^2 <>}{\partial <> \partial <>}
-      ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-        f(function(_, snip)
-          return snip.captures[2]
-        end),
-        f(function(_, snip)
-          return snip.captures[3]
-        end),
-        f(function(_, snip)
-          return snip.captures[4]
-        end),
-      }
-    )
-  ),
-  s(
-    {
-      trig = "([^%a])pa_3(%a)p(%a)p(%a)p(%a)",
-      dscr = "second partial derivative with three variables",
-      regTrig = true,
-      wordTrig = false,
-      condition = tex_utils.in_mathzone,
-      snippetType = "autosnippet",
-    },
-    fmta(
-      [[
-        <>\frac{\partial^3 <>}{\partial <> \partial <> \partial <>}
-      ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-        f(function(_, snip)
-          return snip.captures[2]
-        end),
-        f(function(_, snip)
-          return snip.captures[3]
-        end),
-        f(function(_, snip)
-          return snip.captures[4]
-        end),
-        f(function(_, snip)
-          return snip.captures[5]
-        end),
       }
     )
   ),
