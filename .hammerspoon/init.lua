@@ -86,6 +86,7 @@ PaperWM:bindHotkeys({
 PaperWM.window_gap = 10
 PaperWM.swipe_fingers = 3
 PaperWM.drag_window = { "alt", "cmd" }
+PaperWM.scroll_window = { "ctrl", "cmd" }
 PaperWM.lift_window = { "ctrl", "cmd" }
 PaperWM.window_ratios = { 0.38195, 0.5, 0.61804 }
 
