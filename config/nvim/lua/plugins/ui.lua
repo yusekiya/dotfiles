@@ -1,5 +1,5 @@
 return {
-  -- UI for messages, cmdline, and popupmenu
+  -- UI for messages, cmd line, and popup-menu
   {
     "folke/noice.nvim",
     lazy = true,
@@ -123,11 +123,11 @@ return {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
     dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
-    -- use a release tag to download pre-built binaries
+    -- Use a release tag to download prebuilt binaries
     version = "1.*",
     ---@module 'blink.cmp'
     opts = {
-      -- See :h blink-cmp-config-keymap for defining your own keymap
+      -- See :h `blink-cmp-config-keymap` for defining your own keymap
       keymap = { preset = "super-tab" },
       appearance = {
         nerd_font_variant = "mono",
@@ -170,7 +170,7 @@ return {
     end,
     opts = {
       spec = {
-        -- <leader>v is mapped to visual select with treesitter
+        -- <leader>v is mapped to visual select with Tree-sitter
         { "<leader>f", group = "fuzzy finder" },
         { "<leader>e", group = "file explorer" },
         { "<leader>h", group = "git hunk" },
@@ -200,10 +200,10 @@ return {
       },
       { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
       { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
-      -- { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
+      -- { "<leader>xt", "<cmd>Trouble TO-DO toggle<CR>", desc = "Open TO-DO in trouble" },
     },
   },
-  -- highlight code block that is added/changed/deleted from the previous git commit
+  -- Highlight code block that is added/changed/deleted from the previous git commit
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre" },
@@ -265,7 +265,7 @@ return {
       end,
     },
   },
-  -- animated glow/highlight effects to operation (undo, redo, yank, paste and more)
+  -- Animated glow/highlight effects to operation (undo, redo, yank, paste, and more)
   {
     "y3owk1n/undo-glow.nvim",
     version = "*", -- use stable releases
@@ -373,7 +373,7 @@ return {
         end,
       })
 
-      -- This only handles neovim instance and do not highlight when switching panes in tmux
+      -- This only handles Neovim instance and do not highlight when switching panes in tmux
       vim.api.nvim_create_autocmd("CursorMoved", {
         desc = "Highlight when cursor moved significantly",
         callback = function()
@@ -389,7 +389,6 @@ return {
       vim.api.nvim_create_autocmd("FocusGained", {
         desc = "Highlight when focus gained",
         callback = function()
-          ---@type UndoGlow.CommandOpts
           local opts = {
             animation = {
               animation_type = "slide",
