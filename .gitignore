@@ -33,3 +33,4 @@ jupyterlabapputilsextensionannouncements.json
 !.aider.conf.yml
 *.zwc
 .gitconfig.local
+.harper-dictionary.txt
