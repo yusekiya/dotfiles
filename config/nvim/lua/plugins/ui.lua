@@ -170,6 +170,7 @@ return {
     end,
     opts = {
       spec = {
+        -- <leader>v is mapped to visual select with treesitter
         { "<leader>f", group = "fuzzy finder" },
         { "<leader>e", group = "file explorer" },
         { "<leader>h", group = "git hunk" },
