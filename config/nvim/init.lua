@@ -83,11 +83,11 @@ local function cycle_zz()
 
   -- move cursor position
   if zz_cycle_state == 0 then
-    vim.cmd('normal! zz')
+    vim.cmd("normal! zz")
   elseif zz_cycle_state == 1 then
-    vim.cmd('normal! zt')
+    vim.cmd("normal! zt")
   elseif zz_cycle_state == 2 then
-    vim.cmd('normal! zb')
+    vim.cmd("normal! zb")
   end
 
   -- proceed state
@@ -110,7 +110,6 @@ setkey("i", "<C-e>", "<End>")
 setkey("i", "<C-b>", "<Left>")
 setkey("i", "<C-f>", "<Right>")
 setkey("i", "<C-d>", "<Del>")
-setkey("i", "<C-k>", "<Esc>lc$")
 setkey("i", "<C-y>", "<Esc>pa")
 -- others
 setkey({ "n", "v" }, "gh", "^")
