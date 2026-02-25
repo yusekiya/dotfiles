@@ -1670,7 +1670,7 @@ return {
     },
     fmta(
       [[
-        <>\boldsymbol{B}
+        <>\bm{B}
       ]],
       {
         f(function(_, snip)
@@ -1690,7 +1690,7 @@ return {
     },
     fmta(
       [[
-        <>\boldsymbol{E}
+        <>\bm{E}
       ]],
       {
         f(function(_, snip)

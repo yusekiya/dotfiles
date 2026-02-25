@@ -565,6 +565,27 @@ local snippets = {
   ),
   s(
     {
+      trig = "(%a)%,,",
+      dscr = "slant bold style (bm package)",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        \bm{<>}<>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(0),
+      }
+    )
+  ),
+  s(
+    {
       trig = "(%a),s",
       dscr = "slant bold style",
       regTrig = true,
