@@ -62,7 +62,11 @@ return {
       },
       { "<C-'>", "<Cmd>AerialToggle!<cr>", mode = "n", desc = "Toggle outline window" },
     },
-    opts = {},
+    opts = {
+      layout = {
+        max_width = { 40, 0.3 },
+      },
+    },
     -- Optional dependencies
     dependencies = {
       "folke/snacks.nvim",
