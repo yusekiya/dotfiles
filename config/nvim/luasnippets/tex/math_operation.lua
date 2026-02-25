@@ -565,7 +565,7 @@ local snippets = {
   ),
   s(
     {
-      trig = "(%a)%,,",
+      trig = "(%a),,",
       dscr = "slant bold style (bm package)",
       regTrig = true,
       wordTrig = false,
@@ -581,6 +581,27 @@ local snippets = {
           return snip.captures[1]
         end),
         i(0),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a]),,",
+      dscr = "slant bold style (bm package)",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\bm{<>}
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
       }
     )
   ),
@@ -602,6 +623,27 @@ local snippets = {
           return snip.captures[1]
         end),
         i(0),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a]),s",
+      dscr = "slant bold style",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\boldstyle{<>}
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
       }
     )
   ),
