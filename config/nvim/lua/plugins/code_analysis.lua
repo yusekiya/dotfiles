@@ -20,6 +20,7 @@ return {
         "latex",
         "lua",
         "markdown",
+        "markdown_inline",
         "python",
         "regex",
         "rust",

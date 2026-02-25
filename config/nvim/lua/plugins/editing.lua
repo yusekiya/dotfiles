@@ -168,6 +168,8 @@ return {
         store_selection_keys = "<Tab>",
         update_events = "TextChanged,TextChangedI",
       })
+      -- Enable LaTeX snippets in Markdown
+      ls.filetype_extend("markdown", { "tex" })
     end,
   },
   -- formatting
