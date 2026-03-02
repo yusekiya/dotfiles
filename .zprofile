@@ -43,5 +43,8 @@ if [[ "$TERM_PROGRAM" == "WezTerm" && -f "$HOME"/.config/wezterm/wezterm.sh ]]; 
     source "$HOME"/.config/wezterm/wezterm.sh
 fi
 
+if [[ -d "/Applications/Obsidian.app/Contents/MacOS" ]]; then
+    export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+fi
 
 typeset -U PATH path
