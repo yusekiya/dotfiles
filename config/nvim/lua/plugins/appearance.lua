@@ -86,7 +86,7 @@ return {
             {
               icon = "  > ",
               icon_hl = "Keyword",
-              desc = "Toggle file explorer",
+              desc = "File explorer",
               desc_hl = "Title",
               key = "SPC ee",
               key_hl = "Number",
@@ -102,6 +102,16 @@ return {
               key_hl = "Number",
               key_format = " %s", -- `%s` will be substituted with value of `key`
               action = "Snacks.picker.smart()",
+            },
+            {
+              icon = "󱎸  > ",
+              icon_hl = "Keyword",
+              desc = "Find text",
+              desc_hl = "Title",
+              key = "SPC fg",
+              key_hl = "Number",
+              key_format = " %s", -- `%s` will be substituted with value of `key`
+              action = "Snacks.picker.grep()",
             },
             {
               icon = "󰅙  > ",
