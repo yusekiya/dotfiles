@@ -56,7 +56,8 @@ return {
           " --anchor-canvas s",
           -- " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12 --final-gradient-stops FFFFFF 00D1FF 8A008A",
           -- " scattered --movement-speed 0.2",
-          " randomsequence --speed 0.01 --starting-color 2E3440 --final-gradient-stops BDFFEA AB9DFF FF9048",
+          -- " randomsequence --speed 0.01 --starting-color 2E3440 --final-gradient-stops BDFFEA AB9DFF FF9048",
+          " expand --movement-speed 0.4 --expand-easing OUT_SINE --final-gradient-stops BDFFEA AB9DFF FF9048",
           " --final-gradient-direction diagonal",
           " <",
         }
