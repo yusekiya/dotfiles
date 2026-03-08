@@ -18,9 +18,6 @@ return {
       cmd = table.concat(cmd_table)
     end
     local logo_file = vim.fn.stdpath("config") .. "/logo/saturn.txt"
-    vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#8fbcbb" })
-    vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#d8dee9", bold = true })
-    vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#8fbcbb" })
     local opts = {
       bigfile = { enabled = false },
       explorer = { enabled = false },

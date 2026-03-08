@@ -29,6 +29,9 @@ return {
           highlights["NeoTreeMessage"] = { fg = "#8891A2" }
           highlights["SnacksIndent"] = { fg = "#697180" }
           highlights["SnacksIndentScope"] = { fg = "#B48EAD" }
+          highlights["SnacksDashboardIcon"] = { fg = "#8fbcbb" }
+          highlights["SnacksDashboardDesc"] = { fg = "#d8dee9", bold = true }
+          highlights["SnacksDashboardKey"] = { fg = "#8fbcbb" }
         end,
       })
       vim.cmd.colorscheme("nord")
