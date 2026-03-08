@@ -1,7 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "FileType", "BufNewFile" },
     dependencies = {
       "folke/snacks.nvim",
     },
