@@ -67,13 +67,13 @@ return {
         col = nil,
         preset = {
           keys = {
-            { icon = "  > ", key = "n", desc = "New file", action = ":ene | startinsert" },
-            { icon = "  > ", key = "r", desc = "Recent files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-            { icon = "  > ", key = "e", desc = "File explorer", action = ":Neotree" },
-            { icon = "󰱼  > ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
-            { icon = "󱎸  > ", key = "g", desc = "Find text", action = ":lua Snacks.picker.grep()" },
-            { icon = "󰒲  > ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-            { icon = "  > ", key = "q", desc = "Quit", action = ":qa" },
+            { icon = "   ", key = "n", desc = "New file", action = ":ene | startinsert" },
+            { icon = "   ", key = "r", desc = "Recent files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            { icon = "   ", key = "e", desc = "File explorer", action = ":Neotree" },
+            { icon = "󰱼   ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
+            { icon = "󱎸   ", key = "g", desc = "Find text", action = ":lua Snacks.picker.grep()" },
+            { icon = "󰒲   ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = "   ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
         sections = {
