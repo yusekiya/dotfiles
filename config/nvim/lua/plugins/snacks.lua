@@ -68,6 +68,7 @@ return {
         preset = {
           keys = {
             { icon = "  > ", key = "n", desc = "New file", action = ":ene | startinsert" },
+            { icon = "  > ", key = "r", desc = "Recent files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
             { icon = "  > ", key = "e", desc = "File explorer", action = ":Neotree" },
             { icon = "󰱼  > ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
             { icon = "󱎸  > ", key = "g", desc = "Find text", action = ":lua Snacks.picker.grep()" },
@@ -116,4 +117,5 @@ return {
       desc = "Find Commands",
     },
   },
+  requires = { "nvim-tree/nvim-web-devicons" },
 }
