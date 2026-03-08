@@ -187,6 +187,15 @@ return {
         { "<leader>a", group = "AI" },
       },
     },
+    keys = {
+      {
+        "<leader>ss",
+        function()
+          require("which-key").show({ keys = "<C-w>", loop = true })
+        end,
+        desc = "Window Hydra mode",
+      },
+    },
   },
   -- interface for diagnostics, references, and other lists
   {
