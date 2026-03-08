@@ -3,9 +3,26 @@ return {
   priority = 1000,
   lazy = false,
   config = function()
+    local cmd = "cat"
+    if vim.fn.executable("tte") == 1 then
+      local cmd_table = {
+        "tte",
+        " --anchor-canvas s",
+        -- " beams --beam-delay 2 --beam-row-speed-range 20-60 --beam-column-speed-range 8-12 --final-gradient-stops FFFFFF 00D1FF 8A008A",
+        -- " scattered --movement-speed 0.2",
+        -- " randomsequence --speed 0.01 --starting-color 2E3440 --final-gradient-stops BDFFEA AB9DFF FF9048",
+        " expand --movement-speed 0.4 --expand-easing OUT_SINE --final-gradient-stops BDFFEA AB9DFF FF9048",
+        " --final-gradient-direction diagonal",
+        " <",
+      }
+      cmd = table.concat(cmd_table)
+    end
+    local logo_file = vim.fn.stdpath("config") .. "/logo/saturn.txt"
+    vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#8fbcbb" })
+    vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#d8dee9", bold = true })
+    vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#8fbcbb" })
     local opts = {
       bigfile = { enabled = false },
-      dashboard = { enabled = false },
       explorer = { enabled = false },
       indent = {
         hl = "SnacksIndent",
@@ -44,6 +61,25 @@ return {
         zindex = 50,
       },
       words = { enabled = false },
+      dashboard = {
+        width = 66,
+        row = nil,
+        col = nil,
+        preset = {
+          keys = {
+            { icon = "  > ", key = "n", desc = "New file", action = ":ene | startinsert" },
+            { icon = "  > ", key = "e", desc = "File explorer", action = ":Neotree" },
+            { icon = "󰱼  > ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
+            { icon = "󱎸  > ", key = "g", desc = "Find text", action = ":lua Snacks.picker.grep()" },
+            { icon = "  > ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+        sections = {
+          { section = "terminal", cmd = cmd .. " " .. logo_file, height = 23, padding = 1, ttl = 5 * 60 },
+          { section = "keys", gap = 1, padding = 1 },
+          { section = "startup" },
+        },
+      },
     }
     require("snacks").setup(opts)
   end,
