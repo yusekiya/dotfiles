@@ -438,8 +438,8 @@ return {
   {
     "max397574/better-escape.nvim",
     opts = {
-      timeout = 500,
-      default_mapping = false,
+      timeout = 300,
+      default_mappings = false,
       mappings = {
         i = {
           j = {
