@@ -434,6 +434,26 @@ return {
       })
     end,
   },
+  -- successive key map
+  {
+    "max397574/better-escape.nvim",
+    opts = {
+      timeout = 500,
+      default_mapping = false,
+      mappings = {
+        i = {
+          j = {
+            k = "<Esc>",
+          },
+        },
+        t = {
+          j = {
+            k = [[<C-\><C-n>]],
+          },
+        },
+      },
+    },
+  },
   {
     "brenoprata10/nvim-highlight-colors",
     event = { "BufReadPre", "BufNewFile" },

@@ -114,7 +114,7 @@ setkey("i", "<C-y>", "<Esc>pa")
 -- others
 setkey({ "n", "v" }, "gh", "^")
 setkey({ "n", "v" }, "gl", "$")
-setkey("i", "jk", "<Esc>")
+-- setkey("i", "jk", "<Esc>") -- this mapping is configured via better_escape.nvim
 setkey("n", "<Esc><Esc>", "<Cmd>nohlsearch<CR>", { silent = true })
 setkey({ "n", "v" }, "j", "gj")
 setkey({ "n", "v" }, "k", "gk")
