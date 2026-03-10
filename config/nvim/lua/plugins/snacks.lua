@@ -17,7 +17,8 @@ return {
       }
       cmd = table.concat(cmd_table)
     end
-    local logo_file = vim.fn.stdpath("config") .. "/logo/saturn.txt"
+    -- local logo_file = vim.fn.stdpath("config") .. "/logo/saturn.txt"
+    local logo_file = vim.fn.stdpath("config") .. "/logo/blackhole.txt"
     local opts = {
       bigfile = { enabled = false },
       explorer = { enabled = false },
@@ -74,7 +75,7 @@ return {
           },
         },
         sections = {
-          { section = "terminal", cmd = cmd .. " " .. logo_file, height = 23, padding = 1, ttl = 5 * 60 },
+          { section = "terminal", cmd = cmd .. " " .. logo_file, height = 25, padding = 1, ttl = 5 * 60 },
           { section = "keys", gap = 1, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
           { section = "startup" },
