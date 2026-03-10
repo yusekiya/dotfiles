@@ -279,6 +279,28 @@ return {
       end,
     },
   },
+  -- Status column
+  {
+    "luukvbaal/statuscol.nvim",
+    event = { "BufReadPre" },
+    config = function()
+      local builtin = require("statuscol.builtin")
+      local cfg = {
+        bt_ignore = { "terminal" },
+        segments = {
+          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+          {
+            sign = { namespace = { ".*diagnostic%.signs.*" }, maxwidth = 1, auto = true },
+            click = "v:lua.ScSa",
+          },
+          { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
+          { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 1, wrap = true } },
+        },
+      }
+      require("statuscol").setup(cfg)
+    end,
+    dependencies = { "lewis6991/gitsigns.nvim", "neovim/nvim-lspconfig" },
+  },
   -- Animated glow/highlight effects to operation (undo, redo, yank, paste, and more)
   {
     "y3owk1n/undo-glow.nvim",
