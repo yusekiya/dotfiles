@@ -175,15 +175,15 @@ return {
     end,
     opts = {
       spec = {
-        -- <leader>v is mapped to visual select with Tree-sitter
-        { "<leader>f", group = "fuzzy finder" },
-        { "<leader>e", group = "file explorer" },
-        { "<leader>h", group = "git hunk" },
-        { "<leader>o", group = "outline" },
-        { "<leader>s", group = "splitted window" },
-        { "<leader>t", group = "terminal" },
-        { "<leader>w", group = "workspace" },
-        { "<leader>x", group = "trouble" },
+        -- Note: <leader>v is mapped to visual select with Tree-sitter
+        { "<leader>f", group = "Fuzzy finder" },
+        { "<leader>e", group = "File explorer" },
+        { "<leader>h", group = "Git hunk" },
+        { "<leader>o", group = "Outline" },
+        { "<leader>s", group = "Splitted window" },
+        { "<leader>t", group = "Terminal" },
+        { "<leader>w", group = "Workspace" },
+        { "<leader>x", group = "Trouble" },
         { "<leader>a", group = "AI" },
       },
     },
