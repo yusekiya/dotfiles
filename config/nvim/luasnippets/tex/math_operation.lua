@@ -637,7 +637,7 @@ local snippets = {
     },
     fmta(
       [[
-        <>\boldstyle{<>}
+        <>\boldsymbol{<>}
       ]],
       {
         f(function(_, snip)
