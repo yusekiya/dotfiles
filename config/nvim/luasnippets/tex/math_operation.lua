@@ -1319,11 +1319,10 @@ local snippets = {
   ),
   s(
     {
-      trig = "((\\d+)|(\\d*)(\\\\)?([A-Za-z]+)((\\^|_)(\\{\\d+\\}|\\d))*)\\/",
+      trig = [[\v((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/]],
       dscr = "fraction without parentheses",
-      regTrig = true,
       wordTrig = false,
-      trigEngine = "ecma",
+      trigEngine = "vim",
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
