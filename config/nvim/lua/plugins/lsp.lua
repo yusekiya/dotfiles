@@ -9,7 +9,13 @@ return {
       -- local lspconfig = require("lspconfig")
       local keymap = vim.keymap
 
-      vim.diagnostic.config({ jump = { float = true } })
+      vim.diagnostic.config({
+        jump = {
+          on_jump = function(_, bufnr)
+            vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+          end,
+        },
+      })
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
