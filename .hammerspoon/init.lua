@@ -24,9 +24,9 @@ PaperWM:bindHotkeys({
 	swap_right = { hypr_key, "l" },
 
 	-- position and resize focused window
-	center_window = { cag_key, "c" },
-	anchor_window_right = { cag_key, "v" },
-	anchor_window_left = { cag_key, "x" },
+	center_window = { cag_key, "m" },
+	anchor_window_left = { cag_key, "," },
+	anchor_window_right = { cag_key, "." },
 	full_width = { cag_key, "f" },
 	cycle_width = { cag_key, "r" },
 	-- reverse_cycle_width  = {{"ctrl", "alt", "cmd"}, "r"},
@@ -34,12 +34,12 @@ PaperWM:bindHotkeys({
 	-- reverse_cycle_height = {{"ctrl", "alt", "cmd", "shift"}, "r"},
 
 	-- increase/decrease width
-	increase_width = { cag_key, "]" },
-	decrease_width = { cag_key, "[" },
+	increase_width = { cag_key, "d" },
+	decrease_width = { cag_key, "a" },
 
 	-- increase/decrease height
-	increase_height = { cag_key, "=" },
-	decrease_height = { cag_key, "-" },
+	increase_height = { cag_key, "w" },
+	decrease_height = { cag_key, "s" },
 
 	-- move focused window into / out of a column
 	slurp_in = { hypr_key, "i" },
