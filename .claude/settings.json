@@ -305,5 +305,18 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "effortLevel": "xhigh"
+  "effortLevel": "xhigh",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  }
 }
