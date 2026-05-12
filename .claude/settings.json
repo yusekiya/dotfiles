@@ -302,10 +302,6 @@
       "Bash(wget:*)"
     ]
   },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "effortLevel": "xhigh",
   "hooks": {
     "PreToolUse": [
       {
@@ -318,5 +314,10 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "xhigh",
+  "skipAutoPermissionPrompt": true
 }
