@@ -243,67 +243,6 @@
           {
             "type": "command",
             "command": "rtk hook claude"
-          },
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.pretooluse",
-            "timeout": 330
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.posttooluse",
-            "timeout": 10
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.session_start",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.session_end",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.user_prompt_submit",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/yseki/github/cc-buddy-bridge/.venv/bin/python3.12 -m cc_buddy_bridge.hooks.stop",
-            "timeout": 10
           }
         ]
       }
