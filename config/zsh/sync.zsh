@@ -20,6 +20,7 @@ if [ "$SSH_TTY" != "" ]; then
 fi
 setopt noflowcontrol
 setopt IGNOREEOF
+setopt interactive_comments
 unsetopt beep
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
