@@ -119,6 +119,10 @@ local macros = {
   "times",
   "cdot",
   "ell",
+  "lesssim",
+  "gtrsim",
+  "therefore",
+  "because",
 }
 
 local generate_auto_space_macros = function()

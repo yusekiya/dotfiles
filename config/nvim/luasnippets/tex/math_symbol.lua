@@ -29,6 +29,46 @@ return {
   ),
   s(
     {
+      trig = "([^%a])tfr",
+      dscr = "therefore",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\therefore
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a])bcs",
+      dscr = "because",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\because
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+      }
+    )
+  ),
+  s(
+    {
       trig = "([^%a])OO",
       dscr = "emptyset",
       regTrig = true,
@@ -1027,6 +1067,52 @@ return {
     fmta(
       [[
         <>\leq <>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        f(function(_, snip)
+          return string.gsub(snip.captures[2], "[ \t]+%f[\r\n%z]", "")
+        end),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a])>~(.)",
+      dscr = "greater than or similar to",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\gtrsim <>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        f(function(_, snip)
+          return string.gsub(snip.captures[2], "[ \t]+%f[\r\n%z]", "")
+        end),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "([^%a])<~(.)",
+      dscr = "less than or similar to",
+      regTrig = true,
+      wordTrig = false,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta(
+      [[
+        <>\lesssim <>
       ]],
       {
         f(function(_, snip)
