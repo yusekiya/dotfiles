@@ -144,7 +144,7 @@ cfg = {
         "FiraCode Nerd Font",
         "HackGen",
     }),
-    font_size = 13.0,
+    font_size = 12.0,
     initial_cols = 120,
     initial_rows = 40,
     tab_max_width = 100,
