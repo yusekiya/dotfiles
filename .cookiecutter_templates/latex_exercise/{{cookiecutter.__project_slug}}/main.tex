@@ -1,0 +1,102 @@
+\documentclass[11pt]{ltjsarticle}
+%
+%%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{title}
+\author{names}
+\date{\today}
+%
+\newcommand{\exerciseId}{1}
+%
+%%%% Exercise env %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\renewcommand{\thesection}{課題 \exerciseId-\arabic{section}}
+\usepackage{enumitem}
+%
+\newlist{subproblems}{enumerate}{1}
+\setlist[subproblems]{
+  label=\textbf{(\alph*)},   % (a), (b), ... を太字で
+  labelwidth=2.2em,          % ラベル領域の幅（揃え位置を決める）
+  labelsep=0.5em,            % ラベルと本文の隙間
+  leftmargin=!,              % labelwidth+labelsep に合わせて自動計算
+  align=left,                % ラベル左揃え（既定は右揃え）
+  itemsep=0.6em,             % 小問同士の縦間隔
+  topsep=0.4em,              % リスト前後の縦間隔
+}
+{% endraw -%}
+%
+%%%% Settings for math expression %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{siunitx}
+\sisetup{input-digits = 0123456789\pi}
+\mathtoolsset{showonlyrefs=true} % Show equation labels only referenced
+%\DeclareMathOperator{\Tr}{Tr}
+%\DeclareMathOperator{\Re}{Re}
+%\DeclareMathOperator{\Im}{Im}
+%\newcommand{\defas}{\equiv}
+{% endraw -%}
+%
+%%%% Settings for figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\usepackage{graphicx}
+%\graphicspath{{subdir1/}{../dir2}}
+{% endraw -%}
+%
+%%%% Settings for bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+%\usepackage{cite}
+{% endraw -%}
+%
+%%%% Settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+%\usepackage{geometry}
+%\geometry{left=30truemm,right=30truemm,textheight=25truecm}
+{% endraw -%}
+%
+%%%% Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+%\usepackage{booktabs}
+\usepackage[hang,flushmargin,perpage]{footmisc}
+% hang=インデントを除去，flushmargin=記号と脚注のスペースを除去，perpage=ページごとに独立した脚注番号
+\setlength{\footnotemargin}{1em} % 脚注記号と脚注の間のスペースを調整
+{% endraw -%}
+%
+%%%% Settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+%\usepackage[color]{showkeys}
+%\renewcommand*{\showkeyslabelformat}[1]{%
+%\fbox{\parbox{40truemm}{\normalfont\small\ttfamily#1}}}
+%\usepackage[]{setspace}
+%\doublespacing
+%\usepackage[dvipsnames]{xcolor}
+%\newcommand*{\TODO}[1]{{\color{red}(TODO: #1)}}
+%\newcommand{\remove}[1]{\textcolor{green}{#1}}
+%\newcommand{\add}[1]{\textcolor{Purple}{#1}}
+% Replace figures with dummy figures
+%\let\originalincludegraphics\includegraphics
+%\renewcommand{\includegraphics}[2][width=3.2truein]{\originalincludegraphics[#1]{example-image-plain.pdf}}
+{% endraw -%}
+%
+%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+
+\section{}
+
+問題文
+
+\begin{subproblems}
+\item 小問1
+\item 小問2
+\end{subproblems}
+
+
+% References
+% \begin{thebibliography}{99}
+%     % \bibitem{label1} aaa
+%     % \bibitem{label2} bbb
+% \end{thebibliography}
+\end{document}
