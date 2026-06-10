@@ -5,3 +5,4 @@ $bibtex = 'bibtex %O %B';
 $pdf_mode = 4; # use lualatex
 $biber = 'biber --bblencoding=utf8 -u -U --output_safechars';
 $max_repeat = 5;
+@default_files = ('main.tex');

@@ -1,13 +1,13 @@
 \documentclass[11pt]{ltjsarticle}
 %
-%%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{title}
 \author{names}
 \date{\today}
 %
 \newcommand{\exerciseId}{1}
 %
-%%%% Exercise env %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Exercise env %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 \renewcommand{\thesection}{課題 \exerciseId-\arabic{section}}
 \usepackage{enumitem}
@@ -24,7 +24,7 @@
 }
 {% endraw -%}
 %
-%%%% Settings for math expression %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Settings for math expression %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 \usepackage{amsmath,amssymb}
 \usepackage{mathtools}
@@ -33,30 +33,30 @@
 \usepackage{siunitx}
 \sisetup{input-digits = 0123456789\pi}
 \mathtoolsset{showonlyrefs=true} % Show equation labels only referenced
-%\DeclareMathOperator{\Tr}{Tr}
-%\DeclareMathOperator{\Re}{Re}
-%\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Tr}{Tr}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
 %\newcommand{\defas}{\equiv}
 {% endraw -%}
 %
-%%%% Settings for figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Settings for figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 \usepackage{graphicx}
 %\graphicspath{{subdir1/}{../dir2}}
 {% endraw -%}
 %
-%%%% Settings for bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Settings for bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 %\usepackage{cite}
 {% endraw -%}
 %
-%%%% Settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 %\usepackage{geometry}
 %\geometry{left=30truemm,right=30truemm,textheight=25truecm}
 {% endraw -%}
 %
-%%%% Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 %\usepackage{booktabs}
 \usepackage[hang,flushmargin,perpage]{footmisc}
@@ -64,7 +64,7 @@
 \setlength{\footnotemargin}{1em} % 脚注記号と脚注の間のスペースを調整
 {% endraw -%}
 %
-%%%% Settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 %\usepackage[color]{showkeys}
 %\renewcommand*{\showkeyslabelformat}[1]{%
@@ -80,7 +80,7 @@
 %\renewcommand{\includegraphics}[2][width=3.2truein]{\originalincludegraphics[#1]{example-image-plain.pdf}}
 {% endraw -%}
 %
-%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
 
@@ -96,7 +96,7 @@
 
 % References
 % \begin{thebibliography}{99}
-%     % \bibitem{label1} aaa
-%     % \bibitem{label2} bbb
+% \bibitem{label1} aaa
+% \bibitem{label2} bbb
 % \end{thebibliography}
 \end{document}
