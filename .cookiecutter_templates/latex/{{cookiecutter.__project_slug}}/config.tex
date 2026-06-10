@@ -78,6 +78,74 @@
   {}%           no punctuation (the title is the head itself)
   {\newline}%
   {\thmnote{#3}}%   <- display only the note as the head
+% --- Make the line break after the head work even when the theorem body starts with a list ---
+%     amsthm's \newline style stores the head in the box \@labels and attaches it
+%     via \everypar (\dth@everypar) at the start of the next paragraph, but when
+%     the body starts directly with a list environment, the kernel's
+%     \@donoparitem joins the head box with the first \item on the same line,
+%     and the break penalty (\nobreak\hfil\break) sealed inside the box has no
+%     effect. The fix is two-fold:
+%     (1) Do not put \thmheadnl and \hskip\thm@headsep inside the head box;
+%         execute them outside the box at the start of the paragraph (redefine
+%         \@begintheorem and \dth@everypar). For ordinary text bodies the
+%         output is identical to before.
+%     (2) Right before a list environment starts, if a head is pending, attach
+%         it by forcing a paragraph with \leavevmode while \thmheadnl is
+%         temporarily disabled (no break node is emitted in the first place;
+%         LuaTeX-ja inserts whatsits around boxes and \hskip, so removing the
+%         nodes afterwards with \unskip\unpenalty is impossible). The list then
+%         closes the paragraph, so the head forms its own line and the list
+%         starts below it.
+\makeatletter
+\newif\ifcallout@thmhead
+\let\callout@orig@deferredthmhead\deferred@thm@head
+\def\deferred@thm@head#1{%
+  \global\callout@thmheadtrue
+  \callout@orig@deferredthmhead{#1}%
+}
+% move \thmheadnl \hskip\thm@headsep out of the head box of amsthm's \@begintheorem
+\def\@begintheorem#1#2[#3]{%
+  \deferred@thm@head{\the\thm@headfont \thm@indent
+    \@ifempty{#1}{\let\thmname\@gobble}{\let\thmname\@iden}%
+    \@ifempty{#2}{\let\thmnumber\@gobble}{\let\thmnumber\@iden}%
+    \@ifempty{#3}{\let\thmnote\@gobble}{\let\thmnote\@iden}%
+    \thm@swap\swappedhead\thmhead{#1}{#2}{#3}%
+    \the\thm@headpunct
+  }%
+  \ignorespaces}
+% add the relocated commands and the flag reset to amsthm's \dth@everypar
+\dth@everypar={%
+  \@minipagefalse \global\@newlistfalse
+  \@noparitemfalse
+  \if@inlabel
+    \global\@inlabelfalse
+    \begingroup \setbox\z@\lastbox
+     \ifvoid\z@ \kern-\itemindent \fi
+    \endgroup
+    \unhbox\@labels
+    \thmheadnl\hskip\thm@headsep % <- executed outside the box (relocated)
+  \fi
+  \if@nobreak \@nobreakfalse \clubpenalty\@M
+  \else \clubpenalty\@clubpenalty \everypar{}%
+  \fi
+  \global\callout@thmheadfalse % <- clear the flag once the head is attached
+}%
+\def\callout@nlmarker{\newline}
+\newcommand*{\callout@fixthmheadbreak}{%
+  \ifcallout@thmhead
+    \ifx\thmheadnl\callout@nlmarker % only heads of the line-break styles
+      \begingroup
+        \let\thmheadnl\relax
+        \thm@headsep\z@skip
+        \leavevmode % attach the head without a break (the list closes the paragraph)
+      \endgroup
+    \fi
+  \fi
+}
+\AddToHook{env/itemize/before}{\callout@fixthmheadbreak}
+\AddToHook{env/enumerate/before}{\callout@fixthmheadbreak}
+\AddToHook{env/description/before}{\callout@fixthmheadbreak}
+\makeatother
 % Law env
 \theoremstyle{lawbreak}
 \newtheorem*{law@inner}{Law}% internal environment name; "Law" is never shown (since \thmname is unused)
@@ -131,6 +199,19 @@
 \newtheorem*{exc*}{Exercise}
 %%%% Callout block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[most]{tcolorbox}
+% --- Tighten list spacing inside boxes ---
+%     The class defaults (ltjsarticle: \leftmargini=3\zw, \topsep=0.5\baselineskip;
+%     scrartcl etc.: \leftmargini=2.5em with large topsep/itemsep) are excessive
+%     inside boxes with narrow padding, so override the first level only, locally
+\makeatletter
+\newcommand*{\callout@tightlists}{%
+  \ifdefined\zw \leftmargini=1.5\zw \else \leftmargini=1.5em \fi % \zw is a LuaTeX-ja-only unit
+  \def\@listi{\leftmargin\leftmargini
+    \labelwidth\leftmargini \advance\labelwidth-\labelsep
+    \parsep\z@
+    \topsep 0.2\baselineskip
+    \itemsep\z@\relax}%
+}
 \tcbset{
   calloutbase/.style={
     arc=0.7mm,
@@ -141,16 +222,18 @@
     top=1.5mm,
     bottom=1.5mm,
     colback=snow3,
+    before upper={\callout@tightlists},
   },
   callout/.style 2 args={   % #1: title, #2: space below the title
     calloutbase,
     coltitle=black,
     fonttitle=\bfseries,
     detach title,
-    before upper={\tcbtitle\par\vspace{#2}},
+    before upper={\callout@tightlists\tcbtitle\par\vspace{#2}},
     title={#1},
   },
 }
+\makeatother
 % --- calloutbox: framed box with a title (for direct use) ---
 \NewTColorBox{calloutbox}{ O{night4} o O{1mm} }{%
   colframe=#1,

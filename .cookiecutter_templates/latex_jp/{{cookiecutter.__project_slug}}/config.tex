@@ -79,6 +79,71 @@
   {}%           句読点なし（タイトルが見出しそのものなので）
   {\newline}%
   {\thmnote{#3}}%   ← note だけを見出しとして表示
+% --- 定理本文がリスト環境で始まっても見出し後の改行を効かせる ---
+%     amsthm の \newline スタイルは見出しを箱 \@labels に貯めて次の段落開始時の
+%     \everypar（\dth@everypar）で取り付けるが，本文が直接リストで始まると
+%     カーネルの \@donoparitem が見出し箱を最初の \item と同じ行に連結して
+%     しまい，箱の中に封じられた改行ペナルティ（\nobreak\hfil\break）は効かない．
+%     対策は2段構え:
+%     (1) \thmheadnl と \hskip\thm@headsep を見出し箱の中に入れず，段落開始時に
+%         箱の外で実行する（\@begintheorem と \dth@everypar を再定義）．
+%         通常のテキスト本文では出力は従来と同一．
+%     (2) リスト環境の開始直前に見出しが保留中なら，\thmheadnl を一時的に
+%         無効化した上で \leavevmode で段落を発生させて見出しを取り付ける
+%         （改行ノードは最初から出さない．LuaTeX-ja が箱や \hskip の周囲に
+%         whatsit を挿入するため，\unskip\unpenalty による事後除去は不可能）．
+%         直後にリストが段落を閉じるので見出しが1行を成し，リストはその下から
+%         始まる．
+\makeatletter
+\newif\ifcallout@thmhead
+\let\callout@orig@deferredthmhead\deferred@thm@head
+\def\deferred@thm@head#1{%
+  \global\callout@thmheadtrue
+  \callout@orig@deferredthmhead{#1}%
+}
+% amsthm の \@begintheorem から \thmheadnl \hskip\thm@headsep を箱の外へ移設
+\def\@begintheorem#1#2[#3]{%
+  \deferred@thm@head{\the\thm@headfont \thm@indent
+    \@ifempty{#1}{\let\thmname\@gobble}{\let\thmname\@iden}%
+    \@ifempty{#2}{\let\thmnumber\@gobble}{\let\thmnumber\@iden}%
+    \@ifempty{#3}{\let\thmnote\@gobble}{\let\thmnote\@iden}%
+    \thm@swap\swappedhead\thmhead{#1}{#2}{#3}%
+    \the\thm@headpunct
+  }%
+  \ignorespaces}
+% amsthm の \dth@everypar に移設分の実行とフラグ解除を追加
+\dth@everypar={%
+  \@minipagefalse \global\@newlistfalse
+  \@noparitemfalse
+  \if@inlabel
+    \global\@inlabelfalse
+    \begingroup \setbox\z@\lastbox
+     \ifvoid\z@ \kern-\itemindent \fi
+    \endgroup
+    \unhbox\@labels
+    \thmheadnl\hskip\thm@headsep % ← 箱の外で実行（移設分）
+  \fi
+  \if@nobreak \@nobreakfalse \clubpenalty\@M
+  \else \clubpenalty\@clubpenalty \everypar{}%
+  \fi
+  \global\callout@thmheadfalse % ← 見出しが取り付いたらフラグを下ろす
+}%
+\def\callout@nlmarker{\newline}
+\newcommand*{\callout@fixthmheadbreak}{%
+  \ifcallout@thmhead
+    \ifx\thmheadnl\callout@nlmarker % 改行スタイルの見出しのみ対象
+      \begingroup
+        \let\thmheadnl\relax
+        \thm@headsep\z@skip
+        \leavevmode % 改行抜きで見出しを取り付ける（段落はリストが閉じる）
+      \endgroup
+    \fi
+  \fi
+}
+\AddToHook{env/itemize/before}{\callout@fixthmheadbreak}
+\AddToHook{env/enumerate/before}{\callout@fixthmheadbreak}
+\AddToHook{env/description/before}{\callout@fixthmheadbreak}
+\makeatother
 % Law env
 \theoremstyle{lawbreak}
 \newtheorem*{law@inner}{Law}% 環境名は内部用．"Law" は表示されない（\thmname を使わないため）
@@ -116,6 +181,19 @@
 %%%% Callout block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
 \usepackage[most]{tcolorbox}
+% --- ボックス内ではリストの余白を詰める ---
+%     クラスの既定（ltjsarticle: \leftmargini=3\zw, \topsep=0.5\baselineskip，
+%     scrartcl 等: \leftmargini=2.5em + 大きめの topsep/itemsep）は
+%     パディングの狭いボックス内では過大なため，第1レベルのみ局所的に上書きする
+\makeatletter
+\newcommand*{\callout@tightlists}{%
+  \ifdefined\zw \leftmargini=1.5\zw \else \leftmargini=1.5em \fi % \zw は LuaTeX-ja 専用単位
+  \def\@listi{\leftmargin\leftmargini
+    \labelwidth\leftmargini \advance\labelwidth-\labelsep
+    \parsep\z@
+    \topsep 0.2\baselineskip
+    \itemsep\z@\relax}%
+}
 \tcbset{
   calloutbase/.style={
     arc=0.7mm,
@@ -126,16 +204,18 @@
     top=1.5mm,
     bottom=1.5mm,
     colback=snow3,
+    before upper={\callout@tightlists},
   },
   callout/.style 2 args={   % #1: タイトル, #2: タイトル下スペース
     calloutbase,
     coltitle=black,
     fonttitle=\bfseries,
     detach title,
-    before upper={\tcbtitle\par\vspace{#2}},
+    before upper={\callout@tightlists\tcbtitle\par\vspace{#2}},
     title={#1},
   },
 }
+\makeatother
 % --- calloutbox: タイトル付きの囲み領域（直接使う用） ---
 \NewTColorBox{calloutbox}{ O{night4} o O{1mm} }{%
   colframe=#1,
