@@ -1,0 +1,297 @@
+% !TEX root = main.tex
+%% Figure & Graphics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+{% raw -%}
+%\graphicspath{{subdir1/}{../dir2}}
+{% endraw -%}
+%
+% Nord colors
+\definecolor{night1}{rgb}{0.180, 0.204, 0.251}
+\definecolor{night2}{rgb}{0.231, 0.259, 0.322}
+\definecolor{night3}{rgb}{0.263, 0.298, 0.369}
+\definecolor{night4}{rgb}{0.298, 0.337, 0.416}
+\definecolor{snow1}{rgb}{0.847, 0.871, 0.914}
+\definecolor{snow2}{rgb}{0.898, 0.914, 0.941}
+\definecolor{snow3}{rgb}{0.925, 0.937, 0.957}
+\definecolor{frost1}{rgb}{0.561, 0.737, 0.733}
+\definecolor{frost2}{rgb}{0.533, 0.753, 0.816}
+\definecolor{frost3}{rgb}{0.506, 0.631, 0.757}
+\definecolor{frost4}{rgb}{0.369, 0.506, 0.675}
+\definecolor{nordred}{rgb}{0.749, 0.380, 0.416}
+\definecolor{nordorange}{rgb}{0.816, 0.529, 0.439}
+\definecolor{nordyellow}{rgb}{0.922, 0.796, 0.545}
+\definecolor{nordgreen}{rgb}{0.639, 0.745, 0.549}
+\definecolor{nordviolet}{rgb}{0.706, 0.557, 0.678}
+%
+%%%% Math expression %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{siunitx}
+\sisetup{input-digits = 0123456789\pi}
+% \mathtoolsset{showonlyrefs=true} % Show equation labels only referenced
+\DeclareMathOperator{\Tr}{Tr}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\defas}{\equiv}
+% theorem like environment
+\usepackage{amsthm}
+% --- plainbreak: plain の改行版（本文イタリック，見出し太字） ---
+\newtheoremstyle{plainbreak}%
+  {\topsep}%   見出し上のスペース
+  {\topsep}%   本文下のスペース
+  {\itshape}%  本文フォント
+  {}%          インデント
+  {\bfseries}% 見出しフォント
+  {}%         見出し末尾
+  {\newline}%  見出し後に改行
+  {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}%
+% --- definitionbreak: definition の改行版（本文立体，見出し太字） ---
+\newtheoremstyle{definitionbreak}%
+  {\topsep}%
+  {\topsep}%
+  {\upshape}%  本文は立体
+  {}%
+  {\bfseries}%
+  {}%
+  {\newline}%
+  {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}%
+% --- remarkbreak: remark の改行版（本文立体，見出しイタリック，スペース控えめ） ---
+\newtheoremstyle{remarkbreak}%
+  {0.5\topsep}%  remark 系は上下スペースが半分
+  {0.5\topsep}%
+  {\upshape}%
+  {}%
+  {\itshape}%    見出しはイタリック（太字でない）
+  {}%
+  {\newline}%
+  {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}%
+% --- lawbreak: 法則用（タイトルのみを見出しに，番号なし，見出し後改行） ---
+\newtheoremstyle{lawbreak}%
+  {\topsep}%
+  {\topsep}%
+  {\upshape}%   本文は立体
+  {}%
+  {\bfseries}%  見出し太字
+  {}%           句読点なし（タイトルが見出しそのものなので）
+  {\newline}%
+  {\thmnote{#3}}%   ← note だけを見出しとして表示
+% Law env
+\theoremstyle{lawbreak}
+\newtheorem*{law@inner}{Law}% 環境名は内部用．"Law" は表示されない（\thmname を使わないため）
+\makeatletter
+\NewDocumentEnvironment{law}{ m }{%
+  \begin{law@inner}[#1]%
+}{%
+  \end{law@inner}%
+}
+\makeatother
+% Envs with number
+\theoremstyle{definitionbreak}
+%\theoremstyle{definition} % 改行なしスタイル
+\newtheorem{thm}{定理}[section]
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{conj}[thm]{予想}
+\newtheorem{asm}[thm]{仮定}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{rem}[thm]{注}
+\newtheorem{exc}{練習問題}[section]
+%
+% Envs without number
+\newtheorem*{thm*}{定理}
+\newtheorem*{lem*}{補題}
+\newtheorem*{prop*}{命題}
+\newtheorem*{cor*}{系}
+\newtheorem*{conj*}{予想}
+\newtheorem*{asm*}{仮定}
+\newtheorem*{dfn*}{定義}
+\newtheorem*{rem*}{注}
+\newtheorem*{exc*}{練習問題}
+{% endraw -%}
+%%%% Callout block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\usepackage[most]{tcolorbox}
+\tcbset{
+  calloutbase/.style={
+    arc=0.7mm,
+    boxrule=0mm,
+    left=2.5mm,
+    leftrule=0.7mm,
+    right=3.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    colback=snow3,
+  },
+  callout/.style 2 args={   % #1: タイトル, #2: タイトル下スペース
+    calloutbase,
+    coltitle=black,
+    fonttitle=\bfseries,
+    detach title,
+    before upper={\tcbtitle\par\vspace{#2}},
+    title={#1},
+  },
+}
+% --- calloutbox: タイトル付きの囲み領域（直接使う用） ---
+\NewTColorBox{calloutbox}{ O{night4} o O{1mm} }{%
+  colframe=#1,
+  IfValueTF={#2}{callout={#2}{#3}}{calloutbase}%
+}
+% --- 対応表: 環境名 → 枠色 ---
+\makeatletter
+\NewDocumentCommand{\RegisterCalloutEnv}{ m m O{optional} }{%
+  % #1: 環境名, #2: 色, #3: タイトル渡し方式 optional / mandatory
+  \@namedef{callout@color@#1}{#2}%
+  \@namedef{callout@titlemode@#1}{#3}%
+}
+\makeatother
+% 環境と色の対応関係
+\RegisterCalloutEnv{thm}{frost1}
+\RegisterCalloutEnv{lem}{frost1}
+\RegisterCalloutEnv{prop}{night4}
+\RegisterCalloutEnv{cor}{night4}
+\RegisterCalloutEnv{conj}{night4}
+\RegisterCalloutEnv{thm*}{frost1}
+\RegisterCalloutEnv{lem*}{frost1}
+\RegisterCalloutEnv{prop*}{night4}
+\RegisterCalloutEnv{cor*}{night4}
+\RegisterCalloutEnv{conj*}{night4}
+%
+\RegisterCalloutEnv{dfn}{nordviolet}
+\RegisterCalloutEnv{asm}{nordviolet}
+\RegisterCalloutEnv{dfn*}{nordviolet}
+\RegisterCalloutEnv{asm*}{nordviolet}
+%
+\RegisterCalloutEnv{law}{nordviolet}[mandatory]
+%
+\RegisterCalloutEnv{rem}{night4}
+\RegisterCalloutEnv{rem*}{night4}
+%
+\RegisterCalloutEnv{exc}{nordgreen}
+\RegisterCalloutEnv{exc*}{nordgreen}
+%
+% --- callout: 定理系環境を囲む用 ---
+%     省略可能タイトルは内部環境のオプショナル引数（定理名）として渡す
+\makeatletter
+\NewDocumentEnvironment{callout}{ o m }{%
+  \ifcsname callout@color@#2\endcsname\else
+    \GenericError{}{callout環境: `#2' は未登録です．
+      \RegisterCalloutEnv で登録してください}{}{}%
+  \fi
+  \begin{calloutbox}[\@nameuse{callout@color@#2}]%
+  \ifcsstring{callout@titlemode@#2}{mandatory}
+    {% タイトル必須の環境
+     \IfValueTF{#1}
+       {\begin{#2}{#1}}
+       {\GenericError{}{callout環境: `#2' はタイトル必須です}{}{}%
+        \begin{#2}{??}}%
+    }
+    {% タイトル省略可能の環境
+     \IfValueTF{#1}
+       {\begin{#2}[#1]}
+       {\begin{#2}}%
+    }%
+}{%
+  \end{#2}%
+  \end{calloutbox}%
+}
+\makeatother
+%
+\NewDocumentCommand{\NewCalloutBoxEnv}{ m m o }{%
+  % #1: 環境名, #2: 色, #3: デフォルトタイトル（省略可）
+  \IfValueTF{#3}
+    {% デフォルトタイトルあり: 環境のタイトル省略時に #3 を使う
+     \NewDocumentEnvironment{#1}{ O{#3} }{%
+       \begin{calloutbox}[#2][##1]%
+     }{%
+       \end{calloutbox}%
+     }%
+    }
+    {% デフォルトタイトルなし: 省略時はタイトルなしのボックス
+     \NewDocumentEnvironment{#1}{ o }{%
+       \IfValueTF{##1}
+         {\begin{calloutbox}[#2][##1]}
+         {\begin{calloutbox}[#2]}%
+     }{%
+       \end{calloutbox}%
+     }%
+    }%
+}
+%
+\NewCalloutBoxEnv{objective}{nordred}[目標]
+\NewCalloutBoxEnv{summary}{nordred}[まとめ]
+\NewCalloutBoxEnv{info}{nordyellow}
+{% endraw -%}
+%
+%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if cookiecutter.bibliography == "biblatex+bibtex" -%}
+\usepackage[backend=bibtex, style=phys, biblabel=brackets,
+           language=auto, autolang=langname,
+           articletitle=false, pageranges=false,
+           maxnames=3, maxcitenames=2]{biblatex}
+\DefineBibliographyStrings{english}{
+   andothers = {\mkbibemph{et\addabbrvspace al\adddot}} % Print et al. in italic
+}
+%\addbibresource{<bibfile1>.bib} % The extension .bib is required!
+%\addbibresource{<bibfile2>.bib}
+{% elif cookiecutter.bibliography == "biblatex+biber" -%}
+\usepackage[backend=biber, style=phys, biblabel=brackets,
+           language=auto, autolang=langname,
+           articletitle=false, pageranges=false,
+           maxnames=3, maxcitenames=2]{biblatex}
+\DefineBibliographyStrings{english}{
+   andothers = {\mkbibemph{et\addabbrvspace al\adddot}} % Print et al. in italic
+}
+% \addbibresource{<bibfile1>.bib} % The extension .bib is required!
+% \addbibresource{<bibfile2>.bib}
+{% elif cookiecutter.bibliography == "bibtex" -%}
+\bibliographystyle{jplain} 
+% stylename=jabbrv,jalpha,jplain, or junsrt
+{% endif -%}
+{% if cookiecutter.bibliography == "bibtex" or cookiecutter.bibliography == "manual" -%}
+\usepackage{cite}
+{% endif -%}
+%
+%% Settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{geometry}
+%\geometry{left=30truemm,right=30truemm,textheight=25truecm}
+%
+%% Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+\usepackage{booktabs}
+\usepackage[hang,flushmargin,perpage]{footmisc}
+% hang=インデントを除去，flushmargin=記号と脚注のスペースを除去，perpage=ページごとに独立した脚注番号
+\setlength{\footnotemargin}{1em} % 脚注記号と脚注の間のスペースを調整
+\usepackage{algorithm,algpseudocode}
+\usepackage{url}
+% \usepackage[%
+%     %dvipdfmx,
+%     %luatex,
+%     hidelinks,%
+%     colorlinks=true,%
+%     urlcolor=frost4,%
+%     linkcolor=nordviolet,%
+%     citecolor=nordgreen,%
+% ]{hyperref}
+{% endraw -%}
+%
+%% Draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% raw -%}
+%\usepackage[color]{showkeys}
+%\renewcommand*{\showkeyslabelformat}[1]{%
+%\fbox{\parbox{40truemm}{\normalfont\small\ttfamily#1}}}
+%\usepackage[]{setspace}
+%\doublespacing
+%\usepackage{xcolor}
+%\newcommand*{\TODO}[1]{{\color{red}(TODO: #1)}}
+%\newcommand{\remove}[1]{\textcolor{green}{#1}}
+%\newcommand{\add}[1]{\textcolor{Purple}{#1}}
+% Replace figures with dummy figures
+%\let\originalincludegraphics\includegraphics
+%\renewcommand{\includegraphics}[2][width=3.2truein]{\originalincludegraphics[#1]{example-image-plain.pdf}}
+{% endraw -%}
+
