@@ -1,95 +1,22 @@
 \documentclass[]{{ "{" }}{{ cookiecutter.doctype }}{{ "}" }}
 %
-%%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Title, Author, Date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{title}
 \author{names}
 \date{\today}
 %
-%%%% Settings for math expression %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath,amssymb}
-\usepackage{mathtools}
-\usepackage{bm}
-\usepackage{braket}
-\usepackage{siunitx}
-\sisetup{input-digits = 0123456789\pi}
-\mathtoolsset{showonlyrefs=true} % Show equation labels only referenced
-%\DeclareMathOperator{\Tr}{Tr}
-%\DeclareMathOperator{\Re}{Re}
-%\DeclareMathOperator{\Im}{Im}
-%\newcommand{\defas}{\equiv}
+\input{config}
 %
-%%%% Settings for figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}
-{% raw -%}
-%\graphicspath{{subdir1/}{../dir2}}
-{% endraw -%}
-%
-%%%% Settings for bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{% if cookiecutter.bibliography == "biblatex+bibtex" -%}
-\usepackage[backend=bibtex, style=phys, biblabel=brackets,
-           language=auto, autolang=langname,
-           articletitle=false, pageranges=false,
-           maxnames=3, maxcitenames=2]{biblatex}
-\DefineBibliographyStrings{english}{
-   andothers = {\mkbibemph{et\addabbrvspace al\adddot}} % Print et al. in italic
-}
-%\addbibresource{<bibfile1>.bib} % The extension .bib is required!
-%\addbibresource{<bibfile2>.bib}
-{% elif cookiecutter.bibliography == "biblatex+biber" -%}
-\usepackage[backend=biber, style=phys, biblabel=brackets,
-           language=auto, autolang=langname,
-           articletitle=false, pageranges=false,
-           maxnames=3, maxcitenames=2]{biblatex}
-\DefineBibliographyStrings{english}{
-   andothers = {\mkbibemph{et\addabbrvspace al\adddot}} % Print et al. in italic
-}
-% \addbibresource{<bibfile1>.bib} % The extension .bib is required!
-% \addbibresource{<bibfile2>.bib}
-{% elif cookiecutter.bibliography == "bibtex" -%}
-\bibliographystyle{plain} 
-% stylename=abbrv,acm,alpha,apalike,ieeetr,plain,siam, or unsrt
-{% endif -%}
-{% if cookiecutter.bibliography == "bibtex" or cookiecutter.bibliography == "manual" -%}
-%\usepackage{cite}
-{% endif -%}
-%
-%%%% Settings for margins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{geometry}
-%\geometry{left=30truemm,right=30truemm,textheight=25truecm}
-%
-%%%% Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{booktabs}
-%\usepackage[hang,flushmargin,perpage]{footmisc}
-% hang=インデントを除去，flushmargin=記号と脚注のスペースを除去，perpage=ページごとに独立した脚注番号
-%\setlength{\footnotemargin}{1em} % 脚注記号と脚注の間のスペースを調整
-%
-%%%% Settings for draft %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{% raw -%}
-%\usepackage[color]{showkeys}
-%\renewcommand*{\showkeyslabelformat}[1]{%
-%\fbox{\parbox{40truemm}{\normalfont\small\ttfamily#1}}}
-%\usepackage[]{setspace}
-%\doublespacing
-%\usepackage{xcolor}
-%\newcommand*{\TODO}[1]{{\color{red}(TODO: #1)}}
-%\newcommand{\remove}[1]{\textcolor{green}{#1}}
-%\newcommand{\add}[1]{\textcolor{Purple}{#1}}
-% Replace figures with dummy figures
-%\let\originalincludegraphics\includegraphics
-%\renewcommand{\includegraphics}[2][width=3.2truein]{\originalincludegraphics[#1]{example-image-plain.pdf}}
-{% endraw -%}
-%
-%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
 
-body
 
 % References
 {% if cookiecutter.bibliography == "manual" -%}
 \begin{thebibliography}{99}
-    % \bibitem{label1} aaa
-    % \bibitem{label2} bbb
+% \bibitem{label1} aaa
+% \bibitem{label2} bbb
 \end{thebibliography}
 {% elif cookiecutter.bibliography == "biblatex+biber" or cookiecutter.bibliography == "biblatex+bibtex" -%}
 \printbibliography
