@@ -143,6 +143,11 @@
 \AddToHook{env/itemize/before}{\callout@fixthmheadbreak}
 \AddToHook{env/enumerate/before}{\callout@fixthmheadbreak}
 \AddToHook{env/description/before}{\callout@fixthmheadbreak}
+% verbatim（カーネル）も内部はリスト（trivlist）なので機構は同一．
+% Verbatim は fancyvrb / fvextra / minted を使う場合への備え
+% （これらを読み込んでいなくても，未定義環境への \AddToHook は無害）
+\AddToHook{env/verbatim/before}{\callout@fixthmheadbreak}
+\AddToHook{env/Verbatim/before}{\callout@fixthmheadbreak}
 \makeatother
 % Law env
 \theoremstyle{lawbreak}

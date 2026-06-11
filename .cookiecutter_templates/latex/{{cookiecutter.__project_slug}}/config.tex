@@ -145,6 +145,11 @@
 \AddToHook{env/itemize/before}{\callout@fixthmheadbreak}
 \AddToHook{env/enumerate/before}{\callout@fixthmheadbreak}
 \AddToHook{env/description/before}{\callout@fixthmheadbreak}
+% verbatim (kernel) is internally a list (trivlist), so the mechanism is the same.
+% Verbatim is for the case where fancyvrb / fvextra / minted is used
+% (\AddToHook on an undefined environment is harmless even without these packages)
+\AddToHook{env/verbatim/before}{\callout@fixthmheadbreak}
+\AddToHook{env/Verbatim/before}{\callout@fixthmheadbreak}
 \makeatother
 % Law env
 \theoremstyle{lawbreak}
