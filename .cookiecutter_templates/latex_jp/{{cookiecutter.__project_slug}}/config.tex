@@ -39,6 +39,7 @@
 \newcommand{\defas}{\equiv}
 % theorem like environment
 \usepackage{amsthm}
+\renewcommand{\proofname}{\textbf{証明}} % proof 環境の見出し（既定は "Proof"）
 % --- plainbreak: plain の改行版（本文イタリック，見出し太字） ---
 \newtheoremstyle{plainbreak}%
   {\topsep}%   見出し上のスペース
@@ -149,39 +150,9 @@
 \AddToHook{env/verbatim/before}{\callout@fixthmheadbreak}
 \AddToHook{env/Verbatim/before}{\callout@fixthmheadbreak}
 \makeatother
-% Law env
-\theoremstyle{lawbreak}
-\newtheorem*{law@inner}{Law}% 環境名は内部用．"Law" は表示されない（\thmname を使わないため）
-\makeatletter
-\NewDocumentEnvironment{law}{ m }{%
-  \begin{law@inner}[#1]%
-}{%
-  \end{law@inner}%
-}
-\makeatother
-% Envs with number
-\theoremstyle{definitionbreak}
-%\theoremstyle{definition} % 改行なしスタイル
-\newtheorem{thm}{定理}[section]
-\newtheorem{lem}[thm]{補題}
-\newtheorem{prop}[thm]{命題}
-\newtheorem{cor}[thm]{系}
-\newtheorem{conj}[thm]{予想}
-\newtheorem{asm}[thm]{仮定}
-\newtheorem{dfn}[thm]{定義}
-\newtheorem{rem}[thm]{注}
-\newtheorem{exc}{練習問題}[section]
-%
-% Envs without number
-\newtheorem*{thm*}{定理}
-\newtheorem*{lem*}{補題}
-\newtheorem*{prop*}{命題}
-\newtheorem*{cor*}{系}
-\newtheorem*{conj*}{予想}
-\newtheorem*{asm*}{仮定}
-\newtheorem*{dfn*}{定義}
-\newtheorem*{rem*}{注}
-\newtheorem*{exc*}{練習問題}
+% 定理系環境の定義と登録は Callout block 内の \NewCalloutThmEnv /
+% \NewCalloutLawEnv で行う（定義 \newtheorem と登録 \RegisterCalloutEnv を
+% 1コマンドにまとめたもの）
 {% endraw -%}
 %%%% Callout block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% raw -%}
@@ -226,38 +197,91 @@
   colframe=#1,
   IfValueTF={#2}{callout={#2}{#3}}{calloutbase}%
 }
+% --- ボックス直後の文を新しい段落にしない ---
+%     リスト環境と同様，\end の直後に空行を挟まずに続けた文は同じ段落の続き
+%     （字下げなし）として組む．カーネルの @endpe 機構（\@doendpe）をボックス
+%     直後に適用する．callout / objective 等のラッパー環境は内部で calloutbox
+%     を閉じるため，カーネルの \aftergroup 連鎖で外側の \end まで自動的に
+%     伝播する（空行を挟んだ場合は従来どおり新しい段落になる）
+\makeatletter
+\AddToHook{env/calloutbox/after}{\@doendpe}
+\makeatother
 % --- 対応表: 環境名 → 枠色 ---
 \makeatletter
-\NewDocumentCommand{\RegisterCalloutEnv}{ m m O{optional} }{%
-  % #1: 環境名, #2: 色, #3: タイトル渡し方式 optional / mandatory
+% 実体: 1環境分の登録
+\newcommand*{\callout@register}[3]{%
   \@namedef{callout@color@#1}{#2}%
   \@namedef{callout@titlemode@#1}{#3}%
 }
+% 名前に * を含むか（含む→#2，含まない→#3 を実行）
+\def\callout@ifstarred#1{\callout@ifstarred@#1*\@nil}
+\def\callout@ifstarred@#1*#2\@nil{\ifblank{#2}{\@secondoftwo}{\@firstoftwo}}
+% \RegisterCalloutEnv{環境名}{枠色}[タイトル渡し方式 optional / mandatory]
+%   環境名を callout 用に登録する．番号なし版「環境名*」も同じ設定で自動登録
+%   される（環境名が * 付きなら何もしない）．明示登録は記録され，自動登録より
+%   常に優先される（記述の順序によらない）．
+%   登録はあくまで対応表への追加であり，環境自体は別途定義が必要
+%   （定義込みで行うなら後述の \NewCalloutThmEnv / \NewCalloutLawEnv を使う）
+\NewDocumentCommand{\RegisterCalloutEnv}{ m m O{optional} }{%
+  \callout@register{#1}{#2}{#3}%
+  \@namedef{callout@explicit@#1}{}%
+  \callout@ifstarred{#1}{}{%
+    \ifcsname callout@explicit@#1*\endcsname\else
+      \callout@register{#1*}{#2}{#3}%
+    \fi
+  }%
+}
+% --- 定理系環境の新設ヘルパー: 定義（\newtheorem）+ 登録を1コマンドで ---
+% \NewCalloutThmEnv{環境名}[番号共有元]{表示名}{枠色}[番号のリセット単位]
+%   番号付き環境と番号なし環境（環境名*）を作り，両方を登録する．
+%   オプションは \newtheorem と同じ規則（排他）:
+%     [番号共有元]      … 指定した環境と通し番号（例: [thm]）
+%     [リセット単位]    … 独立番号で，そのカウンタごとにリセット
+%                         （例: [section] / [subsection]）
+%     両方省略          … 独立番号・リセットなし（文書全体で 1, 2, ...）
+%   定理スタイルは \newtheorem と同様，呼び出し時点の \theoremstyle に従う
+\NewDocumentCommand{\NewCalloutThmEnv}{ m o m m o }{%
+  \IfValueTF{#2}
+    {\IfValueTF{#5}
+       {\GenericError{}{\string\NewCalloutThmEnv: 番号共有元とリセット単位は
+          同時に指定できません}{}{}}
+       {\newtheorem{#1}[#2]{#3}}}
+    {\IfValueTF{#5}
+       {\newtheorem{#1}{#3}[#5]}
+       {\newtheorem{#1}{#3}}}%
+  \newtheorem*{#1*}{#3}%
+  \RegisterCalloutEnv{#1}{#4}% 環境名* も自動登録される
+}
+% \NewCalloutLawEnv{環境名}{枠色}
+%   law 型（タイトル必須・番号なし・lawbreak スタイルでタイトルのみを見出しに
+%   表示）の環境を作って登録する．* 版は作らない
+\NewDocumentCommand{\NewCalloutLawEnv}{ m m }{%
+  \edef\callout@savedthmstyle{\the\thm@style}%
+  \theoremstyle{lawbreak}%
+  \newtheorem*{#1@inner}{#1}% 内部用．名前は表示されない（\thmname を使わないため）
+  \expandafter\thm@style\expandafter{\callout@savedthmstyle}%
+  \NewDocumentEnvironment{#1}{ m }{%
+    \begin{#1@inner}[##1]%
+  }{%
+    \end{#1@inner}%
+  }%
+  \callout@register{#1}{#2}{mandatory}% * 版を登録しないので低レベル登録
+  \@namedef{callout@explicit@#1}{}%
+}
 \makeatother
-% 環境と色の対応関係
-\RegisterCalloutEnv{thm}{frost1}
-\RegisterCalloutEnv{lem}{frost1}
-\RegisterCalloutEnv{prop}{night4}
-\RegisterCalloutEnv{cor}{night4}
-\RegisterCalloutEnv{conj}{night4}
-\RegisterCalloutEnv{thm*}{frost1}
-\RegisterCalloutEnv{lem*}{frost1}
-\RegisterCalloutEnv{prop*}{night4}
-\RegisterCalloutEnv{cor*}{night4}
-\RegisterCalloutEnv{conj*}{night4}
-%
-\RegisterCalloutEnv{dfn}{nordviolet}
-\RegisterCalloutEnv{asm}{nordviolet}
-\RegisterCalloutEnv{dfn*}{nordviolet}
-\RegisterCalloutEnv{asm*}{nordviolet}
-%
-\RegisterCalloutEnv{law}{nordviolet}[mandatory]
-%
-\RegisterCalloutEnv{rem}{night4}
-\RegisterCalloutEnv{rem*}{night4}
-%
-\RegisterCalloutEnv{exc}{nordgreen}
-\RegisterCalloutEnv{exc*}{nordgreen}
+% 定理系環境の定義と登録（番号なし版 thm* 等も同時に作成・登録される）
+\theoremstyle{definitionbreak}
+%\theoremstyle{definition} % 改行なしスタイル
+\NewCalloutThmEnv{thm}{定理}{frost1}[section]
+\NewCalloutThmEnv{lem}[thm]{補題}{frost1}
+\NewCalloutThmEnv{prop}[thm]{命題}{night4}
+\NewCalloutThmEnv{cor}[thm]{系}{night4}
+\NewCalloutThmEnv{conj}[thm]{予想}{night4}
+\NewCalloutThmEnv{asm}[thm]{仮定}{nordviolet}
+\NewCalloutThmEnv{dfn}[thm]{定義}{nordviolet}
+\NewCalloutThmEnv{rem}[thm]{注}{night4}
+\NewCalloutThmEnv{exc}{練習問題}{nordgreen}[section]
+\NewCalloutLawEnv{law}{nordviolet}
 %
 % --- callout: 定理系環境を囲む用 ---
 %     省略可能タイトルは内部環境のオプショナル引数（定理名）として渡す
