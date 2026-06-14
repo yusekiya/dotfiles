@@ -60,6 +60,18 @@
   {}%
   {\newline}%
   {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}%
+% --- definitioninline: definitionbreak の run-in 版（見出し後に改行しない） ---
+%     見出しは「名前 番号」のみ（タイトル・句点なし），見出しに続けて本文を組む．
+%     練習問題（exc）用．「練習問題 N.M 問題文」の書式になる
+\newtheoremstyle{definitioninline}%
+  {\topsep}%
+  {\topsep}%
+  {\upshape}%  本文は立体
+  {}%
+  {\bfseries}% 見出し太字
+  {}%          見出し末（句点なし）
+  { }%         見出し後はスペース（改行しない）
+  {\thmname{#1}\thmnumber{ #2}}% タイトル（note）は出さない
 % --- remarkbreak: remark の改行版（本文立体，見出しイタリック，スペース控えめ） ---
 \newtheoremstyle{remarkbreak}%
   {0.5\topsep}%  remark 系は上下スペースが半分
@@ -80,6 +92,18 @@
   {}%           句読点なし（タイトルが見出しそのものなので）
   {\newline}%
   {\thmnote{#3}}%   ← note だけを見出しとして表示
+% --- solution: 解答用．amsthm 標準 definition と同じ run-in だが見出し上の
+%     スペースを半分にして直前の練習問題（ボックス）と詰める ---
+%     jp は exc と同様に見出し末の句点を付けない（「解」）．en では `.` を残す
+\newtheoremstyle{solution}%
+  {0.5\topsep}% 見出し上スペース（definition の \topsep より小さく）
+  {\topsep}%    本文下スペース
+  {\normalfont}% 本文は通常フォント
+  {}%
+  {\bfseries}%  見出し太字
+  {}%           見出し末（句点なし．「解」）
+  {.5em}%       見出し後はスペース（run-in）
+  {}%           見出し書式は既定（名前 番号）
 % --- 定理本文がリスト環境で始まっても見出し後の改行を効かせる ---
 %     amsthm の \newline スタイルは見出しを箱 \@labels に貯めて次の段落開始時の
 %     \everypar（\dth@everypar）で取り付けるが，本文が直接リストで始まると
@@ -280,7 +304,26 @@
 \NewCalloutThmEnv{asm}[thm]{仮定}{nordviolet}
 \NewCalloutThmEnv{dfn}[thm]{定義}{nordviolet}
 \NewCalloutThmEnv{rem}[thm]{注}{night4}
-\NewCalloutThmEnv{exc}{練習問題}{nordgreen}[section]
+% 練習問題の見出し名（\renewcommand で「問」「問題」等へ変更可）
+\newcommand{\excname}{練習問題}
+% 練習問題は definitioninline（見出し「練習問題 N.M」＋スペースで本文 run-in）
+\theoremstyle{definitioninline}
+\NewCalloutThmEnv{exc}{\excname}{nordgreen}[section]
+% --- 解答環境（proof 型・番号なし・run-in・見出し太字「解．」） ---
+%     練習問題環境の内外いずれでも使用可．proof と異なり QED 記号は付けない
+%     見出しはオプション引数で個別指定でき（例 \begin{sol}[略解] → 「略解．」），
+%     省略時は \solname（既定「解」．\renewcommand{\solname}{…} で全体の既定を変更）
+\newcommand{\solname}{解}
+\newcommand{\solheading}{\solname} % 現在の見出し（sol 環境が局所的に上書き）
+\theoremstyle{solution}
+\newtheorem*{solinner}{\solheading}
+\NewDocumentEnvironment{sol}{ O{\solname} }{%
+  \renewcommand{\solheading}{#1}%
+  \begin{solinner}%
+}{%
+  \end{solinner}%
+}
+\theoremstyle{definitionbreak} % law（タイトル後に改行）の手前で既定スタイルに戻す
 \NewCalloutLawEnv{law}{nordviolet}
 %
 % --- callout: 定理系環境を囲む用 ---

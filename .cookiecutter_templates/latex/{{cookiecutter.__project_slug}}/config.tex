@@ -58,6 +58,18 @@
   {}%
   {\newline}%
   {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}%
+% --- definitioninline: run-in version of definitionbreak (no line break after the head) ---
+%     The head is only "name number" (no title, no punctuation); the body runs on
+%     right after the head.  For exercises (exc): "Exercise N.M  <statement>".
+\newtheoremstyle{definitioninline}%
+  {\topsep}%
+  {\topsep}%
+  {\upshape}%  body is upright
+  {}%
+  {\bfseries}% head font
+  {}%          no punctuation after the head
+  { }%         space after the head (no line break)
+  {\thmname{#1}\thmnumber{ #2}}% do not print the title (note)
 % --- remarkbreak: line-break version of remark (body upright, head italic, reduced spacing) ---
 \newtheoremstyle{remarkbreak}%
   {0.5\topsep}%  remark-type styles use half the vertical spacing
@@ -78,6 +90,19 @@
   {}%           no punctuation (the title is the head itself)
   {\newline}%
   {\thmnote{#3}}%   <- display only the note as the head
+% --- solution: for answers.  Same run-in as amsthm's standard definition, but
+%     the space above the head is halved so it sits close to the preceding
+%     exercise (box). ---
+%     en keeps the `.` after the head ("Solution."); jp drops it, like exc.
+\newtheoremstyle{solution}%
+  {0.5\topsep}% space above the head (smaller than definition's \topsep)
+  {\topsep}%    space below the body
+  {\normalfont}% body in normal font
+  {}%
+  {\bfseries}%  head font
+  {.}%          head punctuation ("Solution.")
+  {.5em}%       space after the head (run-in)
+  {}%           default head format (name number)
 % --- Make the line break after the head work even when the theorem body starts with a list ---
 %     amsthm's \newline style stores the head in the box \@labels and attaches it
 %     via \everypar (\dth@everypar) at the start of the next paragraph, but when
@@ -291,10 +316,27 @@
 \theoremstyle{remark}
 \NewCalloutThmEnv{rem}[thm]{Remark}{night4}
 %
-\theoremstyle{definitionbreak}
-%\theoremstyle{definition} % style without line break
-\NewCalloutThmEnv{exc}{Exercise}{nordgreen}[section]
-%
+% Exercise heading name (change to "Problem" etc. with \renewcommand)
+\newcommand{\excname}{Exercise}
+% Exercises use definitioninline (head "Exercise N.M" + space, body run-in)
+\theoremstyle{definitioninline}
+\NewCalloutThmEnv{exc}{\excname}{nordgreen}[section]
+% --- solution environment (proof-type, unnumbered, run-in, bold head "Solution.") ---
+%     Usable inside or outside an exercise environment.  Unlike proof, no QED mark.
+%     The head can be set per instance via the optional argument
+%     (e.g. \begin{sol}[Sketch] -> "Sketch."); when omitted, \solname is used
+%     ("Solution"; change the global default with \renewcommand{\solname}{...}).
+\newcommand{\solname}{Solution}
+\newcommand{\solheading}{\solname} % current head (locally overridden by sol)
+\theoremstyle{solution}
+\newtheorem*{solinner}{\solheading}
+\NewDocumentEnvironment{sol}{ O{\solname} }{%
+  \renewcommand{\solheading}{#1}%
+  \begin{solinner}%
+}{%
+  \end{solinner}%
+}
+\theoremstyle{definitionbreak} % restore default style before law (line break after the title)
 \NewCalloutLawEnv{law}{nordviolet}
 %
 % --- callout: for wrapping theorem-like environments ---
