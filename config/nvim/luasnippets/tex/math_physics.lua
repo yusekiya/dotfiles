@@ -151,6 +151,19 @@ return {
   ),
   s(
     {
+      trig = "qty",
+      dscr = "quantity with unit",
+      wordTrig = true,
+      condition = tex_utils.in_mathzone,
+      snippetType = "autosnippet",
+    },
+    fmta([[\qty{<>}{<>}]], {
+      i(1),
+      i(2),
+    })
+  ),
+  s(
+    {
       trig = "([^%a])bra",
       dscr = "bra state",
       regTrig = true,
