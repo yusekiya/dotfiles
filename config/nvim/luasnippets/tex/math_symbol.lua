@@ -108,7 +108,7 @@ return {
       trig = "lim",
       dscr = "limit",
       regTrig = true,
-      wordTrig = true,
+      wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },

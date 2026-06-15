@@ -45,19 +45,18 @@ local add_trigonometric = function(snippets)
       snippets,
       s(
         {
-          trig = "([^%a])" .. fname .. "([A-Za-gi-z; ])",
+          trig = fname .. "([A-Za-gi-z; ])",
           dscr = fname .. " function",
           regTrig = true,
           wordTrig = false,
+          -- longer names win so e.g. "arcsin"/"sinh" beat "sin" when both match
+          priority = 1000 + #fname,
           condition = tex_utils.in_mathzone,
           snippetType = "autosnippet",
         },
-        fmta("<>\\" .. fname .. " <>", {
+        fmta("\\" .. fname .. " <>", {
           f(function(_, snip)
-            return snip.captures[1]
-          end),
-          f(function(_, snip)
-            return string.gsub(snip.captures[2], "%s+", "")
+            return string.gsub(snip.captures[1], "%s+", "")
           end),
         })
       )
@@ -73,19 +72,18 @@ local add_hyperbolic = function(snippets)
       snippets,
       s(
         {
-          trig = "([^%a])" .. fname .. "([A-Za-z; ])",
+          trig = fname .. "([A-Za-z; ])",
           dscr = fname .. " function",
           regTrig = true,
           wordTrig = false,
+          -- longer names win so e.g. "arcsinh" beats "sinh"/"arcsin" when both match
+          priority = 1000 + #fname,
           condition = tex_utils.in_mathzone,
           snippetType = "autosnippet",
         },
-        fmta("<>\\" .. fname .. " <>", {
+        fmta("\\" .. fname .. " <>", {
           f(function(_, snip)
-            return snip.captures[1]
-          end),
-          f(function(_, snip)
-            return string.gsub(snip.captures[2], "%s+", "")
+            return string.gsub(snip.captures[1], "%s+", "")
           end),
         })
       )
@@ -330,7 +328,7 @@ local snippets = {
       trig = "exp",
       dscr = "exp function",
       regTrig = true,
-      wordTrig = true,
+      wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
@@ -348,7 +346,7 @@ local snippets = {
       trig = "log",
       dscr = "log function",
       regTrig = true,
-      wordTrig = true,
+      wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
@@ -432,7 +430,7 @@ local snippets = {
       trig = "det",
       dscr = "determinant",
       regTrig = true,
-      wordTrig = true,
+      wordTrig = false,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
