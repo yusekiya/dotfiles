@@ -13,42 +13,34 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a])kbt",
+      trig = "kbt",
       dscr = "Boltzmann constant times temperature",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>k_\mathrm{B}T
+        k_\mathrm{B}T
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])hbar",
+      trig = "hbar",
       dscr = "reduced Planck constant",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hbar
+        \hbar
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -71,82 +63,66 @@ return {
   ),
   s(
     {
-      trig = "([^%a])o%+",
+      trig = "o%+",
       dscr = "direct sum",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\oplus
+        \oplus
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])O%+",
+      trig = "O%+",
       dscr = "direct sum operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigoplus
+        \bigoplus
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ox",
+      trig = "ox",
       dscr = "direct product",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\otimes
+        \otimes
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Ox",
+      trig = "Ox",
       dscr = "direct product operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigotimes
+        \bigotimes
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -164,147 +140,126 @@ return {
   ),
   s(
     {
-      trig = "([^%a])bra",
+      trig = "bra",
       dscr = "bra state",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bra{<>}
+        \bra{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])Bra",
+      trig = "Bra",
       dscr = "large bra state",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Bra{<>}
+        \Bra{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])ket",
+      trig = "ket",
       dscr = "ket state",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ket{<>}
+        \ket{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])Ket",
+      trig = "Ket",
       dscr = "large ket state",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Ket{<>}
+        \Ket{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])brk",
+      trig = "brk",
       dscr = "braket",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\braket{<>}
+        \braket{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])Brk",
+      trig = "Brk",
       dscr = "large braket",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Braket{<>}
+        \Braket{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])outp",
+      trig = "outp",
       dscr = "outer product",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ket{<>}\!\bra{<>}
+        \ket{<>}\!\bra{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
         rep(1),
       }
@@ -312,21 +267,18 @@ return {
   ),
   s(
     {
-      trig = "([^%a])Outp",
+      trig = "Outp",
       dscr = "large outer product",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Ket{<>}\!\Bra{<>}
+        \Ket{<>}\!\Bra{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
         rep(1),
       }

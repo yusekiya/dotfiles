@@ -9,20 +9,17 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a])par",
+      trig = "par",
       dscr = "partial derivative",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
     },
     fmta(
       [[
-        <>\frac{\partial <>}{\partial <>}
+        \frac{\partial <>}{\partial <>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         i(1),
         i(2),
       }
@@ -118,42 +115,34 @@ return {
   ),
   s(
     {
-      trig = "([^%a])ddt",
+      trig = "ddt",
       dscr = "time differential operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\frac{d}{dt}
+        \frac{d}{dt}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ddx",
+      trig = "ddx",
       dscr = "space differential operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\frac{d}{dx}
+        \frac{d}{dx}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(

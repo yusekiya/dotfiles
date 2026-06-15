@@ -8,122 +8,98 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a]):i",
+      trig = ":i",
       dscr = "i-th unit vector",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbf{i}
+        \mathbf{i}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):j",
+      trig = ":j",
       dscr = "j-th unit vector",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbf{j}
+        \mathbf{j}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):k",
+      trig = ":k",
       dscr = "k-th unit vector",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbf{k}
+        \mathbf{k}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):x",
+      trig = ":x",
       dscr = "x unit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{\mathbf{x}}
+        \hat{\mathbf{x}}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):y",
+      trig = ":y",
       dscr = "y unit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{\mathbf{y}}
+        \hat{\mathbf{y}}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):z",
+      trig = ":z",
       dscr = "z unit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{\mathbf{z}}
+        \hat{\mathbf{z}}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(

@@ -1,7 +1,6 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
-local f = ls.function_node
 local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
@@ -13,147 +12,126 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a])avg",
+      trig = "avg",
       dscr = "average",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\langle <> \rangle
+        \langle <> \rangle
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])mod",
+      trig = "mod",
       dscr = "mod",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>| <> |
+        | <> |
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])lrp",
+      trig = "lrp",
       dscr = "large parentheses",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\left( <> \right)
+        \left( <> \right)
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])lrc",
+      trig = "lrc",
       dscr = "large curly braces",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\left\{ <> \right\}
+        \left\{ <> \right\}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])lrb",
+      trig = "lrb",
       dscr = "large brackets",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\left[ <> \right]
+        \left[ <> \right]
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])lr<",
+      trig = "lr<",
       dscr = "large angle brackets",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmt(
       [[
-        {}\left< {} \right>
+        \left< {} \right>
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])lr|",
+      trig = "lr|",
       dscr = "large bars",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\left| <> \right|
+        \left| <> \right|
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )

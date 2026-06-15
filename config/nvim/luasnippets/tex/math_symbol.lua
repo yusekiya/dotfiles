@@ -9,141 +9,114 @@ local tex_utils = require("luasnip-utils.tex")
 return {
   s(
     {
-      trig = "([^%a])ooo",
+      trig = "ooo",
       dscr = "infinity",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\infty
+        \infty
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])tfr",
+      trig = "tfr",
       dscr = "therefore",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\therefore
+        \therefore
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])bcs",
+      trig = "bcs",
       dscr = "because",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\because
+        \because
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])OO",
+      trig = "OO",
       dscr = "emptyset",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\emptyset
+        \emptyset
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])sum",
+      trig = "sum",
       dscr = "summation",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\sum
+        \sum
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])prod",
+      trig = "prod",
       dscr = "production",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\prod
+        \prod
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])lim",
+      trig = "lim",
       dscr = "limit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\lim_{<> \to <>}
+        \lim_{<> \to <>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         i(1),
         i(2),
       }
@@ -151,302 +124,242 @@ return {
   ),
   s(
     {
-      trig = "([^%a])%.%.%.",
+      trig = "%.%.%.",
       dscr = "dots",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dots
+        \dots
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%.%.c",
+      trig = "%.%.c",
       dscr = "ellipsis for commas",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dotsc
+        \dotsc
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%.%.m",
+      trig = "%.%.m",
       dscr = "ellipsis for multiplications",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dotsm
+        \dotsm
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%.%.b",
+      trig = "%.%.b",
       dscr = "ellipsis for binary operations",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dotsb
+        \dotsb
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%.%.i",
+      trig = "%.%.i",
       dscr = "ellipsis for integrals",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dotsi
+        \dotsi
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%.%.o",
+      trig = "%.%.o",
       dscr = "other ellipsis",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dotso
+        \dotso
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])c%.%.",
+      trig = "c%.%.",
       dscr = "centered dots",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cdots
+        \cdots
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])v%.%.",
+      trig = "v%.%.",
       dscr = "vertical dots",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\vdots
+        \vdots
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])d%.%.",
+      trig = "d%.%.",
       dscr = "diagonal dots",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ddots
+        \ddots
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])<%->",
+      trig = "<%->",
       dscr = "left right arrow",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\leftrightarrow
+        \leftrightarrow
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])<%-%->",
+      trig = "<%-%->",
       dscr = "long left right arrow",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\longleftrightarrow
+        \longleftrightarrow
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])<=>",
+      trig = "<=>",
       dscr = "thick left right arrow",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Leftrightarrow
+        \Leftrightarrow
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])<==>",
+      trig = "<==>",
       dscr = "long thick left right arrow",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Longleftrightarrow
+        \Longleftrightarrow
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%->",
+      trig = "%->",
       dscr = "to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\to
+        \to
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])to",
+      trig = "to",
       dscr = "to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\to
+        \to
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -474,562 +387,450 @@ return {
   ),
   s(
     {
-      trig = "([^%a])|>",
+      trig = "|>",
       dscr = "maps to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mapsto
+        \mapsto
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\\\\\",
+      trig = "\\\\\\",
       dscr = "set minus",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\setminus
+        \setminus
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])||",
+      trig = "||",
       dscr = "set condition",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mid
+        \mid
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\mid|",
+      trig = "\\mid|",
       dscr = "parallel",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\parallel
+        \parallel
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])and",
+      trig = "and",
       dscr = "logical and",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cap
+        \cap
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])orr",
+      trig = "orr",
       dscr = "logical or",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cup
+        \cup
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])wed",
+      trig = "wed",
       dscr = "wedge symbol",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\wedge
+        \wedge
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Wed",
+      trig = "Wed",
       dscr = "wedge operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigwedge
+        \bigwedge
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])vel",
+      trig = "vel",
       dscr = "descending wedge symbol",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\vee
+        \vee
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Vel",
+      trig = "Vel",
       dscr = "descending wedge operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigvee
+        \bigvee
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])cap",
+      trig = "cap",
       dscr = "cap",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cap
+        \cap
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Cap",
+      trig = "Cap",
       dscr = "cap operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigcap
+        \bigcap
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])cup",
+      trig = "cup",
       dscr = "cup",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cup
+        \cup
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Cup",
+      trig = "Cup",
       dscr = "cup operator",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bigcup
+        \bigcup
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])inn",
+      trig = "inn",
       dscr = "set in",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\in
+        \in
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])subset",
+      trig = "subset",
       dscr = "subset",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\subset
+        \subset
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\subset eq",
+      trig = "\\subset eq",
       dscr = "subset or equal",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\subseteq
+        \subseteq
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])=>",
+      trig = "=>",
       dscr = "implies",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\implies
+        \implies
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])=<",
+      trig = "=<",
       dscr = "implied by",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\impliedby
+        \impliedby
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])iff",
+      trig = "iff",
       dscr = "if and onl if",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\iff
+        \iff
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])exists",
+      trig = "exists",
       dscr = "exists",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\exists
+        \exists
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])forall",
+      trig = "forall",
       dscr = "for all",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\forall
+        \forall
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])s%.t%.",
+      trig = "s%.t%.",
       dscr = "such that or subject to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\text{s.t.}
+        \text{s.t.}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])===",
+      trig = "===",
       dscr = "equivalent to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\equiv
+        \equiv
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a]):=",
+      trig = ":=",
       dscr = "defined as",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\coloneq
+        \coloneq
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])=:",
+      trig = "=:",
       dscr = "defines",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\eqcolon
+        \eqcolon
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])qed",
+      trig = "qed",
       dscr = "end of proof",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\square
+        \square
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])!=",
+      trig = "!=",
       dscr = "not equal",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\neq
+        \neq
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -1126,683 +927,547 @@ return {
   ),
   s(
     {
-      trig = "([^%a])>>",
+      trig = ">>",
       dscr = "much greater than",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\gg
+        \gg
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])<<",
+      trig = "<<",
       dscr = "much less than",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ll
+        \ll
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])~~",
+      trig = "~~",
       dscr = "similar to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\sim
+        \sim
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])~=",
+      trig = "~=",
       dscr = "similarly equal to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\simeq
+        \simeq
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\sim ~",
+      trig = "\\sim ~",
       dscr = "approximated as",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\approx
+        \approx
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])prop",
+      trig = "prop",
       dscr = "proportional to",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\propto
+        \propto
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])par ",
+      trig = "par ",
       dscr = "partial",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\partial 
+        \partial 
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])nabl",
+      trig = "nabl",
       dscr = "nabla",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\nabla
+        \nabla
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])del",
+      trig = "del",
       dscr = "nabla",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\nabla
+        \nabla
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])div",
+      trig = "div",
       dscr = "divergence",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\div
+        \div
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])rot",
+      trig = "rot",
       dscr = "rotation",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\rot
+        \rot
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])grad",
+      trig = "grad",
       dscr = "gradient",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\grad
+        \grad
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])xx",
+      trig = "xx",
       dscr = "times",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\times
+        \times
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])%*%*",
+      trig = "%*%*",
       dscr = "cdot",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\cdot
+        \cdot
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])xnn",
+      trig = "xnn",
       dscr = "x sub n",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>x_n
+        x_n
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\xii",
+      trig = "\\xii",
       dscr = "x sub i",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
       priority = 1001,
     },
     fmta(
       [[
-        <>x_i
+        x_i
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])xjj",
+      trig = "xjj",
       dscr = "x sub j",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>x_j
+        x_j
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ynn",
+      trig = "ynn",
       dscr = "y sub n",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>y_n
+        y_n
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])yii",
+      trig = "yii",
       dscr = "y sub i",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>y_i
+        y_i
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])yjj",
+      trig = "yjj",
       dscr = "y sub j",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>y_j
+        y_j
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ell",
+      trig = "ell",
       dscr = "ell",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ell
+        \ell
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])lll",
+      trig = "lll",
       dscr = "ell",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ell
+        \ell
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])LL",
+      trig = "LL",
       dscr = "calligraphic L",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathcal{L}
+        \mathcal{L}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])HH",
+      trig = "HH",
       dscr = "calligraphic H",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathcal{H}
+        \mathcal{H}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])RR",
+      trig = "RR",
       dscr = "real field",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{R}
+        \mathbb{R}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])CC",
+      trig = "CC",
       dscr = "complex field",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{C}
+        \mathbb{C}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ZZ",
+      trig = "ZZ",
       dscr = "integer group",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{Z}
+        \mathbb{Z}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])NN",
+      trig = "NN",
       dscr = "natural number group",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{N}
+        \mathbb{N}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])II",
+      trig = "II",
       dscr = "unit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{1}
+        \mathbb{1}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])\\mathbb{1}I",
+      trig = "\\mathbb{1}I",
       dscr = "unit (alt)",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{\mathbb{1}}
+        \hat{\mathbb{1}}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])AA",
+      trig = "AA",
       dscr = "calligraphic A",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathcal{A}
+        \mathcal{A}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])BB",
+      trig = "BB",
       dscr = "magnetic field",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bm{B}
+        \bm{B}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])EE",
+      trig = "EE",
       dscr = "electric field",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bm{E}
+        \bm{E}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])ii",
+      trig = "ii",
       dscr = "imaginary unit",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathrm{i}
+        \mathrm{i}
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
 }

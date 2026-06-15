@@ -96,105 +96,90 @@ end
 local snippets = {
   s(
     {
-      trig = "([^%a])te",
+      trig = "te",
       dscr = "text",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\text{<>}
+        \text{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         i(0),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])bf",
+      trig = "bf",
       dscr = "math bold",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbf{<>}
+        \mathbf{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])bb",
+      trig = "bb",
       dscr = "blackboard bold",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathbb{<>}
+        \mathbb{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])rm",
+      trig = "rm",
       dscr = "roman style",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathrm{<>}
+        \mathrm{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])cal",
+      trig = "cal",
       dscr = "calligraphic style",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\mathcal{<>}
+        \mathcal{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -306,105 +291,90 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])sq",
+      trig = "sq",
       dscr = "square root",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\sqrt{<>}
+        \sqrt{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])ee",
+      trig = "ee",
       dscr = "exp (superscript)",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>e^{<>}
+        e^{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])exp",
+      trig = "exp",
       dscr = "exp function",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\exp <>
+        \exp <>
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])log",
+      trig = "log",
       dscr = "log function",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\log <>
+        \log <>
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])ln",
+      trig = "ln",
       dscr = "natural log function",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\ln <>
+        \ln <>
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -443,82 +413,66 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])Tr",
+      trig = "Tr",
       dscr = "trace",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Tr
+        \Tr
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])det",
+      trig = "det",
       dscr = "determinant",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\det
+        \det
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Re",
+      trig = "Re",
       dscr = "real part",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Re
+        \Re
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
     {
-      trig = "([^%a])Im",
+      trig = "Im",
       dscr = "imaginary part",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Im
+        \Im
       ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
+      {}
     )
   ),
   s(
@@ -586,21 +540,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a]),,",
+      trig = ",,",
       dscr = "slant bold style (bm package)",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bm{<>}
+        \bm{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -628,21 +579,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a]),s",
+      trig = ",s",
       dscr = "slant bold style",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\boldsymbol{<>}
+        \boldsymbol{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -715,21 +663,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])bar",
+      trig = "bar",
       dscr = "bar",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\bar{<>}
+        \bar{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -759,21 +704,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])hat",
+      trig = "hat",
       dscr = "hat",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{<>}
+        \hat{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -803,21 +745,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])dot",
+      trig = "dot",
       dscr = "dot",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\dot{<>}
+        \dot{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -870,21 +809,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])vec",
+      trig = "vec",
       dscr = "vec",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\vec{<>}
+        \vec{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -914,21 +850,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])Vec",
+      trig = "Vec",
       dscr = "wide vec arrow",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\overrightarrow{<>}
+        \overrightarrow{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -958,21 +891,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])tilde",
+      trig = "tilde",
       dscr = "tilde",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\tilde{<>}
+        \tilde{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -1002,21 +932,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])Tilde",
+      trig = "Tilde",
       dscr = "wide tilde",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\widetilde{<>}
+        \widetilde{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -1046,21 +973,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])und",
+      trig = "und",
       dscr = "underline",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\underline{<>}
+        \underline{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -1090,21 +1014,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])hat",
+      trig = "hat",
       dscr = "hat",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\hat{<>}
+        \hat{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -1134,21 +1055,18 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])Hat",
+      trig = "Hat",
       dscr = "wide hat",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\widehat{<>}
+        \widehat{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
@@ -1178,84 +1096,72 @@ local snippets = {
   ),
   s(
     {
-      trig = "([^%a])norm",
+      trig = "norm",
       dscr = "norm",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\lVert <> \rVert
+        \lVert <> \rVert
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])abs",
+      trig = "abs",
       dscr = "abs",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\lvert <> \rvert 
+        \lvert <> \rvert 
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])set",
+      trig = "set",
       dscr = "set",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\set{<>}
+        \set{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
   ),
   s(
     {
-      trig = "([^%a])Set",
+      trig = "Set",
       dscr = "large set",
       regTrig = true,
-      wordTrig = false,
+      wordTrig = true,
       condition = tex_utils.in_mathzone,
       snippetType = "autosnippet",
     },
     fmta(
       [[
-        <>\Set{<>}
+        \Set{<>}
       ]],
       {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
         d(1, get_visual),
       }
     )
