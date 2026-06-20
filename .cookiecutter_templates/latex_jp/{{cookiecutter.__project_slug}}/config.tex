@@ -309,6 +309,12 @@
 % 練習問題は definitioninline（見出し「練習問題 N.M」＋スペースで本文 run-in）
 \theoremstyle{definitioninline}
 \NewCalloutThmEnv{exc}{\excname}{nordgreen}[section]
+% --- excb: exc の改行版（thm と同じ definitionbreak スタイル）．見出し
+%     「練習問題 N.M」を太字で出し，オプションタイトルがあれば「: タイトル」を
+%     続け，改行してから本文を組む．タイトルは任意（必須ではない）．
+%     番号は exc とカウンタを共有（[exc]）するので混在しても通し番号になる ---
+\theoremstyle{definitionbreak}
+\NewCalloutThmEnv{excb}[exc]{\excname}{nordgreen}
 % --- 解答環境（proof 型・番号なし・run-in・見出し太字「解．」） ---
 %     練習問題環境の内外いずれでも使用可．proof と異なり QED 記号は付けない
 %     見出しはオプション引数で個別指定でき（例 \begin{sol}[略解] → 「略解．」），
