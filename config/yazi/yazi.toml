@@ -12,8 +12,6 @@ view = [
 
 [open]
 rules = [
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-
 	{ mime = "text/*",  use = [ "edit", "view", "reveal" ] },
 	{ mime = "image/*", use = [ "open", "reveal" ] },
 	{ mime = "video/*", use = [ "play", "reveal" ] },

@@ -32,10 +32,6 @@ rules = [
 	{ mime = "application/pdf",   fg = "#A3BE8C" },
 	{ mime = "application/rtf",   fg = "#A3BE8C" },
 	{ mime = "application/vnd.*", fg = "#A3BE8C" },
-
-	# Fallback
-	{ name = "*", fg = "#D8DEE9" },
-	{ name = "*/", fg = "#81A1C1" }
 ]
 
 [icon]
