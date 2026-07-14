@@ -12,7 +12,7 @@ view = [
 
 [open]
 rules = [
-	{ mime = "text/*",  use = [ "edit", "view", "reveal" ] },
+	{ mime = "text/*",  use = [ "edit", "view", "reveal", "open" ] },
 	{ mime = "image/*", use = [ "open", "reveal" ] },
 	{ mime = "video/*", use = [ "play", "reveal" ] },
 	{ mime = "audio/*", use = [ "play", "reveal" ] },
