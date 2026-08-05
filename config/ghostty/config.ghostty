@@ -9,11 +9,25 @@ font-family = "FiraCode Nerd Font"
 font-family = "HackGen"
 font-size = 12
 adjust-cell-height = 5%
+window-padding-x = 6
 macos-option-as-alt = true
+tab-inherit-working-directory = true
+window-inherit-working-directory = false
+# clipboard-read = allow
+# clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+copy-on-select = clipboard
+quick-terminal-size = 40%,33%
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
 
 ###############################################################################
 # Keybindings
 ###############################################################################
+
+# Move tab right
+keybind = super+ctrl+l=move_tab:1
+# Move tab left
+keybind = super+ctrl+h=move_tab:-1
 
 # Vim-mode keybindings for Ghostty.
 
@@ -58,3 +72,9 @@ keybind = vim/i=deactivate_key_table
 
 # Catch unbound keys
 keybind = vim/catch_all=ignore
+
+
+# Global key bindings
+
+# Quick terminal
+keybind = global:cmd+backquote=toggle_quick_terminal
