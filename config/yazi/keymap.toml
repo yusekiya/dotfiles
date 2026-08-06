@@ -1,5 +1,5 @@
 [mgr]
 prepend_keymap = [
     { on = "?",    run = "help", desc = "Open help" },
-    { on = "<C-t>", run = 'shell -- wezterm cli spawn --cwd "$(d="$0"; [ -d "$d" ] && printf %s "$d" || dirname -- "$d")"', desc = "Open hovered folder in a new Wezterm tab" },
+    { on = "<C-t>", run = 'shell -- ~/.config/yazi/scripts/ghostty-new-tab.sh "$0"', desc = "Open hovered folder in a new Ghostty tab" },
 ]
