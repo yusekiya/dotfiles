@@ -36,6 +36,19 @@ keybind = super+ctrl+h=move_tab:-1
 # Break line
 keybind = shift+enter=text:\n
 
+# Focus panes
+keybind = super+shift+k=goto_split:up
+keybind = super+shift+j=goto_split:down
+keybind = super+shift+h=goto_split:left
+keybind = super+shift+l=goto_split:right
+
+# Copy temporary file path for contents on screen to clipboard
+keybind = super+alt+c=write_screen_file:copy,plain
+# Paste temporary file path for contents on screen
+keybind = super+alt+v=write_screen_file:paste,plain
+# Open contents on screen
+keybind = super+alt+o=write_screen_file:open,plain
+
 # Vim-mode keybindings for Ghostty.
 
 # Entry point
