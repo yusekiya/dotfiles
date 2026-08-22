@@ -30,7 +30,7 @@ windowOrWorkspaceDown = "Unassigned"
 windowOrWorkspaceUp = "Unassigned"
 columnFirst = "Control+Option+Command+Comma"
 columnLast = "Control+Option+Command+Period"
-monitorNext = "Control+Command+Tab"
+monitorNext = "Hyper+Tab"
 monitorPrevious = "Unassigned"
 monitorLast = "Unassigned"
 
