@@ -1,5 +1,19 @@
-[mgr]
-prepend_keymap = [
-    { on = "?",    run = "help", desc = "Open help" },
-    { on = "<C-t>", run = 'shell -- ~/.config/yazi/scripts/ghostty-new-tab.sh "$0"', desc = "Open hovered folder in a new Ghostty tab" },
-]
+[[mgr.prepend_keymap]]
+on = "?"
+run = "help"
+desc = "Open help"
+
+[[mgr.prepend_keymap]]
+on = "<C-t>"
+run = 'shell -- ~/.config/yazi/scripts/ghostty-new-tab.sh "$0"'
+desc = "Open hovered folder in a new Ghostty tab"
+
+[[mgr.prepend_keymap]]
+on = "T"
+run = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
