@@ -7,7 +7,22 @@ return {
   -- },
   {
     "ajbucci/ipynb.nvim",
-    lazy = false,
+    cmd = { "NotebookCreate", "NotebookListKernels" },
+    init = function()
+      -- ipynb.nvim owns `BufReadCmd *.ipynb`, so no lazy event fires early
+      -- enough: claim the event here and hand the buffer over once loaded.
+      vim.api.nvim_create_autocmd({ "BufReadCmd", "BufNewFile" }, {
+        pattern = "*.ipynb",
+        group = vim.api.nvim_create_augroup("ipynb_lazy_load", { clear = true }),
+        callback = function(ev)
+          if ev.file:match("^%w+://") then
+            return
+          end
+          require("lazy").load({ plugins = { "ipynb.nvim" } })
+          require("ipynb.io").open_notebook(ev.buf, ev.file)
+        end,
+      })
+    end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "neovim/nvim-lspconfig",
