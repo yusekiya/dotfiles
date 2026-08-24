@@ -19,6 +19,20 @@ return {
     end
     -- local logo_file = vim.fn.stdpath("config") .. "/logo/saturn.txt"
     local logo_file = vim.fn.stdpath("config") .. "/logo/blackhole.txt"
+    -- The dashboard's tte job exits right after the animation,
+    -- so drop that extmark for the dashboard terminal only.
+    vim.api.nvim_create_autocmd("TermClose", {
+      group = vim.api.nvim_create_augroup("dashboard_term_exitmsg", { clear = true }),
+      callback = function(ev)
+        if vim.bo[ev.buf].filetype ~= "snacks_dashboard" then
+          return
+        end
+        local ns = vim.api.nvim_get_namespaces()["nvim.terminal.exitmsg"]
+        if ns then
+          vim.api.nvim_buf_clear_namespace(ev.buf, ns, 0, -1)
+        end
+      end,
+    })
     local opts = {
       bigfile = { enabled = false },
       explorer = { enabled = false },
