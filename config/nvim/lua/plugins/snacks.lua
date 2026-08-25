@@ -89,7 +89,7 @@ return {
           },
         },
         sections = {
-          { section = "terminal", cmd = cmd .. " " .. logo_file, height = 25, padding = 1, ttl = 5 * 60 },
+          { section = "terminal", cmd = cmd .. " " .. logo_file, height = 25, padding = 1, ttl = 0 },
           { section = "keys", gap = 1, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
           { section = "startup" },
