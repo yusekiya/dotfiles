@@ -8,6 +8,12 @@
         "enter": "chat:newline",
         "meta+enter": "chat:submit"
       }
+    },
+    {
+      "context": "Autocomplete",
+      "bindings": {
+        "enter": "autocomplete:accept"
+      }
     }
   ]
 }
