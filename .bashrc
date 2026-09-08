@@ -343,6 +343,11 @@ if [ -f "${HOME}/.dircolors" ]; then
     eval `dircolors ${HOME}/.dircolors`
 fi
 
+# starship
+if [ `type -p starship` ]; then
+    eval "$(starship init bash)"
+fi
+
 # fzf
 if [ `type -p fzf` ]; then
     eval "$(fzf --bash)"
