@@ -29,6 +29,11 @@ if [ -d "/Library/TeX/texbin" ]; then
     export PATH="/Library/TeX/texbin:${PATH}"
 fi
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 # Config path for tealdeer
 export TEALDEER_CONFIG_DIR="${HOME}/.config/tealdeer/"
 
