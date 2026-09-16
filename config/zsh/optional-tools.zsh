@@ -33,6 +33,10 @@ if (( $+commands[uv] )); then
     zcache_completion _uv $commands[uv] -- uv generate-shell-completion zsh
 fi
 
+if (( $+commands[wezterm] )); then
+    zcache_completion _wezterm $commands[wezterm] -- wezterm shell-completion --shell zsh
+fi
+
 if (( $+commands[zoxide] )); then
     export _ZO_FZF_OPTS="+m --height 50% --reverse"
     zcache_source zoxide $commands[zoxide] -- zoxide init --cmd c zsh
