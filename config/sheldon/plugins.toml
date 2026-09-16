@@ -17,11 +17,15 @@ shell = "zsh"
 github = "romkatv/zsh-defer"
 
 [templates]
+# `defer` byte-compiles; zcompile writes the .zwc next to the source, which is
+# fine for the github plugins under ~/.local/share/sheldon (per machine). The
+# `local` entries are sourced as is: ~/.config/zsh is the shared dotfiles tree,
+# and all of these files are far under the ~15KB where zcompile starts to pay.
 defer = """{{ hooks?.pre | nl }}{% for file in files %}
 zsh-defer source_zcompile "{{ file }}"
 {% endfor %}{{ hooks?.post | nl }}"""
-source_zcompile = """{{ hooks?.pre | nl }}{% for file in files %}
-source_zcompile "{{ file }}"
+defer_source = """{{ hooks?.pre | nl }}{% for file in files %}
+zsh-defer source "{{ file }}"
 {% endfor %}{{ hooks?.post | nl }}"""
 
 
@@ -40,25 +44,23 @@ apply = ["defer"]
 [plugins.zshrc-sync]
 local = '~/.config/zsh'
 use = ['sync.zsh']
-apply = ['source_zcompile']
 
 [plugins.zshrc-local-sync]
 local = '~/.config/zsh.site'
 use = ['sync.zsh']
-apply = ['source_zcompile']
 
 [plugins.zshrc-defer]
 local = '~/.config/zsh'
 use = ['defer.zsh']
-apply = ['defer']
+apply = ['defer_source']
 
 [plugins.zshrc-local-defer]
 local = '~/.config/zsh.site'
 use = ['defer.zsh']
-apply = ['defer']
+apply = ['defer_source']
 
 [plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
+inline = 'zsh-defer zcache_compinit'
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
@@ -67,5 +69,5 @@ apply = ["defer"]
 [plugins.zshrc-local-defer-after-compinit]
 local = '~/.config/zsh.site'
 use = ['defer-after-compinit.zsh']
-apply = ['defer']
+apply = ['defer_source']
 

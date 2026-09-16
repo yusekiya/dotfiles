@@ -7,40 +7,29 @@ if [ ! -d $local_zsh_dir ] || [ ! -f $local_zsh_dir/sync.zsh ] || [ ! -f $local_
 fi
 unset local_zsh_dir
 
-# cf. https://zenn.dev/fuzmare/articles/zsh-source-zcompile-all
-function source_zcompile {
-    ensure_zcompiled $1
-    builtin source $1
-}
-function ensure_zcompiled {
-    local compiled="$1.zwc"
-    if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
-        echo "Compiling $1"
-        zcompile $1
-    fi
-}
+# Cache helpers. .zprofile loads the same file; whichever shell runs first wins.
+(( $+functions[zcache_source] )) || source "${HOME}/.config/zsh/cache.zsh"
 
 # Load zsh configuration with Sheldon
 if (( $+commands[sheldon] )); then
     # The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
     # Prepare file names for caching
-    cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}
-    sheldon_cache="$cache_dir/sheldon.zsh"
+    sheldon_cache="$ZSH_CACHE_DIR/sheldon.zsh"
     sheldon_toml="$HOME/.config/sheldon/plugins.toml"
     # Create cache if necessary
     if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
-        mkdir -p $cache_dir
+        mkdir -p $ZSH_CACHE_DIR
         sheldon --config-file $sheldon_toml source > $sheldon_cache
     fi
     source "$sheldon_cache"
-    unset cache_dir sheldon_cache sheldon_toml
+    unset sheldon_cache sheldon_toml
 else
     echo "**WARNING** Sheldon command not found"
     echo "Install Sheldon from the following URL to load the zsh config."
     echo "https://github.com/rossmacarthur/sheldon"
 fi
 
-
-# if (which zprof > /dev/null 2>&1) ;then
-  # zprof | less
-# fi
+# Startup profiling: run `ZSH_PROFILE=1 zsh -i -c exit` to collect it.
+if [[ -n ${ZSH_PROFILE-} ]]; then
+    zprof > /tmp/zshstart.log
+fi

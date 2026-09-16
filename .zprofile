@@ -1,13 +1,22 @@
+# Cache helpers. .zshrc loads the same file; whichever shell runs first wins.
+(( $+functions[zcache_source] )) || source "${HOME}/.config/zsh/cache.zsh"
+
+# `brew shellenv` is a ~25ms fork on every login shell, and its output only
+# changes when brew itself is updated, so it is cached.
 if [ -d "/opt/homebrew" ] && [ "$ARCH" = arm64 ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    brew_bin=/opt/homebrew/bin/brew
 elif [ -f "/usr/local/bin/brew" ] && [ "$ARCH" = x86_64 ]; then
-    eval "$(/usr/local/bin/brew shellenv)"
+    brew_bin=/usr/local/bin/brew
 elif [ -d "${HOME}/.linuxbrew" ]; then
     # Linuxbrew
-    eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
+    brew_bin="${HOME}/.linuxbrew/bin/brew"
 elif [ -d "/home/linuxbrew/.linuxbrew" ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    brew_bin=/home/linuxbrew/.linuxbrew/bin/brew
 fi
+if [ -n "${brew_bin:-}" ]; then
+    zcache_source brew "$brew_bin" -- "$brew_bin" shellenv
+fi
+unset brew_bin
 
 if [ -d "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ]; then
     export PATH=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:${PATH}

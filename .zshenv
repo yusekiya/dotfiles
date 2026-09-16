@@ -1,5 +1,5 @@
-# zmodload zsh/zprof && zprof
-ARCH=$(/usr/bin/uname -m)
+[[ -n ${ZSH_PROFILE-} ]] && zmodload zsh/zprof
+ARCH=$CPUTYPE
 
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:${PATH}"
 [[ ":$PATH:" != *":/usr/local/sbin:"* ]] && export PATH="/usr/local/sbin:${PATH}"
@@ -29,6 +29,9 @@ if [ -d "${HOME}/.local/info" ]; then
 fi
 
 SHELL_SESSIONS_DISABLE=1
+
+# Per-machine cache for generated shell config (see config/zsh/cache.zsh)
+: ${ZSH_CACHE_DIR:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
 
 typeset -U path
 

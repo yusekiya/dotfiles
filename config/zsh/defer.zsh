@@ -92,7 +92,7 @@ bindkey '^l' scroll-and-clear-screen
 # fzf
 ###############################################################################
 if (( $+commands[fzf] )); then
-    source <(fzf --zsh)
+    zcache_source fzf $commands[fzf] -- fzf --zsh
 elif [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
