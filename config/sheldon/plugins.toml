@@ -71,6 +71,11 @@ inline = 'zsh-defer -m -p zcache_compinit'
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
 
+[plugins.zshrc-optional-tools]
+local = '~/.config/zsh'
+use = ['optional-tools.zsh']
+apply = ['defer_source']
+
 [plugins.zshrc-local-defer-after-compinit]
 local = '~/.config/zsh.site'
 use = ['defer-after-compinit.zsh']

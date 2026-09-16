@@ -6,6 +6,16 @@ function mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+# yazi, leaving the shell in the directory yazi was last in
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 function less_table () {
     column -t "$1" | sed '/^\s*#/ s/ \{1,\}/ /g' | less
 }
