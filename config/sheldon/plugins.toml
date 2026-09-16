@@ -21,11 +21,16 @@ github = "romkatv/zsh-defer"
 # fine for the github plugins under ~/.local/share/sheldon (per machine). The
 # `local` entries are sourced as is: ~/.config/zsh is the shared dotfiles tree,
 # and all of these files are far under the ~15KB where zcompile starts to pay.
+#
+# `-m -p` drops the precmd hooks and the `zle reset-prompt` that zsh-defer runs
+# after every single task by default. Both prompts are $(starship prompt ...),
+# so each redraw forks twice; the flush entry at the end of this file runs them
+# once, after the queue has drained.
 defer = """{{ hooks?.pre | nl }}{% for file in files %}
-zsh-defer source_zcompile "{{ file }}"
+zsh-defer -m -p source_zcompile "{{ file }}"
 {% endfor %}{{ hooks?.post | nl }}"""
 defer_source = """{{ hooks?.pre | nl }}{% for file in files %}
-zsh-defer source "{{ file }}"
+zsh-defer -m -p source "{{ file }}"
 {% endfor %}{{ hooks?.post | nl }}"""
 
 
@@ -60,7 +65,7 @@ use = ['defer.zsh']
 apply = ['defer_source']
 
 [plugins.compinit]
-inline = 'zsh-defer zcache_compinit'
+inline = 'zsh-defer -m -p zcache_compinit'
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
@@ -71,3 +76,5 @@ local = '~/.config/zsh.site'
 use = ['defer-after-compinit.zsh']
 apply = ['defer_source']
 
+[plugins.defer-flush]
+inline = 'zsh-defer true'
