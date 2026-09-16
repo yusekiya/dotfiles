@@ -42,3 +42,8 @@ if (( $+commands[zoxide] )); then
     zcache_source zoxide $commands[zoxide] -- zoxide init --cmd c zsh
     alias cd=c
 fi
+
+# Generating a completion above drops the compdump, and this file is sourced
+# after compinit, so rebuild it here rather than leaving the new completion
+# unusable until the next shell.
+[[ -f $ZSH_COMPDUMP ]] || zcache_compinit
