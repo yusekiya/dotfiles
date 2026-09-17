@@ -112,13 +112,15 @@ function zcache_completion {
 # directory in $fpath. Run the full check at most once a day and replay the
 # dump otherwise, and keep the dump byte-compiled.
 #
-# -i is not an optimisation, it is a safety catch. Without it a single $fpath
-# directory that compaudit dislikes makes compinit stop and ask, and this runs
-# as a zsh-defer task: the prompt aborts compinit, no dump is written, and
-# every task queued behind it -- optional-tools.zsh among them -- is dropped.
-# The next shell then finds no dump, runs the full check again and wedges the
-# same way. With -i such a directory is skipped instead; run `compaudit` when a
-# completion is unexpectedly missing.
+# -u is a safety catch, not an optimisation. Left to itself compinit stops and
+# asks about any $fpath directory compaudit dislikes, and both answering yes and
+# passing -i mean the same thing: the directory is dropped from $fpath. When zsh
+# itself comes from Homebrew that directory holds compdump, so dropping it makes
+# compinit die with "compdump: function definition file not found" -- a fatal
+# error, which in a zsh-defer task takes the rest of the queue with it and
+# leaves optional-tools.zsh unsourced. -u keeps the directory instead, so a
+# permission the shell cannot fix by itself cannot break completion outright.
+# It does mean a writable $fpath entry is trusted; `compaudit` still lists them.
 function zcache_compinit {
     [[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
     autoload -Uz compinit
@@ -129,7 +131,7 @@ function zcache_compinit {
     if (( $#fresh )); then
         compinit -C -d $ZSH_COMPDUMP
     else
-        compinit -i -d $ZSH_COMPDUMP
+        compinit -u -d $ZSH_COMPDUMP
         [[ -s $ZSH_COMPDUMP ]] && zcompile $ZSH_COMPDUMP
     fi
 }
