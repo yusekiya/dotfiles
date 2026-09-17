@@ -10,6 +10,11 @@ unset local_zsh_dir
 # Cache helpers. .zprofile loads the same file; whichever shell runs first wins.
 (( $+functions[zcache_source] )) || source "${HOME}/.config/zsh/cache.zsh"
 
+# /etc/zshrc runs between ~/.zprofile and this file and may reorder PATH, so the
+# order is restored once more here. Pure parameter work, no fork.
+(( $+functions[path_prioritize] )) || source "${HOME}/.config/zsh/path.zsh"
+path_prioritize
+
 # Load zsh configuration with Sheldon
 if (( $+commands[sheldon] )); then
     # The following config for sheldon is referencing to https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache

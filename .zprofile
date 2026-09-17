@@ -1,5 +1,6 @@
 # Cache helpers. .zshrc loads the same file; whichever shell runs first wins.
 (( $+functions[zcache_source] )) || source "${HOME}/.config/zsh/cache.zsh"
+(( $+functions[path_prioritize] )) || source "${HOME}/.config/zsh/path.zsh"
 
 # `brew shellenv` is a ~25ms fork on every login shell, and its output only
 # changes when brew itself is updated, so it is cached.
@@ -40,16 +41,23 @@ fi
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+elif [ -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]; then
+    . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+# home-manager keeps its own session variables and `home.sessionPath` here;
+# without this they only apply to the shell home-manager generates itself.
+if [ -e "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    . "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 
 # Config path for tealdeer
 export TEALDEER_CONFIG_DIR="${HOME}/.config/tealdeer/"
 
-# add path to raise priority of ~/.local/bin
-if [ -d "${HOME}/.local/bin" ]; then
-    export PATH="${HOME}/.local/bin:${PATH}"
-fi
+# Every block above prepends to PATH, so the intended order is restored once
+# they have all run.
+path_prioritize
 
 if [[ "$TERM_PROGRAM" == "WezTerm" && -f "$HOME"/.config/wezterm/wezterm.sh ]]; then
     source "$HOME"/.config/wezterm/wezterm.sh
