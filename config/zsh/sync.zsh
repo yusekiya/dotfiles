@@ -39,7 +39,15 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-fpath=( "$ZSH_CACHE_DIR/completion" "${HOME}/.config/zsh.site/completion" "${fpath[@]}" )
+# Completions shipped by Nix packages. Their real directories live in the
+# store, owned by root, so compinit accepts them where a Homebrew prefix
+# installed by another account gets rejected. $nix_profiles comes from path.zsh.
+fpath=(
+    "$ZSH_CACHE_DIR/completion"
+    "${HOME}/.config/zsh.site/completion"
+    ${^nix_profiles}/share/zsh/site-functions(N/)
+    "${fpath[@]}"
+)
 typeset -U FPATH fpath
 
 export LESS='-iRFX -# 5'

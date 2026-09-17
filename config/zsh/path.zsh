@@ -13,18 +13,26 @@
 # Everything else keeps the relative order it already had. Tools that prepend
 # later at runtime (mise shims, direnv) still win, which is what they are for.
 
+# The Nix profiles present on this machine, highest priority first. PATH and
+# fpath (see sync.zsh) are both derived from these, so the list lives once.
+typeset -ga nix_profiles
+nix_profiles=()
+for _dir in \
+    "$HOME/.nix-profile" \
+    "${XDG_STATE_HOME:-$HOME/.local/state}/nix/profile" \
+    "${XDG_STATE_HOME:-$HOME/.local/state}/nix/profiles/home-manager/home-path" \
+    "/etc/profiles/per-user/${USER}" \
+    "/run/current-system/sw" \
+    "/nix/var/nix/profiles/default"
+do
+    [[ -d $_dir ]] && nix_profiles+=( $_dir )
+done
+unset _dir
+
 function path_prioritize {
     local -a front
     local dir
-    for dir in \
-        "$HOME/.local/bin" \
-        "$HOME/.nix-profile/bin" \
-        "${XDG_STATE_HOME:-$HOME/.local/state}/nix/profile/bin" \
-        "${XDG_STATE_HOME:-$HOME/.local/state}/nix/profiles/home-manager/home-path/bin" \
-        "/etc/profiles/per-user/${USER}/bin" \
-        "/run/current-system/sw/bin" \
-        "/nix/var/nix/profiles/default/bin"
-    do
+    for dir in "$HOME/.local/bin" ${^nix_profiles}/bin; do
         [[ -d $dir ]] && front+=( $dir )
     done
     (( $#front )) || return 0
