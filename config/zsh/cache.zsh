@@ -15,12 +15,37 @@
 #
 # This file is sourced from both .zprofile and .zshrc, whichever runs first.
 
+zmodload -F zsh/stat b:zstat
+
 : ${ZSH_CACHE_DIR:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
 : ${ZSH_COMPDUMP:=$ZSH_CACHE_DIR/zcompdump}
 
+# Identify the dependencies in $REPLY, one "<resolved path> <mtime>" per line,
+# to be stored next to a cache and compared against on the next start.
+#
+# Comparing mtimes against the cache would be simpler but does not work for a
+# tool installed by Nix: every file in the store carries the same 1970
+# timestamp, so `-nt` never fires and the cache stays frozen across upgrades.
+# What does change is the path, since the store path holds a hash of the build,
+# and $dep is a symlink into it. For anything outside the store the path is
+# stable and the mtime is what moves, so both are recorded.
+function _zcache_stamp {
+    local dep target
+    local -a st lines
+    for dep in "$@"; do
+        target=${dep:A}
+        [[ -e $target ]] || continue
+        zstat -A st +mtime -- $target 2>/dev/null || continue
+        lines+=( "$target $st[1]" )
+    done
+    # Joined without a trailing newline: $(<file) strips one, so a stamp built
+    # with one would never compare equal to what was written.
+    REPLY=${(F)lines}
+}
+
 # Source $ZSH_CACHE_DIR/<name>.zsh, regenerating it by running <command>
-# whenever the cache is missing, empty, or older than one of the <dep> files or
-# the file this was called from. A dep that does not exist is ignored.
+# whenever the cache is missing, empty, or one of the <dep> files has changed
+# since it was built. A dep that does not exist is ignored.
 #
 #     zcache_source <name> [<dep> ...] -- <command> [<arg> ...]
 #
@@ -40,26 +65,19 @@ function zcache_source {
     shift
 
     local cache=$ZSH_CACHE_DIR/$name.zsh
-    local stale=1 dep
-    if [[ -s $cache ]]; then
-        stale=0
-        for dep in $deps; do
-            if [[ -e $dep && $dep -nt $cache ]]; then
-                stale=1
-                break
-            fi
-        done
-    fi
+    local stamp=$cache.dep
+    local REPLY
+    _zcache_stamp $deps
+    [[ -s $cache && -r $stamp && $REPLY == "$(<$stamp)" ]] && { builtin source $cache; return }
 
-    if (( stale )); then
-        [[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
-        local tmp=$cache.$$
-        if ! "$@" > $tmp 2>/dev/null || [[ ! -s $tmp ]]; then
-            command rm -f $tmp
-            return 1
-        fi
-        command mv -f $tmp $cache
+    [[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
+    local tmp=$cache.$$
+    if ! "$@" > $tmp 2>/dev/null || [[ ! -s $tmp ]]; then
+        command rm -f $tmp
+        return 1
     fi
+    command mv -f $tmp $cache
+    print -rn -- $REPLY > $stamp
 
     builtin source $cache
 }
@@ -86,17 +104,12 @@ function zcache_completion {
 
     local dir=$ZSH_CACHE_DIR/completion
     local target=$dir/$name
-    local stale=1 dep
-    if [[ -s $target ]]; then
-        stale=0
-        for dep in $deps; do
-            if [[ -e $dep && $dep -nt $target ]]; then
-                stale=1
-                break
-            fi
-        done
-    fi
-    (( stale )) || return 0
+    # The stamp is kept out of $dir: that directory is on $fpath and compinit
+    # reads every file in it looking for a #compdef tag.
+    local stamp=$ZSH_CACHE_DIR/completion.dep/$name
+    local REPLY
+    _zcache_stamp $deps
+    [[ -s $target && -r $stamp && $REPLY == "$(<$stamp)" ]] && return 0
 
     [[ -d $dir ]] || mkdir -p $dir
     local tmp=$target.$$
@@ -105,6 +118,8 @@ function zcache_completion {
         return 1
     fi
     command mv -f $tmp $target
+    [[ -d ${stamp:h} ]] || mkdir -p ${stamp:h}
+    print -rn -- $REPLY > $stamp
     command rm -f $ZSH_COMPDUMP $ZSH_COMPDUMP.zwc
 }
 
