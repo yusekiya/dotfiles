@@ -112,15 +112,15 @@ function zcache_completion {
 # directory in $fpath. Run the full check at most once a day and replay the
 # dump otherwise, and keep the dump byte-compiled.
 #
-# -u is a safety catch, not an optimisation. Left to itself compinit stops and
-# asks about any $fpath directory compaudit dislikes, and both answering yes and
-# passing -i mean the same thing: the directory is dropped from $fpath. When zsh
-# itself comes from Homebrew that directory holds compdump, so dropping it makes
-# compinit die with "compdump: function definition file not found" -- a fatal
-# error, which in a zsh-defer task takes the rest of the queue with it and
-# leaves optional-tools.zsh unsourced. -u keeps the directory instead, so a
-# permission the shell cannot fix by itself cannot break completion outright.
-# It does mean a writable $fpath entry is trusted; `compaudit` still lists them.
+# -i answers the question compinit would otherwise stop and ask when compaudit
+# rejects a directory in $fpath, so it cannot block while running as a
+# zsh-defer task. The directory is then dropped from $fpath, which is fine
+# until it is the one holding zsh's own completion functions -- with zsh from
+# Homebrew it is -- and compinit dies with "compdump: function definition file
+# not found". That error is fatal and would abort the rest of the deferred
+# queue, optional-tools.zsh included, so it is contained in an eval: the worst
+# case is completion that does not work, not a shell that never finishes
+# loading its config. Run `compaudit` and fix the permission when that happens.
 function zcache_compinit {
     [[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
     autoload -Uz compinit
@@ -129,9 +129,9 @@ function zcache_compinit {
     # silently tests a literal string and is always true.
     local -a fresh=( $ZSH_COMPDUMP(N.mh-24) )
     if (( $#fresh )); then
-        compinit -C -d $ZSH_COMPDUMP
+        eval 'compinit -C -d $ZSH_COMPDUMP'
     else
-        compinit -u -d $ZSH_COMPDUMP
+        eval 'compinit -i -d $ZSH_COMPDUMP'
         [[ -s $ZSH_COMPDUMP ]] && zcompile $ZSH_COMPDUMP
     fi
 }
