@@ -19,12 +19,22 @@ if (( $+commands[direnv] )); then
     zcache_source direnv $commands[direnv] -- direnv hook zsh
 fi
 
+# fd and ripgrep ship a completion with some package managers and not others;
+# generating it keeps them working wherever they come from.
+if (( $+commands[fd] )); then
+    zcache_completion _fd $commands[fd] -- fd --gen-completions zsh
+fi
+
 if (( $+commands[mise] )); then
     zcache_completion _mise $commands[mise] -- mise completion zsh
     # Not cached: `mise activate` bakes the current PATH into its output and
     # forks `mise hook-env` while being sourced, so replaying a cached copy
     # would be both stale and no faster.
     eval "$($commands[mise] activate zsh)"
+fi
+
+if (( $+commands[rg] )); then
+    zcache_completion _rg $commands[rg] -- rg --generate complete-zsh
 fi
 
 if (( $+commands[uv] )); then
