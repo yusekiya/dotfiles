@@ -351,8 +351,6 @@ fi
 # fzf
 if [ `type -p fzf` ]; then
     eval "$(fzf --bash)"
-elif [ -f ~/.fzf.bash ]; then
-    source ~/.fzf.bash
 fi
 
 if [ `type -p fzf` ]; then
