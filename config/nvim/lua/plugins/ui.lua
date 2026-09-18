@@ -45,6 +45,17 @@ return {
       },
     },
   },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    keys = {
+      { "<leader>eo", "<Cmd>Oil<cr>", mode = "n", desc = "Open parent directoy with oil" },
+    },
+    -- Optional dependencies
+    dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
   -- Outline
   {
     "stevearc/aerial.nvim",
