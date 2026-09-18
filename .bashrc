@@ -6,6 +6,47 @@
 # Reset variables
 export PROMPT_COMMAND=
 
+# Host detection
+#
+# Starting an external command costs 6-14ms on this machine (a fork alone is
+# 0.85ms; the rest is exec plus the PATH search), and the branches below used
+# to call `uname` eight times between them. $OSTYPE is baked into bash at build
+# time and answers the same question for free, MSYS2 and Git for Windows (which
+# both report "Msys" for `uname -o`) included.
+case "$OSTYPE" in
+    darwin*)             OS_TYPE=Darwin ;;
+    linux*)              OS_TYPE=Linux ;;
+    msys*|cygwin*|win32) OS_TYPE=Msys ;;
+    *)                   OS_TYPE=$OSTYPE ;;
+esac
+
+# Homebrew prefix, without asking `brew` for it. .bash_profile exports
+# HOMEBREW_PREFIX by way of `brew shellenv` on Linuxbrew hosts; elsewhere the
+# prefix is one of two fixed locations and a directory test is free.
+if [ -z "${HOMEBREW_PREFIX:-}" ]; then
+    if [ -d /opt/homebrew ]; then
+        HOMEBREW_PREFIX=/opt/homebrew
+    elif [ -d /usr/local/Homebrew ]; then
+        HOMEBREW_PREFIX=/usr/local
+    fi
+fi
+
+# Cache helper for the tools that are set up by eval'ing a subprocess.
+if [ -r "${HOME}/.config/bash/cache.bash" ]; then
+    source "${HOME}/.config/bash/cache.bash"
+else
+    # On a host where setup.sh has not linked config/bash yet, fall back to
+    # running the generators on every start -- slower, but the alternative is
+    # a shell with no prompt, no fzf and no direnv.
+    bcache_source() {
+        shift
+        while (($#)) && [ "$1" != -- ]; do shift; done
+        shift
+        [ $# -gt 0 ] || return 1
+        eval "$("$@" 2>/dev/null)"
+    }
+fi
+
 # Environment variables
 export EDITOR='vim'
 
@@ -18,25 +59,35 @@ export LESS='-iRFX -# 5'
 export SYSTEMD_LESS='FRSXMK -# 5'
 
 # Load git completion
-## for windows
-if [ "$(uname -o)" = "Msys" ]; then
-    source /usr/share/git/completion/git-prompt.sh
-    source /usr/share/git/completion/git-completion.bash
-    GIT_PS1_SHOWDIRTYSTATE=true
-## for ubuntu
-elif [ "$(uname)" = "Linux" ]; then
-    if [ -f /etc/bash_completion.d/git-prompt ]; then
-        source /etc/bash_completion.d/git-prompt
-    elif [ -f /etc/bash_completion.d/git ]; then
-        source /etc/bash_completion.d/git
-    fi
-    GIT_PS1_SHOWDIRTYSTATE=true
-## for mac
-elif [ "$(uname)" = "Darwin" ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-    GIT_PS1_SHOWDIRTYSTATE=true
-fi
+case "$OS_TYPE" in
+    ## for windows
+    Msys)
+        source /usr/share/git/completion/git-prompt.sh
+        source /usr/share/git/completion/git-completion.bash
+        GIT_PS1_SHOWDIRTYSTATE=true
+        ;;
+    ## for ubuntu
+    Linux)
+        if [ -f /etc/bash_completion.d/git-prompt ]; then
+            source /etc/bash_completion.d/git-prompt
+        elif [ -f /etc/bash_completion.d/git ]; then
+            source /etc/bash_completion.d/git
+        fi
+        GIT_PS1_SHOWDIRTYSTATE=true
+        ;;
+    ## for mac
+    Darwin)
+        # Under the Homebrew prefix rather than a hardcoded /usr/local, and
+        # guarded: git is not necessarily installed through brew, and sourcing
+        # a missing file only prints an error on every start.
+        for _git_completion in "${HOMEBREW_PREFIX:-/usr/local}/etc/bash_completion.d/git-prompt.sh" \
+                               "${HOMEBREW_PREFIX:-/usr/local}/etc/bash_completion.d/git-completion.bash"; do
+            [ -f "$_git_completion" ] && source "$_git_completion"
+        done
+        unset _git_completion
+        GIT_PS1_SHOWDIRTYSTATE=true
+        ;;
+esac
 
 ## Shorten dirname
 export PROMPT_DIRTRIM=4
@@ -115,8 +166,8 @@ export PROMPT_COMMAND="history -a;${PROMPT_COMMAND}"
 
 # Functions
 #
-if [ "$(uname)" = "Darwin" ]; then
-    emacs_gui=$(brew --prefix)/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs
+if [ "$OS_TYPE" = "Darwin" ]; then
+    emacs_gui=${HOMEBREW_PREFIX:-/usr/local}/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs
 else
     emacs_gui=emacs
 fi
@@ -137,7 +188,12 @@ function show_path () {
 }
 
 function terminal_device_type() {
-    tty | perl -pe 's|/dev/([^/0-9]+)/?.*|\1|'
+    # /dev/ttys003 -> ttys, /dev/pts/0 -> pts. Parameter expansion rather than
+    # perl: the pipeline used to cost two exec's for a single string edit.
+    local dev=${1:-$(tty)}
+    dev=${dev#/dev/}
+    dev=${dev%%/*}
+    printf '%s\n' "${dev%%[0-9]*}"
 }
 TERM_TYPE=$(terminal_device_type)
 
@@ -274,28 +330,28 @@ function nbstrip-all-cwd {
     unset nbfile
 }
 
-if [ `type -p colordiff` ]; then
+if command -v colordiff >/dev/null; then
     alias diff='colordiff -u'
 else
     alias diff='diff -u'
 fi
 
 # The alias for tmux doesn't work on windows msys2
-if [ "$(uname)" = "Linux" ] && [ `type -p direnv` ]; then
+if [ "$OS_TYPE" = "Linux" ] && command -v direnv >/dev/null; then
     alias tmux='direnv exec / tmux'
 fi
 
 # aliases and functions for linux
-if [ "$(uname)" = "Linux" ]; then
+if [ "$OS_TYPE" = "Linux" ]; then
     alias emacs='XMODIFIERS=@im=none emacs'
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
+if [ "$OS_TYPE" = "Darwin" ]; then
     alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
 fi
 
 # aliases and functions for windows
-if [ "$(uname -o)" = "Msys" ]; then
+if [ "$OS_TYPE" = "Msys" ]; then
     function trash () {
         winpty gomi "$@"
     }
@@ -339,21 +395,24 @@ if [ "$(uname -o)" = "Msys" ]; then
 fi
 
 # dircolors
-if [ -f "${HOME}/.dircolors" ]; then
-    eval `dircolors ${HOME}/.dircolors`
+if [ -f "${HOME}/.dircolors" ] && command -v dircolors >/dev/null; then
+    bcache_source dircolors "${HOME}/.dircolors" -- dircolors "${HOME}/.dircolors"
 fi
 
 # starship
-if [ `type -p starship` ]; then
-    eval "$(starship init bash)"
+if command -v starship >/dev/null; then
+    # --print-full-init, because plain `starship init bash` only emits a
+    # bootstrap line that forks starship again to get the real thing; caching
+    # that would still leave one exec on every start.
+    bcache_source starship "${STARSHIP_CONFIG:-$HOME/.config/starship.toml}" -- starship init bash --print-full-init
 fi
 
 # fzf
-if [ `type -p fzf` ]; then
-    eval "$(fzf --bash)"
+if command -v fzf >/dev/null; then
+    bcache_source fzf -- fzf --bash
 fi
 
-if [ `type -p fzf` ]; then
+if command -v fzf >/dev/null; then
    export FZF_CTRL_R_OPTS="--reverse"
    # cd to selected directory including hidden ones
    function cdd() {
@@ -407,16 +466,22 @@ if [ -f ~/repos/enhancd/init.sh ]; then
 fi
 
 # direnv
-if [ `type -p direnv` ]; then
-    eval "${PROMPT_COMMAND}"
-    eval "$(direnv hook bash)"
+if command -v direnv >/dev/null; then
+    # `eval "${PROMPT_COMMAND}"` used to run here, to force the bash-preexec
+    # copy that starship used to ship with to install itself before direnv
+    # prepended its hook (commit 5f752da). Current starship sets
+    # PROMPT_COMMAND=starship_precmd directly and keeps the previous value in
+    # STARSHIP_PROMPT_COMMAND, so direnv prepending to it is already correct,
+    # and the line only cost a full prompt render -- three starship exec's --
+    # on every start.
+    bcache_source direnv -- direnv hook bash
 fi
 
 export PROMPT_COMMAND="printf '\n';$PROMPT_COMMAND"
 
 # zoxide
-if [ -x "$(command -v zoxide)" ]; then
-    eval "$(zoxide init --cmd c bash)"
+if command -v zoxide >/dev/null; then
+    bcache_source zoxide -- zoxide init --cmd c bash
 fi
 
 # Load site-local config for shell if any
