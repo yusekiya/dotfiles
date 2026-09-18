@@ -11,8 +11,6 @@
 [core]
     whitespace = cr-at-eol
     autocrlf = input
-[include]
-    path = .gitconfig.local
 [user]
     useConfigOnly = true
 [merge]
@@ -25,6 +23,7 @@
 	defaultBranch = main
 [include]
     path = config.d/credential
+    path = config.d/local_config
 [fetch]
 	prune = true
 [pull]
