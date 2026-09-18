@@ -195,7 +195,6 @@ function terminal_device_type() {
     dev=${dev%%/*}
     printf '%s\n' "${dev%%[0-9]*}"
 }
-TERM_TYPE=$(terminal_device_type)
 
 # Detect session type
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then

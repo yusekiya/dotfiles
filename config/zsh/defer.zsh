@@ -27,9 +27,15 @@ function unlink_files () {
 }
 
 function terminal_device_type() {
-    tty | perl -pe 's|/dev/([^/0-9]+)/?.*|\1|'
+    # /dev/ttys003 -> ttys, /dev/pts/0 -> pts. $TTY is zsh's own copy of what
+    # tty(1) would print, so this needs neither the pipeline nor perl -- 10.4ms
+    # of exec's for a single string edit, which is most of what this file costs
+    # before the deferred queue behind it gets to run.
+    local dev=${1:-$TTY}
+    dev=${dev#/dev/}
+    dev=${dev%%/*}
+    print -r -- ${dev%%[0-9]*}
 }
-TERM_TYPE=$(terminal_device_type)
 
 # Detect session type
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
