@@ -101,7 +101,12 @@ return {
         },
       })
 
-      vim.lsp.enable({ "harper_ls", "texlab", "lua_ls", "ruff", "ty", "pyright" })
+      local servers = { "harper_ls", "texlab", "lua_ls", "ruff", "ty", "pyright" }
+      -- nixd is only installed on the nix-managed machines
+      if vim.fn.executable("nixd") == 1 then
+        table.insert(servers, "nixd")
+      end
+      vim.lsp.enable(servers)
     end,
   },
   {
