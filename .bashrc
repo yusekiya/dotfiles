@@ -399,62 +399,11 @@ if [ -f "${HOME}/.dircolors" ] && command -v dircolors >/dev/null; then
 fi
 
 # starship
-#
-# --print-full-init, because plain `starship init bash` only emits a bootstrap
-# line that forks starship again to get the real thing; caching that would
-# still leave one exec on every start.
-#
-# The init then runs two more commands while it is being sourced -- `starship
-# time` for STARSHIP_START_TIME and `starship prompt --continuation` for PS2 --
-# which together were 32ms of what this file still cost. Both are substituted
-# out of the cached copy here. Only the top-level assignments are touched; the
-# ones inside starship_precmd and the PS0 preexec hook are indented, and they
-# run per command rather than at startup, so they are left as upstream wrote
-# them. Either substitution failing to fire leaves the stock line in place, so
-# the worst case is the original speed and not a broken prompt.
-__starship_init_bash() {
-    local init line ps2 t_starship t_bash use_clock=
-
-    init=$(starship init bash --print-full-init) || return 1
-
-    # `starship time` prints milliseconds since the epoch, which bash 5 can
-    # produce from $EPOCHREALTIME without forking. Checked rather than assumed:
-    # if a future starship changed that unit the two would disagree here and
-    # the line is left alone, instead of silently reporting wrong command
-    # durations for as long as the cache lives.
-    if [[ -n ${EPOCHREALTIME-} ]]; then
-        t_starship=$(starship time 2>/dev/null)
-        t_bash=$(( ${EPOCHREALTIME/[.,]/} / 1000 ))
-        if [[ $t_starship =~ ^[0-9]+$ ]] &&
-            ((t_starship > t_bash - 5000 && t_starship < t_bash + 5000)); then
-            use_clock=1
-        fi
-    fi
-
-    # The continuation prompt is a pure function of the starship binary and its
-    # config file, and both are dependencies of this cache, so its value can be
-    # baked in. STARSHIP_SHELL has to be set for it: the init exports it one
-    # line before asking, and the answer is shell-specific.
-    ps2=$(STARSHIP_SHELL=bash starship prompt --continuation 2>/dev/null)
-
-    while IFS= read -r line; do
-        case $line in
-            'STARSHIP_START_TIME=$('*' time)')
-                [[ -n $use_clock ]] &&
-                    line='STARSHIP_START_TIME=$(( ${EPOCHREALTIME/[.,]/} / 1000 ))'
-                ;;
-            'PS2="$('*' prompt --continuation)"')
-                [[ -n $ps2 ]] && printf -v line 'PS2=%q' "$ps2"
-                ;;
-        esac
-        printf '%s\n' "$line"
-    done <<<"$init"
-}
 if command -v starship >/dev/null; then
-    # The generator is a function, so the binary cannot be derived from it and
-    # is named as a dependency here. `hash` fills BASH_CMDS without forking.
-    hash starship 2>/dev/null
-    bcache_source starship "${BASH_CMDS[starship]-}" "${STARSHIP_CONFIG:-$HOME/.config/starship.toml}" -- __starship_init_bash
+    # --print-full-init, because plain `starship init bash` only emits a
+    # bootstrap line that forks starship again to get the real thing; caching
+    # that would still leave one exec on every start.
+    bcache_source starship "${STARSHIP_CONFIG:-$HOME/.config/starship.toml}" -- starship init bash --print-full-init
 fi
 
 # fzf
