@@ -80,7 +80,7 @@ symbol = " "
 ssh_only = true
 ssh_symbol = " "
 # SSH 接続時のみホスト名を powerline 風セグメントで表示する
-format = '[ $ssh_symbol$hostname ](bold fg:#1c1c1c bg:#15a3eb)[](fg:#15a3eb) '
+format = '[ $ssh_symbol$hostname ](bold fg:#3b4252 bg:#88c0d0)[](fg:#88c0d0) '
 
 [java]
 symbol = " "
