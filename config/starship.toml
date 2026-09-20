@@ -1,4 +1,4 @@
-format = '$os$all$character'
+format = '$os$hostname$all$character'
 
 continuation_prompt = '[└─❯](bold #15a3eb) '
 
@@ -77,7 +77,10 @@ symbol = " "
 symbol = " "
 
 [hostname]
+ssh_only = true
 ssh_symbol = " "
+# SSH 接続時のみホスト名を powerline 風セグメントで表示する
+format = '[ $ssh_symbol$hostname ](bold fg:#1c1c1c bg:#15a3eb)[](fg:#15a3eb) '
 
 [java]
 symbol = " "
