@@ -2,7 +2,6 @@ background-opacity = 0.85
 background-blur = 20
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
 theme = Nordfox
 font-family = ""
 font-family = "Fira Code"
