@@ -242,21 +242,8 @@ return {
         end
 
         -- Navigation
-        map("n", "]c", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "]c", bang = true })
-          else
-            gitsigns.nav_hunk("next")
-          end
-        end, { desc = "go to next git hunk" })
-
-        map("n", "[c", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "[c", bang = true })
-          else
-            gitsigns.nav_hunk("prev")
-          end
-        end, { desc = "go to previous git hunk" })
+        map("n", "]h", gitsigns.nav_hunk("next"), { desc = "go to next git hunk" })
+        map("n", "[h", gitsigns.nav_hunk("prev"), { desc = "go to previous git hunk" })
 
         -- Actions
         map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "stage git hunk" })
