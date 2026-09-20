@@ -242,8 +242,12 @@ return {
         end
 
         -- Navigation
-        map("n", "]h", gitsigns.nav_hunk("next"), { desc = "go to next git hunk" })
-        map("n", "[h", gitsigns.nav_hunk("prev"), { desc = "go to previous git hunk" })
+        map("n", "]h", function()
+          gitsigns.nav_hunk("next")
+        end, { desc = "go to next git hunk" })
+        map("n", "[h", function()
+          gitsigns.nav_hunk("prev")
+        end, { desc = "go to previous git hunk" })
 
         -- Actions
         map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "stage git hunk" })
