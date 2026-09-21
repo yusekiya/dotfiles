@@ -5,7 +5,7 @@ desc = "Open help"
 
 [[mgr.prepend_keymap]]
 on = "<C-t>"
-run = 'shell -- ~/.config/yazi/scripts/ghostty-new-tab.sh "$0"'
+run = 'shell -- ~/.config/yazi/scripts/ghostty-new-tab.sh %s1'
 desc = "Open hovered folder in a new Ghostty tab"
 
 [[mgr.prepend_keymap]]

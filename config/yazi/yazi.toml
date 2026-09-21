@@ -1,13 +1,13 @@
 [opener]
 edit = [
-    { run = '${EDITOR:=vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-    { run = 'code "$@"', desc = "VSCode", block = true, for = "unix" },
-    { run = 'code "%*"', orphan = true, desc = "code", for = "windows" },
-    { run = 'code -w "%*"', block = true,  desc = "code (block)", for = "windows" },
+    { run = '${EDITOR:=vi} %s', desc = "$EDITOR", block = true, for = "unix" },
+    { run = 'code %s', desc = "VSCode", block = true, for = "unix" },
+    { run = 'code %s', orphan = true, desc = "code", for = "windows" },
+    { run = 'code -w %s', block = true,  desc = "code (block)", for = "windows" },
 ]
 
 view = [
-    { run = 'vim -RM "$@"', desc = "readonly view", block = true, for = "unix" },
+    { run = 'vim -RM %s', desc = "readonly view", block = true, for = "unix" },
 ]
 
 [open]
