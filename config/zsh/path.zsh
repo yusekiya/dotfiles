@@ -8,6 +8,8 @@
 # push entries back down after they were put in front.
 #
 # The order below is the intended one, highest priority first:
+#   /run/wrappers/bin   NixOS setuid wrappers (sudo etc.); the copies under
+#                       /run/current-system/sw/bin lack setuid and must not win
 #   ~/.local/bin        hand-installed and per-machine scripts
 #   Nix / home-manager  must beat Homebrew and the system tools
 # Everything else keeps the relative order it already had. Tools that prepend
@@ -32,7 +34,7 @@ unset _dir
 function path_prioritize {
     local -a front
     local dir
-    for dir in "$HOME/.local/bin" ${^nix_profiles}/bin; do
+    for dir in /run/wrappers/bin "$HOME/.local/bin" ${^nix_profiles}/bin; do
         [[ -d $dir ]] && front+=( $dir )
     done
     (( $#front )) || return 0
