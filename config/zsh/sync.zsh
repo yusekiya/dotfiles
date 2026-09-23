@@ -140,8 +140,12 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 ###############################################################################
 # Syntax highlighting
 ###############################################################################
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='none'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+# fast-syntax-highlighting only fills style keys that are unset, so values set
+# here (before the plugin loads) override its built-in theme.
+typeset -gA FAST_HIGHLIGHT_STYLES
+# Keep the default magenta for paths, but drop the underline on directories.
+FAST_HIGHLIGHT_STYLES[path-to-dir]='fg=magenta'
+# The default fg=black,bold is barely visible on a dark background.
+FAST_HIGHLIGHT_STYLES[comment]='fg=245'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 
