@@ -34,3 +34,7 @@ rules = [
 [preview]
 max_width  = 2000
 max_height = 2000
+
+[[plugin.prepend_previewers]]
+url = "*.ipynb"
+run = 'piper -- nbpreview --no-paging --nerd-font --decorated --no-files --unicode --color --no-images --color-system=standard --theme=nord --width "$w" "$1"'
