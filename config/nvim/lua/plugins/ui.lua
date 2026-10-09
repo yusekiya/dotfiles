@@ -195,7 +195,6 @@ return {
         { "<leader>t", group = "Terminal" },
         { "<leader>w", group = "Workspace" },
         { "<leader>x", group = "Trouble" },
-        { "<leader>a", group = "AI" },
       },
     },
     keys = {
