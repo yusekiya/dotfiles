@@ -25,7 +25,6 @@ return {
         "regex",
         "rust",
         "ssh_config",
-        "tmux",
         "toml",
         "vim",
         "vimdoc",
