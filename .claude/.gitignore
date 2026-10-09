@@ -3,3 +3,15 @@
 !output-styles/
 !output-styles/direct-critique.md
 !keybindings.json
+!skills/
+skills/*
+!skills/commit/
+!skills/create-branch/
+!skills/create-pr/
+!skills/test/
+!skills/nvim-plugin-audit/
+!skills/commit/**
+!skills/create-branch/**
+!skills/create-pr/**
+!skills/test/**
+!skills/nvim-plugin-audit/**
