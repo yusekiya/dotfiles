@@ -29,6 +29,15 @@ return {
     },
     opts = {},
     config = function(_, opts)
+      local function set_output_hl()
+        vim.api.nvim_set_hl(0, "IpynbOutput", { fg = "#D8DEE9" })
+      end
+      set_output_hl()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = vim.api.nvim_create_augroup("ipynb_output_hl", { clear = true }),
+        callback = set_output_hl,
+      })
+
       require("ipynb").setup(opts)
 
       -- Recreate the kernel bridge instead of using ipynb.nvim's in-process restart.
