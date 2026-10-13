@@ -149,24 +149,6 @@ opacity = 1.0
 position = "center"
 widthPercent = 50.0
 
-[routing]
-mode = "custom"
-
-[[routing.arrangements]]
-id = "06D3BD04-A135-407A-B3B0-88F8E43949C4"
-
-[[routing.arrangements.monitors]]
-gridColumn = 1
-gridRow = 0
-monitorDisplayUUID = "F07EDA77-E9F5-4B6F-9D2B-304FBBB0598B"
-monitorName = "DELL U3223QE"
-
-[[routing.arrangements.monitors]]
-gridColumn = 0
-gridRow = 0
-monitorDisplayUUID = "51773069-1685-4CFC-B39C-56A857F8475C"
-monitorName = "RTK WQXGA HDR"
-
 [scratchpads]
 
 [scratchpads.labels]
@@ -569,11 +551,11 @@ binding = "Unassigned"
 id = "focusWindowUpOrBottom"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Control+Option+Command+Down Arrow"
 id = "focusWindowOrWorkspaceDown"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Control+Option+Command+Up Arrow"
 id = "focusWindowOrWorkspaceUp"
 
 [[hotkeys]]
@@ -1051,12 +1033,6 @@ id = "toggleOverview"
 [[hotkeys]]
 binding = "Unassigned"
 id = "toggleSystemStats"
-
-[[monitorNiriOverrides]]
-id = "D6460C89-D9FE-4552-B908-D93223135CB4"
-monitorDisplayUUID = "51773069-1685-4CFC-B39C-56A857F8475C"
-monitorName = "RTK WQXGA HDR"
-singleWindowFit = "fill"
 
 [[workspaces]]
 id = "AD36F001-C57E-41A5-AC1D-DF5249D007F0"
