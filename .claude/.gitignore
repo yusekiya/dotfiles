@@ -3,6 +3,9 @@
 !output-styles/
 !output-styles/direct-critique.md
 !keybindings.json
+!shared-settings.json
+!scripts/
+!scripts/sync-settings
 !skills/
 skills/*
 !skills/commit/

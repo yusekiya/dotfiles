@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+# Merge the git-managed shared-settings.json into settings.json.
+#
+# Each top-level key in shared-settings.json (e.g. permissions, sandbox)
+# replaces the same key in settings.json as a whole, so rules removed from the
+# shared file are removed on every host. Keys not in the shared file, such as
+# effortLevel, are left alone.
+#
+# Host-specific additions go in shared-settings.local.json (not tracked). It is
+# merged into the shared file first: objects merge recursively, arrays are
+# concatenated without duplicates, and scalars from the local file win.
+#
+# Usage: sync-settings [--check | --yes]
+#   (none)   show the diff and ask before writing
+#   --check  show the diff only; exit 1 if settings.json is out of date
+#   --yes    write without asking
+
+set -euo pipefail
+
+config_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+shared="$config_dir/shared-settings.json"
+local_overrides="$config_dir/shared-settings.local.json"
+settings="$config_dir/settings.json"
+
+mode=ask
+case "${1:-}" in
+  "") ;;
+  --check) mode=check ;;
+  --yes) mode=yes ;;
+  *) echo "usage: $(basename "$0") [--check | --yes]" >&2; exit 2 ;;
+esac
+
+command -v jq >/dev/null || { echo "error: jq is required" >&2; exit 1; }
+[[ -f $shared ]] || { echo "error: $shared not found" >&2; exit 1; }
+
+# Write through a symlinked settings.json instead of replacing the link.
+if [[ -L $settings ]]; then
+  settings="$(readlink -f "$settings")"
+fi
+
+current='{}'
+[[ -f $settings ]] && current="$(cat "$settings")"
+overrides='{}'
+[[ -f $local_overrides ]] && overrides="$(cat "$local_overrides")"
+
+merged="$(
+  jq -n \
+    --argjson current "$current" \
+    --argjson shared "$(cat "$shared")" \
+    --argjson overrides "$overrides" '
+    def merge($a; $b):
+      if ($a | type) == "object" and ($b | type) == "object" then
+        reduce ($b | keys_unsorted[]) as $k ($a; .[$k] = merge($a[$k]; $b[$k]))
+      elif ($a | type) == "array" and ($b | type) == "array" then
+        reduce ($a + $b)[] as $x ([]; if index([$x]) then . else . + [$x] end)
+      elif $b == null then $a
+      else $b
+      end;
+    merge($shared; $overrides) as $managed
+    | reduce ($managed | keys_unsorted[]) as $k ($current; .[$k] = $managed[$k])
+  '
+)"
+
+if diff -q <(jq -S . <<<"$current") <(jq -S . <<<"$merged") >/dev/null; then
+  echo "settings.json is up to date"
+  exit 0
+fi
+
+diff -u --label "settings.json (current)" --label "settings.json (merged)" \
+  <(jq -S . <<<"$current") <(jq -S . <<<"$merged") || true
+
+case $mode in
+  check) exit 1 ;;
+  ask)
+    read -r -p "Write these changes to $settings? [y/N] " answer
+    [[ $answer == [yY]* ]] || { echo "aborted"; exit 1; }
+    ;;
+esac
+
+tmp="$(mktemp "$settings.XXXXXX")"
+trap 'rm -f "$tmp"' EXIT
+chmod 600 "$tmp"
+printf '%s\n' "$merged" >"$tmp"
+mv "$tmp" "$settings"
+trap - EXIT
+echo "updated $settings"
