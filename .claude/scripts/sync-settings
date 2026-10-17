@@ -72,6 +72,10 @@ diff -u --label "settings.json (current)" --label "settings.json (merged)" \
 case $mode in
   check) exit 1 ;;
   ask)
+    if [[ ! -t 0 ]]; then
+      echo "stdin is not a terminal; review the diff and rerun with --yes" >&2
+      exit 1
+    fi
     read -r -p "Write these changes to $settings? [y/N] " answer
     [[ $answer == [yY]* ]] || { echo "aborted"; exit 1; }
     ;;
