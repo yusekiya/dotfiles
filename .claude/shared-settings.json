@@ -157,11 +157,6 @@
       "Edit(//dev/**)"
     ],
     "ask": [
-      "Bash(curl *)",
-      "Bash(wget *)",
-      "Bash(httpie *)",
-      "Bash(http *)",
-      "Bash(https *)",
       "Bash(kubectl get *secret*)",
       "Bash(kubectl get -f *)",
       "Bash(kubectl get * -f *)",
