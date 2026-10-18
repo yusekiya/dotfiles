@@ -28,6 +28,24 @@
       "Bash(cloc *)",
       "Bash(lsof *)",
       "Bash(netstat *)",
+      "Bash(kubectl get *)",
+      "Bash(kubectl describe *)",
+      "Bash(kubectl logs *)",
+      "Bash(kubectl wait *)",
+      "Bash(kubectl version *)",
+      "Bash(kubectl explain *)",
+      "Bash(kubectl top *)",
+      "Bash(kubectl auth can-i *)",
+      "Bash(kubectl api-resources *)",
+      "Bash(rtk kubectl get *)",
+      "Bash(rtk kubectl describe *)",
+      "Bash(rtk kubectl logs *)",
+      "Bash(rtk kubectl wait *)",
+      "Bash(rtk kubectl version *)",
+      "Bash(rtk kubectl explain *)",
+      "Bash(rtk kubectl top *)",
+      "Bash(rtk kubectl auth can-i *)",
+      "Bash(rtk kubectl api-resources *)",
       "Edit(./**)"
     ],
     "deny": [
@@ -153,7 +171,9 @@
     "autoAllowBashIfSandboxed": false,
     "excludedCommands": [
       "gh *",
-      "rtk gh *"
+      "rtk gh *",
+      "kubectl *",
+      "rtk kubectl *"
     ],
     "filesystem": {
       "allowWrite": [
