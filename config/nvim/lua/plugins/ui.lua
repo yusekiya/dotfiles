@@ -190,6 +190,7 @@ return {
         { "<leader>f", group = "Fuzzy finder" },
         { "<leader>e", group = "File explorer" },
         { "<leader>h", group = "Git hunk" },
+        { "<leader>i", group = "Information" },
         { "<leader>o", group = "Outline" },
         { "<leader>s", group = "Splitted window" },
         { "<leader>t", group = "Terminal" },
