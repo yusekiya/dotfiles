@@ -46,7 +46,7 @@ keybind = super+alt+v=write_screen_file:paste,plain
 keybind = super+alt+o=write_screen_file:open,plain
 
 # Plain text copy
-keybind = cmd+c=copy_to_clipboard:plain
+keybind = performable:cmd+c=copy_to_clipboard:plain
 
 # Vim-mode keybindings for Ghostty.
 
