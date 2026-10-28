@@ -25,6 +25,7 @@ return {
         on_highlights = function(highlights, colors)
           highlights["LineNr"] = { fg = "#6A7282", bg = colors.none, bold = false }
           highlights["CursorLine"] = { bg = "#353B49" }
+          highlights["ColorColumn"] = { bg = "#353B49" }
           highlights["LspInlayHint"] = { fg = "#8A7C75", italic = true }
           highlights["DiagnosticUnnecessary"] = { fg = "#8891A2", italic = true, undercurl = true, sp = "#8891A2" }
           highlights["NeoTreeDotfile"] = { fg = "#8891A2" }
