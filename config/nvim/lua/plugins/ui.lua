@@ -289,6 +289,7 @@ return {
       local builtin = require("statuscol.builtin")
       local cfg = {
         bt_ignore = { "terminal" },
+        ft_ignore = { "aerial" },
         segments = {
           { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
           {
