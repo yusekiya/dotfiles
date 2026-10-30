@@ -1,0 +1,6 @@
+[appearance]
+theme = 'nord'
+
+[startup]
+tiled = true
+daemon = true
