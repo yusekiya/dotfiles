@@ -1,65 +1,64 @@
-[Start emacs] cd ~ && emacs &!
-[Make histogram] sort <File> | uniq -c | sort -nr
-[Remove duplicates] sort <File> | uniq
-[Pick up specific line] head -n <line_num> | tail -n 1
-[Search term in files in current directory recursively] ag -G <fname_regex:'.*'> <term> <dest_dir:.>
-[Search files with specific extension] find <src_dir:.> -name "*.<ext>"
-[Rename file] find . -type f -name '<file_*_name>' | sed 'p;s/<Before>/<After>/' | xargs -n2 mv
+[Add SSH public key] cat <public_key> | ssh <remote> 'cat >> .ssh/authorized_keys'
+[Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n <secret> | ansible-vault encrypt; unset secret
+[Check process] ps aux | grep <process>
+[Compress folder] tar acvf <archive>.tar.xz <src>
+[Convert PDF to PNG] for pdf_file in *.pdf; do pdftocairo -png -r 300 -singlefile "${pdf_file}"; done
 [Copy files with specific extension] ag -g '.*\.<ext>' <src_dir:.> | xargs -I% cp -f % <dest_dir>
 [Copy files with specific extension] find <src_dir:.> -name "*.<ext>"  | xargs -I% cp -f % <dest_dir>
-[Check process] ps aux | grep <process>
-[Show path] echo $PATH | tr ":" "\n"!
-[Count files in directory] \ls -F <src_dir> | grep -v / | wc -l
-[Count files in directory recursively] find . -type f | wc -l
-[Count files in directory recursively] ag -g '.*' . | wc -l
-[Sort directory in disk usage] du -h -d1 <src_dir> | sort -hr
-[Process each file] for val in `find ./*`; do <process_cmd>; done
-[Process each file] for val in `ag -g '.*' .`; do <process_cmd>; done
-[Process each file including keyword] ag -l -0 <keyword> | xargs -0 <command:-echo>
-[Process each line in a file] while read line; do <cmd:echo $line>; done < <filename>
-[Show today] date +%F!
-[Delete recursively original file after resolving git conflict] find . -maxdepth <depth> -type f -name "*.orig" -delete
-[Delete backup files recursively] find . -maxdepth <depth> -name "*.bak" -delete
-[Copy files/directories] rsync -avz <src_dir> <dest_dir>
 [Copy files/directories (filtered)] rsync -avz --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
 [Copy files/directories with ssh options] rsync -avz -e 'ssh -p 22' --include='*/' --include='*.<ext>' --exclude='*' <src_dir> <dest_dir>
-[Add SSH public key] cat <public_key> | ssh <remote> 'cat >> .ssh/authorized_keys'
-[SSH tunneling] ssh -fN -L <LocalPort>:<Host seen from RemoteHost>:<Port> <user>@<RemoteHost>
-[SSH with port forwarding] ssh -L 8888:localhost:8888 <RemoteHost>
-[SSH dynamic port forwarding] ssh -fND 1080 <RemoteHost>
-[Scan port] nc -uzv <PublicIP> <Port>
-[Scan listening port on localhost] sudo lsof -i -P | grep "LISTEN"
-[Scan private IP in LAN] sudo arp-scan -l
-[Scan private IP] sudo nmap -sP <IP/MASK>
-[Monitoring] less +F <File>
-[Show login history] last | head -n ${num_lines:-20}
-[Show login history (last month)] last -f /var/log/wtmp.1 | head -n ${num_lines:-20}
-[Show public IP] curl -s httpbin.org/ip | jq -r '.origin'!
-[Who is that IP?] curl -sL https://rdap.apnic.net/ip/<IP:8.8.8.8> | jq -C . | less
+[Copy files/directories] rsync -avz <src_dir> <dest_dir>
+[Count files in directory recursively] ag -g '.*' . | wc -l
+[Count files in directory recursively] find . -type f | wc -l
+[Count files in directory] \ls -F <src_dir> | grep -v / | wc -l
+[Delete backup files recursively] find . -maxdepth <depth> -name "*.bak" -delete
+[Delete recursively original file after resolving git conflict] find . -maxdepth <depth> -type f -name "*.orig" -delete
 [Docker| Remove dangling images <none>:<none>] docker rmi $(docker images -f 'dangling=true' -q)
 [Docker| Remove exited containers] docker rm $(docker ps -aq --filter "status=exited")
-[Ansible| Encrypt string] echo -n 'Encrypting string: '; read -s secret; echo ''; echo -n <secret> | ansible-vault encrypt; unset secret
-[Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
-[Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
-[View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' <csv file:*.csv> | column -s, -t | less -S
-[Generate random passwords] pwgen --secure <length:7> <num:2>
-[Export to pdf from markdown] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN
-[Export to pdf from markdown with nicer code block] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN --listings -H ${HOME}/.pandoc/templates/listings-setup.tex
-[Export to markdown from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to markdown --no-prompt
+[Encode secret input on bash] read -sp "Input: " input && echo -en "\nEncoded: " && echo -n $input | base64 && unset input
+[Encode secret input on zsh] read -s "input?Input: " && echo -n "\nEncoded: " && echo -n $input | base64 && unset input!
 [Export to LaTeX from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to latex --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
 [Export to PDF from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to pdf --no-prompt --template ~/.jupyter/templates/jclassicm.tplx
-[Convert PDF to PNG] for pdf_file in *.pdf; do pdftocairo -png -r 300 -singlefile "${pdf_file}"; done
+[Export to markdown from jupyter notebook] jupyter nbconvert <input:*.ipynb> --to markdown --no-prompt
+[Export to pdf from markdown with nicer code block] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN --listings -H ${HOME}/.pandoc/templates/listings-setup.tex
+[Export to pdf from markdown] pandoc <input.md> -o <output.pdf> --pdf-engine=lualatex -sN
+[Extract archive] tar xvf <archive>.tar.xz
+[Generate random passwords] pwgen --secure <length:7> <num:2>
+[Make histogram] sort <File> | uniq -c | sort -nr
+[Monitor CPU freq. on Linux] watch -n1 "grep \"^[c]pu MHz\" /proc/cpuinfo | column"
+[Monitoring] less +F <File>
+[Pick up specific line] head -n <line_num> | tail -n 1
+[Process each file including keyword] ag -l -0 <keyword> | xargs -0 <command:-echo>
+[Process each file] for val in `ag -g '.*' .`; do <process_cmd>; done
+[Process each file] for val in `find ./*`; do <process_cmd>; done
+[Process each line in a file] while read line; do <cmd:echo $line>; done < <filename>
+[Remove duplicates] sort <File> | uniq
+[Rename file] find . -type f -name '<file_*_name>' | sed 'p;s/<Before>/<After>/' | xargs -n2 mv
 [Rename iTerm2 tab title] echo -ne "\e]1;<name>\a"
+[SSH dynamic port forwarding] ssh -fND 1080 <RemoteHost>
+[SSH tunneling] ssh -fN -L <LocalPort>:<Host seen from RemoteHost>:<Port> <user>@<RemoteHost>
+[SSH with port forwarding] ssh -L 8888:localhost:8888 <RemoteHost>
+[Scan listening port on localhost] sudo lsof -i -P | grep "LISTEN"
+[Scan port] nc -uzv <PublicIP> <Port>
+[Scan private IP in LAN] sudo arp-scan -l
+[Scan private IP] sudo nmap -sP <IP/MASK>
+[Search files with specific extension] find <src_dir:.> -name "*.<ext>"
+[Search term in files in current directory recursively] ag -G <fname_regex:'.*'> <term> <dest_dir:.>
+[Show login history (last month)] last -f /var/log/wtmp.1 | head -n ${num_lines:-20}
+[Show login history] last | head -n ${num_lines:-20}
+[Show path] echo $PATH | tr ":" "\n"!
+[Show public IP] curl -s httpbin.org/ip | jq -r '.origin'!
+[Show today] date +%F!
 [Slurm| Cancel all jobs] squeue --me -h -o "%i" | sed -e 's/_.*//' | xargs scancel
 [Slurm| List jobs since a date] sacct -S<YYYY-MM-DD> -ojobid,jobname,start,end,alloccpu,cputime,partition | column -t
 [Slurm| List jobs within relative time range] sacct -S now-<count(seconds|minutes|hours|days|weeks)> -ojobid,jobname,start,end,alloccpu,cputime,partition | column -t
 [Slurm| Show efficiency] seff <jobid>
-[Slurm| Show job status] scontrol show job <jobid>
 [Slurm| Show job priority] sprio -n
-[Encode secret input on zsh] read -s "input?Input: " && echo -n "\nEncoded: " && echo -n $input | base64 && unset input!
-[Encode secret input on bash] read -sp "Input: " input && echo -en "\nEncoded: " && echo -n $input | base64 && unset input
-[Monitor CPU freq. on Linux] watch -n1 "grep \"^[c]pu MHz\" /proc/cpuinfo | column"
-[Compress folder] tar acvf <archive>.tar.xz <src>
-[Extract archive] tar xvf <archive>.tar.xz
+[Slurm| Show job status] scontrol show job <jobid>
+[Sort directory in disk usage] du -h -d1 <src_dir> | sort -hr
+[Start emacs] cd ~ && emacs &!
+[Strip enhancd.log] printf '%s' "`tac ${HOME}/.enhancd/enhancd.log | sed -e '2000,$d' | tac`" > ${HOME}/.enhancd/enhancd.log
 [Sync markdown] rsync -avum --include='*/' --include='*.md' --exclude='*' <src_dir> ./
-
+[Update gitignore] echo "$(git status --porcelain | grep '^??' | cut -c4-)" >> .gitignore!
+[View formatted CSV] sed 's/,,/, ,/g;s/,,/, ,/g' <csv file:*.csv> | column -s, -t | less -S
+[Who is that IP?] curl -sL https://rdap.apnic.net/ip/<IP:8.8.8.8> | jq -C . | less
