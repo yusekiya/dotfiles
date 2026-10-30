@@ -1,6 +1,12 @@
 [appearance]
 theme = 'nord'
 
+[keybindings]
+leader_key = 'alt+space'
+
+[keybindings.global]
+launcher = []
+
 [startup]
 tiled = true
 daemon = true
