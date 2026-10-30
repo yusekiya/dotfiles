@@ -61,4 +61,5 @@
 [Monitor CPU freq. on Linux] watch -n1 "grep \"^[c]pu MHz\" /proc/cpuinfo | column"
 [Compress folder] tar acvf <archive>.tar.xz <src>
 [Extract archive] tar xvf <archive>.tar.xz
+[Sync markdown] rsync -avum --include='*/' --include='*.md' --exclude='*' <src_dir> ./
 
