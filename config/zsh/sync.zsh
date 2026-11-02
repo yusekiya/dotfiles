@@ -148,4 +148,5 @@ FAST_HIGHLIGHT_STYLES[path-to-dir]='fg=magenta'
 # The default fg=black,bold is barely visible on a dark background.
 FAST_HIGHLIGHT_STYLES[comment]='fg=245'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
+zle_highlight=('paste:none')
 
