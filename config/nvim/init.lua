@@ -31,7 +31,7 @@ opt.splitright = true
 -- mapleader
 -- Make sure that `mapleader` and `maplocalleader` is setup before loadin lazy.nvim.
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = ","
 
 -- Sync clipboard between OS and Neovim.
 -- Function to set OSC 52 clipboard
