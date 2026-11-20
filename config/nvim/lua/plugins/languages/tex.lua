@@ -12,6 +12,17 @@ return {
       end
       vim.g.vimtex_quickfix_enabled = 1
       vim.g.vimtex_quickfix_mode = 0
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VimtexEventTocCreated",
+        group = vim.api.nvim_create_augroup("vimtex_toc_keymaps", { clear = true }),
+        callback = function()
+          local opts = { buffer = 0, nowait = true, silent = true }
+          pcall(vim.keymap.del, "n", "<Space>", { buffer = 0 })
+          vim.keymap.set("n", "<CR>", "<Cmd>call b:toc.activate_current(0)<CR>", opts)
+          vim.keymap.set("n", "o", "<Cmd>call b:toc.activate_current(1)<CR>", opts)
+        end,
+      })
     end,
   },
   -- {
