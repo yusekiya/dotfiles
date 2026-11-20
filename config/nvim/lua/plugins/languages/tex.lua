@@ -12,6 +12,7 @@ return {
       end
       vim.g.vimtex_quickfix_enabled = 1
       vim.g.vimtex_quickfix_mode = 0
+      vim.g.vimtex_toc_config = { split_pos = "vert rightbelow" }
 
       vim.api.nvim_create_autocmd("User", {
         pattern = "VimtexEventTocCreated",
