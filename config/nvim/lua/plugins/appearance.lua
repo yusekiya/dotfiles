@@ -36,6 +36,10 @@ return {
           highlights["SnacksDashboardIcon"] = { fg = "#8fbcbb" }
           highlights["SnacksDashboardDesc"] = { fg = "#d8dee9", bold = true }
           highlights["SnacksDashboardKey"] = { fg = "#8fbcbb" }
+          highlights["NoiceVirtualText"] = {
+            fg = colors.aurora.orange,
+            bg = require("nord.utils").darken(colors.aurora.orange, 0.1),
+          }
         end,
       })
       vim.cmd.colorscheme("nord")
