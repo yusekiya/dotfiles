@@ -6,11 +6,14 @@ return {
     event = "VeryLazy",
     opts = {
       views = {
-        -- Padding {top, right, bottom, left}: one cell except on the top,
-        -- matching lua/config/border.lua used by the other popups.
-        -- row = 2 (default 1) keeps the popup off the cursor line when it opens below;
-        -- when it opens above, this leaves a two-row gap above the cursor line.
-        hover = { border = { padding = { 0, 1, 1, 1 } }, position = { row = 2 } },
+        -- K hover and signature help use the border chars of lua/config/border.lua, like the
+        -- other popups. Padding is zeroed (default { 0, 2 }) so the border chars alone set the
+        -- gaps. nui draws these chars in its own border window and counts each as one cell.
+        -- nui shifts the popup up by ceil((top + bottom rows) / 2) (it centers the border on the
+        -- popup), so the bottom row of border.lua put the popup on the cursor line with the
+        -- default row = 1. row = 2 fixes that when it opens below; when it opens above, noice
+        -- flips the row to -1 and nui still shifts it, which leaves a two-row gap.
+        hover = { border = { style = require("config.border"), padding = { 0, 0 } }, position = { row = 2 } },
       },
     },
     dependencies = {

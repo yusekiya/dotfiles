@@ -26,10 +26,16 @@ return {
           highlights["LineNr"] = { fg = "#6A7282", bg = colors.none, bold = false }
           highlights["CursorLine"] = { bg = "#373737" }
           highlights["ColorColumn"] = { bg = "#353B49" }
-          -- nord.nvim gives these a fg only, which leaves the blank border cells of config.border
-          -- transparent; blink.cmp's own defaults link them to the window background.
-          highlights["BlinkCmpMenuBorder"] = { link = "Pmenu" }
-          highlights["BlinkCmpDocBorder"] = { link = "NormalFloat" }
+          -- Border bar of the small popups (config.border) and of the other floats.
+          -- Aurora purple: frost blues are taken by keywords, and red/yellow/green mean
+          -- diagnostic severities.
+          -- snacks pickers link their borders to FloatBorder; keep them in the theme's gray.
+          highlights["SnacksPickerBorder"] = vim.deepcopy(highlights["FloatBorder"])
+          highlights["FloatBorder"].fg = colors.aurora.purple
+          -- nord.nvim gives the blink borders a fg only, which leaves the blank border cells of
+          -- config.border transparent, so set the bg of their windows too.
+          highlights["BlinkCmpMenuBorder"] = { fg = colors.aurora.purple, bg = highlights["Pmenu"].bg }
+          highlights["BlinkCmpDocBorder"] = { fg = colors.aurora.purple, bg = highlights["NormalFloat"].bg }
           highlights["LspInlayHint"] = { fg = "#8A7C75", italic = true }
           highlights["DiagnosticUnnecessary"] = { fg = "#8891A2", italic = true, undercurl = true, sp = "#8891A2" }
           highlights["NeoTreeDotfile"] = { fg = "#8891A2" }
