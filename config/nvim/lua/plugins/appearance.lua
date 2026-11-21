@@ -26,6 +26,10 @@ return {
           highlights["LineNr"] = { fg = "#6A7282", bg = colors.none, bold = false }
           highlights["CursorLine"] = { bg = "#373737" }
           highlights["ColorColumn"] = { bg = "#353B49" }
+          -- nord.nvim gives these a fg only, which leaves the blank border cells of config.border
+          -- transparent; blink.cmp's own defaults link them to the window background.
+          highlights["BlinkCmpMenuBorder"] = { link = "Pmenu" }
+          highlights["BlinkCmpDocBorder"] = { link = "NormalFloat" }
           highlights["LspInlayHint"] = { fg = "#8A7C75", italic = true }
           highlights["DiagnosticUnnecessary"] = { fg = "#8891A2", italic = true, undercurl = true, sp = "#8891A2" }
           highlights["NeoTreeDotfile"] = { fg = "#8891A2" }

@@ -5,7 +5,13 @@ return {
     lazy = true,
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      views = {
+        -- Padding {top, right, bottom, left}: one cell except on the top,
+        -- matching lua/config/border.lua used by the other popups.
+        -- row = 2 (default 1) keeps the popup off the cursor line when it opens below;
+        -- when it opens above, this leaves a two-row gap above the cursor line.
+        hover = { border = { padding = { 0, 1, 1, 1 } }, position = { row = 2 } },
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -150,7 +156,10 @@ return {
         nerd_font_variant = "mono",
       },
       -- (Default) Only show the documentation popup when manually triggered
-      completion = { documentation = { auto_show = false } },
+      completion = {
+        menu = { border = require("config.border") },
+        documentation = { auto_show = false, window = { border = require("config.border") } },
+      },
       snippets = { preset = "luasnip" },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
@@ -234,6 +243,7 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre" },
     opts = {
+      preview_config = { border = require("config.border") },
       on_attach = function(bufnr)
         local gitsigns = require("gitsigns")
         local function map(mode, l, r, opts)

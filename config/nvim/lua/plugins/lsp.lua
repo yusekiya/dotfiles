@@ -10,6 +10,7 @@ return {
       local keymap = vim.keymap
 
       vim.diagnostic.config({
+        float = { border = require("config.border") },
         jump = {
           on_jump = function(_, bufnr)
             vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
@@ -81,7 +82,11 @@ return {
 
           -- show documentation for what is under cursor
           opts.desc = "Show documentation for what is under cursor"
-          keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          -- Look up vim.lsp.buf.hover at call time: noice replaces it on VeryLazy,
+          -- which can run after this LspAttach callback.
+          keymap.set("n", "K", function()
+            vim.lsp.buf.hover({ border = require("config.border") })
+          end, opts)
 
           -- mapping to restart lsp if necessary
           opts.desc = "Restart LSP"
